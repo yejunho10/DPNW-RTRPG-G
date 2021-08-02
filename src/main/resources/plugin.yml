@@ -1,0 +1,7 @@
+name: DPNW-RTRPG
+version: ${project.version}
+main: com.dpnw.rtrpg.RTRPG
+api-version: 1.17
+authors: [ DP_NETWORK ]
+commands:
+  rr:

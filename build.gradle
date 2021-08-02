@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'com.dpnw'
+version '1.0-SNAPSHOT'
+
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile){
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://papermc.io/repo/repository/maven-public/" }
+    maven { url "https://mvn.lumine.io/repository/maven-public/" }
+    maven { url "https://repo.dmulloy2.net/repository/public/" }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    compileOnly "io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT"
+    compileOnly "io.lumine.xikage:MythicMobs:4.11.0-SNAPSHOT"
+    compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.7.0"
+    compileOnly 'org.spigotmc:spigot:1.17-R0.1-SNAPSHOT'
+}
+
+test {
+    useJUnitPlatform()
+}
