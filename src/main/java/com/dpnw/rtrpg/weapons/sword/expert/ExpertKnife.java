@@ -2,12 +2,14 @@ package com.dpnw.rtrpg.weapons.sword.expert;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Sword;
+import org.bukkit.Material;
 
 @SuppressWarnings("unused")
 public class ExpertKnife extends Sword {
 
-    public ExpertKnife() {
+    public ExpertKnife(Material type) {
         setWeaponName(WeaponName.EXPERT_KNIFE);
         setDisplayName("숙련자의 단도");
         setFlavorText("노련한 숙련자용 무기이다. 당신은 이제 어엿한 한 명의 모험가이다.");
@@ -22,6 +24,7 @@ public class ExpertKnife extends Sword {
         setMovementSpeed(0.3);
         setRange(2);
         setAngle(90);
+        setType(type);
     }
 
 

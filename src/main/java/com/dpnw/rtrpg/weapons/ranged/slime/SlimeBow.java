@@ -2,12 +2,14 @@ package com.dpnw.rtrpg.weapons.ranged.slime;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Ranged;
+import org.bukkit.Material;
 
 @SuppressWarnings("unused")
 public class SlimeBow extends Ranged {
 
-    public SlimeBow() {
+    public SlimeBow(Material type) {
         setWeaponName(WeaponName.SLIME_BOW);
         setDisplayName("점액질 활");
         setFlavorText("미끌미끌 끈적끈적 기분나쁜 활이다. 도대체 이게 왜 슬라임의 뱃속에 들어 있는거지?");
@@ -22,5 +24,6 @@ public class SlimeBow extends Ranged {
         setDodgeChance(9.5);
         setProjectileDeleteTime(1);
         setVectorSpeed(1.25);
+        setType(type);
     }
 }

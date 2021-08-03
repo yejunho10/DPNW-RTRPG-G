@@ -43,6 +43,7 @@ public class PlayerEvents implements Listener {
         if (!(p.getGameMode() == GameMode.SURVIVAL)) return;
         ItemStack item = p.getItemInUse();
         if (item == null) return;
+        if(!(item.getItemMeta() == null)) return;
         //todo 아이템 스택에 저장된 NBT값을 가져와 무기 ENUM과 대조하여 해당 무기의 스킬을 사용
 
     }
@@ -85,18 +86,19 @@ public class PlayerEvents implements Listener {
             return;
         }
         Bukkit.getScheduler().runTask(plugin, () -> {
+            ItemStack item = e.getItem().getItemStack();
             String lore = "설명이 없습니다.";
-            if (e.getItem().getItemStack().hasItemMeta() && e.getItem().getItemStack().getItemMeta().hasDisplayName()) {
-                if (e.getItem().getItemStack().getItemMeta().hasLore()) {
+            if (item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
+                if (item.getItemMeta().hasLore()) {
                     lore = "";
-                    for (String s : Objects.requireNonNull(e.getItem().getItemStack().getItemMeta().getLore())) {
+                    for (String s : Objects.requireNonNull(item.getItemMeta().getLore())) {
                         lore += s + "\n";
                     }
                 }
                 PlayerSchedulers.addToastTask(e.getEntity().getUniqueId(), new DisplayToast(ToastKey.getRandomKey(),
-                        e.getItem().getItemStack().getItemMeta().getDisplayName() + " X " + e.getItem().getItemStack().getAmount() + " 획득!",
+                        item.getItemMeta().getDisplayName() + " X " + item.getAmount() + " 획득!",
                         lore,
-                        e.getItem().getItemStack().getType().getKey().asString(),
+                        item.getType().getKey().asString(),
                         true,
                         true,
                         DisplayToast.ToastFrame.TASK,
@@ -104,9 +106,9 @@ public class PlayerEvents implements Listener {
                 ));
             } else {
                 PlayerSchedulers.addToastTask(e.getEntity().getUniqueId(), new DisplayToast(ToastKey.getRandomKey(),
-                        e.getItem().getItemStack().getI18NDisplayName() + " X " + e.getItem().getItemStack().getAmount() + " 획득!",
+                        item.getI18NDisplayName() + " X " + item.getAmount() + " 획득!",
                         lore,
-                        e.getItem().getItemStack().getType().getKey().asString(),
+                        item.getType().getKey().asString(),
                         false,
                         true,
                         DisplayToast.ToastFrame.TASK,

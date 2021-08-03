@@ -22,7 +22,7 @@ public class Cutting extends RActive {
         setRequireMana(25);
         setDuration(7);
         setVisible(true);
-        setSkillName(SkillName.FLY);
+        setSkillName(SkillName.CUTTING);
     }
 
     public Cutting(Player p) {

@@ -4,7 +4,7 @@ package com.dpnw.rtrpg.enums;
 public enum Rank {
     COMMON,
     UNCOMMON,
-    REAR,
+    RARE,
     UNIQUE,
     EXTRA,
     WORLD,

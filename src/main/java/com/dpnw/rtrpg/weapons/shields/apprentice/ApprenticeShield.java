@@ -2,6 +2,7 @@ package com.dpnw.rtrpg.weapons.shields.apprentice;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.weapons.obj.abstracts.Blunt;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Shields;
 import org.bukkit.Material;
 

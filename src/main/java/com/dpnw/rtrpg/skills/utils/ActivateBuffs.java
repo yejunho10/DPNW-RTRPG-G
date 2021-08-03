@@ -4,7 +4,6 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.skills.obj.Skill;
 import org.bukkit.Bukkit;
-
 @SuppressWarnings("unused")
 public class ActivateBuffs { //todo 버프류 관련 지급
 

@@ -2,9 +2,9 @@ package com.dpnw.rtrpg.utils;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.events.*;
-import com.dpnw.rtrpg.events.SkillUnlockedEvent;
 import com.dpnw.rtrpg.skills.events.DeathCount;
 import com.dpnw.rtrpg.skills.events.HealthChange;
+import com.dpnw.rtrpg.events.SkillUnlockedEvent;
 import com.dpnw.rtrpg.skills.events.PlayerEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;

@@ -2,12 +2,14 @@ package com.dpnw.rtrpg.weapons.sword.slime;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Sword;
+import org.bukkit.Material;
 
 @SuppressWarnings("unused")
 public class SlimeDualSword extends Sword {
 
-    public SlimeDualSword() {
+    public SlimeDualSword(Material type) {
         setWeaponName(WeaponName.SLIME_DUAL_SWORD);
         setDisplayName("점액질 쌍검");
         setFlavorText("미끌미끌 끈적끈적 기분나쁜 쌍검이다. 도대체 이게 왜 슬라임의 뱃속에 들어 있는거지?");
@@ -21,6 +23,7 @@ public class SlimeDualSword extends Sword {
         setDodgeChance(5);
         setRange(3);
         setAngle(160);
+        setType(type);
     }
 
 
