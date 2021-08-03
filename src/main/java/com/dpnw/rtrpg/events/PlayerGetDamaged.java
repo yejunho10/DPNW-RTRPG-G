@@ -1,6 +1,5 @@
 package com.dpnw.rtrpg.events;
 
-import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.entity.Player;
@@ -8,9 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-import java.util.Random;
-
-@SuppressWarnings("all")
 public class PlayerGetDamaged implements Listener {
 
     @EventHandler
@@ -18,17 +14,22 @@ public class PlayerGetDamaged implements Listener {
         if (!(e.getEntity() instanceof Player)) return;
         Player p = (Player) e.getEntity();
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        //바람의 포옹
-        if (RPlayerUtil.hasSkill(cp.getUUID(), SkillName.HUG_OF_WIND)) {
-            Random rnd = new Random();
-            int r = rnd.nextInt(100) + 1;
-            int i = (int) (cp.getLevel() * 0.07);
-            if (r <= i){
-                e.setCancelled(true);
-            }
-        }
-        cp.setcurrentHealth(cp.getcurrentHealth() - e.getDamage());
 
-        e.setDamage(0);
+        if(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
+            p.setHealth(0);
+            return;
+        }
+        cp.setcurrentHealth(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()));
+        setHealthScale(cp);
+        e.setCancelled(true);
     }
+
+    private void setHealthScale(CraftRPlayer rp) {
+        Player p = rp.getPlayer();
+        p.setHealthScale(20);
+        p.setHealthScaled(true);
+        p.setHealth(rp.getcurrentHealth() / (rp.getHealth() / 20));
+    }
+
+
 }
