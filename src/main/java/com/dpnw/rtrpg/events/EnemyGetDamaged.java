@@ -2,6 +2,7 @@ package com.dpnw.rtrpg.events;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.MobName;
+import com.dpnw.rtrpg.mob.obj.RMob;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillDamageEvent;
 import com.dpnw.rtrpg.utils.RMobUtil;
@@ -32,9 +33,9 @@ public class EnemyGetDamaged implements Listener {
         if(e.getDamager() instanceof Player) {
             if(e.getEntity() instanceof Mob) {
                 LivingEntity le = (LivingEntity) e.getEntity();
-                try{
-                    RTRPG.getInstance().rmobs.get(le.getUniqueId()).setCurrentHealth(le.getHealth());
-                    ((Mob) e.getEntity()).setHealth(le.getHealth());
+                try {
+                    RMob mob = RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                    mob.setCurrentHealth(le.getHealth() - (e.getDamage() - mob.getCurrentArmor()));
                     RMobUtil.setBar(e.getEntity());
                 }catch(Exception ignored) {
                 }
