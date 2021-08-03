@@ -3,6 +3,7 @@ package com.dpnw.rtrpg.weapons.armors.apprentice;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Armors;
+import com.dpnw.rtrpg.weapons.obj.abstracts.Blunt;
 import org.bukkit.Material;
 
 @SuppressWarnings("unused")

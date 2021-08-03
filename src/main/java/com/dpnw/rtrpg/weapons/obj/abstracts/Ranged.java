@@ -7,6 +7,7 @@ import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.able.LifeStealable;
 import com.dpnw.rtrpg.weapons.obj.able.Projectable;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 

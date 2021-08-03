@@ -2,12 +2,14 @@ package com.dpnw.rtrpg.weapons.sword.slime;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Sword;
+import org.bukkit.Material;
 
 @SuppressWarnings("unused")
 public class SlimeOneHandSword extends Sword {
 
-    public SlimeOneHandSword() {
+    public SlimeOneHandSword(Material type) {
         setWeaponName(WeaponName.SLIME_ONE_HAND_SWORD);
         setDisplayName("점액질 한손검");
         setFlavorText("미끌미끌 끈적끈적 기분나쁜 한손검이다. 도대체 이게 왜 슬라임의 뱃속에 들어 있는거지?");
@@ -20,6 +22,7 @@ public class SlimeOneHandSword extends Sword {
         setHealthRegen(0.6);
         setRange(2);
         setAngle(90);
+        setType(type);
     }
 
 

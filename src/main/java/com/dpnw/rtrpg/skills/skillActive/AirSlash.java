@@ -47,7 +47,7 @@ public class AirSlash extends RActive {
     Use : 시전시 전방을 베어가르며 날아가는 칼바람을 발사합니다. 칼바람은 적을 관통하며, 닿을시 120 +(레벨당 2)의 피해를 입힙니다.
      */
     @Override
-    public void use(RPlayer p) {
+    public void use(RPlayer rp) {
         if (isCooldown()) return;
         //todo logic...
         cooldown(getCooldown(), this);

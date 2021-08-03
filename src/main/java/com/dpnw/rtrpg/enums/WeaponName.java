@@ -2,14 +2,15 @@ package com.dpnw.rtrpg.enums;
 
 @SuppressWarnings("unused")
 public enum WeaponName {
-    ANGULAR_DAGGER("ANGULAR_DAGGER", "반듯한 표창", WeaponType.DAGGER),
     ANGULAR_AXE("ANGULAR_AXE", "반듯한 도끼", WeaponType.AXE),
     ANGULAR_BOW("ANGULAR_BOW", "반듯한 활", WeaponType.BOW),
     ANGULAR_CROSSBOW("ANGULAR_CROSSBOW", "반듯한 석궁", WeaponType.CROSSBOW),
+    ANGULAR_DAGGER("ANGULAR_DAGGER", "반듯한 표창", WeaponType.DAGGER),
     ANGULAR_DUAL_SWORD("ANGULAR_DUAL_SWORD", "반듯한 쌍검", WeaponType.DUALSWORD),
     ANGULAR_HAMMER("ANGULAR_HAMMER", "반듯한 망치", WeaponType.HAMMER),
     ANGULAR_KNIFE("ANGULAR_KNIFE", "반듯한 단도", WeaponType.KNIFE),
     ANGULAR_MACE("ANGULAR_MACE", "반듯한 메이스", WeaponType.MACE),
+    ANGULAR_ONE_HAND_SWORD("ANGULAR_ONE_HAND_SWORD", "반듯한 한손검", WeaponType.ONEHANDSWORD),
     ANGULAR_SPEAR("ANGULAR_SPEAR", "반듯한 쌍검", WeaponType.SPEAR),
     ANGULAR_STAFF("ANGULAR_STAFF", "반듯한 스태프", WeaponType.STAFF),
     ANGULAR_TWO_HAND_SWORD("ANGULAR_TWO_HAND_SWORD", "반듯한 양손검", WeaponType.TWOHANDSWORD),
@@ -34,12 +35,12 @@ public enum WeaponName {
     APPRENTICE_TWO_HAND_SWORD("APPRENTICE_TWO_HAND_SWORD", "견습 양손검", WeaponType.TWOHANDSWORD),
     APPRENTICE_WAND("APPRENTICE_WAND", "견습 지팡이", WeaponType.WAND),
     DER_FREISCHUTZ("DER_FREISCHUTZ", "마탄의 사수", WeaponType.CROSSBOW),
-    EXPERT_DAGGER("EXPERT_DAGGER", "숙련자의 표창", WeaponType.DAGGER),
     EXPERT_AXE("EXPERT_AXE", "숙련자의 도끼", WeaponType.AXE),
     EXPERT_BOOTS("EXPERT_BOOTS", "숙련자 장화", WeaponType.BOOTS),
     EXPERT_BOW("EXPERT_BOW", "숙련자의 활", WeaponType.BOW),
     EXPERT_BUCKLER("EXPERT_BUCKLER", "숙련자의 버클러", WeaponType.BUCKLER),
     EXPERT_CROSSBOW("EXPERT_CROSSBOW", "숙련자의 석궁", WeaponType.CROSSBOW),
+    EXPERT_DAGGER("EXPERT_DAGGER", "숙련자의 표창", WeaponType.DAGGER),
     EXPERT_DUAL_SWORD("EXPERT_DUAL_SWORD", "숙련자의 쌍검", WeaponType.DUALSWORD),
     EXPERT_HAMMER("EXPERT_HAMMER", "숙련자의 망치", WeaponType.HAMMER),
     EXPERT_HELMET("EXPERT_HELMET", "숙련자 투구", WeaponType.HELMET),
@@ -59,10 +60,10 @@ public enum WeaponName {
     OGRE_CLUB("OGRE_CLUB", "오우거 몽둥이", WeaponType.MACE),
     OGRE_HAMMER("OGRE_HAMMER", "오우거 망치", WeaponType.HAMMER),
     OGRE_TWO_HAND_SWORD("OGRE_TWO_HAND_SWORD", "오우거 양손검", WeaponType.TWOHANDSWORD),
-    RUSTY_DAGGER("RUSTY_DAGGER", "녹슨 표창", WeaponType.DAGGER),
     RUSTY_AXE("RUSTY_AXE", "녹슨 도끼", WeaponType.AXE),
     RUSTY_BOW("RUSTY_BOW", "녹슨 활", WeaponType.BOW),
     RUSTY_CROSSBOW("RUSTY_CROSSBOW", "녹슨 석궁", WeaponType.CROSSBOW),
+    RUSTY_DAGGER("RUSTY_DAGGER", "녹슨 표창", WeaponType.DAGGER),
     RUSTY_DUAL_SWORD("RUSTY_DUAL_SWORD", "녹슨 쌍검", WeaponType.DUALSWORD),
     RUSTY_HAMMER("RUSTY_HAMMER", "녹슨 망치", WeaponType.HAMMER),
     RUSTY_KNIFE("RUSTY_KNIFE", "녹슨 단도", WeaponType.KNIFE),
@@ -72,10 +73,10 @@ public enum WeaponName {
     RUSTY_STAFF("RUSTY_STAFF", "녹슨 스태프", WeaponType.STAFF),
     RUSTY_TWO_HAND_SWORD("RUSTY_TWO_HAND_SWORD", "녹슨 양손검", WeaponType.TWOHANDSWORD),
     RUSTY_WAND("RUSTY_WAND", "녹슨 지팡이", WeaponType.WAND),
-    SLIME_DAGGER("SLIME_DAGGER", "점액질 표창", WeaponType.DAGGER),
     SLIME_AXE("SLIME_AXE", "점액질 도끼", WeaponType.AXE),
     SLIME_BOW("SLIME_BOW", "점액질 활", WeaponType.BOW),
     SLIME_CROSSBOW("SLIME_CROSSBOW", "점액질 석궁", WeaponType.CROSSBOW),
+    SLIME_DAGGER("SLIME_DAGGER", "점액질 표창", WeaponType.DAGGER),
     SLIME_DUAL_SWORD("SLIME_DUAL_SWORD", "점액질 쌍검", WeaponType.DUALSWORD),
     SLIME_HAMMER("SLIME_HAMMER", "점액질 망치", WeaponType.HAMMER),
     SLIME_KNIFE("SLIME_KNIFE", "점액질 단도", WeaponType.KNIFE),
@@ -85,6 +86,7 @@ public enum WeaponName {
     SLIME_STAFF("SLIME_STAFF", "점액질 스태프", WeaponType.STAFF),
     SLIME_TWO_HAND_SWORD("SLIME_TWO_HAND_SWORD", "점액질 양손검", WeaponType.TWOHANDSWORD),
     SLIME_WAND("SLIME_WAND", "점액질 지팡이", WeaponType.WAND),
+
     ;
 
     private final String raw;

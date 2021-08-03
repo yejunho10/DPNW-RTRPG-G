@@ -2,12 +2,14 @@ package com.dpnw.rtrpg.weapons.sword.expert;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Sword;
+import org.bukkit.Material;
 
 @SuppressWarnings("unused")
 public class ExpertSpear extends Sword {
 
-    public ExpertSpear() {
+    public ExpertSpear(Material type) {
         setWeaponName(WeaponName.EXPERT_SPEAR);
         setDisplayName("숙련자의 창");
         setFlavorText("노련한 숙련자용 무기이다. 당신은 이제 어엿한 한 명의 모험가이다.");
@@ -21,6 +23,8 @@ public class ExpertSpear extends Sword {
         setRange(4);
         setReach(0.1);
         setAngle(10);
+        setKnockBack(0.1);
+        setType(type);
     }
 
 

@@ -5,6 +5,8 @@ import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
+import java.util.Random;
+
 public class Chicken extends CraftRMob {
 
     public Chicken() {

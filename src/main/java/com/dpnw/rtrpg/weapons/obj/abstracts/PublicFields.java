@@ -2,7 +2,11 @@ package com.dpnw.rtrpg.weapons.obj.abstracts;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.obj.interfaces.PublicField;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.List;
 
 @SuppressWarnings("deprecation")
 public abstract class PublicFields extends ItemStack implements PublicField {

@@ -2,12 +2,14 @@ package com.dpnw.rtrpg.weapons.ranged.expert;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Ranged;
+import org.bukkit.Material;
 
 @SuppressWarnings("unused")
 public class ExpertCrossBow extends Ranged {
 
-    public ExpertCrossBow() {
+    public ExpertCrossBow(Material type) {
         setWeaponName(WeaponName.EXPERT_CROSSBOW);
         setDisplayName("숙련자의 석궁");
         setFlavorText("노련한 숙련자용 무기이다. 당신은 이제 어엿한 한 명의 모험가이다.");
@@ -21,6 +23,7 @@ public class ExpertCrossBow extends Ranged {
         setManaRegen(0.4);
         setProjectileDeleteTime(1);
         setVectorSpeed(1.5);
+        setType(type);
     }
 
 
