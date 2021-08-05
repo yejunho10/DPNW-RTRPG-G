@@ -6,6 +6,7 @@ import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.schedulers.CounterScheduler;
 import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
+import com.dpnw.rtrpg.schedulers.SpawnerShowScheduler;
 import com.dpnw.rtrpg.utils.EventRegister;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,6 +33,8 @@ public class RTRPG extends JavaPlugin {
         AllWeapons.init();
         PlayerSchedulers.initSlotSwap();
         PlayerSchedulers.initToastTask();
+        PlayerSchedulers.initDetectDoubleShifting();
+        SpawnerShowScheduler.init();
         getCommand("rr").setExecutor(new RCommand());
     }
 }

@@ -55,9 +55,9 @@ public interface Weapon {
     void setCMI(int CMI);
 
     /**
-     * @param p 무기를 사용한다 .
+     * @param rp 무기를 사용한다 .
      */
-    void use(RPlayer p);
+    void use(RPlayer rp);
 
     ItemStack getWeapon();
 }

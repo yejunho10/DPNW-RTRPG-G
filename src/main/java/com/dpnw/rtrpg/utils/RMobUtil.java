@@ -19,14 +19,14 @@ public class RMobUtil {
             LivingEntity le = (LivingEntity) e;
             if (le.getPassengers().size() >= 1) {
                 System.out.println(e.getPassengers().get(0).getCustomName());
-                e.getPassengers().get(0).setCustomName(le.getCustomName() + " : " + getStr(RTRPG.getInstance().rmobs.get(e.getUniqueId()).getCurrentHealth()));
+                e.getPassengers().get(0).setCustomName(getStr(RTRPG.getInstance().rmobs.get(e.getUniqueId()).getCurrentHealth()));
                 return;
             }
             System.out.println("add passenger");
             Item healthbar = le.getWorld().dropItem(e.getLocation(), new ItemStack(Material.MUSIC_DISC_PIGSTEP));
             healthbar.setGravity(false);
             healthbar.setInvulnerable(true);
-            healthbar.setCustomName(le.getCustomName() + " : " + getStr(RTRPG.getInstance().rmobs.get(e.getUniqueId()).getCurrentHealth()));
+            healthbar.setCustomName(getStr(RTRPG.getInstance().rmobs.get(e.getUniqueId()).getCurrentHealth()));
             healthbar.setCustomNameVisible(true);
             le.addPassenger(healthbar);
             le.setCustomNameVisible(false);
@@ -37,10 +37,8 @@ public class RMobUtil {
 
     public static String getStr(double hp) {
         StringBuilder s = new StringBuilder("§eHP : §4");
-        String shp = ((int) hp) + "";
-//        String sshield = ((int) shield) + "";
+        String shp = String.format("%.1f", hp);
         char[] chp = shp.toCharArray();
-//        char[] cshield = sshield.toCharArray();
         for (char c : chp) {
             if (c == '0') {
                 s.append("");
@@ -71,6 +69,9 @@ public class RMobUtil {
             }
             if (c == '9') {
                 s.append("");
+            }
+            if (c == '.') {
+                s.append(c);
             }
         }
 

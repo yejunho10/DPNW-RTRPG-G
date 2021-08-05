@@ -62,8 +62,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         data.set("RPlayer.unLockedSkills", names);
         data.set("RPlayer.Level", level);
         data.set("RPlayer.Exp", exp);
-        data.set("Counter.deathCount", getDeathCount());
-        data.set("Counter.killCount", getKillCount());
+        counterSerializer(data);
         return data;
     }
 

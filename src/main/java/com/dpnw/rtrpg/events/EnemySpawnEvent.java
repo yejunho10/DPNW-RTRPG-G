@@ -2,7 +2,6 @@ package com.dpnw.rtrpg.events;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.mob.*;
-import com.dpnw.rtrpg.utils.RMobUtil;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobSpawnEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -15,7 +14,7 @@ public class EnemySpawnEvent implements Listener {
     public void onEnemySpawn(final MythicMobSpawnEvent e) {
         e.getEntity().setCustomNameVisible(true);
         try {
-            if (e.getMob().getType().getInternalName().contains("치킨")) {
+            if (e.getMob().getType().getInternalName().contains("닭")) {
                 Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> RTRPG.getInstance().rmobs.put(e.getEntity().getUniqueId(), new Chicken(e.getMob())), 2L);
             }
             if (e.getMob().getType().getInternalName().contains("슬라임")) {
