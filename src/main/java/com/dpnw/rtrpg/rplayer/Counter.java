@@ -5,6 +5,7 @@ import com.dpnw.rtrpg.enums.SkillName;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("unused")
@@ -13,14 +14,36 @@ public class Counter {
     private int killCount = 0; //모든 적을 죽인 수
     private double moveCount = 0; //이동한 거리
     private int clearedQuest = 0; //퀘스트 클리어 횟수
+    private Map<MobName, Integer> enemyCount = new HashMap<>(); //각각의 적을 죽인 수
+    private Map<SkillName, Integer> skillCount = new HashMap<>(); //특정 스킬을 사용한 수
+    //temp
     private int t_Damaged = 0; //임시 변수
     private int t_noAttack = 0; //임시 변수
     private int t_noAttackTime = 0; //임시 변수
     private double t_IgnoredDamage = 0; //임시 변수, 막은 피해량
-    private Map<MobName, Integer> enemyCount = new HashMap<>(); //각각의 적을 죽인 수
-    private Map<SkillName, Integer> skillCount = new HashMap<>(); //특정 스킬을 사용한 수
 
-    public Counter() {}
+    public Counter() {
+    }
+
+    public void counterSerializer(YamlConfiguration data) {
+        data.set("Counter.deathCount", deathCount);
+        data.set("Counter.killCount", killCount);
+        data.set("Counter.moveCount", moveCount);
+        data.set("Counter.clearedQuest", clearedQuest);
+        for (MobName key : enemyCount.keySet()) {
+            data.set("Counter.enemyCount." + key.getRaw(), enemyCount.get(key));
+        }
+        for (SkillName key : skillCount.keySet()) {
+            data.set("Counter.skillCount." + key.getRaw(), skillCount.get(key));
+        }
+    }
+
+    public void resetTemporaryVariable() {
+        t_Damaged = 0;
+        t_noAttack = 0;
+        t_noAttackTime = 0;
+        t_IgnoredDamage = 0;
+    }
 
     public Counter(int deathCount, int killCount, double moveCount, int clearedQuest, int t_noAttack, int t_noAttackTime, int t_Damaged, double t_IgnoredDamage, Map<MobName, Integer> enemyCount, Map<SkillName, Integer> skillCount) {
         this.deathCount = deathCount;
@@ -33,18 +56,6 @@ public class Counter {
         this.t_IgnoredDamage = t_IgnoredDamage;
         this.clearedQuest = clearedQuest;
         this.skillCount = skillCount;
-    }
-
-//    public YamlConfiguration serializer() {
-//
-//
-//    }
-
-    public void resetTemporaryVariable() {
-        t_Damaged = 0;
-        t_noAttack = 0;
-        t_noAttackTime = 0;
-        t_IgnoredDamage = 0;
     }
 
     public int getDeathCount() {
