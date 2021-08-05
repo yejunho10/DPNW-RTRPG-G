@@ -1,14 +1,24 @@
 package com.dpnw.rtrpg.weapons.obj.abstracts;
 
+import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.enums.WeaponType;
+import com.dpnw.rtrpg.mob.obj.CraftRMob;
+import com.dpnw.rtrpg.particles.ParticleUtil;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
+import com.dpnw.rtrpg.skills.utils.Cone;
 import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.able.LifeStealable;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +69,6 @@ public abstract class Sword extends PublicFields implements Weapon, LifeStealabl
     @Override
     public void setDisplayName(String name) {
         this.displayName = name;
-
     }
 
     @Override
@@ -78,8 +87,19 @@ public abstract class Sword extends PublicFields implements Weapon, LifeStealabl
     }
 
     @Override
-    public void use(RPlayer p) {
-
+    public void use(RPlayer rp) {
+        Player p = rp.getPlayer();
+        for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 45, p.getEyeLocation().getDirection())) {
+            LivingEntity le = (LivingEntity) e;
+            //damage
+            if(RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) {
+                CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                mob.damage(getDamage(), p);
+            }
+            ParticleUtil.createParticle(p, Particle.SWEEP_ATTACK, e.getLocation(), 0, 1, 0, 2, 0);
+        }
+        p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.8f);
+        p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
     }
 
     @Override

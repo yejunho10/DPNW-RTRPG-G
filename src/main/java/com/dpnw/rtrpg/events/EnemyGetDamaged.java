@@ -37,9 +37,10 @@ public class EnemyGetDamaged implements Listener {
             if (e.getEntity() instanceof Mob) {
                 LivingEntity le = (LivingEntity) e.getEntity();
                 try {
+                    if(!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
                     RMob mob = RTRPG.getInstance().rmobs.get(le.getUniqueId());
                     mob.setCurrentHealth(mob.getCurrentHealth() - (e.getDamage() - mob.getCurrentArmor()));
-                    if(mob.getCurrentHealth() <= 0) {
+                    if (mob.getCurrentHealth() <= 0) {
                         le.setKiller((Player) e.getDamager());
                         le.setLastDamageCause(new EntityDamageEvent(e.getDamager(), EntityDamageEvent.DamageCause.CUSTOM, e.getDamage()));
                         le.getPassengers().forEach(Entity::remove);
@@ -74,36 +75,25 @@ public class EnemyGetDamaged implements Listener {
 
     @EventHandler
     public void onEnemyKilled(EntityDeathEvent e) {
-        if (!(e.getEntity() instanceof Mob m)){
-            System.out.println("its not a mob");
-            return;
-        }
-        if (e.getEntity().getKiller() == null) {
-            System.out.println("killer is null");
-            return;
-        }
+        if (!(e.getEntity() instanceof Mob m)) return;
+        if (e.getEntity().getKiller() == null) return;
         if (!RTRPG.getInstance().rmobs.containsKey(m.getUniqueId())) return;
-        System.out.println("1");
         Player p = e.getEntity().getKiller();
         MobName mn = RTRPG.getInstance().rmobs.get(m.getUniqueId()).getMobName();
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         try {
-            System.out.println("2");
             cp.getEnemyCount().put(mn, cp.getEnemyCount().get(mn) + 1);
-            cp.setKillCount(cp.getKillCount()+1);
+            cp.setKillCount(cp.getKillCount() + 1);
             for (Entity mob : m.getPassengers()) { //remove bar
                 mob.remove();
-                System.out.println("3");
             }
             RTRPG.getInstance().rmobs.remove(m.getUniqueId());
         } catch (Exception ee) {
-            System.out.println("ee");
             for (Entity mob : m.getPassengers()) { //remove bar
                 mob.remove();
-                System.out.println("3");
             }
             cp.getEnemyCount().put(mn, 1);
-            cp.setKillCount(cp.getKillCount()+1);
+            cp.setKillCount(cp.getKillCount() + 1);
             RTRPG.getInstance().rmobs.remove(m.getUniqueId());
         }
     }

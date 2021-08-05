@@ -43,16 +43,16 @@ public abstract class CraftRMob implements RMob {
     public CraftRMob() {
     }
 
-    public void damage(Entity e, double damage, Player damager) {// 플레이어에게 공격받는 경우
-        if (currentHealth - damage <= 0) { // 들어온 데미지가 쉴드와 체력 둘다 감당하지 못할경우 처치
-            RTRPG.getInstance().rmobs.remove(e.getUniqueId());
-            LivingEntity le = (LivingEntity) e;
+    public void damage(double damage, Player damager) {// 플레이어에게 공격받는 경우
+        if (currentHealth - (damage - getCurrentArmor()) <= 0) { // 들어온 데미지가 쉴드와 체력 둘다 감당하지 못할경우 처치
+            RTRPG.getInstance().rmobs.remove(uuid);
+            LivingEntity le = (LivingEntity) mob.getEntity().getBukkitEntity();
             le.setHealth(0);
             le.damage(1);
             le.setKiller(damager);
             return;
         }
-        currentHealth -= damage;
+        currentHealth -= (damage - getCurrentArmor());
     }
 
     @Override
