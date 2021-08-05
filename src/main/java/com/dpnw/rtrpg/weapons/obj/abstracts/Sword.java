@@ -106,62 +106,62 @@ public abstract class Sword extends PublicFields implements Weapon, LifeStealabl
     public ItemStack getWeapon() {
         ItemStack item = new ItemStack(getType());
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName(getWeaponName().getKor());
+        im.setDisplayName("§6"+getWeaponName().getKor());
         List<String> lores = new ArrayList<>();
         try {
             if (!(getDamage() == 0)) {
-                lores.add("데미지 : " + getDamage());
+                lores.add("§f데미지 : §e" + getDamage());
             }
             if (!(getRange() == 0)) {
-                lores.add("공격사거리 : " + getRange());
+                lores.add("§f공격사거리 : §e" + getRange());
             }
             if (!(getReach() == 0)) {
-                lores.add("공격추가사거리 : " + getReach());
+                lores.add("§f공격추가사거리 : §e" + getReach());
             }
             if (!(getRank() == null)) {
-                lores.add("랭크 : " + getRank().name());
+                lores.add("§f랭크 : §e" + getRank().name());
             }
             if (!(getAttackSpeed() == 0)) {
-                lores.add("공격속도 : " + getAttackSpeed());
+                lores.add("§f공격속도 : §e" + getAttackSpeed());
             }
             if (!(getCriticalChance() == 0)) {
-                lores.add("크리티컬확률 : " + getCriticalChance());
+                lores.add("§f크리티컬확률 : §e" + getCriticalChance());
             }
             if (!(getCriticalDamage() == 0)) {
-                lores.add("크리티컬데미지 : " + getCriticalDamage());
+                lores.add("§f크리티컬데미지 : §e" + getCriticalDamage());
             }
             if (!(getHealth() == 0)) {
-                lores.add("추가체력 : " + getHealth());
+                lores.add("§f추가체력 : §e" + getHealth());
             }
             if (!(getHealthRegen() == 0)) {
-                lores.add("추가체력리젠 : " + getHealthRegen());
+                lores.add("§f추가체력리젠 : §e" + getHealthRegen());
             }
             if (!(getMaxMana() == 0)) {
-                lores.add("추가마나 : " + getMaxMana());
+                lores.add("§f추가마나 : §e" + getMaxMana());
             }
             if (!(getManaRegen() == 0)) {
-                lores.add("추가마나리젠 : " + getManaRegen());
+                lores.add("§f추가마나리젠 : §e" + getManaRegen());
             }
             if (!(getDodgeChance() == 0)) {
-                lores.add("추가회피율 : " + getDodgeChance());
+                lores.add("§f추가회피율 : §e" + getDodgeChance());
             }
             if (!(getPenetrateArmor() == 0)) {
-                lores.add("방어관통력 : " + getPenetrateArmor());
+                lores.add("§f방어관통력 : §e" + getPenetrateArmor());
             }
             if (!(getMovementSpeed() == 0)) {
-                lores.add("추가이동속도 : " + getMovementSpeed());
+                lores.add("§f추가이동속도 : §e" + getMovementSpeed());
             }
             if (!(getKnockBack() == 0)) {
-                lores.add("넉백확률 : " + getKnockBack());
+                lores.add("§f넉백확률 : §e" + getKnockBack());
             }
             if (!(getArmor() == 0)) {
-                lores.add("추가방어력 : " + getArmor());
+                lores.add("§f추가방어력 : §e" + getArmor());
             }
             if (!(getStunDuration() == 0)) {
-                lores.add("기절지속시간 : " + getStunDuration());
+                lores.add("§f기절지속시간 : §e" + getStunDuration());
             }
             if (!(getStunChance() == 0)) {
-                lores.add("기절확률 : " + getStunChance());
+                lores.add("§f기절확률 : §e" + getStunChance());
             }
         } catch (
                 Exception e) {

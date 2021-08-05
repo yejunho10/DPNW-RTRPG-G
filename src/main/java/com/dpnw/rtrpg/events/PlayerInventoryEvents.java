@@ -24,7 +24,11 @@ public class PlayerInventoryEvents implements Listener {
             }
             return;
         }
-        if (((TextComponent) e.getView().title()).content().contains("스킬 목록")) {
+        if (e.getView().getTitle().contains("견습 무기 선택")) {
+            e.setCancelled(true);
+            return;
+        }
+        if (e.getView().getTitle().contains("스킬 목록")) {
             e.setCancelled(true);
             try {
                 ItemStack item = e.getCurrentItem();

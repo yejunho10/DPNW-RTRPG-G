@@ -33,6 +33,7 @@ public class RTRPG extends JavaPlugin {
         AllWeapons.init();
         PlayerSchedulers.initSlotSwap();
         PlayerSchedulers.initToastTask();
+        PlayerSchedulers.initDetectDoubleShifting();
         SpawnerShowScheduler.init();
         getCommand("rr").setExecutor(new RCommand());
     }
