@@ -58,12 +58,21 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         for (SkillName name : unLockedSkills) {
             names.add(name.getRaw());
         }
-        data.set("RPlayer.UUID", uuid);
         data.set("RPlayer.unLockedSkills", names);
         data.set("RPlayer.Level", level);
         data.set("RPlayer.Exp", exp);
         counterSerializer(data);
         return data;
+    }
+
+    public CraftRPlayer deserializer(YamlConfiguration data) {
+        data.getList("RPlayer.unLockedSkills").forEach(o -> {
+            String s = (String) o;
+            unLockedSkills.add(SkillName.valueOf(s));
+        });
+        data.getInt("RPlayer.Level", level);
+        data.getInt("RPlayer.Exp", exp);
+        return this;
     }
 
     @Override

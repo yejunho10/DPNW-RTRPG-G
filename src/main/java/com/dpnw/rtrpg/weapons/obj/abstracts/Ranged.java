@@ -174,6 +174,6 @@ public abstract class Ranged extends PublicFields implements Weapon, LifeStealab
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(item, "action", "weapon");
+        return NBT.setTag(NBT.setTag(item, "action", "weapon"), "weapon", getWeaponName().getRaw());
     }
 }

@@ -169,6 +169,6 @@ public abstract class Sword extends PublicFields implements Weapon, LifeStealabl
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(item, "action", "weapon");
+        return NBT.setTag(NBT.setTag(item, "action", "weapon"), "weapon", getWeaponName().getRaw());
     }
 }
