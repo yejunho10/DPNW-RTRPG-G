@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.events;
+package com.dpnw.rtrpg.events.damage;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;

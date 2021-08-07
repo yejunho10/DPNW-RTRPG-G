@@ -3,13 +3,20 @@ package com.dpnw.rtrpg.mob.obj;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
+import com.dpnw.rtrpg.utils.RMobUtil;
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
+import java.util.Random;
 import java.util.UUID;
 
 public abstract class CraftRMob implements RMob {
@@ -50,9 +57,25 @@ public abstract class CraftRMob implements RMob {
             le.setHealth(0);
             le.damage(1);
             le.setKiller(damager);
-            return;
+        }else{
+            currentHealth -= (damage - getCurrentArmor());
+            RMobUtil.setBar(mob.getEntity().getBukkitEntity());
         }
-        currentHealth -= (damage - getCurrentArmor());
+        counter(damage);
+    }
+
+    private void counter(double damage) {
+        Entity vic = mob.getEntity().getBukkitEntity();
+        Bukkit.getScheduler().runTask(RTRPG.getInstance(), () -> {
+            Random rd = new Random();
+            Location loc = vic.getLocation();
+            loc.add(-0.5 + rd.nextDouble(), 2, -0.5 + rd.nextDouble());
+            Item as = vic.getWorld().dropItem(loc, new ItemStack(Material.MUSIC_DISC_11));
+            as.setCustomName("§f" + (int) damage);
+            as.setCustomNameVisible(true);
+            as.setVelocity(new Vector(0, 0.2, 0));
+            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), as::remove, 10L);
+        });
     }
 
     @Override

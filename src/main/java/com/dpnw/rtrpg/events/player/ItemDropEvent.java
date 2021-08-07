@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.events;
+package com.dpnw.rtrpg.events.player;
 
 import com.dpnw.rtrpg.RTRPG;
 import org.bukkit.Bukkit;

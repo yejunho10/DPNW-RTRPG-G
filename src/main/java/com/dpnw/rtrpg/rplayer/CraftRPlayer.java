@@ -93,6 +93,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     @Override
     public void setWeapon(Weapon weapon) {
         this.currentWeapon = weapon;
+        p.getInventory().setItem(8, currentWeapon.getWeapon());
     }
 
     @Override
