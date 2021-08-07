@@ -39,12 +39,17 @@ public class PlayerEvents implements Listener {
     public void onPlayerAttack(PlayerInteractEvent e) {
         if(!(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)) return;
         Player p = e.getPlayer();
+        System.out.println("p");
         if (!(p.getGameMode() == GameMode.SURVIVAL)) return;
-        ItemStack item = p.getItemInUse();
+        System.out.println("g");
+        ItemStack item = e.getItem();
         if (item == null) return;
+        System.out.println("i");
         if(item.getItemMeta() == null) return;
+        System.out.println("m");
         //todo 아이템 스택에 저장된 NBT값을 가져와 무기 ENUM과 대조하여 해당 무기의 스킬을 사용
         if(NBT.hasTagKey(item, "weapon")) {
+            System.out.println("w");
             CraftRPlayer rp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
             rp.getWeapon().use(rp);
             e.setCancelled(true);
