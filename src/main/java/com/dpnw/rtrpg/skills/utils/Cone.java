@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.skills.utils;
 
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Monster;
 import org.bukkit.util.Vector;
 
@@ -23,7 +24,7 @@ public class Cone {
         double squaredRadius = radius * radius;                     //    We don't want to use square root
 
         for (Entity e : entities) {
-            if (!(e instanceof Monster)) continue;
+            if (!(e instanceof Mob)) continue;
             Vector relativePosition = e.getLocation().toVector();                            //    Position of the entity relative to the cone origin
             relativePosition.subtract(startPos);
             if (relativePosition.lengthSquared() > squaredRadius)
@@ -40,7 +41,7 @@ public class Cone {
         double squaredRadius = range * range;                     //    We don't want to use square root
 
         for (Entity e : base.getNearbyEntities(range, range, range)) {
-            if (!(e instanceof Monster)) continue;
+            if (!(e instanceof Mob)) continue; // you fucking kidding me..
             Vector relativePosition = e.getLocation().toVector();                            //    Position of the entity relative to the cone origin
             relativePosition.subtract(startPos);
             if (relativePosition.lengthSquared() > squaredRadius)

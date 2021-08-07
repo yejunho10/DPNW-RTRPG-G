@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.events;
+package com.dpnw.rtrpg.events.etc;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.mob.*;

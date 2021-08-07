@@ -8,6 +8,7 @@ import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import org.bukkit.Bukkit;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -44,7 +45,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         this.p = p;
         uuid = p.getUniqueId();
         this.skills = skills;
-        setHealth(100);
+        setHealth(1000);
         setMaxMana(100);
         setArmor(0);
         setSpeed(1);
@@ -58,12 +59,21 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         for (SkillName name : unLockedSkills) {
             names.add(name.getRaw());
         }
-        data.set("RPlayer.UUID", uuid);
         data.set("RPlayer.unLockedSkills", names);
         data.set("RPlayer.Level", level);
         data.set("RPlayer.Exp", exp);
         counterSerializer(data);
         return data;
+    }
+
+    public CraftRPlayer deserializer(YamlConfiguration data) {
+        data.getList("RPlayer.unLockedSkills").forEach(o -> {
+            String s = (String) o;
+            unLockedSkills.add(SkillName.valueOf(s));
+        });
+        data.getInt("RPlayer.Level", level);
+        data.getInt("RPlayer.Exp", exp);
+        return this;
     }
 
     @Override
@@ -84,6 +94,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     @Override
     public void setWeapon(Weapon weapon) {
         this.currentWeapon = weapon;
+        p.getInventory().setItem(8, currentWeapon.getWeapon());
     }
 
     @Override
@@ -221,7 +232,12 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
 
     @Override
     public void setHealth(double health) {
+        p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
+        p.setHealthScale(40);
+        p.setHealthScaled(true);
+        p.setHealth(health);
         this.health = health;
+        currentHealth = health;
     }
 
     @Override

@@ -89,16 +89,17 @@ public abstract class Sword extends PublicFields implements Weapon, LifeStealabl
     @Override
     public void use(RPlayer rp) {
         Player p = rp.getPlayer();
-        for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 45, p.getEyeLocation().getDirection())) {
-            LivingEntity le = (LivingEntity) e;
-            //damage
-            if(RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) {
-                CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                mob.damage(getDamage(), p);
+        try{
+            for (Entity e : Cone.getEntitiesInCone(p, getRange(), 45)) {
+                LivingEntity le = (LivingEntity) e;
+                //damage
+                if(RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) {
+                    CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                    mob.damage(getDamage(), p);
+                }
+                ParticleUtil.createParticle(p, Particle.SWEEP_ATTACK, e.getLocation(), 0, 1, 0, 2, 0);
             }
-            ParticleUtil.createParticle(p, Particle.SWEEP_ATTACK, e.getLocation(), 0, 1, 0, 2, 0);
-        }
-        p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.8f);
+        }catch(Exception ignored) {}
         p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
     }
 
@@ -169,6 +170,6 @@ public abstract class Sword extends PublicFields implements Weapon, LifeStealabl
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(item, "action", "weapon");
+        return NBT.setTag(NBT.setTag(item, "action", "weapon"), "weapon", getWeaponName().getRaw());
     }
 }

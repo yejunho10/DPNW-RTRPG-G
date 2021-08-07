@@ -39,7 +39,7 @@ public class NBT {
         if (ntc.get(key) == null) {
             return null;
         }
-        return ntc.get(key).toString();
+        return ntc.get(key).asString();
     }
 
     public static boolean hasTagKey(ItemStack objitem, String key) {

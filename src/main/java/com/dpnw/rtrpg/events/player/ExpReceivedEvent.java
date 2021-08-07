@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.events;
+package com.dpnw.rtrpg.events.player;
 
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import net.kyori.adventure.text.Component;

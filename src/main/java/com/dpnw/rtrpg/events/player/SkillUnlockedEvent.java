@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.events;
+package com.dpnw.rtrpg.events.player;
 
 import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;

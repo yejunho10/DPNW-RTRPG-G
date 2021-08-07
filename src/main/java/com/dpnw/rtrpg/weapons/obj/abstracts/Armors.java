@@ -183,6 +183,6 @@ public abstract class Armors extends PublicFields implements Armor {
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(item, "action", "armor");
+        return NBT.setTag(NBT.setTag(item, "action", "armor"), "weapon", getWeaponName().getRaw());
     }
 }

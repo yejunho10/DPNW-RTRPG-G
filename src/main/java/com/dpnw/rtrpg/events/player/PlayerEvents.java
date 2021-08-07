@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.events;
+package com.dpnw.rtrpg.events.player;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
@@ -10,16 +10,14 @@ import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.JetStomp;
-import com.dpnw.rtrpg.utils.DisplayToast;
-import com.dpnw.rtrpg.utils.RPlayerUtil;
-import com.dpnw.rtrpg.utils.ToastKey;
-import com.dpnw.rtrpg.utils.Tuple;
+import com.dpnw.rtrpg.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.*;
@@ -39,13 +37,18 @@ public class PlayerEvents implements Listener {
 
     @EventHandler
     public void onPlayerAttack(PlayerInteractEvent e) {
+        if(!(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)) return;
         Player p = e.getPlayer();
         if (!(p.getGameMode() == GameMode.SURVIVAL)) return;
-        ItemStack item = p.getItemInUse();
+        ItemStack item = e.getItem();
         if (item == null) return;
-        if(!(item.getItemMeta() == null)) return;
+        if(item.getItemMeta() == null) return;
         //todo 아이템 스택에 저장된 NBT값을 가져와 무기 ENUM과 대조하여 해당 무기의 스킬을 사용
-
+        if(NBT.hasTagKey(item, "weapon")) {
+            CraftRPlayer rp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+            rp.getWeapon().use(rp);
+            e.setCancelled(true);
+        }
     }
 
     @EventHandler

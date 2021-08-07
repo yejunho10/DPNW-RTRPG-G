@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.events;
+package com.dpnw.rtrpg.events.damage;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.MobName;
@@ -34,6 +34,7 @@ public class EnemyGetDamaged implements Listener {
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player) {
+            e.setCancelled(true);
             if (e.getEntity() instanceof Mob) {
                 LivingEntity le = (LivingEntity) e.getEntity();
                 try {

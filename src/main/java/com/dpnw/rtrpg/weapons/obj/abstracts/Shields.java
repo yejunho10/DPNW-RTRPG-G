@@ -183,6 +183,6 @@ public abstract class Shields extends PublicFields implements Shield {
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(item, "action", "shield");
+        return NBT.setTag(NBT.setTag(item, "action", "shield"), "weapon", getWeaponName().getRaw());
     }
 }

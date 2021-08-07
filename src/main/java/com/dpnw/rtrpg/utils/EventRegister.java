@@ -1,10 +1,15 @@
 package com.dpnw.rtrpg.utils;
 
 import com.dpnw.rtrpg.RTRPG;
-import com.dpnw.rtrpg.events.*;
+import com.dpnw.rtrpg.events.damage.EnemyGetDamaged;
+import com.dpnw.rtrpg.events.damage.PlayerGetDamaged;
+import com.dpnw.rtrpg.events.etc.EnemySpawnEvent;
+import com.dpnw.rtrpg.events.player.ExpReceivedEvent;
+import com.dpnw.rtrpg.events.player.PlayerEvents;
+import com.dpnw.rtrpg.events.player.PlayerInventoryEvents;
 import com.dpnw.rtrpg.skills.events.DeathCount;
 import com.dpnw.rtrpg.skills.events.HealthChange;
-import com.dpnw.rtrpg.events.SkillUnlockedEvent;
+import com.dpnw.rtrpg.events.player.SkillUnlockedEvent;
 import com.dpnw.rtrpg.skills.events.PlayerEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
