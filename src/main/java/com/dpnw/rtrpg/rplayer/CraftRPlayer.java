@@ -8,6 +8,7 @@ import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import org.bukkit.Bukkit;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -44,7 +45,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         this.p = p;
         uuid = p.getUniqueId();
         this.skills = skills;
-        setHealth(100);
+        setHealth(1000);
         setMaxMana(100);
         setArmor(0);
         setSpeed(1);
@@ -231,7 +232,12 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
 
     @Override
     public void setHealth(double health) {
+        p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
+        p.setHealthScale(40);
+        p.setHealthScaled(true);
+        p.setHealth(health);
         this.health = health;
+        currentHealth = health;
     }
 
     @Override

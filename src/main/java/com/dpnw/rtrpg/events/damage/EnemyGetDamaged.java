@@ -34,6 +34,7 @@ public class EnemyGetDamaged implements Listener {
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player) {
+            e.setCancelled(true);
             if (e.getEntity() instanceof Mob) {
                 LivingEntity le = (LivingEntity) e.getEntity();
                 try {
