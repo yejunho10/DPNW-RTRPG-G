@@ -11,9 +11,7 @@ import com.dpnw.rtrpg.utils.EventRegister;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class RTRPG extends JavaPlugin {
     private static RTRPG plugin;

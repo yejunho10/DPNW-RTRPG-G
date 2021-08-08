@@ -68,9 +68,7 @@ public class AllSkills {
             passiveList.add((Passive) s);
         }
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        for (Passive s : cp.getPassiveList().values()) {
-            passiveList.add(s);
-        }
+        passiveList.addAll(cp.getPassiveList().values());
         return passiveList;
     }
 

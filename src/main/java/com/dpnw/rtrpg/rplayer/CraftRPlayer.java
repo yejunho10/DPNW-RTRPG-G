@@ -233,9 +233,9 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     @Override
     public void setHealth(double health) {
         p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
+        p.setHealth(health);
         p.setHealthScale(40);
         p.setHealthScaled(true);
-        p.setHealth(health);
         this.health = health;
         currentHealth = health;
     }
