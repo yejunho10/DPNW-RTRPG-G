@@ -39,6 +39,7 @@ public abstract class CraftRMob implements RMob {
     private MobRank rank;
     private UUID uuid;
     private MobName name;
+    private int exp;
 
     public CraftRMob(ActiveMob mob) {
         this.mob = mob;
@@ -183,6 +184,11 @@ public abstract class CraftRMob implements RMob {
     }
 
     @Override
+    public int getExp() {
+        return exp;
+    }
+
+    @Override
     public void setHealth(double health) {
         this.health = health;
     }
@@ -276,4 +282,10 @@ public abstract class CraftRMob implements RMob {
     public void setUUID(UUID uuid) {
         this.uuid = uuid;
     }
+
+    @Override
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
 }
