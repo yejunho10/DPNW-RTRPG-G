@@ -23,6 +23,7 @@ public class MagmaSlime extends CraftRMob {
         setStartLevel(5);
         setMaxLevel(9);
         setMobName(MobName.MAGMA_SLIME);
+        setExp(70);
     }
 
     public MagmaSlime(ActiveMob mob) {
@@ -40,6 +41,7 @@ public class MagmaSlime extends CraftRMob {
         setMaxLevel(9);
         setMobName(MobName.MAGMA_SLIME);
         setUUID(mob.getUniqueId());
+        setExp(70);
         init();
     }
 

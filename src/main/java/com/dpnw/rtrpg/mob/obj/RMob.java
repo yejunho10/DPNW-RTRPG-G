@@ -106,6 +106,10 @@ public interface RMob {
     UUID getUUID();
 
     /**
+     * @return 몹의 경험치를 리턴시킨다
+     */
+    int getExp();
+    /**
      * @param health 몹체력을 설정한다
      */
     void setHealth(double health);
@@ -196,6 +200,10 @@ public interface RMob {
     void setUUID(UUID uuid);
 
     /**
+     * @param exp 몬스터 경험치를 설정한다
+     */
+    void setExp(int exp);
+    /**
      * @param loc 몬스터의 스폰위치.
      * @param level 몬스터의 레벨.
      */
@@ -205,4 +213,6 @@ public interface RMob {
      * RMob 초기설정.
      */
     void init();
+
+
 }

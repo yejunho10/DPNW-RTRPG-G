@@ -22,6 +22,7 @@ public class WaterSlime extends CraftRMob {
         setStartLevel(3);
         setMaxLevel(7);
         setMobName(MobName.WATER_SLIME);
+        setExp(50);
     }
 
     public WaterSlime(ActiveMob mob) {
@@ -37,6 +38,7 @@ public class WaterSlime extends CraftRMob {
         setMaxLevel(7);
         setUUID(mob.getUniqueId());
         setMobName(MobName.WATER_SLIME);
+        setExp(50);
         init();
     }
 

@@ -22,6 +22,7 @@ public class Slime extends CraftRMob {
         setStartLevel(1);
         setMaxLevel(5);
         setMobName(MobName.SLIME);
+        setExp(30);
     }
 
     public Slime(ActiveMob mob) {
@@ -38,6 +39,7 @@ public class Slime extends CraftRMob {
         setMaxLevel(5);
         setUUID(mob.getUniqueId());
         setMobName(MobName.SLIME);
+        setExp(30);
         init();
     }
 

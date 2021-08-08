@@ -5,24 +5,28 @@ import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class Goblin extends CraftRMob {
+public class HobGoblin extends CraftRMob {
 
-    public Goblin(ActiveMob mob) {
+    public HobGoblin() {
+
+    }
+
+    public HobGoblin(ActiveMob mob) {
         super(mob);
-        setHealth(250);
-        setHealthPerLevel(7);
+        setHealth(175);
+        setHealthPerLevel(10);
         setArmor(25);
-        setArmorPerLevel(3);
-        setDamage(85);
-        setDamagePerLevel(12);
-        setAttackSpeed(0.6);
+        setArmorPerLevel(4);
+        setDamage(90);
+        setDamagePerLevel(1);
+        setAttackSpeed(0.7);
         setSpeed(0.7);
         setRank(MobRank.NORMAL);
-        setStartLevel(11);
-        setMaxLevel(15);
+        setStartLevel(13);
+        setMaxLevel(17);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.GOBLIN);
-        setExp(110);
+        setMobName(MobName.HOB_GOBLIN);
+        setExp(130);
         init();
     }
 
