@@ -5,10 +5,7 @@ import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
 import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.*;
-import com.dpnw.rtrpg.skills.skillPassive.Endurance;
-import com.dpnw.rtrpg.skills.skillPassive.HugOfWind;
-import com.dpnw.rtrpg.skills.skillPassive.Mementomori;
-import com.dpnw.rtrpg.skills.skillPassive.Thanatophobia;
+import com.dpnw.rtrpg.skills.skillPassive.*;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.entity.Player;
 
@@ -21,11 +18,13 @@ public class AllSkills {
     public static void init() {
         skills.clear();
         skills.add(new AirSlash());
+        skills.add(new Cutting());
         skills.add(new Fly());
         skills.add(new Immovable());
         skills.add(new Sprint());
         skills.add(new Turtle());
         skills.add(new WindSword());
+        skills.add(new DoubleJump());
         skills.add(new Endurance());
         skills.add(new HugOfWind());
         skills.add(new Mementomori());

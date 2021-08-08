@@ -5,24 +5,25 @@ import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class Goblin extends CraftRMob {
+public class QueenSlime extends CraftRMob {
 
-    public Goblin(ActiveMob mob) {
+    public QueenSlime() {
+
+    }
+
+    public QueenSlime(ActiveMob mob) {
         super(mob);
-        setHealth(250);
-        setHealthPerLevel(7);
-        setArmor(25);
-        setArmorPerLevel(3);
-        setDamage(85);
-        setDamagePerLevel(12);
-        setAttackSpeed(0.6);
-        setSpeed(0.7);
-        setRank(MobRank.NORMAL);
-        setStartLevel(11);
+        setHealth(300);
+        setDamage(110);
+        setArmor(45);
+        setAttackSpeed(0.4);
+        setSpeed(0.8);
+        setRank(MobRank.RARE);
+        setStartLevel(15);
         setMaxLevel(15);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.GOBLIN);
-        setExp(110);
+        setMobName(MobName.QUEEN_SLIME);
+        setExp(200);
         init();
     }
 

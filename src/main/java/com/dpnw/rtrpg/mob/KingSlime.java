@@ -8,7 +8,6 @@ import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 public class KingSlime extends CraftRMob {
 
     public KingSlime() {
-
         setHealth(200);
         setArmor(30);
         setDamage(100);
@@ -18,6 +17,7 @@ public class KingSlime extends CraftRMob {
         setStartLevel(10);
         setMaxLevel(10);
         setMobName(MobName.KING_SLIME);
+        setExp(100);
     }
 
     public KingSlime(ActiveMob mob) {
@@ -32,6 +32,7 @@ public class KingSlime extends CraftRMob {
         setMaxLevel(10);
         setMobName(MobName.KING_SLIME);
         setUUID(mob.getUniqueId());
+        setExp(100);
         init();
     }
 

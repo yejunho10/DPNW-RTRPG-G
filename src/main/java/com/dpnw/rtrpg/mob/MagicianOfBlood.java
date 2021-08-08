@@ -5,24 +5,25 @@ import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class Goblin extends CraftRMob {
+public class MagicianOfBlood extends CraftRMob {
 
-    public Goblin(ActiveMob mob) {
+    public MagicianOfBlood() {
+
+    }
+
+    public MagicianOfBlood(ActiveMob mob) {
         super(mob);
-        setHealth(250);
-        setHealthPerLevel(7);
-        setArmor(25);
-        setArmorPerLevel(3);
-        setDamage(85);
-        setDamagePerLevel(12);
-        setAttackSpeed(0.6);
-        setSpeed(0.7);
+        setHealth(800);
+        setDamage(360);
+        setArmor(120);
+        setAttackSpeed(0.7);
+        setSpeed(1.0);
         setRank(MobRank.NORMAL);
-        setStartLevel(11);
-        setMaxLevel(15);
+        setStartLevel(31);
+        setMaxLevel(34);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.GOBLIN);
-        setExp(110);
+        setMobName(MobName.MAGICIAN_OF_BLOOD);
+        setExp(450);
         init();
     }
 

@@ -5,24 +5,25 @@ import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class Goblin extends CraftRMob {
+public class Nosferatu extends CraftRMob {
 
-    public Goblin(ActiveMob mob) {
+    public Nosferatu() {
+
+    }
+
+    public Nosferatu(ActiveMob mob) { //lifesteal 관련 아직 필드도 안만듬
         super(mob);
-        setHealth(250);
-        setHealthPerLevel(7);
-        setArmor(25);
-        setArmorPerLevel(3);
-        setDamage(85);
-        setDamagePerLevel(12);
+        setHealth(1300);
+        setDamage(700);
+        setArmor(130);
         setAttackSpeed(0.6);
-        setSpeed(0.7);
-        setRank(MobRank.NORMAL);
-        setStartLevel(11);
-        setMaxLevel(15);
+        setSpeed(1.0);
+        setRank(MobRank.RARE);
+        setStartLevel(40);
+        setMaxLevel(40);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.GOBLIN);
-        setExp(110);
+        setMobName(MobName.NOSFERATU);
+        setExp(1500);
         init();
     }
 

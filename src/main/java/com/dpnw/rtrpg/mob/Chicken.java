@@ -10,7 +10,6 @@ import java.util.Random;
 public class Chicken extends CraftRMob {
 
     public Chicken() {
-
         setHealth(50);
         setDamage(1);
         setRank(MobRank.NORMAL);
