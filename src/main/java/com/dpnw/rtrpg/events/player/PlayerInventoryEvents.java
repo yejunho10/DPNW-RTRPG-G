@@ -35,8 +35,22 @@ public class PlayerInventoryEvents implements Listener {
         }
         if (e.getView().getTitle().contains("스킬 목록")) {
             e.setCancelled(true);
+            ItemStack item = e.getCurrentItem();
+            if(item == null) return;
+            if(!item.hasItemMeta()) return;
+            if(e.getView().getTitle().contains("패시브")) {
+                if(NBT.hasTagKey(item, "action")) {
+                    System.out.println(NBT.getStringTag(item, "skill"));
+                }
+                return;
+            }
+            if(e.getView().getTitle().contains("액티브")) {
+                if(NBT.hasTagKey(item, "action")) {
+                    System.out.println(NBT.getStringTag(item, "skill"));
+                }
+                return;
+            }
             try {
-                ItemStack item = e.getCurrentItem();
                 ItemMeta im = item.getItemMeta();
                 if (im.getDisplayName().contains("패시브 스킬")) {
                     MenuFunctions.openPassiveSkills((Player) e.getWhoClicked());

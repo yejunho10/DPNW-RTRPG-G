@@ -20,6 +20,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 
@@ -37,14 +38,14 @@ public class PlayerEvents implements Listener {
 
     @EventHandler
     public void onPlayerAttack(PlayerInteractEvent e) {
-        if(!(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)) return;
+        if (!(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)) return;
         Player p = e.getPlayer();
         if (!(p.getGameMode() == GameMode.SURVIVAL)) return;
         ItemStack item = e.getItem();
         if (item == null) return;
-        if(item.getItemMeta() == null) return;
+        if (item.getItemMeta() == null) return;
         //todo 아이템 스택에 저장된 NBT값을 가져와 무기 ENUM과 대조하여 해당 무기의 스킬을 사용
-        if(NBT.hasTagKey(item, "weapon")) {
+        if (NBT.hasTagKey(item, "weapon")) {
             CraftRPlayer rp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
             rp.getWeapon().use(rp);
             e.setCancelled(true);
@@ -122,17 +123,10 @@ public class PlayerEvents implements Listener {
     }
 
     @EventHandler
-    public void onPlayerTeleport(PlayerTeleportEvent e) {
-        Player p = e.getPlayer();
-        CounterScheduler.move.put(p.getUniqueId(), new Tuple<>(e.getTo(), e.getTo()));
-    }
-
-    @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         CounterScheduler.move.put(p.getUniqueId(), new Tuple<>(p.getLocation(), p.getLocation()));
-        if (plugin.rplayers.containsKey(p.getUniqueId())) return;
-        plugin.rplayers.put(p.getUniqueId(), new CraftRPlayer(e.getPlayer(), new Skills(e.getPlayer())));
+        RPlayerUtil.serializeDataIn(p);
     }
 
     @EventHandler
@@ -147,6 +141,7 @@ public class PlayerEvents implements Listener {
             }
         }
         CounterScheduler.move.remove(p.getUniqueId());
+        plugin.rplayers.remove(p.getUniqueId());
     }
 
     @EventHandler
@@ -170,5 +165,11 @@ public class PlayerEvents implements Listener {
                 plugin.getServer().getPluginManager().callEvent(new SkillUnlockEvent(new JetStomp(), p));
             }
         }
+    }
+
+    @EventHandler
+    public void onDeath(PlayerRespawnEvent e) {
+        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(e.getPlayer().getUniqueId());
+        cp.setcurrentHealth(cp.getHealth());
     }
 }

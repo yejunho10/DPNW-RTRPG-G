@@ -3,11 +3,14 @@ package com.dpnw.rtrpg.utils;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
+import com.dpnw.rtrpg.rplayer.Skills;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.UUID;
 
 public class RPlayerUtil {
@@ -27,6 +30,22 @@ public class RPlayerUtil {
             data.save(new File(RTRPG.getInstance().getDataFolder() + "/RPlayers/", key + ".yaml"));
             System.out.println("============================================================\n  [ " + key + " : Data Out! ]\n============================================================");
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void serializeDataIn(Player p) {
+        try {
+            File file = new File(RTRPG.getInstance().getDataFolder() + "/RPlayers/", p.getUniqueId() + ".yaml");
+            if(!file.exists()) {
+                RTRPG.getInstance().rplayers.put(p.getUniqueId(), new CraftRPlayer(p, new Skills(p)));
+                System.out.println("create new Data : " + p.getUniqueId());
+                return;
+            }
+            YamlConfiguration data = YamlConfiguration.loadConfiguration(file);
+            RTRPG.getInstance().rplayers.put(p.getUniqueId(), new CraftRPlayer(p, new Skills(p)).deserializer(data));
+            System.out.println("rplayers map size : "+RTRPG.getInstance().rplayers.size());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

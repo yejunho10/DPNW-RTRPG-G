@@ -4,6 +4,7 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
+import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
@@ -50,9 +51,9 @@ public class MenuFunctions {
 
         // 플레이어 데이터 체크후 존재하는 유효한 아이템은 해당 위치로 등록
         item.setType(Material.BARRIER);
-        for(int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) {
             im = item.getItemMeta();
-            im.setDisplayName("§6"+(i+1)+"번 스킬");
+            im.setDisplayName("§6" + (i + 1) + "번 스킬");
             im.setLore(Arrays.asList("", "§e스킬 등록창에서 스킬을 등록한 뒤 사용해주시기 바랍니다."));
             item.setItemMeta(im);
             inv.setItem(i, item);
@@ -69,7 +70,7 @@ public class MenuFunctions {
     }
 
     public static void openSkills(Player p) { //"§1스킬 종류 선택"
-        Inventory inv = plugin.getServer().createInventory(null, 27, Component.text("§1스킬 목록 선택"));
+        Inventory inv = plugin.getServer().createInventory(null, 27, "§1스킬 목록 선택");
         for (int i = 0; i < inv.getSize(); i++) {
             inv.setItem(i, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
         }
@@ -87,8 +88,8 @@ public class MenuFunctions {
     }
 
     public static void openSelectApprenticeWeapons(Player p) { //"§1견습 무기 선택"
-        Inventory inv = plugin.getServer().createInventory(null, 27, Component.text("§1견습 무기 선택"));
-        for(Weapon w : AllWeapons.getApprenticeWeapons().values()) {
+        Inventory inv = plugin.getServer().createInventory(null, 27, "§1견습 무기 선택");
+        for (Weapon w : AllWeapons.getApprenticeWeapons().values()) {
             ItemStack item = w.getWeapon();
             inv.addItem(item);
         }
@@ -96,36 +97,44 @@ public class MenuFunctions {
     }
 
     public static void openPassiveSkills(Player p) {
-        Inventory inv = plugin.getServer().createInventory(null, 54, Component.text("§1패시브 스킬 목록"));
-        ItemStack ski = new ItemStack(Material.ENCHANTED_BOOK);
-        for (Passive passive : AllSkills.getVisiblePassiveList(p)) {
-            if(RPlayerUtil.hasSkill(p.getUniqueId(), passive.getSkillName())){
-                ski.setType(Material.ENCHANTED_BOOK);
-            }else{
-                ski.setType(Material.BOOK);
+        try{
+            Inventory inv = plugin.getServer().createInventory(null, 54, "§1패시브 스킬 목록");
+            ItemStack ski = new ItemStack(Material.ENCHANTED_BOOK);
+            for (Passive passive : AllSkills.getVisiblePassiveList(p)) {
+                System.out.println(passive);
+                if(passive == null) continue;
+                if (RPlayerUtil.hasSkill(p.getUniqueId(), passive.getSkillName())) {
+                    ski.setType(Material.ENCHANTED_BOOK);
+                } else {
+                    ski.setType(Material.BOOK);
+                }
+                ItemMeta im = ski.getItemMeta();
+                im.displayName(Component.text("§e" + passive.getSkillName().getKor()));
+                im.lore(Arrays.asList(Component.text(""), Component.text("§e" + passive.getSkillName().getRaw())));
+                ski.setItemMeta(im);
+                NBT.setTag(NBT.setTag(ski, "action", "skill-passive"), "skill", passive.getSkillName().getRaw());
+                inv.addItem(ski);
             }
-            ItemMeta im = ski.getItemMeta();
-            im.displayName(Component.text("§e" + passive.getSkillName().getKor()));
-            im.lore(Arrays.asList(Component.text(""), Component.text("§e" + passive.getSkillName().getRaw())));
-            ski.setItemMeta(im);
-            inv.addItem(ski);
+            p.openInventory(inv);
+        }catch(Exception e) {
+            e.printStackTrace();
         }
-        p.openInventory(inv);
     }
 
     public static void openActiveSkills(Player p) {
-        Inventory inv = plugin.getServer().createInventory(null, 54, Component.text("§1액티브 스킬 목록"));
+        Inventory inv = plugin.getServer().createInventory(null, 54, "§1액티브 스킬 목록");
         ItemStack ski = new ItemStack(Material.ENCHANTED_BOOK);
         for (Active active : AllSkills.getVisibleActiveList(p)) {
-            if(RPlayerUtil.hasSkill(p.getUniqueId(), active.getSkillName())){
+            if (RPlayerUtil.hasSkill(p.getUniqueId(), active.getSkillName())) {
                 ski.setType(Material.ENCHANTED_BOOK);
-            }else{
+            } else {
                 ski.setType(Material.BOOK);
             }
             ItemMeta im = ski.getItemMeta();
             im.displayName(Component.text("§e" + active.getSkillName().getKor()));
             im.lore(Arrays.asList(Component.text(""), Component.text("§e" + active.getSkillName().getRaw())));
             ski.setItemMeta(im);
+            NBT.setTag(NBT.setTag(ski, "action", "skill-active"), "skill", active.getSkillName().getRaw());
             inv.addItem(ski);
         }
         p.openInventory(inv);
