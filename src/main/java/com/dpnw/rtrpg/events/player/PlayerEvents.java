@@ -123,17 +123,10 @@ public class PlayerEvents implements Listener {
     }
 
     @EventHandler
-    public void onPlayerTeleport(PlayerTeleportEvent e) {
-        Player p = e.getPlayer();
-        CounterScheduler.move.put(p.getUniqueId(), new Tuple<>(e.getTo(), e.getTo()));
-    }
-
-    @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         CounterScheduler.move.put(p.getUniqueId(), new Tuple<>(p.getLocation(), p.getLocation()));
-        if (plugin.rplayers.containsKey(p.getUniqueId())) return;
-        plugin.rplayers.put(p.getUniqueId(), new CraftRPlayer(e.getPlayer(), new Skills(e.getPlayer())));
+        RPlayerUtil.serializeDataIn(p);
     }
 
     @EventHandler
@@ -148,6 +141,7 @@ public class PlayerEvents implements Listener {
             }
         }
         CounterScheduler.move.remove(p.getUniqueId());
+        plugin.rplayers.remove(p.getUniqueId());
     }
 
     @EventHandler

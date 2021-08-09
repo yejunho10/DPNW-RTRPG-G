@@ -5,7 +5,6 @@ import com.dpnw.rtrpg.enums.SkillName;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("unused")
@@ -38,24 +37,27 @@ public class Counter {
         }
     }
 
+    public void counterDeSerializer(YamlConfiguration data) {
+        deathCount = data.getInt("Counter.deathCount");
+        killCount = data.getInt("Counter.killCount");
+        moveCount = data.getDouble("Counter.moveCount");
+        clearedQuest = data.getInt("Counter.clearedQuest");
+        try {
+            for (String key : data.getConfigurationSection("Counter.enemyCount").getKeys(false)) {
+                enemyCount.put(MobName.valueOf(key), data.getInt("Counter.enemyCount." + key));
+            }
+            for (String key : data.getConfigurationSection("Counter.enemyCount").getKeys(false)) {
+                skillCount.put(SkillName.valueOf(key), data.getInt("Counter.skillCount." + key));
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
     public void resetTemporaryVariable() {
         t_Damaged = 0;
         t_noAttack = 0;
         t_noAttackTime = 0;
         t_IgnoredDamage = 0;
-    }
-
-    public Counter(int deathCount, int killCount, double moveCount, int clearedQuest, int t_noAttack, int t_noAttackTime, int t_Damaged, double t_IgnoredDamage, Map<MobName, Integer> enemyCount, Map<SkillName, Integer> skillCount) {
-        this.deathCount = deathCount;
-        this.killCount = killCount;
-        this.moveCount = moveCount;
-        this.enemyCount = enemyCount;
-        this.t_Damaged = t_Damaged;
-        this.t_noAttack = t_noAttack;
-        this.t_noAttackTime = t_noAttackTime;
-        this.t_IgnoredDamage = t_IgnoredDamage;
-        this.clearedQuest = clearedQuest;
-        this.skillCount = skillCount;
     }
 
     public int getDeathCount() {

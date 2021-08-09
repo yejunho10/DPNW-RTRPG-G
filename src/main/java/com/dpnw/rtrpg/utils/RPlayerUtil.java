@@ -36,13 +36,15 @@ public class RPlayerUtil {
 
     public static void serializeDataIn(Player p) {
         try {
-            File file = new File(RTRPG.getInstance().getDataFolder() + "/RPlayers/", p.getUniqueId() + ".yml");
+            File file = new File(RTRPG.getInstance().getDataFolder() + "/RPlayers/", p.getUniqueId() + ".yaml");
             if(!file.exists()) {
                 RTRPG.getInstance().rplayers.put(p.getUniqueId(), new CraftRPlayer(p, new Skills(p)));
+                System.out.println("create new Data : " + p.getUniqueId());
                 return;
             }
             YamlConfiguration data = YamlConfiguration.loadConfiguration(file);
             RTRPG.getInstance().rplayers.put(p.getUniqueId(), new CraftRPlayer(p, new Skills(p)).deserializer(data));
+            System.out.println("rplayers map size : "+RTRPG.getInstance().rplayers.size());
         } catch (Exception e) {
             e.printStackTrace();
         }

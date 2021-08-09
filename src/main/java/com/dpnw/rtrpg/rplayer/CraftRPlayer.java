@@ -1,11 +1,14 @@
 package com.dpnw.rtrpg.rplayer;
 
+import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.enums.SkillType;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import com.dpnw.rtrpg.rplayer.obj.Levelable;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
+import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
@@ -18,7 +21,7 @@ import java.util.*;
 public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private final Player p;
     private final UUID uuid;
-    private final Skills skills;
+    private Skills skills;
     private Map<SkillName, Passive> passiveList = new HashMap<>();
     private Map<SkillName, Active> activeList = new HashMap<>();
     private Set<SkillName> unLockedSkills = new HashSet<>();
@@ -44,13 +47,14 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     public CraftRPlayer(Player p, Skills skills) {
         this.p = p;
         uuid = p.getUniqueId();
-        this.skills = skills;
         setHealth(1000);
         setMaxMana(100);
         setArmor(0);
         setSpeed(1);
         setHealthRegen(0.2);
         setManaRegen(0.2);
+        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> this.skills = skills, 5L);
+
     }
 
     public YamlConfiguration serializer() {
@@ -68,11 +72,21 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
 
     public CraftRPlayer deserializer(YamlConfiguration data) {
         data.getList("RPlayer.unLockedSkills").forEach(o -> {
-            String s = (String) o;
-            unLockedSkills.add(SkillName.valueOf(s));
+            unLockedSkills.add(SkillName.valueOf((String) o));
+            System.out.println(o);
         });
         data.getInt("RPlayer.Level", level);
         data.getInt("RPlayer.Exp", exp);
+        //init skills, counter
+        for(SkillName s : unLockedSkills) {
+            if(s.getType() == SkillType.ACTIVE) {
+                activeList.put(s, (Active) AllSkills.getSkillFromName(s));
+            }
+            if(s.getType() == SkillType.PASSIVE) {
+                passiveList.put(s, (Passive) AllSkills.getSkillFromName(s));
+            }
+        }
+        counterDeSerializer(data);
         return this;
     }
 

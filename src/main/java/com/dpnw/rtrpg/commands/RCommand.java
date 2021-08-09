@@ -20,7 +20,7 @@ import java.util.List;
 
 public class RCommand implements CommandExecutor, TabCompleter {
     private static final RTRPG plugin = RTRPG.getInstance();
-    String prefix = "§f[ §bplugin §f] ";
+    String prefix = "§f[ §bRTRPG §f] ";
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
