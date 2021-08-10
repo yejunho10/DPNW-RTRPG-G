@@ -1,13 +1,16 @@
 package com.dpnw.rtrpg.skills.skillActive;
 
+import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import com.dpnw.rtrpg.particles.ParticleUtil;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RActive;
 import com.dpnw.rtrpg.skills.utils.Cone;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -38,16 +41,25 @@ public class Cutting extends RActive {
 
     @Override
     public void use(RPlayer rp) {
-        Player p = rp.getPlayer();
-        if (isCooldown()) return;
-        for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 30, p.getEyeLocation().getDirection())) {
-            LivingEntity le = (LivingEntity) e;
-            //damage
-            ParticleUtil.createParticle(p, Particle.SWEEP_ATTACK, e.getLocation(), 0, 1, 0, 2, 0);
+        try{
+            Player p = rp.getPlayer();
+            if (isCooldown()) return;
+            for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 180, p.getEyeLocation().getDirection())) {
+                if(e instanceof ArmorStand) continue;
+                LivingEntity le = (LivingEntity) e;
+                System.out.println(e.getType());
+                //damage
+                CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                rmob.damage(getDamage(), rp.getPlayer());
+
+                ParticleUtil.createParticle(p, Particle.SWEEP_ATTACK, e.getLocation(), 0, 1, 0, 2, 0);
+            }
+            p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.8f);
+            p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
+            cooldown(getCooldown(), this);
+        }catch(Exception e){
+            e.printStackTrace();
         }
-        p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.8f);
-        p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
-        cooldown(getCooldown(), this);
     }
     @Override
     public void cancel() {

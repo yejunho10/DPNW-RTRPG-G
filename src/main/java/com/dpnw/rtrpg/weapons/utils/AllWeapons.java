@@ -41,8 +41,8 @@ public class AllWeapons {
 
     public static void init() {
         apprenticeWeapons.put(WeaponName.APPRENTICE_AXE, new ApprenticeAxe(Material.DIAMOND_SWORD));
-        apprenticeWeapons.put(WeaponName.APPRENTICE_BOW, new ApprenticeBow(Material.BOW));
-        apprenticeWeapons.put(WeaponName.APPRENTICE_CROSSBOW, new ApprenticeCrossBow(Material.CROSSBOW));
+//        apprenticeWeapons.put(WeaponName.APPRENTICE_BOW, new ApprenticeBow(Material.BOW));
+//        apprenticeWeapons.put(WeaponName.APPRENTICE_CROSSBOW, new ApprenticeCrossBow(Material.CROSSBOW));
         apprenticeWeapons.put(WeaponName.APPRENTICE_DAGGER, new ApprenticeDagger(Material.DIAMOND_SWORD));
         apprenticeWeapons.put(WeaponName.APPRENTICE_DUAL_SWORD, new ApprenticeDualSword(Material.DIAMOND_SWORD));
         apprenticeWeapons.put(WeaponName.APPRENTICE_HAMMER, new ApprenticeHammer(Material.DIAMOND_SWORD));

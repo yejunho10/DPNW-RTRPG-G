@@ -3,6 +3,7 @@ package com.dpnw.rtrpg.events.player;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.functions.MenuFunctions;
+import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.rplayer.Skills;
 import com.dpnw.rtrpg.schedulers.CounterScheduler;
@@ -55,10 +56,12 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onPlayerSwapSlots(PlayerItemHeldEvent e) {
         if (!(e.getPlayer().getGameMode() == GameMode.SURVIVAL)) return;
-        if (!(e.getNewSlot() == 8)) {
+        try{
+            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(e.getPlayer().getUniqueId());
+            SkillName sn = cp.getEquipedActiveSkill().get(e.getNewSlot());
+            cp.getActiveList().get(sn).use(cp);
             e.setCancelled(true);
-            e.getPlayer().getInventory().setHeldItemSlot(8);
-        }
+        }catch (Exception ignored) {}
     }
 
     @EventHandler

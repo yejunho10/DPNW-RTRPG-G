@@ -90,7 +90,7 @@ public abstract class Sword extends PublicFields implements Weapon, LifeStealabl
     public void use(RPlayer rp) {
         Player p = rp.getPlayer();
         try{
-            for (Entity e : Cone.getEntitiesInCone(p, getRange(), 45)) {
+            for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 180, p.getEyeLocation().getDirection())) {
                 LivingEntity le = (LivingEntity) e;
                 //damage
                 if(RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) {

@@ -42,7 +42,7 @@ public class PlayerSchedulers {
             if (o.getGameMode() == GameMode.SURVIVAL) {
                 o.getInventory().setHeldItemSlot(8);
             }
-        }), 0L, 1L);
+        }), 0L, 3L);
     }
 
     public static void initToastTask() {
