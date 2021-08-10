@@ -5,6 +5,7 @@ import org.bukkit.entity.Mob;
 import org.bukkit.entity.Monster;
 import org.bukkit.util.Vector;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +18,11 @@ public class Cone {
      * @param direction direction of the cone
      * @return All entities inside the cone
      */
+    @Nullable
     public static List<Entity> getEntitiesInCone(List<Entity> entities, Vector startPos, double radius, double degrees, Vector direction) {
-        if (entities == null || entities.size() == 0) return null;
-
         List<Entity> newEntities = new ArrayList<>();        //    Returned list
+        if (entities == null || entities.size() == 0) return newEntities;
         double squaredRadius = radius * radius;                     //    We don't want to use square root
-
         for (Entity e : entities) {
             if (!(e instanceof Mob)) continue;
             Vector relativePosition = e.getLocation().toVector();                            //    Position of the entity relative to the cone origin

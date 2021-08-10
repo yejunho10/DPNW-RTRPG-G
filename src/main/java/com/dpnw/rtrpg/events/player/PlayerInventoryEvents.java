@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg.events.player;
 
+import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
@@ -12,11 +13,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class PlayerInventoryEvents implements Listener {
+
+    @EventHandler
+    public void onInventoryClose(InventoryCloseEvent e) {
+        if(e.getView().getTitle().contains("스킬 장착")) {
+            MenuFunctions.cancelEquipSkill((Player) e.getPlayer());
+        }
+    }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
@@ -33,20 +42,38 @@ public class PlayerInventoryEvents implements Listener {
             }
             return;
         }
+        if (e.getView().getTitle().contains("액티브 스킬 장착")) {
+            e.setCancelled(true);
+            MenuFunctions.equipActiveSkill(p, e.getSlot());
+            return;
+        }
+        if (e.getView().getTitle().contains("패시브 스킬 장착")) {
+            e.setCancelled(true);
+            MenuFunctions.equipPassiveSkill(p, e.getSlot());
+            return;
+        }
         if (e.getView().getTitle().contains("스킬 목록")) {
             e.setCancelled(true);
             ItemStack item = e.getCurrentItem();
             if(item == null) return;
             if(!item.hasItemMeta()) return;
-            if(e.getView().getTitle().contains("패시브")) {
+            if(e.getView().getTitle().contains("패시브 스킬 목록")) {
                 if(NBT.hasTagKey(item, "action")) {
+                    if(!RPlayerUtil.hasSkill(p.getUniqueId(), SkillName.valueOf(NBT.getStringTag(item, "skill")))) return;
                     System.out.println(NBT.getStringTag(item, "skill"));
+                    MenuFunctions.equipPassiveSkill(p, NBT.getStringTag(item, "skill"));
+                }else{
+                    System.out.println("there is no nbt");
                 }
                 return;
             }
-            if(e.getView().getTitle().contains("액티브")) {
+            if(e.getView().getTitle().contains("액티브 스킬 목록")) {
                 if(NBT.hasTagKey(item, "action")) {
+                    if(!RPlayerUtil.hasSkill(p.getUniqueId(), SkillName.valueOf(NBT.getStringTag(item, "skill")))) return;
                     System.out.println(NBT.getStringTag(item, "skill"));
+                    MenuFunctions.equipActiveSkill(p, NBT.getStringTag(item, "skill"));
+                }else {
+                    System.out.println("there is no nbt");
                 }
                 return;
             }

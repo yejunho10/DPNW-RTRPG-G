@@ -2,6 +2,7 @@ package com.dpnw.rtrpg.events.damage;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.MobName;
+import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import com.dpnw.rtrpg.mob.obj.RMob;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillDamageEvent;
@@ -76,11 +77,21 @@ public class EnemyGetDamaged implements Listener {
 
     @EventHandler
     public void onEnemyKilled(EntityDeathEvent e) {
-        if (!(e.getEntity() instanceof Mob m)) return;
-        if (e.getEntity().getKiller() == null) return;
-        if (!RTRPG.getInstance().rmobs.containsKey(m.getUniqueId())) return;
+        if (!(e.getEntity() instanceof Mob m)) {
+            System.out.println("dead entity is not a mob");
+            return;
+        }
+        if (e.getEntity().getKiller() == null){
+            System.out.println("killer is null");
+            return;
+        }
+        if (!RTRPG.getInstance().rmobs.containsKey(e.getEntity().getUniqueId())){
+            System.out.println("this mob is not include in rmobs array");
+            return;
+        }
         Player p = e.getEntity().getKiller();
-        MobName mn = RTRPG.getInstance().rmobs.get(m.getUniqueId()).getMobName();
+        CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(m.getUniqueId());
+        MobName mn = rmob.getMobName();
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         try {
             cp.getEnemyCount().put(mn, cp.getEnemyCount().get(mn) + 1);
@@ -88,6 +99,9 @@ public class EnemyGetDamaged implements Listener {
             for (Entity mob : m.getPassengers()) { //remove bar
                 mob.remove();
             }
+            cp.giveExp(rmob.getExp());
+            System.out.println(mn.getKor() + "killed by : " + cp.getPlayer().getName());
+            System.out.println("recived exp : " + rmob.getExp());
             RTRPG.getInstance().rmobs.remove(m.getUniqueId());
         } catch (Exception ee) {
             for (Entity mob : m.getPassengers()) { //remove bar

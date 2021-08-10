@@ -9,6 +9,7 @@ import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
 import com.dpnw.rtrpg.skills.obj.Skill;
+import com.dpnw.rtrpg.utils.Tuple;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
@@ -24,6 +25,8 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private Skills skills;
     private Map<SkillName, Passive> passiveList = new HashMap<>();
     private Map<SkillName, Active> activeList = new HashMap<>();
+    private Map<Integer, SkillName> equipedActiveSkill = new HashMap<>();
+    private Map<Integer, SkillName> equipedPassiveSkill = new HashMap<>();
     private Set<SkillName> unLockedSkills = new HashSet<>();
     private Weapon currentWeapon;
     private Weapon currentShield;
@@ -88,6 +91,14 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         }
         counterDeSerializer(data);
         return this;
+    }
+
+    public Map<Integer, SkillName> getEquipedActiveSkill() {
+        return equipedActiveSkill;
+    }
+
+    public Map<Integer, SkillName> getEquipedPassiveSkill() {
+        return equipedPassiveSkill;
     }
 
     @Override
