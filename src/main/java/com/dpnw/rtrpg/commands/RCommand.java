@@ -31,21 +31,25 @@ public class RCommand implements CommandExecutor, TabCompleter {
         Player p = (Player) sender;
         if (args.length == 0) {
             sender.sendMessage(prefix + "[ = = = = = HELP = = = = = ]");
+            if(!sender.isOp()){
+                sender.sendMessage(prefix + "/rr wo : 디버깅용 (선택창 오픈)");
+                return false;
+            }
             sender.sendMessage(prefix + "/rr exp give <player> <amount>");
             sender.sendMessage(prefix + "/rr exp take <player> <amount>");
             sender.sendMessage(prefix + "/rr exp set <player> <amount>");
             sender.sendMessage(prefix + "/rr cs <range> <regen> <moblevel> <mobType> <name>");
             sender.sendMessage(prefix + "/rr sp <on, off>");
             sender.sendMessage(prefix + "/rr w <WeaponName> : 디버깅용 (무기지급)");
-            sender.sendMessage(prefix + "/rr wo : 디버깅용 (선택창 오픈)");
-            return false;
-        }
-        if (args[0].equals("w")) {
-            p.getInventory().addItem(AllWeapons.getWeapons().get(WeaponName.valueOf(args[1])).getWeapon());
             return false;
         }
         if (args[0].equals("wo")) {
             MenuFunctions.openSelectApprenticeWeapons(p);
+            return false;
+        }
+        if(!sender.isOp()) return false;
+        if (args[0].equals("w")) {
+            p.getInventory().addItem(AllWeapons.getWeapons().get(WeaponName.valueOf(args[1])).getWeapon());
             return false;
         }
         if (args[0].equals("sp")) {

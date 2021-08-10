@@ -20,6 +20,8 @@ public class ExpReceivedEvent implements Listener {
             e.getPlayer().setLevel(level);
             e.getPlayer().setExp(finalExp - r);
             e.getPlayer().getPlayer().sendTitle("§6Level UP!", "§6LV.§e" + (level - 1) + " §b-> §6LV.§e" + level, 10, 20, 10);
+        }else{
+            e.getPlayer().setExp(e.getPlayer().getExp() + e.getExp());
         }
         e.getPlayer().getPlayer().sendActionBar(Component.text("§f[ §6EXP.§e" + e.getExp() + " 획득! §f] [ §6EXP.§e" + (e.getPlayer().getExp() - e.getExp()) + " §b→ §e" + finalExp + " §f/ §e" + r + " §f]"));
     }
