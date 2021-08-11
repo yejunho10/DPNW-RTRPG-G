@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg.skills.obj;
 
+import com.dpnw.rtrpg.ables.Cooldownable;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 
