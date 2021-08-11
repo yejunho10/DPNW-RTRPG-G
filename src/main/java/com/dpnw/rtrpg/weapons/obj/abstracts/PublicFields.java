@@ -1,15 +1,20 @@
 package com.dpnw.rtrpg.weapons.obj.abstracts;
 
+import com.dpnw.rtrpg.RTRPG;
+import com.dpnw.rtrpg.ables.Cooldownable;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.obj.interfaces.PublicField;
+import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 @SuppressWarnings("deprecation")
-public abstract class PublicFields extends ItemStack implements PublicField {
+public abstract class PublicFields extends ItemStack implements PublicField , Cooldownable {
     private double damage;
     private double range;
     private double reach;
@@ -29,6 +34,25 @@ public abstract class PublicFields extends ItemStack implements PublicField {
     private double armor;
     private double stunDuration;
     private double stunChance;
+    private boolean isCooldown;
+
+    @Override
+    public void cooldown(double time, @NotNull Object obj) {
+        if(obj instanceof Weapon){
+            setCooldown(true);
+            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> setCooldown(false), (long) (time* 20L));
+        }
+    }
+
+    @Override
+    public void setCooldown(boolean isCooldown) {
+        this.isCooldown = isCooldown;
+    }
+
+    @Override
+    public boolean isCooldown() {
+        return isCooldown;
+    }
 
     @Override
     public double getDamage() {

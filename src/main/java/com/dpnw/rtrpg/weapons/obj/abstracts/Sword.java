@@ -87,23 +87,6 @@ public abstract class Sword extends PublicFields implements Weapon, LifeStealabl
     }
 
     @Override
-    public void use(RPlayer rp) {
-        Player p = rp.getPlayer();
-        try{
-            for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 180, p.getEyeLocation().getDirection())) {
-                LivingEntity le = (LivingEntity) e;
-                //damage
-                if(RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) {
-                    CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                    mob.damage(getDamage(), p);
-                }
-                ParticleUtil.createParticle(p, Particle.SWEEP_ATTACK, e.getLocation(), 0, 1, 0, 2, 0);
-            }
-        }catch(Exception ignored) {}
-        p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
-    }
-
-    @Override
     public ItemStack getWeapon() {
         ItemStack item = new ItemStack(getType());
         ItemMeta im = item.getItemMeta();

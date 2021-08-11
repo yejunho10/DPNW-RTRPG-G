@@ -1,13 +1,18 @@
 package com.dpnw.rtrpg.ables;
 
-import com.dpnw.rtrpg.RTRPG;
-import com.dpnw.rtrpg.skills.obj.Skill;
-import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 
-public class Cooldownable {
-    public void cooldown(double time, @NotNull Skill skill) {
-        skill.setCooldown(true);
-        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> skill.setCooldown(false), (long) (time* 20L));
-    }
+
+public interface Cooldownable {
+    void cooldown(double time, @NotNull Object obj);
+
+    /**
+     * @return 쿨타임이 유무를 체크한다.
+     */
+    boolean isCooldown();
+
+    /**
+     * @param isCooldown 쿨타임을 설정한다.
+     */
+    void setCooldown(boolean isCooldown);
 }

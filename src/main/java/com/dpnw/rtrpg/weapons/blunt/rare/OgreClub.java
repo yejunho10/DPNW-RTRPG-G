@@ -2,11 +2,12 @@ package com.dpnw.rtrpg.weapons.blunt.rare;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.weapons.obj.abstracts.Blunt;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Sword;
 import org.bukkit.Material;
 
 @SuppressWarnings("unused")
-public class OgreClub extends Sword {
+public class OgreClub extends Blunt {
 
     public OgreClub(Material type) {
         setType(type);
