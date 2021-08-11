@@ -78,8 +78,8 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
             unLockedSkills.add(SkillName.valueOf((String) o));
             System.out.println(o);
         });
-        data.getInt("RPlayer.Level", level);
-        data.getInt("RPlayer.Exp", exp);
+        level = data.getInt("RPlayer.Level");
+        exp = data.getInt("RPlayer.Exp");
         //init skills, counter
         for(SkillName s : unLockedSkills) {
             if(s.getType() == SkillType.ACTIVE) {
