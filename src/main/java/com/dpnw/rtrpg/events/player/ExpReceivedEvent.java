@@ -16,7 +16,7 @@ public class ExpReceivedEvent implements Listener {
         int baseExp = 100;
         level++;
         int r = (int) (baseExp * (1 + Math.pow(level, 2.35) * 0.035));
-        if (r < finalExp) {
+        if (r <= finalExp) {
             e.getPlayer().setLevel(level);
             e.getPlayer().setExp(finalExp - r);
             e.getPlayer().getPlayer().sendTitle("§6Level UP!", "§6LV.§e" + (level - 1) + " §b-> §6LV.§e" + level, 10, 20, 10);

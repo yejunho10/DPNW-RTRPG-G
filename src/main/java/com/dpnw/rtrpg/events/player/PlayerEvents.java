@@ -54,6 +54,11 @@ public class PlayerEvents implements Listener {
     }
 
     @EventHandler
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent e) {
+        e.setCancelled(true);
+    }
+
+    @EventHandler
     public void onPlayerSwapSlots(PlayerItemHeldEvent e) {
         if (!(e.getPlayer().getGameMode() == GameMode.SURVIVAL)) return;
         try{
