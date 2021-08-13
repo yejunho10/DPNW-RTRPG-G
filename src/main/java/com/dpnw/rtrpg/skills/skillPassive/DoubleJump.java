@@ -25,6 +25,11 @@ public class DoubleJump extends RPassive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "공중에 뜬 적을 공격했다.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
         p.getPlayer().setVelocity(new Vector(0,1,0));

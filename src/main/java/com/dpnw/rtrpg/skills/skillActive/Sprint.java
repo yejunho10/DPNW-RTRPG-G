@@ -47,6 +47,11 @@ public class Sprint extends RActive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "1분 동안 달리기가 끊기지 않았을 시.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
         p.getPlayer().getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(p.getPlayer().getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue() + p.getLevel() * 0.15);

@@ -18,6 +18,11 @@ public class Immovable extends RActive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "10분 동안 몬스터를 공격하지 않고 맞기만 했다.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
         //todo logic...

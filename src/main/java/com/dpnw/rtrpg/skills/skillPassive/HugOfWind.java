@@ -40,4 +40,9 @@ public class HugOfWind extends RPassive {
             task.cancel();
         }catch (Exception ignored){}
     }
+
+    @Override
+    public String skillUnlockCondition() {
+        return "15000 블럭 이상을 이동했다.";
+    }
 }

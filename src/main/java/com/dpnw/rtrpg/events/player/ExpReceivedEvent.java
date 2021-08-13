@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg.events.player;
 
+import com.dpnw.rtrpg.functions.ExpFunctions;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -10,12 +11,12 @@ public class ExpReceivedEvent implements Listener {
 
     @EventHandler
     public void onExpReceived(RPlayerExpReceivedEvent e) {
-        //todo 오류 고치기
         int finalExp = e.getFinalExp();
         int level = e.getPlayer().getLevel();
         int baseExp = 100;
         level++;
         int r = (int) (baseExp * (1 + Math.pow(level, 2.35) * 0.035));
+        ExpFunctions.initPlayerExp(e.getPlayer().getPlayer(), e.getPlayer().getExp(), e.getPlayer().getLevel(), r);
         if (r <= finalExp) {
             e.getPlayer().setLevel(level);
             e.getPlayer().setExp(finalExp - r);

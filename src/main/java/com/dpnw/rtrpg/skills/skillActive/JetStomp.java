@@ -50,6 +50,11 @@ public class JetStomp extends RActive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "낙사했다.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
 

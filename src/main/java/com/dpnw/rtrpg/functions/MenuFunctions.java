@@ -111,14 +111,19 @@ public class MenuFunctions {
                 if (passive == null) continue;
                 if (RPlayerUtil.hasSkill(p.getUniqueId(), passive.getSkillName())) {
                     ski.setType(Material.ENCHANTED_BOOK);
+                    ItemMeta im = ski.getItemMeta();
+                    im.setDisplayName("§e" + passive.getSkillName().getKor());
+                    im.setLore(Arrays.asList("", "§e" + passive.getSkillName().getRaw(), "해금 조건 : " + passive.skillUnlockCondition()));
+                    ski.setItemMeta(im);
+                    inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-passive"), "skill", passive.getSkillName().getRaw()));
                 } else {
                     ski.setType(Material.BOOK);
+                    ItemMeta im = ski.getItemMeta();
+                    im.setDisplayName("§e" + passive.getSkillName().getKor());
+                    im.setLore(Arrays.asList("", "§e" + passive.getSkillName().getRaw()));
+                    ski.setItemMeta(im);
+                    inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-passive"), "skill", passive.getSkillName().getRaw()));
                 }
-                ItemMeta im = ski.getItemMeta();
-                im.displayName(Component.text("§e" + passive.getSkillName().getKor()));
-                im.lore(Arrays.asList(Component.text(""), Component.text("§e" + passive.getSkillName().getRaw())));
-                ski.setItemMeta(im);
-                inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-passive"), "skill", passive.getSkillName().getRaw()));
             }
             p.openInventory(inv);
         } catch (Exception e) {
@@ -132,14 +137,19 @@ public class MenuFunctions {
         for (Active active : AllSkills.getVisibleActiveList(p)) {
             if (RPlayerUtil.hasSkill(p.getUniqueId(), active.getSkillName())) {
                 ski.setType(Material.ENCHANTED_BOOK);
+                ItemMeta im = ski.getItemMeta();
+                im.setDisplayName("§e" + active.getSkillName().getKor());
+                im.setLore(Arrays.asList("", "§e" + active.getSkillName().getRaw(), "해금 조건 : " + active.skillUnlockCondition()));
+                ski.setItemMeta(im);
+                inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-active"), "skill", active.getSkillName().getRaw()));
             } else {
                 ski.setType(Material.BOOK);
+                ItemMeta im = ski.getItemMeta();
+                im.setDisplayName("§e" + active.getSkillName().getKor());
+                im.setLore(Arrays.asList("", "§e" + active.getSkillName().getRaw()));
+                ski.setItemMeta(im);
+                inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-active"), "skill", active.getSkillName().getRaw()));
             }
-            ItemMeta im = ski.getItemMeta();
-            im.displayName(Component.text("§e" + active.getSkillName().getKor()));
-            im.lore(Arrays.asList(Component.text(""), Component.text("§e" + active.getSkillName().getRaw())));
-            ski.setItemMeta(im);
-            inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-active"), "skill", active.getSkillName().getRaw()));
         }
         p.openInventory(inv);
     }

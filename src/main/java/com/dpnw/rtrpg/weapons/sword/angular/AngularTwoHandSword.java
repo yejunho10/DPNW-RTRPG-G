@@ -35,7 +35,7 @@ public class AngularTwoHandSword extends Sword {
         setArmor(65);
         setRange(3);
         setAngle(165);
-        setMovementSpeed(-0.2);
+        setMovementSpeed(-0.02);
     }
     @Override
     public void use(RPlayer rp) {

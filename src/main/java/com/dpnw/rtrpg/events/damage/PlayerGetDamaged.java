@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashSet;
@@ -26,6 +27,19 @@ public class PlayerGetDamaged implements Listener {
         cp.setDeathCount(cp.getDeathCount() + 1);
         alreadyDead.add(cp.getUUID());
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> alreadyDead.remove(cp.getUUID()), 10L);
+    }
+
+    @EventHandler
+    public void onDamage(EntityDamageEvent e) {
+        if(!(e.getEntity() instanceof Player p)) return;
+        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+        if(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
+            p.setHealth(0);
+        }else{
+            cp.setcurrentHealth(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()));
+            setHealthScale(cp);
+            p.setHealth(cp.getcurrentHealth());
+        }
     }
 
     @EventHandler

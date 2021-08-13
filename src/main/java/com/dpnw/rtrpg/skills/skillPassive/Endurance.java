@@ -51,6 +51,11 @@ public class Endurance extends RPassive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "30분 동안 가만히 있었다.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         p.setManaRegen(p.getcurrentManaRegen() + 0.1);
     }

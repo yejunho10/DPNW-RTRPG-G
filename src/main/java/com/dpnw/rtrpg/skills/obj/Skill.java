@@ -11,6 +11,8 @@ public interface Skill extends Unlockable, Visible, TaskCancelable {
      */
     SkillName getSkillName();
 
+    String skillUnlockCondition();
+
     /**
      * @return 지속시간을 리턴시킨다.
      */

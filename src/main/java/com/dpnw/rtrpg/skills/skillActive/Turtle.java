@@ -19,6 +19,11 @@ public class Turtle extends RActive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "적에게 죽지 않고 100회 이상 피해를 받을 시.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
         p.setArmor(p.getArmor() + 50 + (p.getLevel() * 0.5));
