@@ -9,6 +9,7 @@ import com.dpnw.rtrpg.skills.obj.RActive;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -50,12 +51,14 @@ public class Fly extends RActive {
     @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
-        p.getPlayer().setFlying(true);
         p.getPlayer().setAllowFlight(true);
+        p.getPlayer().setFlying(true);
+        p.getPlayer().getWorld().playSound(p.getPlayer().getLocation(), Sound.ENTITY_EGG_THROW, 0.5f, 1.4f);
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
             p.getPlayer().setFlying(false);
             p.getPlayer().setAllowFlight(false);
-        }, (long) (getDuration() + (p.getLevel() * 0.07) * 20));
+        }, (long) ((getDuration() + ((p.getLevel() == 0? 1 : p.getLevel()) * 0.07)) * 20));
+        System.out.println(((getDuration() + ((p.getLevel() == 0? 1 : p.getLevel()) * 0.07)) * 20));
         cooldown(getCooldown(), this);
     }
 

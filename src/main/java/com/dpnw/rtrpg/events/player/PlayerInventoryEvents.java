@@ -6,6 +6,7 @@ import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
+import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.GameMode;
@@ -38,7 +39,9 @@ public class PlayerInventoryEvents implements Listener {
             if(NBT.hasTagKey(item, "weapon")) {
                 String key = NBT.getStringTag(item, "weapon");
                 WeaponName wn = WeaponName.valueOf(key);
-                cp.setWeapon(AllWeapons.getApprenticeWeapons().get(wn));
+                Weapon w = AllWeapons.getApprenticeWeapons().get(wn);
+                cp.setWeapon(w);
+                cp.applyWeaponStats(w);
             }
             return;
         }
