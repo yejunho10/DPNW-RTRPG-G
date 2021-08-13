@@ -37,10 +37,18 @@ public class PlayerSchedulers {
         }), 0L, 1L);
     }
 
+//    public static void initPlayerStatus() {
+//        Bukkit.getScheduler().runTaskTimer(plugin, () -> plugin.rplayers.values().forEach(o -> {
+//
+//
+//        }), 0L, 20L);
+//    }
+
     public static void initSlotSwap() {
         Bukkit.getScheduler().runTaskTimer(plugin, () -> Bukkit.getOnlinePlayers().forEach(o -> {
             if (o.getGameMode() == GameMode.SURVIVAL) {
                 o.getInventory().setHeldItemSlot(8);
+                o.setFoodLevel(20);
             }
         }), 0L, 3L);
     }

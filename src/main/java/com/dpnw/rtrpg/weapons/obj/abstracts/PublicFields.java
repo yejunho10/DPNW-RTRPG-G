@@ -15,26 +15,26 @@ import java.util.List;
 
 @SuppressWarnings("deprecation")
 public abstract class PublicFields extends ItemStack implements PublicField , Cooldownable {
-    private double damage;
-    private double range;
-    private double reach;
-    private double angle; //공격각도 - lore에 추가안함
-    private Rank rank;
-    private double attackSpeed;
-    private double criticalChance;
-    private double criticalDamage;
-    private double health;
-    private double healthRegen;
-    private double maxMana;
-    private double manaRegen;
-    private double dodgeChance;
-    private double penetrateArmor;
-    private double movementSpeed;
-    private double knockBack;
-    private double armor;
-    private double stunDuration;
-    private double stunChance;
-    private boolean isCooldown;
+    private double damage = 0;
+    private double range = 0;
+    private double reach = 0;
+    private double angle = 0; //공격각도 - lore에 추가안함
+    private Rank rank = null;
+    private double attackSpeed = 0;
+    private double criticalChance = 0;
+    private double criticalDamage = 0;
+    private double health = 0;
+    private double healthRegen = 0;
+    private double maxMana = 0;
+    private double manaRegen = 0;
+    private double dodgeChance = 0;
+    private double penetrateArmor = 0;
+    private double movementSpeed = 0;
+    private double knockBack = 0;
+    private double armor = 0;
+    private double stunDuration = 0;
+    private double stunChance = 0;
+    private boolean isCooldown = false;
 
     @Override
     public void cooldown(double time, @NotNull Object obj) {

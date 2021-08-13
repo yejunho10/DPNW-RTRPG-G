@@ -53,7 +53,6 @@ public class EnemyGetDamaged implements Listener {
                 } catch (Exception ee) {
                     ee.printStackTrace();
                 }
-                e.setCancelled(true);
             }
         }
     }
@@ -61,6 +60,7 @@ public class EnemyGetDamaged implements Listener {
     @EventHandler
     public void damageCounter(EntityDamageByEntityEvent e) {
         if (e.getEntity() instanceof Mob) {
+            e.setCancelled(true);
             Entity vic = e.getEntity();
             Bukkit.getScheduler().runTask(RTRPG.getInstance(), () -> {
                 Random rd = new Random();
@@ -99,7 +99,9 @@ public class EnemyGetDamaged implements Listener {
             for (Entity mob : m.getPassengers()) { //remove bar
                 mob.remove();
             }
-            cp.giveExp(rmob.getExp());
+            if(!(rmob.getExp() == 0)) {
+                cp.giveExp(rmob.getExp());
+            }
             System.out.println(mn.getKor() + "killed by : " + cp.getPlayer().getName());
             System.out.println("recived exp : " + rmob.getExp());
             RTRPG.getInstance().rmobs.remove(m.getUniqueId());

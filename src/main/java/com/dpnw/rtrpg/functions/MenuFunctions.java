@@ -35,43 +35,43 @@ public class MenuFunctions {
         im.setDisplayName("§6메뉴");
         im.setLore(Arrays.asList("", "§e클릭하여 메뉴창을 엽니다."));
         item.setItemMeta(im);
-        inv.setItem(31, item);
+        inv.setItem(22, item);
         item.setType(Material.ENCHANTED_BOOK);
         im = item.getItemMeta();
         im.setDisplayName("§6스킬 목록");
         im.setLore(Arrays.asList("", "§e클릭하여 스킬 목록을 엽니다."));
         item.setItemMeta(im);
-        inv.setItem(21, item);
+        inv.setItem(12, item);
         item.setType(Material.NETHERITE_SWORD);
         im = item.getItemMeta();
         im.setDisplayName("§6장비 장착");
         im.setLore(Arrays.asList("", "§e클릭하여 장비 장착 메뉴를 엽니다."));
         item.setItemMeta(im);
-        inv.setItem(23, item);
-        item.setType(Material.CHEST);
+        inv.setItem(14, item);
+        item.setType(Material.BUNDLE);
         im = item.getItemMeta();
         im.setDisplayName("§6아이템 보관함");
         im.setLore(Arrays.asList("", "§e클릭하여 아이템 보관함을 엽니다."));
         item.setItemMeta(im);
-        inv.setItem(22, item);
+        inv.setItem(13, item);
 
         // 플레이어 데이터 체크후 존재하는 유효한 아이템은 해당 위치로 등록
-        item.setType(Material.BARRIER);
-        for (int i = 0; i < 8; i++) {
-            im = item.getItemMeta();
-            im.setDisplayName("§6" + (i + 1) + "번 스킬");
-            im.setLore(Arrays.asList("", "§e스킬 등록창에서 스킬을 등록한 뒤 사용해주시기 바랍니다."));
-            item.setItemMeta(im);
-            inv.setItem(i, item);
-        }
-        im.setDisplayName("§6장비칸");
-        im.setLore(Arrays.asList("", "§e장비 등록창에서 장비를 등록한 뒤 사용해주시기 바랍니다."));
-        item.setItemMeta(im);
-        inv.setItem(8, item);
-        im.setDisplayName("§6방패칸");
-        im.setLore(Arrays.asList("", "§e장비 등록창에서 장비를 등록한 뒤 사용해주시기 바랍니다."));
-        item.setItemMeta(im);
-        inv.setItem(40, item);
+//        item.setType(Material.BARRIER);
+//        for (int i = 0; i < 8; i++) {
+//            im = item.getItemMeta();
+//            im.setDisplayName("§6" + (i + 1) + "번 스킬");
+//            im.setLore(Arrays.asList("", "§e스킬 등록창에서 스킬을 등록한 뒤 사용해주시기 바랍니다."));
+//            item.setItemMeta(im);
+//            inv.setItem(i, item);
+//        }
+//        im.setDisplayName("§6장비칸");
+//        im.setLore(Arrays.asList("", "§e장비 등록창에서 장비를 등록한 뒤 사용해주시기 바랍니다."));
+//        item.setItemMeta(im);
+//        inv.setItem(8, item);
+//        im.setDisplayName("§6방패칸");
+//        im.setLore(Arrays.asList("", "§e장비 등록창에서 장비를 등록한 뒤 사용해주시기 바랍니다."));
+//        item.setItemMeta(im);
+//        inv.setItem(40, item);
         p.updateInventory();
     }
 

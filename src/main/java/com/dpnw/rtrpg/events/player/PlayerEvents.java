@@ -24,7 +24,9 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BundleMeta;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class PlayerEvents implements Listener {
@@ -97,31 +99,32 @@ public class PlayerEvents implements Listener {
             e.setCancelled(true);
             return;
         }
+        if(!(e.getEntity() instanceof Player p)) return;
+        if(!(p.getGameMode() == GameMode.SURVIVAL)) return;
+        e.setCancelled(true);
+        ItemStack item = e.getItem().getItemStack();
+        ItemStack tItem = item.clone();
+        ItemStack bundle = p.getInventory().getItem(13);
+        BundleMeta bm = (BundleMeta) bundle.getItemMeta();
+        bm.addItem(item);
+        bundle.setItemMeta(bm);
+        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+        cp.setBundle(bundle);
+        e.getItem().remove();
         Bukkit.getScheduler().runTask(plugin, () -> {
-            ItemStack item = e.getItem().getItemStack();
             String lore = "설명이 없습니다.";
-            if (item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
-                if (item.getItemMeta().hasLore()) {
+            if (tItem.hasItemMeta() && tItem.getItemMeta().hasDisplayName()) {
+                if (tItem.getItemMeta().hasLore()) {
                     lore = "";
-                    for (String s : Objects.requireNonNull(item.getItemMeta().getLore())) {
+                    for (String s : Objects.requireNonNull(tItem.getItemMeta().getLore())) {
                         lore += s + "\n";
                     }
                 }
                 PlayerSchedulers.addToastTask(e.getEntity().getUniqueId(), new DisplayToast(ToastKey.getRandomKey(),
-                        item.getItemMeta().getDisplayName() + " X " + item.getAmount() + " 획득!",
+                        tItem.getItemMeta().getDisplayName() + " X " + tItem.getAmount() + " 획득!",
                         lore,
-                        item.getType().getKey().asString(),
+                        tItem.getType().getKey().asString(),
                         true,
-                        true,
-                        DisplayToast.ToastFrame.TASK,
-                        DisplayToast.ToastBackground.ADVENTURE
-                ));
-            } else {
-                PlayerSchedulers.addToastTask(e.getEntity().getUniqueId(), new DisplayToast(ToastKey.getRandomKey(),
-                        item.getI18NDisplayName() + " X " + item.getAmount() + " 획득!",
-                        lore,
-                        item.getType().getKey().asString(),
-                        false,
                         true,
                         DisplayToast.ToastFrame.TASK,
                         DisplayToast.ToastBackground.ADVENTURE

@@ -3,18 +3,21 @@ package com.dpnw.rtrpg.rplayer;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.enums.SkillType;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import com.dpnw.rtrpg.rplayer.obj.Levelable;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
-import com.dpnw.rtrpg.skills.obj.Skill;
-import com.dpnw.rtrpg.utils.Tuple;
+import com.dpnw.rtrpg.utils.NBT;
+import com.dpnw.rtrpg.weapons.obj.abstracts.PublicFields;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
+import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
@@ -31,11 +34,12 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private Weapon currentWeapon;
     private Weapon currentShield;
     private Weapon[] currentArmors = new Weapon[3];
+    private ItemStack bundle;
     private int level = 0;
     private int exp = 0;
-    private double health;
-    private double currentHealth;
-    private double healthRegen;
+    private double health; //default
+    private double currentHealth; //current
+    private double healthRegen; //default
     private double currentHealthRegen;
     private double armor;
     private double currentArmor;
@@ -53,11 +57,37 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         setHealth(1000);
         setMaxMana(100);
         setArmor(0);
-        setSpeed(1);
+        setSpeed(0.1);
         setHealthRegen(0.2);
         setManaRegen(0.2);
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> this.skills = skills, 5L);
+    }
 
+    public void applyWeaponStats(Weapon w) {
+        PublicFields s = (PublicFields) w;
+        this.health += s.getHealth();
+        this.healthRegen += s.getHealthRegen();
+        this.armor += s.getArmor();
+        this.manaRegen += s.getManaRegen();
+        this.maxMana += s.getMaxMana();
+        this.speed += s.getMovementSpeed();
+        updateStats();
+    }
+
+    public void updateStats() {
+        p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
+        p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
+    }
+
+    public void unApplyWeaponStats(Weapon w) {
+        PublicFields s = (PublicFields) w;
+        this.health -= s.getHealth();
+        this.healthRegen -= s.getHealthRegen();
+        this.armor -= s.getArmor();
+        this.manaRegen -= s.getManaRegen();
+        this.maxMana -= s.getMaxMana();
+        this.speed -= s.getMovementSpeed();
+        updateStats();
     }
 
     public YamlConfiguration serializer() {
@@ -69,6 +99,8 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         data.set("RPlayer.unLockedSkills", names);
         data.set("RPlayer.Level", level);
         data.set("RPlayer.Exp", exp);
+        data.set("RPlayer.Bundle", bundle);
+        data.set("RPlayer.Weapon", p.getInventory().getItem(8));
         counterSerializer(data);
         return data;
     }
@@ -80,17 +112,29 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         });
         level = data.getInt("RPlayer.Level");
         exp = data.getInt("RPlayer.Exp");
+        bundle = data.getItemStack("RPlayer.Bundle");
+        try{
+            currentWeapon = AllWeapons.getWeapons().get(WeaponName.valueOf(NBT.getStringTag(data.getItemStack("RPlayer.Weapon"), "weapon")));
+        }catch(Exception ignored){}
         //init skills, counter
-        for(SkillName s : unLockedSkills) {
-            if(s.getType() == SkillType.ACTIVE) {
+        for (SkillName s : unLockedSkills) {
+            if (s.getType() == SkillType.ACTIVE) {
                 activeList.put(s, (Active) AllSkills.getSkillFromName(s));
             }
-            if(s.getType() == SkillType.PASSIVE) {
+            if (s.getType() == SkillType.PASSIVE) {
                 passiveList.put(s, (Passive) AllSkills.getSkillFromName(s));
             }
         }
         counterDeSerializer(data);
         return this;
+    }
+
+    public ItemStack getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(ItemStack bundle) {
+        this.bundle = bundle;
     }
 
     public Map<Integer, SkillName> getEquipedActiveSkill() {
