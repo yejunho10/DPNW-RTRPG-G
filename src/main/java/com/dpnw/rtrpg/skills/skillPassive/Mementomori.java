@@ -17,6 +17,11 @@ public class Mementomori extends RPassive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "1% 이하의 체력을 남기고 살아남았다.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
         p.setInvincible(true);

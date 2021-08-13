@@ -44,6 +44,11 @@ public class WindSword extends RActive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "10000 블럭 이상을 이동했다.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
         //todo logic...

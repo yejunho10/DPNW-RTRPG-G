@@ -24,6 +24,11 @@ public class Thanatophobia extends RPassive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "1000번의 죽음을 경험할 시.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         for (Entity e : p.getPlayer().getNearbyEntities(getRange(), getRange(), getRange())) {
             if (!(e instanceof Monster)) continue;

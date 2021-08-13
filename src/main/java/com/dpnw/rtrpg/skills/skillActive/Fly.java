@@ -49,6 +49,11 @@ public class Fly extends RActive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "공중에 3초이상 떠 있었다.";
+    }
+
+    @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
         p.getPlayer().setAllowFlight(true);

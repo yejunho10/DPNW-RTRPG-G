@@ -40,6 +40,11 @@ public class Cutting extends RActive {
     }
 
     @Override
+    public String skillUnlockCondition() {
+        return "메인퀘스트 1 완료.";
+    }
+
+    @Override
     public void use(RPlayer rp) {
         try{
             Player p = rp.getPlayer();

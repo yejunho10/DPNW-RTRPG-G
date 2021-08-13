@@ -84,7 +84,6 @@ public class EnemySpawnEvent implements Listener {
             } catch (Exception ee) {
                 ee.printStackTrace();
             }
-
         });
     }
 

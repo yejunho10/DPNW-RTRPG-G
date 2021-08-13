@@ -2,10 +2,7 @@ package com.dpnw.rtrpg.rplayer;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.skills.obj.Skill;
-import com.dpnw.rtrpg.skills.skillActive.AirSlash;
-import com.dpnw.rtrpg.skills.skillActive.Fly;
-import com.dpnw.rtrpg.skills.skillActive.Sprint;
-import com.dpnw.rtrpg.skills.skillActive.WindSword;
+import com.dpnw.rtrpg.skills.skillActive.*;
 import com.dpnw.rtrpg.skills.skillPassive.HugOfWind;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -21,6 +18,7 @@ public class Skills { //논 이벤트 해금조건을 가진 스킬
     private AirSlash airSlash;
     private WindSword windSword;
     private HugOfWind hugOfWind;
+    private JetStomp jetStomp;
 
     public Skills(Player p) {
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
@@ -29,6 +27,7 @@ public class Skills { //논 이벤트 해금조건을 가진 스킬
             this.airSlash = new AirSlash(p);
             this.windSword = new WindSword(p);
             this.hugOfWind = new HugOfWind(p);
+            this.jetStomp = new JetStomp(p);
             init();
         }, 5L);
 
@@ -40,30 +39,10 @@ public class Skills { //논 이벤트 해금조건을 가진 스킬
         skills.add(airSlash);
         skills.add(windSword);
         skills.add(hugOfWind);
+        skills.add(jetStomp);
     }
 
     public Set<Skill> getSkills() {
         return skills;
-    }
-
-    public Fly getFly() {
-        return fly;
-    }
-
-
-    public Sprint getSprint() {
-        return sprint;
-    }
-
-    public AirSlash getAirSlash() {
-        return airSlash;
-    }
-
-    public WindSword getWindSword() {
-        return windSword;
-    }
-
-    public HugOfWind getHugOfWind() {
-        return hugOfWind;
     }
 }
