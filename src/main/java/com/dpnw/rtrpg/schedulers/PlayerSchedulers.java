@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.schedulers;
 
 import com.dpnw.rtrpg.RTRPG;
+import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.utils.DisplayToast;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -49,6 +50,7 @@ public class PlayerSchedulers {
             if (o.getGameMode() == GameMode.SURVIVAL) {
                 o.getInventory().setHeldItemSlot(8);
                 o.setFoodLevel(20);
+                MenuFunctions.updateSkillBar(o);
             }
         }), 0L, 3L);
     }

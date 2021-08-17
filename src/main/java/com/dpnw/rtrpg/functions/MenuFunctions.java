@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.functions;
 
 import com.dpnw.rtrpg.RTRPG;
+import com.dpnw.rtrpg.enums.MaterialByNumber;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
@@ -12,8 +13,10 @@ import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -54,24 +57,22 @@ public class MenuFunctions {
         im.setLore(Arrays.asList("", "§e클릭하여 아이템 보관함을 엽니다."));
         item.setItemMeta(im);
         inv.setItem(13, item);
+        updateSkillBar(p);
+    }
 
-        // 플레이어 데이터 체크후 존재하는 유효한 아이템은 해당 위치로 등록
-//        item.setType(Material.BARRIER);
-//        for (int i = 0; i < 8; i++) {
-//            im = item.getItemMeta();
-//            im.setDisplayName("§6" + (i + 1) + "번 스킬");
-//            im.setLore(Arrays.asList("", "§e스킬 등록창에서 스킬을 등록한 뒤 사용해주시기 바랍니다."));
-//            item.setItemMeta(im);
-//            inv.setItem(i, item);
-//        }
-//        im.setDisplayName("§6장비칸");
-//        im.setLore(Arrays.asList("", "§e장비 등록창에서 장비를 등록한 뒤 사용해주시기 바랍니다."));
-//        item.setItemMeta(im);
-//        inv.setItem(8, item);
-//        im.setDisplayName("§6방패칸");
-//        im.setLore(Arrays.asList("", "§e장비 등록창에서 장비를 등록한 뒤 사용해주시기 바랍니다."));
-//        item.setItemMeta(im);
-//        inv.setItem(40, item);
+    public static void updateSkillBar(Player p) {
+        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+        for (int slot : cp.getEquipedActiveSkill().keySet()) {
+            Active skill = (Active) AllSkills.getSkillFromName(cp.getEquipedActiveSkill().get(slot));
+            ItemStack ski = new ItemStack(MaterialByNumber.getByNumber(slot));
+            ItemMeta sim = ski.getItemMeta();
+            sim.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            sim.addEnchant(Enchantment.LURE, 0, false);
+            sim.setDisplayName("§e" + skill.getSkillName().getKor());
+            sim.setLore(Arrays.asList("", "§e" + skill.getSkillName().getRaw(), "해금 조건 : " + skill.skillUnlockCondition()));
+            ski.setItemMeta(sim);
+            p.getInventory().setItem(slot, ski);
+        }
         p.updateInventory();
     }
 
@@ -132,26 +133,31 @@ public class MenuFunctions {
     }
 
     public static void openActiveSkills(Player p) {
-        Inventory inv = plugin.getServer().createInventory(null, 54, "§1액티브 스킬 목록");
-        ItemStack ski = new ItemStack(Material.ENCHANTED_BOOK);
-        for (Active active : AllSkills.getVisibleActiveList(p)) {
-            if (RPlayerUtil.hasSkill(p.getUniqueId(), active.getSkillName())) {
-                ski.setType(Material.ENCHANTED_BOOK);
-                ItemMeta im = ski.getItemMeta();
-                im.setDisplayName("§e" + active.getSkillName().getKor());
-                im.setLore(Arrays.asList("", "§e" + active.getSkillName().getRaw(), "해금 조건 : " + active.skillUnlockCondition()));
-                ski.setItemMeta(im);
-                inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-active"), "skill", active.getSkillName().getRaw()));
-            } else {
-                ski.setType(Material.BOOK);
-                ItemMeta im = ski.getItemMeta();
-                im.setDisplayName("§e" + active.getSkillName().getKor());
-                im.setLore(Arrays.asList("", "§e" + active.getSkillName().getRaw()));
-                ski.setItemMeta(im);
-                inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-active"), "skill", active.getSkillName().getRaw()));
+        try {
+            Inventory inv = plugin.getServer().createInventory(null, 54, "§1액티브 스킬 목록");
+            ItemStack ski = new ItemStack(Material.ENCHANTED_BOOK);
+            for (Active active : AllSkills.getVisibleActiveList(p)) {
+                System.out.println(active);
+                if (RPlayerUtil.hasSkill(p.getUniqueId(), active.getSkillName())) {
+                    ski.setType(Material.ENCHANTED_BOOK);
+                    ItemMeta im = ski.getItemMeta();
+                    im.setDisplayName("§e" + active.getSkillName().getKor());
+                    im.setLore(Arrays.asList("", "§e" + active.getSkillName().getRaw(), "해금 조건 : " + active.skillUnlockCondition()));
+                    ski.setItemMeta(im);
+                    inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-active"), "skill", active.getSkillName().getRaw()));
+                } else {
+                    ski.setType(Material.BOOK);
+                    ItemMeta im = ski.getItemMeta();
+                    im.setDisplayName("§e" + active.getSkillName().getKor());
+                    im.setLore(Arrays.asList("", "§e" + active.getSkillName().getRaw()));
+                    ski.setItemMeta(im);
+                    inv.addItem(NBT.setTag(NBT.setTag(ski, "action", "skill-active"), "skill", active.getSkillName().getRaw()));
+                }
             }
+            p.openInventory(inv);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        p.openInventory(inv);
     }
 
     public static void cancelEquipSkill(Player p) {
@@ -172,7 +178,7 @@ public class MenuFunctions {
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         cp.getEquipedActiveSkill().put(slot, skillEquip.get(p.getUniqueId()));
         System.out.println("active skill equiped : " + skillEquip.get(p.getUniqueId()));
-        if(skillEquip.get(p.getUniqueId()) == SkillName.DOUBLE_JUMP) {
+        if (skillEquip.get(p.getUniqueId()) == SkillName.DOUBLE_JUMP) {
             p.setAllowFlight(true);
         }
         p.closeInventory();

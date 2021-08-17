@@ -33,6 +33,7 @@ public class HighExistance extends RActive {
         setCooldown(35);
         setRequireMana(150);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
+        loc = p.getLocation();
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
             Location pl = p.getLocation();
             double px = pl.getX();
@@ -45,12 +46,13 @@ public class HighExistance extends RActive {
                 if (timer >= 14400) {
                     RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
                     task.cancel();
-                    return;
+                }else{
+                    timer++;
                 }
-                timer++;
             } else {
                 timer = 0;
             }
+            loc = pl;
         }, 0L, 20L);
     }
 

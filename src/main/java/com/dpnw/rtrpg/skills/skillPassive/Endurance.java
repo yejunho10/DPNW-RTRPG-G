@@ -29,6 +29,7 @@ public class Endurance extends RPassive {
         setVisible(false);
         setSkillName(SkillName.ENDURANCE);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
+        loc = p.getLocation();
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
             Location pl = p.getLocation();
             double px = pl.getX();
@@ -41,12 +42,13 @@ public class Endurance extends RPassive {
                 if (timer >= 1800) {
                     RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
                     task.cancel();
-                    return;
+                } else {
+                    timer++;
                 }
-                timer++;
             } else {
                 timer = 0;
             }
+            loc = pl;
         }, 0L, 20L);
     }
 
@@ -62,10 +64,11 @@ public class Endurance extends RPassive {
 
     @Override
     public void cancel() {
-        try{
+        try {
             task.cancel();
             timer = 0;
             loc = null;
-        }catch (Exception ignored){}
+        } catch (Exception ignored) {
+        }
     }
 }
