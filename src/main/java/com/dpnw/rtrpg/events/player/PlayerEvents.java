@@ -7,6 +7,7 @@ import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.schedulers.CounterScheduler;
 import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
+import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.JetStomp;
 import com.dpnw.rtrpg.utils.*;
@@ -59,12 +60,16 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onPlayerSwapSlots(PlayerItemHeldEvent e) {
         if (!(e.getPlayer().getGameMode() == GameMode.SURVIVAL)) return;
-        try{
+        try {
+            e.setCancelled(true);
             CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(e.getPlayer().getUniqueId());
             SkillName sn = cp.getEquipedActiveSkill().get(e.getNewSlot());
-            cp.getActiveList().get(sn).use(cp);
-            e.setCancelled(true);
-        }catch (Exception ignored) {}
+            Active skill = cp.getActiveList().get(sn);
+            skill.use(cp);
+            if(skill.isCooldown()) return;
+            cp.getPlayer().setCooldown(cp.getPlayer().getInventory().getItem(e.getNewSlot()).getType(), (int) (skill.getCooldown() * 20));
+        } catch (Exception ignored) {
+        }
     }
 
     @EventHandler
@@ -95,8 +100,8 @@ public class PlayerEvents implements Listener {
             e.setCancelled(true);
             return;
         }
-        if(!(e.getEntity() instanceof Player p)) return;
-        if(!(p.getGameMode() == GameMode.SURVIVAL)) return;
+        if (!(e.getEntity() instanceof Player p)) return;
+        if (!(p.getGameMode() == GameMode.SURVIVAL)) return;
         e.setCancelled(true);
         ItemStack item = e.getItem().getItemStack();
         ItemStack tItem = item.clone();

@@ -28,6 +28,8 @@ public class AllSkills {
         skills.add(new HugOfWind());
         skills.add(new Mementomori());
         skills.add(new Thanatophobia());
+        skills.add(new HighExistance());
+        skills.add(new CosmicDiscernment());
     }
 
     public static Skill getSkillFromName(SkillName name) {
@@ -52,7 +54,7 @@ public class AllSkills {
         Set<Passive> passiveList = new HashSet<>();
         for (Skill s : skills) {
             if (!(s instanceof Passive)) continue;
-            if (!s.isVisible()) continue;
+//            if (!s.isVisible()) continue;
             passiveList.add((Passive) s);
         }
         return passiveList;
@@ -62,11 +64,11 @@ public class AllSkills {
         Set<Passive> passiveList = new HashSet<>();
         for (Skill s : skills) {
             if (!(s instanceof Passive)) continue;
-            if (!s.isVisible()) continue;
+//            if (!s.isVisible()) continue;
             passiveList.add((Passive) s);
         }
-        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        passiveList.addAll(cp.getPassiveList().values());
+//        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+//        passiveList.addAll(cp.getPassiveList().values());
         return passiveList;
     }
 
@@ -83,7 +85,7 @@ public class AllSkills {
         Set<Active> activeList = new HashSet<>();
         for (Skill s : skills) {
             if (!(s instanceof Active)) continue;
-            if (!s.isVisible()) continue;
+//            if (!s.isVisible()) continue;
             activeList.add((Active) s);
         }
         return activeList;
@@ -93,11 +95,11 @@ public class AllSkills {
         Set<Active> activeList = new HashSet<>();
         for (Skill s : skills) {
             if (!(s instanceof Active)) continue;
-            if (!s.isVisible()) continue;
+//            if (!s.isVisible()) continue;
             activeList.add((Active) s);
         }
-        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        activeList.addAll(cp.getActiveList().values());
+//        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+//        activeList.addAll(cp.getActiveList().values());
         return activeList;
     }
 }
