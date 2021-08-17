@@ -16,7 +16,6 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 public class SpawnerShowScheduler {
     private static BukkitTask task;

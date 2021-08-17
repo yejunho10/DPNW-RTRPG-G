@@ -13,33 +13,17 @@ import java.util.Set;
 @SuppressWarnings("unused")
 public class Skills { //논 이벤트 해금조건을 가진 스킬
     private final Set<Skill> skills = new HashSet<>();
-    private Fly fly;
-    private Sprint sprint;
-    private AirSlash airSlash;
-    private WindSword windSword;
-    private HugOfWind hugOfWind;
-    private JetStomp jetStomp;
 
     public Skills(Player p) {
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
-            this.fly = new Fly(p);
-            this.sprint = new Sprint(p);
-            this.airSlash = new AirSlash(p);
-            this.windSword = new WindSword(p);
-            this.hugOfWind = new HugOfWind(p);
-            this.jetStomp = new JetStomp(p);
-            init();
+            skills.add(new Sprint(p));
+            skills.add(new AirSlash(p));
+            skills.add(new WindSword(p));
+            skills.add(new HugOfWind(p));
+            skills.add(new JetStomp(p));
+            skills.add(new HighExistance(p));
         }, 5L);
 
-    }
-
-    private void init() {
-        skills.add(fly);
-        skills.add(sprint);
-        skills.add(airSlash);
-        skills.add(windSword);
-        skills.add(hugOfWind);
-        skills.add(jetStomp);
     }
 
     public Set<Skill> getSkills() {

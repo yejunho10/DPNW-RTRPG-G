@@ -4,9 +4,6 @@ import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftEntity;
-
-import java.util.Random;
 
 public class WaterSlime extends CraftRMob {
 

@@ -2,7 +2,6 @@ package com.dpnw.rtrpg.weapons.blunt.slime;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
-import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Blunt;
 import org.bukkit.Material;
 

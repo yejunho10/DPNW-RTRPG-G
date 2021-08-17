@@ -19,7 +19,6 @@ public class AllSkills {
         skills.clear();
         skills.add(new AirSlash());
         skills.add(new Cutting());
-        skills.add(new Fly());
         skills.add(new Immovable());
         skills.add(new Sprint());
         skills.add(new Turtle());
@@ -98,9 +97,7 @@ public class AllSkills {
             activeList.add((Active) s);
         }
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        for (Active s : cp.getActiveList().values()) {
-            activeList.add(s);
-        }
+        activeList.addAll(cp.getActiveList().values());
         return activeList;
     }
 }

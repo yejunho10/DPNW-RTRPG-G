@@ -3,9 +3,7 @@ package com.dpnw.rtrpg.events.player;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.functions.MenuFunctions;
-import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
-import com.dpnw.rtrpg.rplayer.Skills;
 import com.dpnw.rtrpg.schedulers.CounterScheduler;
 import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
@@ -21,12 +19,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BundleMeta;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class PlayerEvents implements Listener {
@@ -112,17 +108,17 @@ public class PlayerEvents implements Listener {
         cp.setBundle(bundle);
         e.getItem().remove();
         Bukkit.getScheduler().runTask(plugin, () -> {
-            String lore = "설명이 없습니다.";
+            StringBuilder lore = new StringBuilder("설명이 없습니다.");
             if (tItem.hasItemMeta() && tItem.getItemMeta().hasDisplayName()) {
                 if (tItem.getItemMeta().hasLore()) {
-                    lore = "";
+                    lore = new StringBuilder();
                     for (String s : Objects.requireNonNull(tItem.getItemMeta().getLore())) {
-                        lore += s + "\n";
+                        lore.append(s).append("\n");
                     }
                 }
                 PlayerSchedulers.addToastTask(e.getEntity().getUniqueId(), new DisplayToast(ToastKey.getRandomKey(),
                         tItem.getItemMeta().getDisplayName() + " X " + tItem.getAmount() + " 획득!",
-                        lore,
+                        lore.toString(),
                         tItem.getType().getKey().asString(),
                         true,
                         true,

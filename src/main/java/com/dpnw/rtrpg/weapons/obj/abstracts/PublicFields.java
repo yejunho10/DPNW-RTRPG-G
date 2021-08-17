@@ -6,12 +6,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.obj.interfaces.PublicField;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 @SuppressWarnings("deprecation")
 public abstract class PublicFields extends ItemStack implements PublicField , Cooldownable {

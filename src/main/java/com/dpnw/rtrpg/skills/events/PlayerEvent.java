@@ -17,8 +17,7 @@ public class PlayerEvent implements Listener {
     @EventHandler
     public void playerAttackEnemy(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player p) {
-            if (e.getEntity() instanceof Mob) {
-                Mob m = (Mob) e.getEntity();
+            if (e.getEntity() instanceof Mob m) {
                 if (!m.isOnGround()) {
                     CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
                     if (!RPlayerUtil.hasSkill(cp.getUUID(), SkillName.DOUBLE_JUMP)) {

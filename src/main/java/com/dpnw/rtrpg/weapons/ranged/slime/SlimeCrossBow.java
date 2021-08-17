@@ -2,7 +2,6 @@ package com.dpnw.rtrpg.weapons.ranged.slime;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
-import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Ranged;
 import org.bukkit.Material;
 
