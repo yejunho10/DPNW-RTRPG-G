@@ -44,7 +44,7 @@ public class PlayerGetDamaged implements Listener {
 
     @EventHandler
     public void onPlayerGetDamaged(EntityDamageByEntityEvent e) {
-        if (!(e.getEntity() instanceof Player)) return;
+        if (!(e.getEntity() instanceof Player p)) return;
         e.setCancelled(true);
         if(RTRPG.getInstance().rmobs.containsKey(e.getDamager().getUniqueId())) {
             CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(e.getDamager().getUniqueId());
@@ -52,7 +52,6 @@ public class PlayerGetDamaged implements Listener {
             alreadyAttacked.add(mob.getUUID());
             Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> alreadyAttacked.remove(mob.getUUID()), (long) (mob.getAttackSpeed()*20L));
         }
-        Player p = (Player) e.getEntity();
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
 
         if(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {

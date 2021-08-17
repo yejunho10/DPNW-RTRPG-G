@@ -3,7 +3,6 @@ package com.dpnw.rtrpg.events.player;
 import com.dpnw.rtrpg.functions.ExpFunctions;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 

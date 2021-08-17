@@ -172,6 +172,9 @@ public class MenuFunctions {
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         cp.getEquipedActiveSkill().put(slot, skillEquip.get(p.getUniqueId()));
         System.out.println("active skill equiped : " + skillEquip.get(p.getUniqueId()));
+        if(skillEquip.get(p.getUniqueId()) == SkillName.DOUBLE_JUMP) {
+            p.setAllowFlight(true);
+        }
         p.closeInventory();
     }
 

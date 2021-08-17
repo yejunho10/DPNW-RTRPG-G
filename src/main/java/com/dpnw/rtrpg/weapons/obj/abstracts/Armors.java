@@ -6,7 +6,6 @@ import com.dpnw.rtrpg.enums.WeaponType;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Armor;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 

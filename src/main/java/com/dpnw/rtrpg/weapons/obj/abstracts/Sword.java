@@ -1,24 +1,12 @@
 package com.dpnw.rtrpg.weapons.obj.abstracts;
 
-import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.enums.WeaponType;
-import com.dpnw.rtrpg.mob.obj.CraftRMob;
-import com.dpnw.rtrpg.particles.ParticleUtil;
-import com.dpnw.rtrpg.rplayer.obj.RPlayer;
-import com.dpnw.rtrpg.skills.utils.Cone;
 import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.able.LifeStealable;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;

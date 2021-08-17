@@ -2,7 +2,6 @@ package com.dpnw.rtrpg.skills.utils;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
-import org.bukkit.entity.Monster;
 import org.bukkit.util.Vector;
 
 import javax.annotation.Nullable;

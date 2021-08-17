@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.utils;
 
 import com.dpnw.rtrpg.RTRPG;
+import com.dpnw.rtrpg.events.SkillEvents;
 import com.dpnw.rtrpg.events.damage.EnemyGetDamaged;
 import com.dpnw.rtrpg.events.damage.PlayerGetDamaged;
 import com.dpnw.rtrpg.events.etc.EnemySpawnEvent;
@@ -29,5 +30,6 @@ public class EventRegister {
         pm.registerEvents(new SkillUnlockedEvent(), plugin);
         pm.registerEvents(new DeathCount(), plugin);
         pm.registerEvents(new HealthChange(), plugin);
+        pm.registerEvents(new SkillEvents(), plugin);
     }
 }

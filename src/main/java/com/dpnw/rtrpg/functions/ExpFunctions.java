@@ -1,7 +1,6 @@
 package com.dpnw.rtrpg.functions;
 
 import com.dpnw.rtrpg.RTRPG;
-import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import org.bukkit.entity.Player;
 
 public class ExpFunctions {

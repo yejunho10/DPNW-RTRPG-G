@@ -2,7 +2,6 @@ package com.dpnw.rtrpg.weapons.blunt.angular;
 
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.obj.abstracts.Blunt;
-import com.dpnw.rtrpg.weapons.obj.abstracts.Sword;
 import org.bukkit.Material;
 
 @SuppressWarnings("unused")

@@ -24,11 +24,10 @@ public class RCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player p)) {
             sender.sendMessage(prefix + "플레이어만 사용 가능한 명령어 입니다.");
             return false;
         }
-        Player p = (Player) sender;
         if (args.length == 0) {
             sender.sendMessage(prefix + "[ = = = = = HELP = = = = = ]");
             if(!sender.isOp()){

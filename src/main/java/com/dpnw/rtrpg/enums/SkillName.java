@@ -48,7 +48,6 @@ public enum SkillName {
     FIRE_RING("FIRE_RING", "파이어 링", SkillType.ACTIVE),
     FLASH("FLASH", "점멸", SkillType.ACTIVE),
     FLING_UP("FLING_UP", "올려차기", SkillType.ACTIVE),
-    FLY("FLY", "플라이", SkillType.ACTIVE),
     GENOCIDER("GENOCIDER", "제노사이더", SkillType.PASSIVE),
     GLUTTONY("GLUTTONY", "식탐", SkillType.PASSIVE),
     GREED("GREED", "탐욕", SkillType.PASSIVE),
