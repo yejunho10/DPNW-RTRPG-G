@@ -11,9 +11,14 @@ import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.JetStomp;
 import com.dpnw.rtrpg.utils.*;
+import net.dv8tion.jda.api.entities.TextChannel;
+import net.minecraft.network.protocol.game.PacketPlayOutSetCooldown;
+import net.minecraft.world.item.Item;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_17_R1.util.CraftMagicNumbers;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -64,11 +69,13 @@ public class PlayerEvents implements Listener {
             e.setCancelled(true);
             CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(e.getPlayer().getUniqueId());
             SkillName sn = cp.getEquipedActiveSkill().get(e.getNewSlot());
+            if(sn == null) return;
             Active skill = cp.getActiveList().get(sn);
-            skill.use(cp);
             if(skill.isCooldown()) return;
+            skill.use(cp);
             cp.getPlayer().setCooldown(cp.getPlayer().getInventory().getItem(e.getNewSlot()).getType(), (int) (skill.getCooldown() * 20));
-        } catch (Exception ignored) {
+        } catch (Exception ee) {
+            ee.printStackTrace();
         }
     }
 
@@ -77,6 +84,12 @@ public class PlayerEvents implements Listener {
         Player p = e.getPlayer();
         int level = plugin.rplayers.get(p.getUniqueId()).getLevel();
         e.setFormat("§f[ §6LV.§e" + level + " §f] " + e.getFormat());
+        TextChannel tc = RTRPG.jda.getTextChannelById(873619683469828138L);
+        try{
+            tc.sendMessage(e.getFormat()).queue();
+        }catch (Exception ee){
+            ee.printStackTrace();
+        }
     }
 
     @EventHandler
@@ -139,6 +152,7 @@ public class PlayerEvents implements Listener {
         Player p = e.getPlayer();
         CounterScheduler.move.put(p.getUniqueId(), new Tuple<>(p.getLocation(), p.getLocation()));
         RPlayerUtil.serializeDataIn(p);
+        p.resetCooldown();
     }
 
     @EventHandler

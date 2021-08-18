@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg;
 
 import com.dpnw.rtrpg.commands.RCommand;
+import com.dpnw.rtrpg.discord.RDBuilder;
 import com.dpnw.rtrpg.mob.obj.RMob;
 import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
@@ -9,14 +10,17 @@ import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
 import com.dpnw.rtrpg.schedulers.SpawnerShowScheduler;
 import com.dpnw.rtrpg.utils.EventRegister;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
+import net.dv8tion.jda.api.JDA;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.security.auth.login.LoginException;
 import java.util.*;
 
 public class RTRPG extends JavaPlugin {
     private static RTRPG plugin;
     public final Map<UUID, CraftRPlayer> rplayers = new HashMap<>();
     public final Map<UUID, RMob> rmobs = new HashMap<>();
+    public static JDA jda;
 
     public static RTRPG getInstance() {
         return plugin;
@@ -34,5 +38,10 @@ public class RTRPG extends JavaPlugin {
         PlayerSchedulers.initDetectDoubleShifting();
         SpawnerShowScheduler.init();
         getCommand("rr").setExecutor(new RCommand());
+        try {
+            jda = RDBuilder.build("ODc3NjQ1MTQ3NTA3MTM0NTI0.YR1ovQ.jmgg7pAiaprdYOTFYgWOmm0uA0E");
+        } catch (LoginException e) {
+            e.printStackTrace();
+        }
     }
 }
