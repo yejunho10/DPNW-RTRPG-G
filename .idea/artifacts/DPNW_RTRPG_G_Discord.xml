@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="DPNW-RTRPG-G-Discord">
+    <output-path>$PROJECT_DIR$/../../../../Minecraft Servers/1.17 Paper Test Server/plugins</output-path>
+    <root id="archive" name="DPNW-RTRPG-G-Discord.jar">
+      <element id="module-output" name="DPNW-RTRPG-G.main" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/JDA-4.3.0_309.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/okio-1.17.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/opus-java-api-1.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/opus-java-natives-1.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/okhttp-3.13.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/trove4j-3.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/commons-collections4-4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/nv-websocket-client-2.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/jackson-databind-2.10.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/jackson-annotations-2.10.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/lib/jackson-core-2.10.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

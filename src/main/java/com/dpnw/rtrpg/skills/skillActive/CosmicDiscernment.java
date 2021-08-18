@@ -31,6 +31,7 @@ public class CosmicDiscernment extends RActive {
         setSkillName(SkillName.COSMIC_DISCERNMENT);
         setCooldown(3600);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
+        loc = p.getLocation();
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
             Location pl = p.getLocation();
             double px = pl.getX();
@@ -49,6 +50,7 @@ public class CosmicDiscernment extends RActive {
             } else {
                 timer = 0;
             }
+            loc = pl;
         }, 0L, 20L);
     }
 
