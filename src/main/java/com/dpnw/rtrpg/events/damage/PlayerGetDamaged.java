@@ -1,8 +1,10 @@
 package com.dpnw.rtrpg.events.damage;
 
 import com.dpnw.rtrpg.RTRPG;
+import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
+import com.dpnw.rtrpg.skills.skillActive.MemoryOfFeet;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -13,6 +15,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
@@ -22,7 +25,7 @@ public class PlayerGetDamaged implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
-        if(alreadyDead.contains(e.getEntity().getUniqueId())) return;
+        if (alreadyDead.contains(e.getEntity().getUniqueId())) return;
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(e.getEntity().getUniqueId());
         cp.setDeathCount(cp.getDeathCount() + 1);
         alreadyDead.add(cp.getUUID());
@@ -31,14 +34,23 @@ public class PlayerGetDamaged implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
-        if(!(e.getEntity() instanceof Player p)) return;
+        if (!(e.getEntity() instanceof Player p)) return;
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        if(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
+        if (cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
             p.setHealth(0);
-        }else{
+        } else {
             cp.setcurrentHealth(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()));
             setHealthScale(cp);
             p.setHealth(cp.getcurrentHealth());
+        }
+
+        for (SkillName sn : cp.getEquipedActiveSkill().values()) {
+            if (sn == SkillName.MEMORY_OF_FEET) {
+                MemoryOfFeet skill = (MemoryOfFeet) cp.getActiveList().get(sn);
+                if (skill.isReady()) {
+                    skill.cancelByAttacked();
+                }
+            }
         }
     }
 
@@ -46,17 +58,17 @@ public class PlayerGetDamaged implements Listener {
     public void onPlayerGetDamaged(EntityDamageByEntityEvent e) {
         if (!(e.getEntity() instanceof Player p)) return;
         e.setCancelled(true);
-        if(RTRPG.getInstance().rmobs.containsKey(e.getDamager().getUniqueId())) {
+        if (RTRPG.getInstance().rmobs.containsKey(e.getDamager().getUniqueId())) {
             CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(e.getDamager().getUniqueId());
-            if(alreadyAttacked.contains(mob.getUUID())) return;
+            if (alreadyAttacked.contains(mob.getUUID())) return;
             alreadyAttacked.add(mob.getUUID());
-            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> alreadyAttacked.remove(mob.getUUID()), (long) (mob.getAttackSpeed()*20L));
+            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> alreadyAttacked.remove(mob.getUUID()), (long) (mob.getAttackSpeed() * 20L));
         }
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
 
-        if(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
+        if (cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
             p.setHealth(0);
-        }else{
+        } else {
             cp.setcurrentHealth(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()));
             setHealthScale(cp);
             p.setHealth(cp.getcurrentHealth());
@@ -67,7 +79,24 @@ public class PlayerGetDamaged implements Listener {
     private void setHealthScale(CraftRPlayer rp) {
         Player p = rp.getPlayer();
         p.setHealth(rp.getcurrentHealth() / (rp.getHealth() / 20));
+
+
+        // ~~` * 1/100
     }
 
 
+    @EventHandler
+    public void onDamage(EntityDamageByEntityEvent e){
+        if(e.getEntity() instanceof Player p) {
+            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+            if(cp.getEquipedPassiveSkill().containsValue(SkillName.HUG_OF_WIND)){
+                Random rand = new Random();
+                int n = rand.nextInt(100);
+                int r = (int) (8 + (cp.getLevel() * 0.07));
+                if(n >= r) {
+                    e.setCancelled(true);
+                }
+            }
+        }
+    }
 }

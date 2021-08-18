@@ -30,6 +30,9 @@ public class AllSkills {
         skills.add(new Thanatophobia());
         skills.add(new HighExistance());
         skills.add(new CosmicDiscernment());
+        skills.add(new JetStomp());
+        skills.add(new Noob());
+        skills.add(new MemoryOfFeet());
     }
 
     public static Skill getSkillFromName(SkillName name) {

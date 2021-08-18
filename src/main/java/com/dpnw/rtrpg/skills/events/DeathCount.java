@@ -4,6 +4,7 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
+import com.dpnw.rtrpg.skills.skillActive.Noob;
 import com.dpnw.rtrpg.skills.skillPassive.Thanatophobia;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
@@ -17,7 +18,8 @@ import java.util.Set;
 import java.util.UUID;
 
 public class DeathCount implements Listener {
-    private final Set<UUID> dead = new HashSet<>(); //버그성 죽음 방지 (Ex: 0.1초만에 여러번 죽어버리는 버그)
+    private final Set<UUID> dead = new HashSet<>(); //버그성 죽음 방지 (Ex: 0.1초만에 여러번 죽어버리는 버그
+    private final Set<UUID> noob = new HashSet<>();
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
@@ -34,6 +36,21 @@ public class DeathCount implements Listener {
                 cp.getUnLockedSkills().add(SkillName.THANATOPHOBIA);
                 RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(new Thanatophobia(), p));
             }
+        }
+    }
+
+    @EventHandler
+    public void onNoob(PlayerDeathEvent e) {
+        Player p = e.getEntity();
+        if (noob.contains(p.getUniqueId())) {
+            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+            if (!RPlayerUtil.hasSkill(p.getUniqueId(), SkillName.NOOB)) {
+                cp.getUnLockedSkills().add(SkillName.NOOB);
+                RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(new Noob(), p));
+            }
+        } else {
+            noob.add(p.getUniqueId());
+            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> noob.remove(p.getUniqueId()), 60 * 20L);
         }
     }
 }

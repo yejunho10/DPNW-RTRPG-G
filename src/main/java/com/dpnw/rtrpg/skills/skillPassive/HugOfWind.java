@@ -4,6 +4,7 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.RPassive;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
@@ -40,6 +41,7 @@ public class HugOfWind extends RPassive {
             task.cancel();
         }catch (Exception ignored){}
     }
+
 
     @Override
     public String skillUnlockCondition() {
