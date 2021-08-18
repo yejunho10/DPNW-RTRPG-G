@@ -7,6 +7,7 @@ import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RActive;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
+import org.bukkit.scheduler.BukkitRunnable;
 
 @SuppressWarnings("unused")
 public class Turtle extends RActive {
@@ -27,8 +28,8 @@ public class Turtle extends RActive {
     @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
-        p.setArmor(p.getArmor() + 50 + (p.getLevel() * 0.5));
-        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> p.setArmor(p.getArmor() - 50 + (p.getLevel() * 0.5)), (long) (getDuration() * 20));
+        p.setArmor(p.getArmor() + (50 + (p.getLevel() * 0.5)));
+        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> p.setArmor(p.getArmor() - (50 + (p.getLevel() * 0.5))), (long) (getDuration() * 20));
         p.getPlayer().getWorld().playSound(p.getPlayer().getLocation(), Sound.ENTITY_IRON_GOLEM_HURT, 0.5f, 1.0f);
         cooldown(getCooldown(), this);
     }
