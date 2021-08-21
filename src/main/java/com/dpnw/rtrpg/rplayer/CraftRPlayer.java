@@ -73,13 +73,13 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         this.armor += s.getArmor();
         this.manaRegen += s.getManaRegen();
         this.maxMana += s.getMaxMana();
-        this.speed += s.getMovementSpeed();
+        this.speed += s.getMovementSpeed()*0.1;
         updateStats();
     }
 
     public void updateStats() {
         p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
-        p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed * 0.1);
+        p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
     }
 
     public void unApplyWeaponStats(Weapon w) {
@@ -89,7 +89,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         this.armor -= s.getArmor();
         this.manaRegen -= s.getManaRegen();
         this.maxMana -= s.getMaxMana();
-        this.speed -= s.getMovementSpeed();
+        this.speed -= s.getMovementSpeed()*0.1;
         updateStats();
     }
 
