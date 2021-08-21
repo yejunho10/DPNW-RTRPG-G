@@ -10,8 +10,11 @@ import com.dpnw.rtrpg.schedulers.CounterScheduler;
 import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
 import com.dpnw.rtrpg.schedulers.SpawnerShowScheduler;
 import com.dpnw.rtrpg.utils.EventRegister;
+import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import net.dv8tion.jda.api.JDA;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.security.auth.login.LoginException;
@@ -49,5 +52,13 @@ public class RTRPG extends JavaPlugin {
         } catch (LoginException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onDisable() {
+        Bukkit.getOnlinePlayers().forEach(o -> {
+            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(o.getUniqueId());
+            RPlayerUtil.serializeDataOut(cp.serializer(), cp.getUUID());
+        });
     }
 }
