@@ -132,8 +132,7 @@ public class PlayerEvents implements Listener {
         ItemStack tItem = item.clone();
         ItemStack bundle = p.getInventory().getItem(13);
         BundleMeta bm = (BundleMeta) bundle.getItemMeta();
-        bm.addItem(item);
-        bundle.setItemMeta(bm);
+        bundle.setItemMeta(MenuFunctions.merge(bm, item, p));
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         cp.setBundle(bundle);
         e.getItem().remove();

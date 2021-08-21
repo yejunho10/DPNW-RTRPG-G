@@ -12,24 +12,40 @@ import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BundleMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.math.RoundingMode;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @SuppressWarnings("all")
 public class MenuFunctions {
     private static final RTRPG plugin = RTRPG.getInstance();
     private static final Map<UUID, SkillName> skillEquip = new HashMap<>();
+
+    public static BundleMeta merge(BundleMeta bm, ItemStack item, Player p) {
+        try{
+            List<ItemStack> list = bm.getItems() == null ? new ArrayList<>() : bm.getItems();
+            Inventory inv = Bukkit.createInventory(null, 54);
+            list.forEach(inv::addItem);
+            HashMap<Integer, ItemStack> leftover = inv.addItem(item);
+            if(!(leftover.size() == 0)) {
+                for(int i = 0; i < leftover.size(); i++) {
+                    p.getWorld().dropItem(p.getLocation(), leftover.get(i));
+                }
+            }
+            bm.setItems(Arrays.stream(inv.getContents()).toList());
+        }catch(Exception ignored){
+        }
+        return bm;
+    }
 
     public static void initPlayerInventory(Player p) {
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
