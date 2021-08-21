@@ -87,7 +87,7 @@ public class PlayerEvents implements Listener {
         TextChannel tc = RTRPG.jda.getTextChannelById(873619683469828138L);
 
         try {
-            tc.sendMessage("[ LV." + level+" ] <"+p.getName()+"> " + e.getMessage()).queue();
+            tc.sendMessage("[ LV." + level + " ] <" + p.getName() + "> " + e.getMessage()).queue();
             send(tc);
         } catch (Exception ee) {
             ee.printStackTrace();
@@ -129,33 +129,35 @@ public class PlayerEvents implements Listener {
         if (!(p.getGameMode() == GameMode.SURVIVAL)) return;
         e.setCancelled(true);
         ItemStack item = e.getItem().getItemStack();
-        ItemStack tItem = item.clone();
         ItemStack bundle = p.getInventory().getItem(13);
         BundleMeta bm = (BundleMeta) bundle.getItemMeta();
-        bundle.setItemMeta(MenuFunctions.merge(bm, item, p));
-        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        cp.setBundle(bundle);
-        e.getItem().remove();
-        Bukkit.getScheduler().runTask(plugin, () -> {
-            StringBuilder lore = new StringBuilder("설명이 없습니다.");
-            if (tItem.hasItemMeta() && tItem.getItemMeta().hasDisplayName()) {
-                if (tItem.getItemMeta().hasLore()) {
-                    lore = new StringBuilder();
-                    for (String s : Objects.requireNonNull(tItem.getItemMeta().getLore())) {
-                        lore.append(s).append("\n");
+        if (!MenuFunctions.mergeisFull(bm)) {
+            bundle.setItemMeta(MenuFunctions.merge(bm, item, p));
+            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+            cp.setBundle(bundle);
+            ItemStack tItem = item.clone();
+            e.getItem().remove();
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                StringBuilder lore = new StringBuilder("설명이 없습니다.");
+                if (tItem.hasItemMeta() && tItem.getItemMeta().hasDisplayName()) {
+                    if (tItem.getItemMeta().hasLore()) {
+                        lore = new StringBuilder();
+                        for (String s : Objects.requireNonNull(tItem.getItemMeta().getLore())) {
+                            lore.append(s).append("\n");
+                        }
                     }
+                    PlayerSchedulers.addToastTask(e.getEntity().getUniqueId(), new DisplayToast(ToastKey.getRandomKey(),
+                            tItem.getItemMeta().getDisplayName() + " X " + tItem.getAmount() + " 획득!",
+                            lore.toString(),
+                            tItem.getType().getKey().asString(),
+                            true,
+                            true,
+                            DisplayToast.ToastFrame.TASK,
+                            DisplayToast.ToastBackground.ADVENTURE
+                    ));
                 }
-                PlayerSchedulers.addToastTask(e.getEntity().getUniqueId(), new DisplayToast(ToastKey.getRandomKey(),
-                        tItem.getItemMeta().getDisplayName() + " X " + tItem.getAmount() + " 획득!",
-                        lore.toString(),
-                        tItem.getType().getKey().asString(),
-                        true,
-                        true,
-                        DisplayToast.ToastFrame.TASK,
-                        DisplayToast.ToastBackground.ADVENTURE
-                ));
-            }
-        });
+            });
+        }
     }
 
     @EventHandler

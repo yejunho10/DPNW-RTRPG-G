@@ -30,6 +30,12 @@ public class MenuFunctions {
     private static final RTRPG plugin = RTRPG.getInstance();
     private static final Map<UUID, SkillName> skillEquip = new HashMap<>();
 
+    public static boolean mergeisFull(BundleMeta bm) {
+        if(bm.getItems().size() == 54) {
+            return true;
+        }
+        return false;
+    }
     public static BundleMeta merge(BundleMeta bm, ItemStack item, Player p) {
         try{
             List<ItemStack> list = bm.getItems() == null ? new ArrayList<>() : bm.getItems();
