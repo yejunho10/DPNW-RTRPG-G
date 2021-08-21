@@ -1,7 +1,8 @@
 package com.dpnw.rtrpg;
 
+import com.dpnw.discord.Token;
 import com.dpnw.rtrpg.commands.RCommand;
-import com.dpnw.rtrpg.discord.RDBuilder;
+import com.dpnw.discord.RDBuilder;
 import com.dpnw.rtrpg.mob.obj.RMob;
 import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
@@ -17,10 +18,10 @@ import javax.security.auth.login.LoginException;
 import java.util.*;
 
 public class RTRPG extends JavaPlugin {
-    private static RTRPG plugin;
-    public final Map<UUID, CraftRPlayer> rplayers = new HashMap<>();
-    public final Map<UUID, RMob> rmobs = new HashMap<>();
-    public static JDA jda;
+    private static RTRPG plugin; // instance
+    public final Map<UUID, CraftRPlayer> rplayers = new HashMap<>(); // rplayer map
+    public final Map<UUID, RMob> rmobs = new HashMap<>(); // rmob map
+    public static JDA jda; // for discord init
 
     public static RTRPG getInstance() {
         return plugin;
@@ -29,7 +30,9 @@ public class RTRPG extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        // event register
         EventRegister.registerEvents();
+        // init everything this plugin need
         CounterScheduler.start();
         AllSkills.init();
         AllWeapons.init();
@@ -37,9 +40,12 @@ public class RTRPG extends JavaPlugin {
         PlayerSchedulers.initToastTask();
         PlayerSchedulers.initDetectDoubleShifting();
         SpawnerShowScheduler.init();
+        //command register
         getCommand("rr").setExecutor(new RCommand());
+
+        // Discord bot init
         try {
-            jda = RDBuilder.build("ODc3NjQ1MTQ3NTA3MTM0NTI0.YR1ovQ.jmgg7pAiaprdYOTFYgWOmm0uA0E");
+            jda = RDBuilder.build(Token.token);
         } catch (LoginException e) {
             e.printStackTrace();
         }

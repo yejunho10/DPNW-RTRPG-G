@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.discord;
+package com.dpnw.discord;
 
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;

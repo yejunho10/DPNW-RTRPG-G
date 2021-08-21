@@ -20,6 +20,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +32,7 @@ public class MenuFunctions {
     private static final Map<UUID, SkillName> skillEquip = new HashMap<>();
 
     public static void initPlayerInventory(Player p) {
+        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         Inventory inv = p.getInventory();
         inv.clear();
         ItemStack item = new ItemStack(Material.COMPASS);
@@ -41,22 +43,28 @@ public class MenuFunctions {
         inv.setItem(22, item);
         item.setType(Material.ENCHANTED_BOOK);
         im = item.getItemMeta();
-        im.setDisplayName("§6스킬 목록");
+        im.setDisplayName("§b스킬 목록");
         im.setLore(Arrays.asList("", "§e클릭하여 스킬 목록을 엽니다."));
         item.setItemMeta(im);
         inv.setItem(12, item);
         item.setType(Material.NETHERITE_SWORD);
         im = item.getItemMeta();
-        im.setDisplayName("§6장비 장착");
+        im.setDisplayName("§c장비 장착");
         im.setLore(Arrays.asList("", "§e클릭하여 장비 장착 메뉴를 엽니다."));
         item.setItemMeta(im);
         inv.setItem(14, item);
         item.setType(Material.BUNDLE);
         im = item.getItemMeta();
-        im.setDisplayName("§6아이템 보관함");
+        im.setDisplayName("§9아이템 보관함");
         im.setLore(Arrays.asList("", "§e클릭하여 아이템 보관함을 엽니다."));
         item.setItemMeta(im);
         inv.setItem(13, item);
+        item.setType(Material.RAW_GOLD);
+        im = item.getItemMeta();
+        im.setDisplayName("§e잔고");
+        im.setLore(Arrays.asList("", "§6" + cp.getMoney().setScale(2, RoundingMode.UNNECESSARY)));
+        item.setItemMeta(im);
+        inv.setItem(9, item);
         updateSkillBar(p);
     }
 

@@ -6,6 +6,7 @@ import com.dpnw.rtrpg.skills.obj.Passive;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import org.bukkit.entity.Player;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.UUID;
 
@@ -20,6 +21,14 @@ public interface RPlayer {
      * @return 플레이어의 UUID를 리턴시킨다.
      */
     UUID getUUID();
+
+    BigDecimal getMoney();
+
+    void setMoney(RPlayer rp, double money);
+
+    void addMoney(RPlayer rp, double money);
+
+    void subMoney(RPlayer rp, double money);
 
     /**
      * @return 플레이어의 패시브 스킬 리스트를 리턴시킨다.
