@@ -19,6 +19,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 
@@ -26,16 +27,17 @@ import java.util.*;
 public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private final Player p;
     private final UUID uuid;
+    private BigDecimal money = new BigDecimal(0);
     private Skills skills;
-    private Map<SkillName, Passive> passiveList = new HashMap<>();
-    private Map<SkillName, Active> activeList = new HashMap<>();
-    private Map<Integer, SkillName> equipedActiveSkill = new HashMap<>();
-    private Map<Integer, SkillName> equipedPassiveSkill = new HashMap<>();
-    private Set<SkillName> unLockedSkills = new HashSet<>();
-    private Weapon currentWeapon;
-    private Weapon currentShield;
-    private Weapon[] currentArmors = new Weapon[3];
-    private ItemStack bundle;
+    private Map<SkillName, Passive> passiveList = new HashMap<>(); // 플레이어가 해금한 패시브 스킬 목록
+    private Map<SkillName, Active> activeList = new HashMap<>(); // 플레이어가 해금한 액티브 스킬 목록
+    private Map<Integer, SkillName> equipedPassiveSkill = new HashMap<>(); // 장착된 패시브 스킬 목록
+    private Map<Integer, SkillName> equipedActiveSkill = new HashMap<>(); // 장착된 액티브 스킬 목록
+    private Set<SkillName> unLockedSkills = new HashSet<>(); // 플레이어가 해금한 모든 스킬 목록
+    private Weapon currentWeapon; // 플레이어가 장착한 무기
+    private Weapon currentShield; // 플레이어가 장착한 방패
+    private Weapon[] currentArmors = new Weapon[3]; // 플레이어가 장착한 방어구
+    private ItemStack bundle; // 플레이어의 보관함
     private int level = 0;
     private int exp = 0;
     private double health; //default
@@ -55,7 +57,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     public CraftRPlayer(Player p, Skills skills) {
         this.p = p;
         uuid = p.getUniqueId();
-        setHealth(1000);
+        setHealth(100);
         setMaxMana(100);
         setArmor(0);
         setSpeed(0.1);
@@ -77,7 +79,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
 
     public void updateStats() {
         p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
-        p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
+        p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed * 0.1);
     }
 
     public void unApplyWeaponStats(Weapon w) {
@@ -114,9 +116,10 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         level = data.getInt("RPlayer.Level");
         exp = data.getInt("RPlayer.Exp");
         bundle = data.getItemStack("RPlayer.Bundle");
-        try{
+        try {
             currentWeapon = AllWeapons.getWeapons().get(WeaponName.valueOf(NBT.getStringTag(data.getItemStack("RPlayer.Weapon"), "weapon")));
-        }catch(Exception ignored){}
+        } catch (Exception ignored) {
+        }
         //init skills, counter
         for (SkillName s : unLockedSkills) {
             if (s.getType() == SkillType.ACTIVE) {
@@ -128,6 +131,26 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         }
         counterDeSerializer(data);
         return this;
+    }
+
+    @Override
+    public BigDecimal getMoney() {
+        return money;
+    }
+
+    @Override
+    public void setMoney(RPlayer rp, double money) {
+        this.money = new BigDecimal(money);
+    }
+
+    @Override
+    public void addMoney(RPlayer rp, double money) {
+        this.money = this.money.add(new BigDecimal(money));
+    }
+
+    @Override
+    public void subMoney(RPlayer rp, double money) {
+        this.money = this.money.subtract(new BigDecimal(money));
     }
 
     public ItemStack getBundle() {

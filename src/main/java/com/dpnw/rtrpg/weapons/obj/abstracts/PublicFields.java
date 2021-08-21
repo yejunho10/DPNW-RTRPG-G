@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("deprecation")
-public abstract class PublicFields extends ItemStack implements PublicField , Cooldownable {
+public abstract class PublicFields extends ItemStack implements PublicField, Cooldownable {
     private double damage = 0;
     private double range = 0;
     private double reach = 0;
@@ -34,9 +34,9 @@ public abstract class PublicFields extends ItemStack implements PublicField , Co
 
     @Override
     public void cooldown(double time, @NotNull Object obj) {
-        if(obj instanceof Weapon){
+        if (obj instanceof Weapon) {
             setCooldown(true);
-            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> setCooldown(false), (long) (time* 20L));
+            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> setCooldown(false), (long) (20 / getAttackSpeed()));
         }
     }
 
