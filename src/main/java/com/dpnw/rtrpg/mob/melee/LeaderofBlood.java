@@ -1,29 +1,29 @@
-package com.dpnw.rtrpg.mob;
+package com.dpnw.rtrpg.mob.melee;
 
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class GoblinChampion extends CraftRMob {
+public class LeaderofBlood extends CraftRMob {
 
-    public GoblinChampion() {
+    public LeaderofBlood() {
 
     }
 
-    public GoblinChampion(ActiveMob mob) {
+    public LeaderofBlood(ActiveMob mob) {
         super(mob);
-        setHealth(450);
-        setDamage(150);
-        setArmor(50);
-        setAttackSpeed(0.9);
-        setSpeed(0.9);
+        setHealth(1200);
+        setDamage(450);
+        setArmor(110);
+        setAttackSpeed(0.7);
+        setSpeed(0.8);
         setRank(MobRank.ELITE);
-        setStartLevel(20);
-        setMaxLevel(20);
+        setStartLevel(40);
+        setMaxLevel(40);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.GOBLIN_CHAMPION);
-        setExp(200);
+        setMobName(MobName.LEADER_OF_BLOOD);
+        setExp(550);
         init();
     }
 

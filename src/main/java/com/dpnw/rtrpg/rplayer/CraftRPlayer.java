@@ -60,26 +60,30 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         setHealth(100);
         setMaxMana(100);
         setArmor(0);
-        setSpeed(0.1);
+        setSpeed(p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getDefaultValue());
         setHealthRegen(0.2);
         setManaRegen(0.2);
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> this.skills = skills, 5L);
     }
 
+    public void updateStats() {
+        p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
+        p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
+        System.out.println("speed set : "+speed);
+    }
+
     public void applyWeaponStats(Weapon w) {
+        if(!(currentWeapon == null)) {
+            unApplyWeaponStats(currentWeapon);
+        }
         PublicFields s = (PublicFields) w;
         this.health += s.getHealth();
         this.healthRegen += s.getHealthRegen();
         this.armor += s.getArmor();
         this.manaRegen += s.getManaRegen();
         this.maxMana += s.getMaxMana();
-        this.speed += s.getMovementSpeed()*0.1;
+        this.speed += s.getMovementSpeed() * 0.1;
         updateStats();
-    }
-
-    public void updateStats() {
-        p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
-        p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
     }
 
     public void unApplyWeaponStats(Weapon w) {
@@ -89,7 +93,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         this.armor -= s.getArmor();
         this.manaRegen -= s.getManaRegen();
         this.maxMana -= s.getMaxMana();
-        this.speed -= s.getMovementSpeed()*0.1;
+        this.speed -= s.getMovementSpeed() * 0.1;
         updateStats();
     }
 
@@ -102,8 +106,8 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         data.set("RPlayer.unLockedSkills", names);
         data.set("RPlayer.Level", level);
         data.set("RPlayer.Exp", exp);
-        data.set("RPlayer.Bundle", bundle);
-        data.set("RPlayer.Weapon", p.getInventory().getItem(8));
+        data.set("RPlayer.Bundle", bundle); //itemstack
+        data.set("RPlayer.Weapon", p.getInventory().getItem(8)); //itemstack
         counterSerializer(data);
         return data;
     }

@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.mob;
+package com.dpnw.rtrpg.mob.melee;
 
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;

@@ -1,29 +1,29 @@
-package com.dpnw.rtrpg.mob;
+package com.dpnw.rtrpg.mob.melee;
 
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class Ogre extends CraftRMob {
+public class Giant extends CraftRMob {
 
-    public Ogre() {
+    public Giant() {
 
     }
 
-    public Ogre(ActiveMob mob) {
+    public Giant(ActiveMob mob) {
         super(mob);
-        setHealth(600);
-        setDamage(200);
-        setArmor(35);
-        setAttackSpeed(1.1);
-        setSpeed(1.0);
+        setHealth(1000);
+        setDamage(400);
+        setArmor(150);
+        setAttackSpeed(1.0);
+        setSpeed(0.9);
         setRank(MobRank.RARE);
-        setStartLevel(25);
-        setMaxLevel(25);
+        setStartLevel(35);
+        setMaxLevel(35);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.OGRE);
-        setExp(500);
+        setMobName(MobName.GIANT);
+        setExp(800);
         init();
     }
 

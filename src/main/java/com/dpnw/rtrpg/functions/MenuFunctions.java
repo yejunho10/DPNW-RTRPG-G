@@ -255,4 +255,13 @@ public class MenuFunctions {
 //
 //        }
     }
+
+    public static void openBundle(Player p, ItemStack item) {
+        BundleMeta bm = (BundleMeta) item.getItemMeta();
+        Inventory inv = Bukkit.createInventory(null, 54, "§1보관함");
+        bm.getItems().forEach(o -> {
+           inv.addItem(o);
+        });
+        p.openInventory(inv);
+    }
 }
