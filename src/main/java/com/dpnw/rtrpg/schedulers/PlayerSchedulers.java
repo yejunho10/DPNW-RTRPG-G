@@ -5,6 +5,9 @@ import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.utils.DisplayToast;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.entity.Entity;
 
 import java.util.*;
 
@@ -38,13 +41,6 @@ public class PlayerSchedulers {
         }), 0L, 1L);
     }
 
-//    public static void initPlayerStatus() {
-//        Bukkit.getScheduler().runTaskTimer(plugin, () -> plugin.rplayers.values().forEach(o -> {
-//
-//
-//        }), 0L, 20L);
-//    }
-
     public static void initSlotSwap() {
         Bukkit.getScheduler().runTaskTimer(plugin, () -> Bukkit.getOnlinePlayers().forEach(o -> {
             if (o.getGameMode() == GameMode.SURVIVAL) {
@@ -70,5 +66,13 @@ public class PlayerSchedulers {
             toastTask.put(uuid, new ArrayList<>());
         }
         toastTask.get(uuid).add(toast);
+    }
+
+    public static void initArrowEffectTask() {
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> plugin.projectileList.forEach(o -> {
+            Entity e = Bukkit.getEntity(o);
+            Location loc = e.getLocation();
+            loc.getWorld().spawnParticle(Particle.WATER_BUBBLE, loc, 10);
+        }), 0L, 2L);
     }
 }

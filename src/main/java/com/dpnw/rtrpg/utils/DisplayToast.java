@@ -64,11 +64,6 @@ public class DisplayToast {
 
     public void send(Player p) {
         add(p);
-//        grant(p);
-//        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
-//            revoke(p);
-//            remove();
-//        }, 2L);
     }
 
     private void add(Player p) {

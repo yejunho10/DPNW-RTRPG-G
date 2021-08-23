@@ -26,6 +26,17 @@ public abstract class RSkill implements Skill, Cooldownable {
     private boolean isLock = true;
     private boolean isVisible;
     private boolean isCooldown = false;
+    private boolean isBuyFromShop = false;
+
+    @Override
+    public boolean isBuyFromShop() {
+        return isBuyFromShop;
+    }
+
+    @Override
+    public void setBuyFromShop(boolean b) {
+        isBuyFromShop = b;
+    }
 
     @Override
     public void cooldown(double time, @NotNull Object obj) {

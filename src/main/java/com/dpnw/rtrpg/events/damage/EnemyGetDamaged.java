@@ -2,10 +2,13 @@ package com.dpnw.rtrpg.events.damage;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.MobName;
+import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import com.dpnw.rtrpg.mob.obj.RMob;
+import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillDamageEvent;
+import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.utils.RMobUtil;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
@@ -29,6 +32,25 @@ public class EnemyGetDamaged implements Listener {
         RMobUtil.setBar(e.getTarget());
     }
 
+
+    @EventHandler
+    public void onDamageByProjectile(EntityDamageByEntityEvent e) {
+        if(!(e.getEntity() instanceof Mob m)) return;
+        if(e.getDamager() instanceof Arrow ar) {
+            e.setCancelled(true);
+            if(ar.getShooter() instanceof Player p) {
+                if(ar.hasMetadata("skill")) {
+                    SkillName sn = SkillName.valueOf(ar.getMetadata("skill").toString());
+                    if(sn.equals(SkillName.WATER_BALL)) {
+                        Skill s = AllSkills.getSkillFromName(sn);
+                        Bukkit.getServer().getPluginManager().callEvent(new SkillDamageEvent(s, p, m, e.getDamage()));
+                    }
+                }
+            }
+        }
+    }
+
+
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player) {
@@ -36,7 +58,7 @@ public class EnemyGetDamaged implements Listener {
             if (e.getEntity() instanceof Mob) {
                 LivingEntity le = (LivingEntity) e.getEntity();
                 try {
-                    if(!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
+                    if (!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
                     RMob mob = RTRPG.getInstance().rmobs.get(le.getUniqueId());
                     mob.setCurrentHealth(mob.getCurrentHealth() - (e.getDamage() - mob.getCurrentArmor()));
                     if (mob.getCurrentHealth() <= 0) {
@@ -78,11 +100,11 @@ public class EnemyGetDamaged implements Listener {
             System.out.println("dead entity is not a mob");
             return;
         }
-        if (e.getEntity().getKiller() == null){
+        if (e.getEntity().getKiller() == null) {
             System.out.println("killer is null");
             return;
         }
-        if (!RTRPG.getInstance().rmobs.containsKey(e.getEntity().getUniqueId())){
+        if (!RTRPG.getInstance().rmobs.containsKey(e.getEntity().getUniqueId())) {
             System.out.println("this mob is not include in rmobs array");
             return;
         }
@@ -96,7 +118,7 @@ public class EnemyGetDamaged implements Listener {
             for (Entity mob : m.getPassengers()) { //remove bar
                 mob.remove();
             }
-            if(!(rmob.getExp() == 0)) {
+            if (!(rmob.getExp() == 0)) {
                 cp.giveExp(rmob.getExp());
             }
             System.out.println(mn.getKor() + "killed by : " + cp.getPlayer().getName());
