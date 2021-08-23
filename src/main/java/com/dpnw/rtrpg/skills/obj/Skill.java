@@ -13,6 +13,10 @@ public interface Skill extends Unlockable, Visible, TaskCancelable {
 
     String skillUnlockCondition();
 
+    boolean isBuyFromShop();
+
+    void setBuyFromShop(boolean b);
+
     /**
      * @return 지속시간을 리턴시킨다.
      */

@@ -14,6 +14,7 @@ import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import net.dv8tion.jda.api.JDA;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,6 +25,7 @@ public class RTRPG extends JavaPlugin {
     private static RTRPG plugin; // instance
     public final Map<UUID, CraftRPlayer> rplayers = new HashMap<>(); // rplayer map
     public final Map<UUID, RMob> rmobs = new HashMap<>(); // rmob map
+    public final Set<UUID> projectileList = new HashSet<>();
     public static JDA jda; // for discord init
 
     public static RTRPG getInstance() {
@@ -42,6 +44,7 @@ public class RTRPG extends JavaPlugin {
         PlayerSchedulers.initSlotSwap();
         PlayerSchedulers.initToastTask();
         PlayerSchedulers.initDetectDoubleShifting();
+        PlayerSchedulers.initArrowEffectTask();
         SpawnerShowScheduler.init();
         //command register
         getCommand("rr").setExecutor(new RCommand());
