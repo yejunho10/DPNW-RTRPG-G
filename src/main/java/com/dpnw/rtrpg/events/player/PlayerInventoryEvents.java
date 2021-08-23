@@ -9,9 +9,11 @@ import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -31,6 +33,19 @@ public class PlayerInventoryEvents implements Listener {
     public void onInventoryClick(InventoryClickEvent e) {
         if (e.getClickedInventory() == null) return;
         Player p = (Player) e.getWhoClicked();
+        if (e.getClickedInventory().getType() == InventoryType.PLAYER) {
+            if (e.getWhoClicked().getGameMode() == GameMode.SURVIVAL) {
+                e.setCancelled(true);
+                if(e.getCurrentItem() == null) return;
+                if(e.getCurrentItem().getType().equals(Material.BUNDLE)) {
+                    MenuFunctions.openBundle(p, e.getCurrentItem());
+                    return;
+                }
+            }
+        }
+        if(e.getView().getTitle().contains("보관함")) {
+            e.setCancelled(true);
+        }
         if (e.getView().getTitle().contains("견습 무기 선택")) {
             e.setCancelled(true);
             CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
@@ -39,8 +54,8 @@ public class PlayerInventoryEvents implements Listener {
                 String key = NBT.getStringTag(item, "weapon");
                 WeaponName wn = WeaponName.valueOf(key);
                 Weapon w = AllWeapons.getApprenticeWeapons().get(wn);
-                cp.setWeapon(w);
                 cp.applyWeaponStats(w);
+                cp.setWeapon(w);
             }
             return;
         }
@@ -89,12 +104,6 @@ public class PlayerInventoryEvents implements Listener {
                     MenuFunctions.openActiveSkills((Player) e.getWhoClicked());
                 }
             } catch (Exception ignored) {
-            }
-        }
-        if (e.getClickedInventory().getType() == InventoryType.PLAYER) {
-            if (e.getWhoClicked().getGameMode() == GameMode.SURVIVAL) {
-                e.setCancelled(true);
-                //todo itemstack check and execute actions
             }
         }
     }

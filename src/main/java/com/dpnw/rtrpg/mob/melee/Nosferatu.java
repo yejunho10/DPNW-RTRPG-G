@@ -1,29 +1,29 @@
-package com.dpnw.rtrpg.mob;
+package com.dpnw.rtrpg.mob.melee;
 
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class LeaderofBlood extends CraftRMob {
+public class Nosferatu extends CraftRMob {
 
-    public LeaderofBlood() {
+    public Nosferatu() {
 
     }
 
-    public LeaderofBlood(ActiveMob mob) {
+    public Nosferatu(ActiveMob mob) { //lifesteal 관련 아직 필드도 안만듬
         super(mob);
-        setHealth(1200);
-        setDamage(450);
-        setArmor(110);
-        setAttackSpeed(0.7);
-        setSpeed(0.8);
-        setRank(MobRank.ELITE);
+        setHealth(1300);
+        setDamage(700);
+        setArmor(130);
+        setAttackSpeed(0.6);
+        setSpeed(1.0);
+        setRank(MobRank.RARE);
         setStartLevel(40);
         setMaxLevel(40);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.LEADER_OF_BLOOD);
-        setExp(550);
+        setMobName(MobName.NOSFERATU);
+        setExp(1500);
         init();
     }
 

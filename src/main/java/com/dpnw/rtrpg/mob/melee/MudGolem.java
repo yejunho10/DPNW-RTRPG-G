@@ -1,32 +1,32 @@
-package com.dpnw.rtrpg.mob;
+package com.dpnw.rtrpg.mob.melee;
 
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class RockGolem extends CraftRMob {
+public class MudGolem extends CraftRMob {
 
-    public RockGolem() {
+    public MudGolem() {
 
     }
 
-    public RockGolem(ActiveMob mob) {
+    public MudGolem(ActiveMob mob) {
         super(mob);
-        setHealth(650);
-        setHealthPerLevel(20);
-        setDamage(200);
+        setHealth(600);
+        setHealthPerLevel(10);
+        setDamage(150);
         setDamagePerLevel(5);
-        setArmor(65);
+        setArmor(50);
         setArmorPerLevel(10);
-        setAttackSpeed(0.9);
+        setAttackSpeed(0.8);
         setSpeed(0.9);
         setRank(MobRank.NORMAL);
-        setStartLevel(27);
-        setMaxLevel(29);
+        setStartLevel(24);
+        setMaxLevel(26);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.ROCK_GOLEM);
-        setExp(300);
+        setMobName(MobName.MUD_GOLEM);
+        setExp(260);
         init();
     }
 

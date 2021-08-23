@@ -1,7 +1,8 @@
 package com.dpnw.rtrpg.events.etc;
 
 import com.dpnw.rtrpg.RTRPG;
-import com.dpnw.rtrpg.mob.*;
+import com.dpnw.rtrpg.mob.etc.Chicken;
+import com.dpnw.rtrpg.mob.melee.*;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobSpawnEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
