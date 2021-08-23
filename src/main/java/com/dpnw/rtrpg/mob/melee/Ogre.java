@@ -1,29 +1,29 @@
-package com.dpnw.rtrpg.mob;
+package com.dpnw.rtrpg.mob.melee;
 
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
 
-public class QueenSlime extends CraftRMob {
+public class Ogre extends CraftRMob {
 
-    public QueenSlime() {
+    public Ogre() {
 
     }
 
-    public QueenSlime(ActiveMob mob) {
+    public Ogre(ActiveMob mob) {
         super(mob);
-        setHealth(300);
-        setDamage(110);
-        setArmor(45);
-        setAttackSpeed(0.4);
-        setSpeed(0.8);
+        setHealth(600);
+        setDamage(200);
+        setArmor(35);
+        setAttackSpeed(1.1);
+        setSpeed(1.0);
         setRank(MobRank.RARE);
-        setStartLevel(15);
-        setMaxLevel(15);
+        setStartLevel(25);
+        setMaxLevel(25);
         setUUID(mob.getUniqueId());
-        setMobName(MobName.QUEEN_SLIME);
-        setExp(200);
+        setMobName(MobName.OGRE);
+        setExp(500);
         init();
     }
 

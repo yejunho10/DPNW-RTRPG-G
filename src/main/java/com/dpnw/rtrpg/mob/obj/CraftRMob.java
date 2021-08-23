@@ -1,8 +1,10 @@
 package com.dpnw.rtrpg.mob.obj;
 
 import com.dpnw.rtrpg.RTRPG;
+import com.dpnw.rtrpg.enums.Damager;
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
+import com.dpnw.rtrpg.events.obj.RDamageByEntityEvent;
 import com.dpnw.rtrpg.utils.RMobUtil;
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
@@ -21,6 +23,7 @@ import java.util.UUID;
 
 public abstract class CraftRMob implements RMob {
     private ActiveMob mob = null;
+    private Entity entity = null;
     private double health;
     private double currentHealth;
     private double healthPerLevel;
@@ -43,6 +46,7 @@ public abstract class CraftRMob implements RMob {
 
     public CraftRMob(ActiveMob mob) {
         this.mob = mob;
+        this.entity = mob.getEntity().getBukkitEntity();
         mob.setShowCustomNameplate(true);
         mob.getEntity().getBukkitEntity().setCustomNameVisible(true);
         System.out.println(mob.getEntity().getCustomName());
@@ -52,6 +56,7 @@ public abstract class CraftRMob implements RMob {
     }
 
     public void damage(double damage, Player damager) {// 플레이어에게 공격받는 경우
+        Bukkit.getServer().getPluginManager().callEvent(new RDamageByEntityEvent(damager, entity, damage, Damager.PLAYER));
         if (currentHealth - (damage - getCurrentArmor()) <= 0) { // 들어온 데미지가 쉴드와 체력 둘다 감당하지 못할경우 처치
             LivingEntity le = (LivingEntity) mob.getEntity().getBukkitEntity();
             le.setKiller(damager);
