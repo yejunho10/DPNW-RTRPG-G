@@ -46,6 +46,10 @@ public class EnemyGetDamaged implements Listener {
                         Skill s = AllSkills.getSkillFromName(sn);
                         Bukkit.getServer().getPluginManager().callEvent(new SkillDamageEvent(s, p, m, e.getDamage()));
                     }
+                    if(sn.equals(SkillName.FIRE_BALL)){
+                        Skill s = AllSkills.getSkillFromName(sn);
+                        Bukkit.getServer().getPluginManager().callEvent(new SkillDamageEvent(s, p, m, e.getDamage()));
+                    }
                 }
             }
         }
