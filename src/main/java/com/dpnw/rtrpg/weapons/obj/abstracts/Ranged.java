@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public abstract class Ranged extends PublicFields implements Weapon, LifeStealable, Projectable {
+public abstract class Ranged extends WeaponPublicFields implements Weapon, LifeStealable, Projectable {
     WeaponType WEAPON_TYPE = WeaponType.RANGED;
     private String displayName;
     private String flavorText;

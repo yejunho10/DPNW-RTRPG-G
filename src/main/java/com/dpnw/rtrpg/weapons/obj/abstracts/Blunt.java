@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public abstract class Blunt extends PublicFields implements Weapon, LifeStealable {
+public abstract class Blunt extends WeaponPublicFields implements Weapon, LifeStealable {
     WeaponType WEAPON_TYPE = WeaponType.BLUNT;
     private String displayName;
     private String flavorText;
