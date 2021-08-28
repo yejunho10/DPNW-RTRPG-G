@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Sword extends PublicFields implements Weapon, LifeStealable {
+public abstract class Sword extends WeaponPublicFields implements Weapon, LifeStealable {
     WeaponType WEAPON_TYPE = WeaponType.SWORD;
     private String displayName;
     private String flavorText;

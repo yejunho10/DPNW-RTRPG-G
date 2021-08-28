@@ -1,20 +1,11 @@
-package com.dpnw.rtrpg.weapons.obj.abstracts;
+package com.dpnw.rtrpg.prefix.obj;
 
-import com.dpnw.rtrpg.RTRPG;
-import com.dpnw.rtrpg.ables.Cooldownable;
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.obj.interfaces.PublicField;
-import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
-import org.bukkit.Bukkit;
-import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("deprecation")
-public abstract class PublicFields extends ItemStack implements PublicField, Cooldownable {
+public abstract class PrefixPublicFields implements PrefixPublicField {
     private double damage = 0;
     private double range = 0;
     private double reach = 0;
-    private double angle = 0; //공격각도 - lore에 추가안함
     private Rank rank = null;
     private double attackSpeed = 0;
     private double criticalChance = 0;
@@ -30,25 +21,6 @@ public abstract class PublicFields extends ItemStack implements PublicField, Coo
     private double armor = 0;
     private double stunDuration = 0;
     private double stunChance = 0;
-    private boolean isCooldown = false;
-
-    @Override
-    public void cooldown(double time, @NotNull Object obj) {
-        if (obj instanceof Weapon) {
-            setCooldown(true);
-            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> setCooldown(false), (long) (20 / getAttackSpeed()));
-        }
-    }
-
-    @Override
-    public void setCooldown(boolean isCooldown) {
-        this.isCooldown = isCooldown;
-    }
-
-    @Override
-    public boolean isCooldown() {
-        return isCooldown;
-    }
 
     @Override
     public double getDamage() {
@@ -63,11 +35,6 @@ public abstract class PublicFields extends ItemStack implements PublicField, Coo
     @Override
     public double getReach() {
         return reach;
-    }
-
-    @Override
-    public double getAngle() {
-        return angle;
     }
 
     @Override
@@ -158,11 +125,6 @@ public abstract class PublicFields extends ItemStack implements PublicField, Coo
     @Override
     public void setReach(double reach) {
         this.reach = reach;
-    }
-
-    @Override
-    public void setAngle(double angle) {
-        this.angle = angle;
     }
 
     @Override

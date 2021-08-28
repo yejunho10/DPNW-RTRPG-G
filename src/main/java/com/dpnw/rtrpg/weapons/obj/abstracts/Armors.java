@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public abstract class Armors extends PublicFields implements Armor {
+public abstract class Armors extends WeaponPublicFields implements Armor {
     WeaponType WEAPON_TYPE = WeaponType.ARMOR;
     private String displayName;
     private String flavorText;
