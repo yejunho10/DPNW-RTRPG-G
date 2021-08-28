@@ -37,8 +37,9 @@ Visible : false
 
     public WaterBall() {
         setDamage(145);
-        setCooldown(2);
-        setRank(Rank.COMMON);
+        setRange(2);
+        setCooldown(8);
+        setRank(Rank.UNCOMMON);
         setRequireMana(68);
         setVisible(false);
         setSkillName(SkillName.WATER_BALL);

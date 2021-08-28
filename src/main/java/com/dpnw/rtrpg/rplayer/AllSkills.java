@@ -32,6 +32,9 @@ public class AllSkills {
         skills.add(new JetStomp());
         skills.add(new Noob());
         skills.add(new MemoryOfFeet());
+        skills.add(new WaterBall());
+        skills.add(new WindStrike());
+        skills.add(new FireBall());
     }
 
     public static Skill getSkillFromName(SkillName name) {
