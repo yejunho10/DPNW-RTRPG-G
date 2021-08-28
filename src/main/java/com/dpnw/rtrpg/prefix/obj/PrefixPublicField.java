@@ -1,10 +1,9 @@
-package com.dpnw.rtrpg.weapons.obj.interfaces;
+package com.dpnw.rtrpg.prefix.obj;
 
 import com.dpnw.rtrpg.enums.Rank;
-import org.bukkit.inventory.ItemStack;
 
 @SuppressWarnings("unused")
-public interface PublicField {
+public interface PrefixPublicField {
 
     /**
      * @return 추가데미지값을 리턴시킨다.
@@ -20,11 +19,6 @@ public interface PublicField {
      * @return 공격추가사거리를 리턴시킨다.
      */
     double getReach();
-
-    /**
-     * @return 공격각도를 리턴시킨다.
-     */
-    double getAngle();
 
     /**
      * @return 등급을 리턴시킨다.
@@ -102,11 +96,6 @@ public interface PublicField {
     double getStunChance();
 
     /**
-     * @return 커스텀모델의 ID를 리턴시킨다.
-     */
-    int getCMI();
-
-    /**
      * @param damage 추가데미지를 설정한다.
      */
     void setDamage(double damage);
@@ -120,11 +109,6 @@ public interface PublicField {
      * @param reach 추가공격사거리를 설정한다
      */
     void setReach(double reach);
-
-    /**
-     * @param angle 공격각도를 설정한다
-     */
-    void setAngle(double angle);
 
     /**
      * @param rank 등급을 설정한다.
@@ -200,9 +184,4 @@ public interface PublicField {
      * @param stunChance 기절확률을 설정한다
      */
     void setStunChance(double stunChance);
-
-    /**
-     * @param cmi 커스텀모델의 ID를 설정한다.
-     */
-    void setCMI(int cmi);
 }

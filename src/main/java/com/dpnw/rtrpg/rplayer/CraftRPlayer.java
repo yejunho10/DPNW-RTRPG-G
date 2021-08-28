@@ -10,7 +10,7 @@ import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
 import com.dpnw.rtrpg.utils.NBT;
-import com.dpnw.rtrpg.weapons.obj.abstracts.PublicFields;
+import com.dpnw.rtrpg.weapons.obj.abstracts.WeaponPublicFields;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import org.bukkit.Bukkit;
@@ -76,7 +76,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         if(!(currentWeapon == null)) {
             unApplyWeaponStats(currentWeapon);
         }
-        PublicFields s = (PublicFields) w;
+        WeaponPublicFields s = (WeaponPublicFields) w;
         this.health += s.getHealth();
         this.healthRegen += s.getHealthRegen();
         this.armor += s.getArmor();
@@ -87,7 +87,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     }
 
     public void unApplyWeaponStats(Weapon w) {
-        PublicFields s = (PublicFields) w;
+        WeaponPublicFields s = (WeaponPublicFields) w;
         this.health -= s.getHealth();
         this.healthRegen -= s.getHealthRegen();
         this.armor -= s.getArmor();
