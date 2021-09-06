@@ -1,8 +1,8 @@
 package com.dpnw.rtrpg;
 
+import com.dpnw.discord.RDBuilder;
 import com.dpnw.discord.Token;
 import com.dpnw.rtrpg.commands.RCommand;
-import com.dpnw.discord.RDBuilder;
 import com.dpnw.rtrpg.mob.obj.RMob;
 import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
@@ -14,8 +14,6 @@ import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import net.dv8tion.jda.api.JDA;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.security.auth.login.LoginException;

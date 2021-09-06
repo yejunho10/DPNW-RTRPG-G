@@ -3,6 +3,7 @@ package com.dpnw.rtrpg.events.player;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.functions.MenuFunctions;
+import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.schedulers.CounterScheduler;
 import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
@@ -82,25 +83,16 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
-        int level = plugin.rplayers.get(p.getUniqueId()).getLevel();
-        e.setFormat("§f[ §6LV.§e" + level + " §f] " + e.getFormat());
+        CraftRPlayer cp = plugin.rplayers.get(p.getUniqueId());
+        int level = cp.getLevel();
+        Karma karma = cp.getKarma();
+        e.setFormat("§f[ §a"+ karma.getTitle().getTitle() +" §f] §f[ §6LV.§e" + level + " §f] " + e.getFormat());
         TextChannel tc = RTRPG.jda.getTextChannelById(873619683469828138L);
 
         try {
-            tc.sendMessage("[ LV." + level + " ] <" + p.getName() + "> " + e.getMessage()).queue();
-            send(tc);
+            tc.sendMessage("[ "+ karma.getTitle().getTitle() +" ] [ LV." + level + " ] <" + p.getName() + "> " + e.getMessage()).queue();
         } catch (Exception ee) {
             ee.printStackTrace();
-        }
-    }
-
-    public void send(TextChannel tc) {
-        try {
-            Webhook w = new WebhookImpl(tc, RTRPG.jda, 875035423838175322L, WebhookType.UNKNOWN);
-            WebhookClient wc = (WebhookClient) w;
-            wc.sendMessage("Test").queue();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

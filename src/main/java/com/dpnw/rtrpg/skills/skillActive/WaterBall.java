@@ -63,6 +63,7 @@ Visible : false
             ar.setShooter(p);
             ar.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
             ar.setMetadata("skill", new FixedMetadataValue(RTRPG.getInstance(), getSkillName().getRaw()));
+            RTRPG.getInstance().projectileList.add(ar.getUniqueId());
             Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
                 RTRPG.getInstance().projectileList.remove(ar.getUniqueId());
                 ar.remove();
