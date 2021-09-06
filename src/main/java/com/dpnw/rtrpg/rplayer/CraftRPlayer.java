@@ -4,6 +4,7 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.enums.SkillType;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import com.dpnw.rtrpg.rplayer.obj.Levelable;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
@@ -28,6 +29,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private final Player p;
     private final UUID uuid;
     private BigDecimal money = new BigDecimal(0);
+    private Karma karma = new Karma();
     private Skills skills;
     private Map<SkillName, Passive> passiveList = new HashMap<>(); // 플레이어가 해금한 패시브 스킬 목록
     private Map<SkillName, Active> activeList = new HashMap<>(); // 플레이어가 해금한 액티브 스킬 목록
@@ -155,6 +157,16 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     @Override
     public void subMoney(RPlayer rp, double money) {
         this.money = this.money.subtract(new BigDecimal(money));
+    }
+
+    @Override
+    public Karma getKarma() {
+        return karma;
+    }
+
+    @Override
+    public void setKarma(Karma karma) {
+        this.karma = karma;
     }
 
     public ItemStack getBundle() {

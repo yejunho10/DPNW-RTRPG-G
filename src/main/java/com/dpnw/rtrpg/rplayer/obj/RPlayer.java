@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.rplayer.obj;
 
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
@@ -29,6 +30,10 @@ public interface RPlayer {
     void addMoney(RPlayer rp, double money);
 
     void subMoney(RPlayer rp, double money);
+
+    Karma getKarma();
+
+    void setKarma(Karma karma);
 
     /**
      * @return 플레이어의 패시브 스킬 리스트를 리턴시킨다.
