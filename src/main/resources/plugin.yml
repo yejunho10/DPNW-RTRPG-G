@@ -1,9 +1,11 @@
 name: DPNW-RTRPG
 version: 1.0.0-SNAPSHOT
 main: com.dpnw.rtrpg.RTRPG
+depend:
+  - DPP-Core
 softdepend:
   - MythicMobs
-api-version: 1.17
+api-version: 1.18
 authors: [ DP_NETWORK ]
 commands:
   rr:

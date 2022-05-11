@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.obj.abstracts;
 
+import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.enums.WeaponType;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
-import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.able.LifeStealable;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import org.bukkit.Location;
@@ -83,7 +83,7 @@ public abstract class Blunt extends WeaponPublicFields implements Weapon, LifeSt
     @Override
     public void use(RPlayer p) {
         Location loc = p.getPlayer().getLocation().getDirection().multiply(1).toLocation(p.getPlayer().getLocation().getWorld());
-        loc.getNearbyEntities(getRange(), getRange(), getRange()).forEach(e -> {
+        p.getPlayer().getNearbyEntities(getRange(), getRange(), getRange()).forEach(e -> {
             if(e instanceof Mob m) {
                 if(RTRPG.getInstance().rmobs.containsKey(m.getUniqueId())){
                     //todo attack
@@ -160,6 +160,6 @@ public abstract class Blunt extends WeaponPublicFields implements Weapon, LifeSt
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(NBT.setTag(item, "action", "weapon"), "weapon", getWeaponName().getRaw());
+        return NBT.setStringTag(NBT.setStringTag(item, "action", "weapon"), "weapon", getWeaponName().getRaw());
     }
 }

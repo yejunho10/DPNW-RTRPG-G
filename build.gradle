@@ -14,25 +14,30 @@ tasks.withType(JavaCompile) {
 
 repositories {
     mavenCentral()
-    maven { url "https://papermc.io/repo/repository/maven-public/" }
+    maven {
+        url "http://dpp.dpnw.site:8081/repository/maven-public/"
+        allowInsecureProtocol = true
+    }
     maven { url "https://mvn.lumine.io/repository/maven-public/" }
     maven { url "https://repo.dmulloy2.net/repository/public/" }
     maven { url "https://repo.md-5.net/content/groups/public/" }
     maven {
-        name 'm2-dv8tion'
-        url 'https://m2.dv8tion.net/releases'
+        url "https://mvn.lumine.io/repository/maven-public/"
     }
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
-    compileOnly "io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT"
-    compileOnly "io.lumine.xikage:MythicMobs:4.11.0-SNAPSHOT"
+    compileOnly 'io.papermc.paper:paper-api:1.18.2'
+    compileOnly 'io.lumine:Mythic:5.0.2'
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.7.0"
-    compileOnly 'org.spigotmc:spigot:1.17-R0.1-SNAPSHOT'
     compileOnly group: "LibsDisguises", name: "LibsDisguises", version: "10.0.26"
-    implementation("net.dv8tion:JDA:4.3.0_309")
+    compileOnly 'io.lumine:LumineUtils:1.16.1-SNAPSHOT'
+    compileOnly 'org.bukkit.craftbukkit:craftbukkit:R0.1:1.18.2'
+    compileOnly 'org.spigotmc:spigot-api:R0.1:1.18.2'
+    compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.18.2-SNAPSHOT'
+    implementation "net.kyori:adventure-api:4.10.1"
 }
 
 test {

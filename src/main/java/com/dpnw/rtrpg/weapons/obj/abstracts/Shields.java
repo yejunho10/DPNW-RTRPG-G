@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.obj.abstracts;
 
+import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.enums.WeaponType;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
-import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Shield;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -182,6 +182,6 @@ public abstract class Shields extends WeaponPublicFields implements Shield {
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(NBT.setTag(item, "action", "shield"), "weapon", getWeaponName().getRaw());
+        return NBT.setStringTag(NBT.setStringTag(item, "action", "shield"), "weapon", getWeaponName().getRaw());
     }
 }

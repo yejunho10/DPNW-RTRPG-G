@@ -1,14 +1,10 @@
 package com.dpnw.rtrpg.utils;
 
 import com.dpnw.rtrpg.RTRPG;
-import com.dpnw.rtrpg.particles.ParticleUtil;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class RMobUtil {

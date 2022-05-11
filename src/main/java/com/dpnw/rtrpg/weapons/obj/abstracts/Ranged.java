@@ -1,9 +1,9 @@
 package com.dpnw.rtrpg.weapons.obj.abstracts;
 
+import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.enums.WeaponType;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
-import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.able.LifeStealable;
 import com.dpnw.rtrpg.weapons.obj.able.Projectable;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
@@ -173,6 +173,6 @@ public abstract class Ranged extends WeaponPublicFields implements Weapon, LifeS
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(NBT.setTag(item, "action", "weapon"), "weapon", getWeaponName().getRaw());
+        return NBT.setStringTag(NBT.setStringTag(item, "action", "weapon"), "weapon", getWeaponName().getRaw());
     }
 }

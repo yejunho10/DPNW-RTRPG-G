@@ -5,13 +5,9 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import com.dpnw.rtrpg.particles.ParticleUtil;
-import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
-import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.RActive;
 import com.dpnw.rtrpg.skills.utils.Cone;
-import com.dpnw.rtrpg.utils.RPlayerUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.ArmorStand;
@@ -21,53 +17,30 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
-public class AirSlash extends RActive {
+public class FlingUP extends RActive {
     private BukkitTask task;
 
-    public AirSlash() {
-        setDamage(120);
-        setCooldown(12);
+    public FlingUP() {
+        setDamage(20);
+        setCooldown(6);
         setRank(Rank.COMMON);
-        setRequireMana(40);
-        setRange(20);
+        setRange(2);
         setVisible(true);
-        setSkillName(SkillName.AIR_SLASH);
-    }
-
-    public AirSlash(Player p) {
-        setDamage(120);
-        setCooldown(12);
-        setRank(Rank.COMMON);
-        setRequireMana(40);
-        setRange(20);
-        setVisible(false);
-        setSkillName(SkillName.AIR_SLASH);
-        if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
-        task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
-            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-            if (cp == null) return;
-            if (cp.getMoveCount() >= 5000) {
-                RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
-                task.cancel();
-            }
-        }, 0L, 20L);
+        setSkillName(SkillName.FLING_UP);
     }
 
     @Override
     public String skillUnlockCondition() {
-        return "5000블럭 이상을 이동했다.";
+        return "메인퀘스트 2 완료.";
     }
 
-    /*
-        Use : 시전시 전방을 베어가르며 날아가는 칼바람을 발사합니다. 칼바람은 적을 관통하며, 닿을시 120 +(레벨당 2)의 피해를 입힙니다.
-         */
     @Override
     public void use(RPlayer rp) {
         if (isCooldown()) return;
         try{
             Player p = rp.getPlayer();
             if (isCooldown()) return;
-            for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 90, p.getEyeLocation().getDirection())) {
+            for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 35, p.getEyeLocation().getDirection())) {
                 if(e instanceof ArmorStand) continue;
                 LivingEntity le = (LivingEntity) e;
                 System.out.println(e.getType());
@@ -75,9 +48,13 @@ public class AirSlash extends RActive {
                 CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
                 rmob.damage(getDamage(), rp.getPlayer());
             }
-            for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 90,
+            for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 35,
                     p.getLocation().getDirection())) {
                 ParticleUtil.createParticle(p, Particle.CLOUD, v.toLocation(p.getWorld()), 0, 1, 0, 2, 0);
+            }
+            for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 35,
+                    p.getLocation().getDirection())) {
+                ParticleUtil.createParticle(p, Particle.CLOUD, v.toLocation(p.getWorld()), 0, 2, 0, 2, 0);
             }
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.4f);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);

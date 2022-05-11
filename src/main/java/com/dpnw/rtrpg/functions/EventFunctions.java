@@ -1,8 +1,8 @@
 package com.dpnw.rtrpg.functions;
 
+import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
-import com.dpnw.rtrpg.utils.NBT;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 

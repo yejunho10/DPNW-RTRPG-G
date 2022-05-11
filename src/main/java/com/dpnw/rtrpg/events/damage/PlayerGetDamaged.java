@@ -4,6 +4,7 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
+import com.dpnw.rtrpg.skills.skillActive.Exacting;
 import com.dpnw.rtrpg.skills.skillActive.MemoryOfFeet;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
@@ -49,6 +50,13 @@ public class PlayerGetDamaged implements Listener {
                 MemoryOfFeet skill = (MemoryOfFeet) cp.getActiveList().get(sn);
                 if (skill.isReady()) {
                     skill.cancelByAttacked();
+                }
+            }
+            if(sn == SkillName.EXACTING) {
+                Exacting skill = (Exacting) cp.getActiveList().get(sn);
+                if(skill.count != 0) {
+                    skill.count -= 1;
+                    e.setDamage(0);
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg.events.player;
 
+import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.functions.MenuFunctions;
@@ -11,12 +12,10 @@ import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.JetStomp;
-import com.dpnw.rtrpg.utils.*;
-import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.entities.Webhook;
-import net.dv8tion.jda.api.entities.WebhookClient;
-import net.dv8tion.jda.api.entities.WebhookType;
-import net.dv8tion.jda.internal.entities.WebhookImpl;
+import com.dpnw.rtrpg.utils.DisplayToast;
+import com.dpnw.rtrpg.utils.RPlayerUtil;
+import com.dpnw.rtrpg.utils.ToastKey;
+import com.dpnw.rtrpg.utils.Tuple;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -86,14 +85,7 @@ public class PlayerEvents implements Listener {
         CraftRPlayer cp = plugin.rplayers.get(p.getUniqueId());
         int level = cp.getLevel();
         Karma karma = cp.getKarma();
-        e.setFormat("§f[ §a"+ karma.getTitle().getTitle() +" §f] §f[ §6LV.§e" + level + " §f] " + e.getFormat());
-        TextChannel tc = RTRPG.jda.getTextChannelById(873619683469828138L);
-
-        try {
-            tc.sendMessage("[ "+ karma.getTitle().getTitle() +" ] [ LV." + level + " ] <" + p.getName() + "> " + e.getMessage()).queue();
-        } catch (Exception ee) {
-            ee.printStackTrace();
-        }
+        e.setFormat("§f[ §a" + karma.getTitle().getTitle() + " §f] §f[ §6LV.§e" + level + " §f] " + e.getFormat());
     }
 
     @EventHandler
