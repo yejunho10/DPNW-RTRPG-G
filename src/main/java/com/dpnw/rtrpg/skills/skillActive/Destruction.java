@@ -10,7 +10,19 @@ import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
+/*
+Unlock : 적을 1만 마리 이상 처치했다.
 
+Use : 시전시 바라보고 있는 적을 관통합니다. 관통당한 적은 2초 동안 기절상태가 되었다가 폭발하며, 15% 확률로 즉사하거나 444 +(레벨당 4)의 피해를 입습니다.
+
+Damage : 444 +(4 for a lv)
+Duration : 2
+Max Target Range : 15
+Cooldown : 24
+Require mana : 120
+Rank : Unique
+Visible : false
+ */
 public class Destruction extends RActive {
     public Destruction() {
         setDamage(444);

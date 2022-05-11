@@ -15,6 +15,18 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
+/*
+Unlock : 메인퀘스트 1 완료
+
+Use : 정면을 한 번 베어 15 +(레벨당 2)의 피해를 준다.
+
+Damage : 15 +(2 for a lv)
+Range : 4
+Require mana : 25
+Cooldown : 5Secs
+Rank : Common
+Visible : true
+ */
 public class Cutting extends RActive {
 
     public Cutting() {
@@ -46,26 +58,27 @@ public class Cutting extends RActive {
 
     @Override
     public void use(RPlayer rp) {
-        try{
+        try {
             Player p = rp.getPlayer();
             if (isCooldown()) return;
             for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 180, p.getEyeLocation().getDirection())) {
-                if(e instanceof ArmorStand) continue;
+                if (e instanceof ArmorStand) continue;
                 LivingEntity le = (LivingEntity) e;
                 System.out.println(e.getType());
                 //damage
                 CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                rmob.damage(getDamage(), rp.getPlayer());
+                rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
 
                 ParticleUtil.createParticle(p, Particle.SWEEP_ATTACK, e.getLocation(), 0, 1, 0, 2, 0);
             }
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.8f);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
             cooldown(getCooldown(), this);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public void cancel() {
 

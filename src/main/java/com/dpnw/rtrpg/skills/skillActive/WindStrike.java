@@ -48,7 +48,7 @@ Visible : false
         Entity e = p.getTargetEntity((int) getMaxTargetRange());
         if (!(e instanceof Mob m)) return;
         CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(m.getUniqueId());
-        rmob.damage(getDamage(), rp.getPlayer());
+        rmob.damage(getDamage() + 3 * rp.getLevel(), rp.getPlayer());
         cooldown(getCooldown(), this);
     }
 

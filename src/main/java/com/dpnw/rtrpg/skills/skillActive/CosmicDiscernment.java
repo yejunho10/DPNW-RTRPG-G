@@ -11,7 +11,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlock : 10시간 동안 가만히 있었다.
 
+Use : 무작위 네 개의 스킬의 쿨타임을 즉시 되돌린다. 잃은 마나를 전부 회복한다.
+
+Require mana : 0
+Cooldown : 3600 (1h)
+Visible : false
+Rank : Unique
+ */
 @SuppressWarnings("unused")
 public class CosmicDiscernment extends RActive {
     private int timer = 0;

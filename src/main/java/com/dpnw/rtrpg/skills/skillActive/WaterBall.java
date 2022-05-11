@@ -21,8 +21,8 @@ import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
 public class WaterBall extends RActive {
-    /*
-    Unlock : 상점에서 구매
+/*
+Unlock : 상점에서 구매
 
 Use : 바라본 방향으로 포물선을 그리며 날아가는 물방울을 날려 맞은 대상에게 145 +(레벨당 2)의 피해를 입히고, 2초간 물감옥에 가둬 공중에 떠올립니다.
 
@@ -33,7 +33,7 @@ Require mana : 68
 Cooldown : 8Secs
 Rank : Uncommon
 Visible : false
-     */
+*/
 
     public WaterBall() {
         setDamage(145);
