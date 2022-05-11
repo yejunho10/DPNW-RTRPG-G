@@ -30,7 +30,7 @@ public class AirSlash extends RActive {
         setRank(Rank.COMMON);
         setRequireMana(40);
         setRange(20);
-        setVisible(true);
+        setVisible(false);
         setSkillName(SkillName.AIR_SLASH);
     }
 
@@ -60,13 +60,12 @@ public class AirSlash extends RActive {
 
     /*
         Use : 시전시 전방을 베어가르며 날아가는 칼바람을 발사합니다. 칼바람은 적을 관통하며, 닿을시 120 +(레벨당 2)의 피해를 입힙니다.
-         */
+    */
     @Override
     public void use(RPlayer rp) {
         if (isCooldown()) return;
         try{
             Player p = rp.getPlayer();
-            if (isCooldown()) return;
             for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 90, p.getEyeLocation().getDirection())) {
                 if(e instanceof ArmorStand) continue;
                 LivingEntity le = (LivingEntity) e;
@@ -81,7 +80,6 @@ public class AirSlash extends RActive {
             }
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.4f);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
-            cooldown(getCooldown(), this);
         }catch(Exception e){
             e.printStackTrace();
         }
