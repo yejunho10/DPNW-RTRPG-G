@@ -2,7 +2,7 @@ package com.dpnw.rtrpg.mob.obj;
 
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
 import org.bukkit.Location;
 
 import java.util.UUID;

@@ -6,8 +6,8 @@ import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.events.obj.RDamageByEntityEvent;
 import com.dpnw.rtrpg.utils.RMobUtil;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.bukkit.MythicBukkit;
+import io.lumine.mythic.core.mobs.ActiveMob;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -85,8 +85,8 @@ public abstract class CraftRMob implements RMob {
     @Override
     public void summon(Location loc, int level) {
         try {
-            Entity e = MythicMobs.inst().getAPIHelper().spawnMythicMob(MythicMobs.inst().getMobManager().getMythicMob("슬라임"), loc, level);
-            mob = MythicMobs.inst().getMobManager().getActiveMob(e.getUniqueId()).get();
+            Entity e = MythicBukkit.inst().getAPIHelper().spawnMythicMob(MythicBukkit.inst().getMobManager().getMythicMob("슬라임").get(), loc, level);
+            mob = MythicBukkit.inst().getMobManager().getActiveMob(e.getUniqueId()).get();
             uuid = mob.getUniqueId();
             this.level = level;
             RTRPG.getInstance().rmobs.put(uuid, this);

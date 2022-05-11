@@ -4,7 +4,6 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
-import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.RPassive;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
@@ -28,11 +27,12 @@ public class HugOfWind extends RPassive {
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
             CraftRPlayer cp = (CraftRPlayer)RPlayerUtil.getRPlayer(p.getUniqueId());
+            if(cp == null) return;
             if (cp.getMoveCount() >= 15000) {
                 RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
                 task.cancel();
             }
-        }, 0L, 20L);
+        }, 10L, 20L);
     }
 
     @Override

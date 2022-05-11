@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.obj.abstracts;
 
+import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.enums.WeaponType;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
-import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Armor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -182,6 +182,6 @@ public abstract class Armors extends WeaponPublicFields implements Armor {
         }
         im.setLore(lores);
         item.setItemMeta(im);
-        return NBT.setTag(NBT.setTag(item, "action", "armor"), "weapon", getWeaponName().getRaw());
+        return NBT.setStringTag(NBT.setStringTag(item, "action", "armor"), "weapon", getWeaponName().getRaw());
     }
 }

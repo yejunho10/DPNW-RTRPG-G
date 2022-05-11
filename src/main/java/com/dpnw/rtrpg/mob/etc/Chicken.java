@@ -3,7 +3,8 @@ package com.dpnw.rtrpg.mob.etc;
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
-import io.lumine.xikage.mythicmobs.mobs.ActiveMob;
+import io.lumine.mythic.core.mobs.ActiveMob;
+
 
 public class Chicken extends CraftRMob {
 

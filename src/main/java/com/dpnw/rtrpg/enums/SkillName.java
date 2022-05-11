@@ -1,6 +1,5 @@
 package com.dpnw.rtrpg.enums;
 
-@SuppressWarnings("unused")
 public enum SkillName {
     AIR_SLASH("AIR_SLASH", "에어 슬래쉬", SkillType.ACTIVE),
     ANOTHER_WORLD_PERSON("ANOTHER_WORLD_PERSON", "이세계인", SkillType.PASSIVE),
@@ -19,7 +18,7 @@ public enum SkillName {
     CLAY_SHIELD("CLAY_SHIELD", "점토 방패", SkillType.ACTIVE),
     CLOCK_OF_THE_END("CLOCK_OF_THE_END", "종언의 시계", SkillType.ACTIVE),
     COMBAT_MANEUVER("COMBAT_MANEUVER", "전투기동", SkillType.HYBRID),
-    COSMIC_DISCERNMENT("COSMIC_DISCERNMET", "우주적 통찰", SkillType.ACTIVE),
+    COSMIC_DISCERNMENT("COSMIC_DISCERNMENT", "우주적 통찰", SkillType.ACTIVE),
     COUNTERATTACK("COUNTERATTACK", "반격", SkillType.PASSIVE),
     CRADLE_OF_BLOOD("CRADLE_OF_BLOOD", "피의 요람", SkillType.PASSIVE),
     CREED("CREED", "신념", SkillType.ACTIVE),

@@ -23,6 +23,7 @@ public class CounterScheduler {
         Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> { //movement count
             for(Player p : Bukkit.getOnlinePlayers()) {
                 CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+                if(cp == null) continue;
                 Location from = move.get(p.getUniqueId()).a();
                 Location to = move.get(p.getUniqueId()).b();
                 from.setY(0);
@@ -34,6 +35,7 @@ public class CounterScheduler {
         Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> { //noAttack Count
             for(Player p : Bukkit.getOnlinePlayers()) {
                 CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+                if(cp == null) continue;
                 if (RPlayerUtil.hasSkill(cp.getUUID(), SkillName.IMMOVABLE)) continue;
                 if(noAttack.containsKey(cp.getUUID())) {
                     int from = noAttack.get(cp.getUUID());

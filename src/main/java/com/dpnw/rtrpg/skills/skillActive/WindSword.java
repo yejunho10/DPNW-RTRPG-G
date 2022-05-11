@@ -36,6 +36,7 @@ public class WindSword extends RActive {
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
             CraftRPlayer cp = (CraftRPlayer)RPlayerUtil.getRPlayer(p.getUniqueId());
+            if(cp == null) return;
             if (cp.getMoveCount() >= 10000) {
                 RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
                 task.cancel();

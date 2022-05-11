@@ -2,8 +2,8 @@ package com.dpnw.rtrpg.schedulers;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.particles.ParticleUtil;
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.spawning.spawners.MythicSpawner;
+import io.lumine.mythic.bukkit.MythicBukkit;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -49,7 +49,7 @@ public class SpawnerShowScheduler {
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
             markers.forEach(Entity::remove);
             markers.clear();
-            for (MythicSpawner s : MythicMobs.inst().getSpawnerManager().getSpawners()) {
+            for (MythicSpawner s : MythicBukkit.inst().getSpawnerManager().getSpawners()) {
                 World w = Bukkit.getWorld(s.getWorldName());
                 double x = s.getLocation().getX();
                 double y = s.getLocation().getY();

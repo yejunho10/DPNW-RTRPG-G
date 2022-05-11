@@ -4,6 +4,9 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("unused")
 public interface Skill extends Unlockable, Visible, TaskCancelable {
     /**
@@ -183,4 +186,24 @@ public interface Skill extends Unlockable, Visible, TaskCancelable {
      * @param p 스킬을 준다.
      */
     void giveSkill(RPlayer p);
+
+    default List<String> getLores() {
+        List<String> lore = new ArrayList<>();
+        lore.add("§7" + getSkillName().getKor() + " §f- " + getSkillName().getRaw());
+        lore.add("§7지속시간: " + getDuration() + " 초");
+        lore.add("§7쿨타임: " + getCooldown() + " 초");
+        lore.add("§7범위: " + getRange() + " 블럭");
+        lore.add("§7부 범위: " + getSubRange() + " 블럭");
+        lore.add("§7데미지: " + getDamage() + " 데미지");
+        lore.add("§7추가 데미지: " + getAddedDamage() + " 데미지");
+        lore.add("§72차 데미지: " + getSecondDamage() + " 데미지");
+        lore.add("§7생명력 흡수: " + getHealing() + " 체력");
+        lore.add("§7최대 적 타겟범위: " + getMaxTargetRange() + " 블럭");
+        lore.add("§7최대 타겟수: " + getMaxNumber() + " 명");
+        lore.add("§7등급: " + getRank() + " 등급");
+        lore.add("§7방어력 증가: " + getIncreaseArmor() + " 방어력");
+        lore.add("§7방어력 감소: " + getDecreaseArmor() + " 방어력");
+        lore.add("§7요구 마나: " + getRequireMana() + " 마나");
+        return lore;
+    }
 }

@@ -35,16 +35,15 @@ public class AllSkills {
         skills.add(new WaterBall());
         skills.add(new WindStrike());
         skills.add(new FireBall());
-        skills.add(new Enlightenment());
-        skills.add(new GreenBloodline());
-        skills.add(new HardMuscle());
-        skills.add(new Resolution());
-        skills.add(new SoulofGladiator());
-        skills.add(new DelightofSlaughter());
-        skills.add(new Viscosity());
-        skills.add(new Tension());
-        skills.add(new OverHeating());
-        skills.add(new Sin());
+        skills.add(new FireRing());
+        skills.add(new PassingAndHit());
+        skills.add(new FlingUP());
+        skills.add(new Exacting());
+        skills.add(new WheelAttack());
+        skills.add(new SpinAttack());
+        skills.add(new Unyieldingness());
+        skills.add(new Survivor());
+        skills.add(new Undead());
     }
 
     public static Skill getSkillFromName(SkillName name) {

@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg.rplayer;
 
+import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.enums.SkillType;
@@ -10,7 +11,6 @@ import com.dpnw.rtrpg.rplayer.obj.Levelable;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
-import com.dpnw.rtrpg.utils.NBT;
 import com.dpnw.rtrpg.weapons.obj.abstracts.WeaponPublicFields;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
