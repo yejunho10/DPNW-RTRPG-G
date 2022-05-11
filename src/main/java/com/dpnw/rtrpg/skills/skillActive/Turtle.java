@@ -8,7 +8,17 @@ import com.dpnw.rtrpg.skills.obj.RActive;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.scheduler.BukkitRunnable;
+/*
+Unlock : 적에게 죽지 않고 100회 이상 피해를 받을 시.
 
+Effect : 5초간 방어력이 50 +(레벨당 0.5)% 상승한다.
+
+Duration : 5
+Cooldown : 37Secs
+Require mana : 10
+Rank : Uncommon
+Visable : false
+ */
 @SuppressWarnings("unused")
 public class Turtle extends RActive {
     public Turtle() {
