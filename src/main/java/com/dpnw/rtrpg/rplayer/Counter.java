@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("unused")
-public class Counter {
+public class Counter extends PublicFields {
     private int deathCount = 0; //자신이 죽은 수
     private int killCount = 0; //모든 적을 죽인 수
     private double moveCount = 0; //이동한 거리
