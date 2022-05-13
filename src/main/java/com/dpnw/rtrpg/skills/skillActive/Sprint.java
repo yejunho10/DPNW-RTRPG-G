@@ -10,7 +10,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlock : 1분 동안 달리기가 끊기지 않았을 시.
 
+Effect : 5초 +(레벨당 0.15)초간 이동속도가 1.0만큼 상승한다.
+
+Duration : 5 +(0.15 for a lv)
+Cooldown : 30Secs
+Require mana : 5
+Rank : Common
+Visable : false
+ */
 @SuppressWarnings("All")
 public class Sprint extends RActive {
     private int timer = 0;

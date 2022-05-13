@@ -32,6 +32,6 @@ public class BeliverofBlood extends CraftRMob {
 
     @Override
     public void init() {
-        setCurrentHealth(getMob().getEntity().getHealth());
+        setCurrentHealth(getHealth());
     }
 }

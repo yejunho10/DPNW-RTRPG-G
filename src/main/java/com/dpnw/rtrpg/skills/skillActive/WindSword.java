@@ -11,7 +11,18 @@ import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlcok : 10000 블럭 이상을 이동했다.
 
+Use : 시전시 전방 반달범위를 크게 베는 바람을 소환합니다. 이에 적중된 적은 175 + (레벨당 3)의 피해를 입고, 넉백됩니다.
+
+Damage : 175 +(3 for a lv)
+Range : 7
+Require mana : 65
+Cooldown : 12
+Rank : Common
+Visable : false
+ */
 public class WindSword extends RActive {
     private BukkitTask task;
 

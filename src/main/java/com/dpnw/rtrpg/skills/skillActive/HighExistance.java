@@ -11,7 +11,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlock : 4시간 동안 가만히 있었다.
 
+Use : 다른 모든 엑스트라 등급 이하 스킬의 쿨타임을 10% 감소시킨다. 잃은 마나의 50%를 회복한다.
+
+Require mana : 150
+Cooldown : 60Secs
+Visible : false
+Rank : Rare
+ */
 @SuppressWarnings("unused")
 public class HighExistance extends RActive {
     private int timer = 0;

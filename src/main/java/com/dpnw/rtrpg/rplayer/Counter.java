@@ -13,6 +13,7 @@ public class Counter {
     private int killCount = 0; //모든 적을 죽인 수
     private double moveCount = 0; //이동한 거리
     private int clearedQuest = 0; //퀘스트 클리어 횟수
+
     private Map<MobName, Integer> enemyCount = new HashMap<>(); //각각의 적을 죽인 수
     private Map<SkillName, Integer> skillCount = new HashMap<>(); //특정 스킬을 사용한 수
     //temp

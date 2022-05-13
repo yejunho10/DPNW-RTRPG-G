@@ -12,7 +12,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlock : 20000M 이상 걸을 시
 
+Effect : 자신이 서 있는 위치에 마킹할 수 있고, 10초의 시전시간 후 마킹한 위치로 순간이동 할 수 있다. 시전시간 중 피해를 입으면 시전이 해제된다.
+
+Require Mana : 20
+Cooldown : 60 (1m)
+Rank : Rare
+Visable : false
+ */
 public class MemoryOfFeet extends RActive {
     private BukkitTask task;
     private Location loc;

@@ -5,7 +5,16 @@ import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RActive;
 import org.bukkit.entity.Player;
+/*
+Unlock : 되살아나고 1분 이내에 다시 죽었을 시.
 
+Effect : 화면에 거대하게 타이틀로 "개허접" 이라고 뜬다.
+
+Cooldown : 600sec.
+Require mana : 1
+Rank : Uncommon
+Visable : false
+ */
 public class Noob extends RActive {
 
     public Noob() {

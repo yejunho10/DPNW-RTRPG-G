@@ -11,7 +11,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlock : 낙사했다.
 
+Use : 시전 즉시 허공으로 높이 떠올라 바라보고 있는 곳으로 떨어집니다. 이떄 주변의 적은 100 +(레벨당 1)의 피해를 입습니다.
+
+Damage : 100 +(1 for a lv)
+Range : 7
+Require mana : 60
+Cooldown : 20Secs
+Rank : Common
+Visible : false
+ */
 public class JetStomp extends RActive {
     private int timer = 0;
     private BukkitTask task;

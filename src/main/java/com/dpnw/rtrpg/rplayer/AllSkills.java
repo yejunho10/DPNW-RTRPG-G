@@ -44,6 +44,7 @@ public class AllSkills {
         skills.add(new Unyieldingness());
         skills.add(new Survivor());
         skills.add(new Undead());
+        skills.add(new Destruction());
     }
 
     public static Skill getSkillFromName(SkillName name) {
