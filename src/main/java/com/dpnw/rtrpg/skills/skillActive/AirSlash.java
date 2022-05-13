@@ -33,6 +33,7 @@ Range : 20
 Rank : Common
 Visable : false
  */
+@SuppressWarnings("all")
 public class AirSlash extends RActive {
     private BukkitTask task;
 
