@@ -62,7 +62,9 @@ public class FireRing extends RActive {
                     currentMobs.remove(m);
                 } else {
                     CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(m);
-                    rmob.damage(getSecondDamage() + rp.getLevel(), rp.getPlayer());
+                    if(rmob != null) {
+                        rmob.damage(getSecondDamage() + rp.getLevel(), rp.getPlayer());
+                    }
                     currentMobs.put(m, currentMobs.get(m) + 1);
                 }
             });
@@ -73,7 +75,9 @@ public class FireRing extends RActive {
                 if (e instanceof LivingEntity le) {
                     currentMobs.put(le.getUniqueId(), 0);
                     CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                    rmob.damage(getDamage() + rp.getLevel(), rp.getPlayer());
+                    if(rmob != null) {
+                        rmob.damage(getDamage() + rp.getLevel(), rp.getPlayer());
+                    }
                 }
             }
         }, 0L, 20L);
