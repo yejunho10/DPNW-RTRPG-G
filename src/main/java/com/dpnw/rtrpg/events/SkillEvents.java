@@ -16,7 +16,6 @@ public class SkillEvents implements Listener {
             CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(e.getPlayer().getUniqueId());
             if (cp.getEquipedPassiveSkill().containsValue(SkillName.DOUBLE_JUMP)) {
                 cp.getPassiveList().get(SkillName.DOUBLE_JUMP).use(cp);
-                return;
             }
             e.setCancelled(true);
         }
