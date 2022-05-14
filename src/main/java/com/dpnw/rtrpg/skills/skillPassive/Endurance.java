@@ -11,7 +11,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlcok : 30분 동안 가만히 있었다.
 
+Effect : 초당 마나 회복량이 0.1 증가한다.
+
+Rank : Common
+Visable : false
+ */
 @SuppressWarnings("unused")
 public class Endurance extends RPassive {
     private int timer = 0;
@@ -20,14 +27,16 @@ public class Endurance extends RPassive {
 
     public Endurance() {
         setRank(Rank.COMMON);
-        setVisible(true);
+        setVisible(false);
         setSkillName(SkillName.ENDURANCE);
+        setIncreaseManaRegen(0.1);
     }
 
     public Endurance(Player p) {
         setRank(Rank.COMMON);
         setVisible(false);
         setSkillName(SkillName.ENDURANCE);
+        setIncreaseManaRegen(0.1);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         loc = p.getLocation();
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
@@ -55,11 +64,6 @@ public class Endurance extends RPassive {
     @Override
     public String skillUnlockCondition() {
         return "30분 동안 가만히 있었다.";
-    }
-
-    @Override
-    public void use(RPlayer p) {
-        p.setManaRegen(p.getcurrentManaRegen() + 0.1);
     }
 
     @Override

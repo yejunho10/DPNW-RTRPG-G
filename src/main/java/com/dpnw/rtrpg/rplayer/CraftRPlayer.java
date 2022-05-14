@@ -74,6 +74,13 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         System.out.println("speed set : "+speed);
     }
 
+    public void applyPassiveSkillStats() {
+        for (SkillName skillName : equipedPassiveSkill.values()) {
+            Passive passive = passiveList.get(skillName);
+
+        }
+    }
+
     public void applyWeaponStats(Weapon w) {
         if(!(currentWeapon == null)) {
             unApplyWeaponStats(currentWeapon);

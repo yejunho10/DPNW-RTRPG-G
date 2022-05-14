@@ -78,12 +78,7 @@ public interface Skill extends Unlockable, Visible, TaskCancelable {
     /**
      * @return 방어력증가를 리턴시킨다.
      */
-    double getIncreaseArmor();
-
-    /**
-     * @return 방어력감소를 리턴시칸다.
-     */
-    double getDecreaseArmor();
+    double getArmor();
 
     /**
      * @return 요구하는 마나를 리턴시킨다.
@@ -151,14 +146,9 @@ public interface Skill extends Unlockable, Visible, TaskCancelable {
     void setRank(Rank rank);
 
     /**
-     * @param increaseArmor 방어력증가를 설정한다
+     * @param armor 방어력증가를 설정한다
      */
-    void setIncreaseArmor(double increaseArmor);
-
-    /**
-     * @param decreaseArmor 방어력감소를 설정한다
-     */
-    void setDecreaseArmor(double decreaseArmor);
+    void setArmor(double armor);
 
     /**
      * @param requireMana 요구하는 마나를 설정한다
@@ -201,8 +191,7 @@ public interface Skill extends Unlockable, Visible, TaskCancelable {
         lore.add("§7최대 적 타겟범위: " + getMaxTargetRange() + " 블럭");
         lore.add("§7최대 타겟수: " + getMaxNumber() + " 명");
         lore.add("§7등급: " + getRank() + " 등급");
-        lore.add("§7방어력 증가: " + getIncreaseArmor() + " 방어력");
-        lore.add("§7방어력 감소: " + getDecreaseArmor() + " 방어력");
+        lore.add("§7방어력: " + getArmor() + " 방어력");
         lore.add("§7요구 마나: " + getRequireMana() + " 마나");
         return lore;
     }
