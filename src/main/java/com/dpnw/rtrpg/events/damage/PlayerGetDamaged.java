@@ -105,6 +105,11 @@ public class PlayerGetDamaged implements Listener {
                     e.setCancelled(true);
                 }
             }
+            if(cp.getcurrentHealth() - e.getDamage() <= 0) {
+                if(cp.getEquipedPassiveSkill().containsValue(SkillName.MEMENTOMORI)){
+                    cp.getPassiveList().get(SkillName.MEMENTOMORI).use(cp);
+                }
+            }
         }
     }
 }

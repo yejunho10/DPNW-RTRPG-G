@@ -10,7 +10,14 @@ import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlock : 15000 블럭 이상을 이동했다.
 
+Effect : 8 +(레벨당 0.07) 확률로 피해를 무효화 합니다.
+
+Rank : Common
+Visable : false
+ */
 public class HugOfWind extends RPassive {
     private BukkitTask task;
 

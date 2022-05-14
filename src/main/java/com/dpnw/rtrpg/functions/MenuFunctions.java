@@ -8,6 +8,9 @@ import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
+import com.dpnw.rtrpg.skills.obj.RPassive;
+import com.dpnw.rtrpg.skills.obj.Skill;
+import com.dpnw.rtrpg.skills.utils.RSkillUtils;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
@@ -235,7 +238,17 @@ public class MenuFunctions {
 
     public static void equipPassiveSkill(Player p, int slot) {
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+        if(cp.getEquipedPassiveSkill().containsKey(slot)) {
+            SkillName sn = cp.getEquipedPassiveSkill().get(slot);
+            cp.getEquipedPassiveSkill().remove(slot);
+            RSkillUtils.unEquipSkill(cp, sn);
+        }
         cp.getEquipedPassiveSkill().put(slot, skillEquip.get(p.getUniqueId()));
+        SkillName sn = skillEquip.get(p.getUniqueId());
+        switch(sn) {
+            case DOUBLE_JUMP -> p.setAllowFlight(true);
+            case ENDURANCE -> cp.setIncreaseManaRegen(cp.getIncreaseManaRegen() + 0.1);
+        }
         p.closeInventory();
     }
 
@@ -243,9 +256,6 @@ public class MenuFunctions {
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         cp.getEquipedActiveSkill().put(slot, skillEquip.get(p.getUniqueId()));
         System.out.println("active skill equiped : " + skillEquip.get(p.getUniqueId()));
-        if (skillEquip.get(p.getUniqueId()) == SkillName.DOUBLE_JUMP) {
-            p.setAllowFlight(true);
-        }
         p.closeInventory();
     }
 

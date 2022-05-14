@@ -3,6 +3,7 @@ package com.dpnw.rtrpg.skills.skillPassive;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.RPassive;
@@ -11,23 +12,35 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlock : 2시간 동안 가만히 있었다.
 
+Effect : 초당 마나 회복량이 1 증가한다. 모든 스킬의 쿨타임이 1 +(레벨당 0.05)초 감소한다.
+
+Rank : Uncommon
+Visable : false
+ */
 @SuppressWarnings("unused")
 public class Enlightenment extends RPassive {
     private int timer = 0;
     private BukkitTask task;
     private Location loc;
 
-    public Enlightenment() {
+    public Enlightenment(RPlayer rp) {
         setRank(Rank.UNCOMMON);
-        setVisible(true);
+        setVisible(false);
         setSkillName(SkillName.ENLIGHTENMENT);
+        setIncreaseManaRegen(1);
+        setDecreaseCooldown(1 + rp.getLevel() * 0.05);
     }
 
     public Enlightenment(Player p) {
         setRank(Rank.UNCOMMON);
         setVisible(false);
         setSkillName(SkillName.ENLIGHTENMENT);
+        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+        setIncreaseManaRegen(1);
+        setDecreaseCooldown(1 + cp.getLevel() * 0.05);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         loc = p.getLocation();
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {

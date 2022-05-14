@@ -12,7 +12,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
+/*
+Unlock : 1000마리 이상의 적을 처치했다.
 
+Effect : 적 처치시 100 +(레벨당 3)의 체력을 회복한다.
+
+Healing : 100 +(3 for a lv)
+Rank : Rare
+Visible : true
+ */
 @SuppressWarnings("unused")
 public class DelightofSlaughter extends RPassive {
     private BukkitTask task;
@@ -25,7 +33,7 @@ public class DelightofSlaughter extends RPassive {
 
     public DelightofSlaughter(Player p) {
         setRank(Rank.RARE);
-        setVisible(false);
+        setVisible(true);
         setSkillName(SkillName.DELIGHT_OF_SLAUGHTER);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
@@ -41,12 +49,6 @@ public class DelightofSlaughter extends RPassive {
     public String skillUnlockCondition() {
         return "1000마리의 적을 처치했다.";
     }
-
-    @Override
-    public void use(RPlayer p) {
-
-    }
-
 
     @Override
     public void cancel() {

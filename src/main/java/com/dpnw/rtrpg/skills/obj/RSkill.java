@@ -4,11 +4,12 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.ables.Cooldownable;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.rplayer.PublicFields;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class RSkill implements Skill, Cooldownable {
+public abstract class RSkill extends PublicFields implements Skill, Cooldownable {
     private BukkitTask cooldownTask;
     private SkillName skillName;
     private double cooldown;
@@ -19,11 +20,10 @@ public abstract class RSkill implements Skill, Cooldownable {
     private double addedDamage;
     private double secondDamage;
     private double healing;
+    private double armor;
     private double maxTargetRange;
     private int maxNumber;
     private Rank rank;
-    private double increaseArmor;
-    private double decreaseArmor;
     private double requireMana;
     private boolean isLock = true;
     private boolean isVisible;
@@ -137,16 +137,6 @@ public abstract class RSkill implements Skill, Cooldownable {
     }
 
     @Override
-    public double getIncreaseArmor() {
-        return increaseArmor;
-    }
-
-    @Override
-    public double getDecreaseArmor() {
-        return decreaseArmor;
-    }
-
-    @Override
     public double getRequireMana() {
         return requireMana;
     }
@@ -212,16 +202,6 @@ public abstract class RSkill implements Skill, Cooldownable {
     }
 
     @Override
-    public void setIncreaseArmor(double increaseArmor) {
-        this.increaseArmor = increaseArmor;
-    }
-
-    @Override
-    public void setDecreaseArmor(double decreaseArmor) {
-        this.decreaseArmor = decreaseArmor;
-    }
-
-    @Override
     public void setRequireMana(double requireMana) {
         this.requireMana = requireMana;
     }
@@ -244,5 +224,15 @@ public abstract class RSkill implements Skill, Cooldownable {
     @Override
     public void setVisible(boolean visible) {
         isVisible = visible;
+    }
+
+    @Override
+    public double getArmor() {
+        return armor;
+    }
+
+    @Override
+    public void setArmor(double armor) {
+        this.armor = armor;
     }
 }

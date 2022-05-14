@@ -29,6 +29,8 @@ public abstract class PublicFields {
     private double increaseManaRegenPercent;
     private double increaseMoveSpeed;
     private double increaseMoveSpeedPercent;
+    private double increaseArmor;
+    private double increaseArmorPercent;
     // decrease
     private double decreaseHealth;
     private double decreaseHealthPercent;
@@ -40,6 +42,8 @@ public abstract class PublicFields {
     private double decreaseManaRegenPercent;
     private double decreaseMoveSpeed;
     private double decreaseMoveSpeedPercent;
+    private double decreaseArmor;
+    private double decreaseArmorPercent;
 
     public double getIncreaseSkillDamage() {
         return increaseSkillDamage;
@@ -311,5 +315,37 @@ public abstract class PublicFields {
 
     public void setDecreaseMoveSpeedPercent(double decreaseMoveSpeedPercent) {
         this.decreaseMoveSpeedPercent = decreaseMoveSpeedPercent;
+    }
+
+    public double getIncreaseArmor() {
+        return increaseArmor;
+    }
+
+    public void setIncreaseArmor(double increaseArmor) {
+        this.increaseArmor = increaseArmor;
+    }
+
+    public double getIncreaseArmorPercent() {
+        return increaseArmorPercent;
+    }
+
+    public void setIncreaseArmorPercent(double increaseArmorPercent) {
+        this.increaseArmorPercent = increaseArmorPercent;
+    }
+
+    public double getDecreaseArmor() {
+        return decreaseArmor;
+    }
+
+    public void setDecreaseArmor(double decreaseArmor) {
+        this.decreaseArmor = decreaseArmor;
+    }
+
+    public double getDecreaseArmorPercent() {
+        return decreaseArmorPercent;
+    }
+
+    public void setDecreaseArmorPercent(double decreaseArmorPercent) {
+        this.decreaseArmorPercent = decreaseArmorPercent;
     }
 }

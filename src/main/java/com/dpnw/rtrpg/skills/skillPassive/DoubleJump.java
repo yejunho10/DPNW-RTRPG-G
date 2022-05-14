@@ -16,14 +16,14 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleJump extends RPassive {
 
     public DoubleJump() {
-        setCooldown(0.6);
+        setCooldown(3);
         setRank(Rank.COMMON);
         setVisible(true);
         setSkillName(SkillName.DOUBLE_JUMP);
     }
 
     public DoubleJump(Player p) {
-        setCooldown(0.6);
+        setCooldown(3);
         setRank(Rank.COMMON);
         setVisible(true);
         setSkillName(SkillName.DOUBLE_JUMP);
