@@ -13,26 +13,35 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
+/*
+Unlock : 몬스터 "고블린 검투사"를 25마리 처치했다.
 
+Effect : 무기 공격력이 25 +(레벨당 2) 증가한다.
+
+Rank : Uncommon
+Visable : false
+ */
 @SuppressWarnings("unused")
 public class SoulofGladiator extends RPassive {
     private BukkitTask task;
 
-    public SoulofGladiator() {
+    public SoulofGladiator(RPlayer rp) {
         setRank(Rank.UNCOMMON);
-        setVisible(true);
+        setVisible(false);
         setSkillName(SkillName.SOUL_OF_GLADIATOR);
+        setIncreaseWeaponDamage(25 + rp.getLevel() * 2);
     }
 
     public SoulofGladiator(Player p) {
         setRank(Rank.UNCOMMON);
         setVisible(false);
         setSkillName(SkillName.SOUL_OF_GLADIATOR);
+        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+        setIncreaseWeaponDamage(25 + cp.getLevel() * 2);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
-            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
             if (cp.getEnemyCount().containsKey(MobName.GOBLIN_GLADIATOR)) {
-                if(cp.getEnemyCount().get(MobName.GOBLIN_GLADIATOR) > 25) {
+                if (cp.getEnemyCount().get(MobName.GOBLIN_GLADIATOR) > 25) {
                     RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
                     task.cancel();
                 }
@@ -44,12 +53,6 @@ public class SoulofGladiator extends RPassive {
     public String skillUnlockCondition() {
         return "몬스터 고블린 검투사를 25마리 처치했다.";
     }
-
-    @Override
-    public void use(RPlayer p) {
-
-    }
-
 
     @Override
     public void cancel() {

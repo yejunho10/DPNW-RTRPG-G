@@ -7,16 +7,23 @@ import com.dpnw.rtrpg.skills.obj.RPassive;
 import org.bukkit.Location;
 import org.bukkit.scheduler.BukkitTask;
 
+/*
+Unlock : 메인 퀘스트를 죽지 않고 깼다.
+
+Effect : 초당 마나 재생 1, 방어력 5 증가
+
+Rank : common
+Visable : false
+ */
 @SuppressWarnings("unused")
 public class Survivor extends RPassive {
-    private int timer = 0;
-    private BukkitTask task;
-    private Location loc;
 
     public Survivor() {
         setRank(Rank.COMMON);
         setVisible(false);
         setSkillName(SkillName.SURVIVOR);
+        setIncreaseManaRegen(1);
+        setIncreaseArmor(5);
     }
 
     @Override
@@ -25,18 +32,6 @@ public class Survivor extends RPassive {
     }
 
     @Override
-    public void use(RPlayer p) {
-        p.setArmor(p.getArmor() + 5);
-        p.setcurrentManaRegen(p.getcurrentManaRegen() + 1);
-    }
-
-    @Override
     public void cancel() {
-        try {
-            task.cancel();
-            timer = 0;
-            loc = null;
-        } catch (Exception ignored) {
-        }
     }
 }
