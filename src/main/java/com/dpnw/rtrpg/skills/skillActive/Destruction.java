@@ -10,7 +10,19 @@ import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
+/*
+Unlock : 적을 1만 마리 이상 처치했다.
 
+Use : 시전시 바라보고 있는 적을 관통합니다. 관통당한 적은 2초 동안 기절상태가 되었다가 폭발하며, 15% 확률로 즉사하거나 444 +(레벨당 4)의 피해를 입습니다.
+
+Damage : 444 +(4 for a lv)
+Duration : 2
+Max Target Range : 15
+Cooldown : 24
+Require mana : 120
+Rank : Unique
+Visible : false
+ */
 public class Destruction extends RActive {
     public Destruction() {
         setDamage(444);
@@ -40,10 +52,10 @@ public class Destruction extends RActive {
         ar.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
         ar.setMetadata("skill", new FixedMetadataValue(RTRPG.getInstance(), getSkillName().getRaw()));
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
-            RTRPG.getInstance().projectileList.remove(ar.getUniqueId());
-            ar.remove();
-        }, 100L);
-        cooldown(getCooldown(), this);
+            RTRPG.getInstance().projectileList.remove(ar.getUniqueId()); //화살을 발사체목록에서 제거한다.
+            ar.remove(); //화살을 제거한다.
+        }, 20L); // 1초 후에 화살을 제거한다.
+        cooldown(getCooldown(), this); //쿨다운을 설정한다.
     }
 
     @Override

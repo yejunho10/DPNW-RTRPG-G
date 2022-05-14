@@ -16,6 +16,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/*
+Unlock : 상점에서 구매
+
+Use : 자신 주변을 빠르게 회전하는 세 개의 불꽃을 10초간 소환합니다. 이 불꽃에 닿은 적은 79 +(레벨당 1)의 피해를 입고, 3초간 초당 11 +(레벨당 1)의 피해를 입습니다.
+
+Damage : 79 +(1 for a lv)
+Damage for a tick : 11 +(1 for a lv)
+Duration : 10Secs
+Second Duration : 3Secs
+Range : 5
+Require mana : 68
+Cooldown : 20Secs
+Rank : Uncommon
+Visible : false
+ */
 public class FireRing extends RActive {
     private BukkitTask task1;
     private BukkitTask task2;
@@ -47,7 +62,9 @@ public class FireRing extends RActive {
                     currentMobs.remove(m);
                 } else {
                     CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(m);
-                    rmob.damage(getSecondDamage(), rp.getPlayer());
+                    if(rmob != null) {
+                        rmob.damage(getSecondDamage() + rp.getLevel(), rp.getPlayer());
+                    }
                     currentMobs.put(m, currentMobs.get(m) + 1);
                 }
             });
@@ -57,6 +74,10 @@ public class FireRing extends RActive {
                 if (currentMobs.containsKey(e.getUniqueId())) continue;
                 if (e instanceof LivingEntity le) {
                     currentMobs.put(le.getUniqueId(), 0);
+                    CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                    if(rmob != null) {
+                        rmob.damage(getDamage() + rp.getLevel(), rp.getPlayer());
+                    }
                 }
             }
         }, 0L, 20L);

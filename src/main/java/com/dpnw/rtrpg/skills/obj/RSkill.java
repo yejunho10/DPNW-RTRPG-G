@@ -5,9 +5,11 @@ import com.dpnw.rtrpg.ables.Cooldownable;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import org.bukkit.Bukkit;
+import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class RSkill implements Skill, Cooldownable {
+    private BukkitTask cooldownTask;
     private SkillName skillName;
     private double cooldown;
     private double duration;
@@ -40,9 +42,27 @@ public abstract class RSkill implements Skill, Cooldownable {
 
     @Override
     public void cooldown(double time, @NotNull Object obj) {
-        if(obj instanceof Skill skill) {
+        if (obj instanceof Skill skill) {
             skill.setCooldown(true);
-            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> skill.setCooldown(false), (long) (time* 20L));
+            cooldownTask = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
+                if (cooldown >= 0) {
+                    skill.setCooldown(false);
+                    cooldownTask.cancel();
+                }
+                cooldown -= 0.1;
+            }, 0L, 2L);
+        }
+    }
+
+    public void reduceCooldown(double time) {
+        if (isCooldown) {
+            cooldown -= time;
+        }
+    }
+
+    public void increaseCooldown(double time) {
+        if (isCooldown) {
+            cooldown += time;
         }
     }
 

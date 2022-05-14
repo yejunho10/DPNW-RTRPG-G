@@ -17,6 +17,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
+/*
+Unlock : 메인퀘스트 2 완료
+
+Use : 정면을 차올려 피격당한 적에게 20 + (레벨당 2)의 피해를 주고 살짝 띄워올립니다.
+
+Damage : 20 +(2 for a lv)
+Range : 2
+Require mana : 0
+Cooldown : 6
+Rank : Common
+Visible : true
+ */
 public class FlingUP extends RActive {
     private BukkitTask task;
 
@@ -37,16 +49,16 @@ public class FlingUP extends RActive {
     @Override
     public void use(RPlayer rp) {
         if (isCooldown()) return;
-        try{
+        try {
             Player p = rp.getPlayer();
             if (isCooldown()) return;
             for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 35, p.getEyeLocation().getDirection())) {
-                if(e instanceof ArmorStand) continue;
+                if (e instanceof ArmorStand) continue;
                 LivingEntity le = (LivingEntity) e;
                 System.out.println(e.getType());
                 //damage
                 CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                rmob.damage(getDamage(), rp.getPlayer());
+                rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
             }
             for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 35,
                     p.getLocation().getDirection())) {
@@ -59,7 +71,7 @@ public class FlingUP extends RActive {
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.4f);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
             cooldown(getCooldown(), this);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         cooldown(getCooldown(), this);

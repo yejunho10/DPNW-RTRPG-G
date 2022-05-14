@@ -26,6 +26,7 @@ public class CounterScheduler {
                 if(cp == null) continue;
                 Location from = move.get(p.getUniqueId()).a();
                 Location to = move.get(p.getUniqueId()).b();
+                if(!from.getWorld().getName().equals(to.getWorld().getName())) continue;
                 from.setY(0);
                 to.setY(0);
                 cp.setMoveCount(cp.getMoveCount() + from.distance(to));
