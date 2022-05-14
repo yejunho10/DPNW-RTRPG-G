@@ -44,6 +44,16 @@ public abstract class PublicFields {
     private double decreaseMoveSpeedPercent;
     private double decreaseArmor;
     private double decreaseArmorPercent;
+    // weapon
+    private double increaseWeaponDamage;
+    private double increaseWeaponDamagePercent;
+    private double increaseWeaponRange;
+    private double increaseWeaponRangePercent;
+    // decrease
+    private double decreaseWeaponDamage;
+    private double decreaseWeaponDamagePercent;
+    private double decreaseWeaponRange;
+    private double decreaseWeaponRangePercent;
 
     public double getIncreaseSkillDamage() {
         return increaseSkillDamage;
@@ -347,5 +357,69 @@ public abstract class PublicFields {
 
     public void setDecreaseArmorPercent(double decreaseArmorPercent) {
         this.decreaseArmorPercent = decreaseArmorPercent;
+    }
+
+    public double getIncreaseWeaponDamage() {
+        return increaseWeaponDamage;
+    }
+
+    public void setIncreaseWeaponDamage(double increaseWeaponDamage) {
+        this.increaseWeaponDamage = increaseWeaponDamage;
+    }
+
+    public double getIncreaseWeaponDamagePercent() {
+        return increaseWeaponDamagePercent;
+    }
+
+    public void setIncreaseWeaponDamagePercent(double increaseWeaponDamagePercent) {
+        this.increaseWeaponDamagePercent = increaseWeaponDamagePercent;
+    }
+
+    public double getIncreaseWeaponRange() {
+        return increaseWeaponRange;
+    }
+
+    public void setIncreaseWeaponRange(double increaseWeaponRange) {
+        this.increaseWeaponRange = increaseWeaponRange;
+    }
+
+    public double getIncreaseWeaponRangePercent() {
+        return increaseWeaponRangePercent;
+    }
+
+    public void setIncreaseWeaponRangePercent(double increaseWeaponRangePercent) {
+        this.increaseWeaponRangePercent = increaseWeaponRangePercent;
+    }
+
+    public double getDecreaseWeaponDamage() {
+        return decreaseWeaponDamage;
+    }
+
+    public void setDecreaseWeaponDamage(double decreaseWeaponDamage) {
+        this.decreaseWeaponDamage = decreaseWeaponDamage;
+    }
+
+    public double getDecreaseWeaponDamagePercent() {
+        return decreaseWeaponDamagePercent;
+    }
+
+    public void setDecreaseWeaponDamagePercent(double decreaseWeaponDamagePercent) {
+        this.decreaseWeaponDamagePercent = decreaseWeaponDamagePercent;
+    }
+
+    public double getDecreaseWeaponRange() {
+        return decreaseWeaponRange;
+    }
+
+    public void setDecreaseWeaponRange(double decreaseWeaponRange) {
+        this.decreaseWeaponRange = decreaseWeaponRange;
+    }
+
+    public double getDecreaseWeaponRangePercent() {
+        return decreaseWeaponRangePercent;
+    }
+
+    public void setDecreaseWeaponRangePercent(double decreaseWeaponRangePercent) {
+        this.decreaseWeaponRangePercent = decreaseWeaponRangePercent;
     }
 }

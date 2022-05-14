@@ -13,24 +13,33 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
+/*
+Unlock : 10마리의 적을 처치했다.
 
+Effect : 방어력이 15 +(레벨당 1) 증가합니다.
+
+Rank : Common
+Visible : true
+ */
 @SuppressWarnings("unused")
 public class Resolution extends RPassive {
     private BukkitTask task;
 
-    public Resolution() {
+    public Resolution(RPlayer rp) {
         setRank(Rank.COMMON);
         setVisible(true);
         setSkillName(SkillName.RESOLUTION);
+        setIncreaseArmor(15 + rp.getLevel());
     }
 
     public Resolution(Player p) {
         setRank(Rank.COMMON);
-        setVisible(false);
+        setVisible(true);
         setSkillName(SkillName.RESOLUTION);
+        CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+        setIncreaseArmor(15 + cp.getLevel());
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
-            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
             if (cp.getKillCount() >= 10) {
                 RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
                 task.cancel();
