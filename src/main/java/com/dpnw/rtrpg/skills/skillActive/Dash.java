@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.skills.skillActive;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RActive;
 import org.bukkit.Sound;
@@ -14,6 +15,7 @@ public class Dash extends RActive {
         setCooldown(7);
         setRank(Rank.COMMON);
         setVisible(true);
+        setSkillName(SkillName.DASH);
     }
 
     @Override

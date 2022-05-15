@@ -52,10 +52,10 @@ public class Destruction extends RActive {
         ar.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
         ar.setMetadata("skill", new FixedMetadataValue(RTRPG.getInstance(), getSkillName().getRaw()));
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
-            RTRPG.getInstance().projectileList.remove(ar.getUniqueId()); //화살을 발사체목록에서 제거한다.
-            ar.remove(); //화살을 제거한다.
-        }, 20L); // 1초 후에 화살을 제거한다.
-        cooldown(getCooldown(), this); //쿨다운을 설정한다.
+            RTRPG.getInstance().projectileList.remove(ar.getUniqueId());
+            ar.remove();
+        }, 20L);
+        cooldown(getCooldown(), this);
     }
 
     @Override

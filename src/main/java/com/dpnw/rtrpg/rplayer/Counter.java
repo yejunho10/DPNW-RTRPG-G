@@ -14,6 +14,8 @@ public class Counter extends PublicFields {
     private double moveCount = 0; //이동한 거리
     private int clearedQuest = 0; //퀘스트 클리어 횟수
 
+    private int jumpCount = 0; //점프 횟수
+
     private Map<MobName, Integer> enemyCount = new HashMap<>(); //각각의 적을 죽인 수
     private Map<SkillName, Integer> skillCount = new HashMap<>(); //특정 스킬을 사용한 수
     //temp
@@ -30,6 +32,7 @@ public class Counter extends PublicFields {
         data.set("Counter.killCount", killCount);
         data.set("Counter.moveCount", moveCount);
         data.set("Counter.clearedQuest", clearedQuest);
+        data.set("Counter.jumpCount", jumpCount);
         for (MobName key : enemyCount.keySet()) {
             data.set("Counter.enemyCount." + key.getRaw(), enemyCount.get(key));
         }
@@ -43,6 +46,7 @@ public class Counter extends PublicFields {
         killCount = data.getInt("Counter.killCount");
         moveCount = data.getDouble("Counter.moveCount");
         clearedQuest = data.getInt("Counter.clearedQuest");
+        jumpCount = data.getInt("Counter.jumpCount");
         try {
             for (String key : data.getConfigurationSection("Counter.enemyCount").getKeys(false)) {
                 enemyCount.put(MobName.valueOf(key), data.getInt("Counter.enemyCount." + key));
@@ -83,6 +87,14 @@ public class Counter extends PublicFields {
 
     public void setMoveCount(double moveCount) {
         this.moveCount = moveCount;
+    }
+
+    public int getJumpCount() {
+        return jumpCount;
+    }
+
+    public void setJumpCount(int jumpCount) {
+        this.jumpCount = jumpCount;
     }
 
     public int getT_Damaged() {
