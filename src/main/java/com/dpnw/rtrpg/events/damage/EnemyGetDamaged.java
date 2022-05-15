@@ -37,18 +37,18 @@ public class EnemyGetDamaged implements Listener {
     private final Map<UUID, Integer> attack3Times = new HashMap<>();
 
     @EventHandler
-    public void onEnemyGetDamaged(SkillDamageEvent e) {
+    public void onEnemyGetDamaged(SkillDamageEvent e) { // 스킬
         LivingEntity le = (LivingEntity) e.getTarget();
         Player p = e.getPlayer();
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         try {
             if (!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
-            RMob mob = RTRPG.getInstance().rmobs.get(le.getUniqueId());
-            mob.setCurrentHealth(mob.getCurrentHealth() - (e.getDamage() - mob.getCurrentArmor()));
+            CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+            mob.damage(e.getDamage(), p);
             attack3Times.put(p.getUniqueId(), attack3Times.getOrDefault(p.getUniqueId(), 0) + 1);
             if(attack3Times.get(p.getUniqueId()) >= 3) {
                 if(cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
-                    mob.setCurrentHealth(mob.getCurrentHealth() - (AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage() - mob.getCurrentArmor()));
+                    mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
                 }
                 attack3Times.put(p.getUniqueId(), 0);
             }
@@ -69,7 +69,7 @@ public class EnemyGetDamaged implements Listener {
 
 
     @EventHandler
-    public void onDamageByProjectile(EntityDamageByEntityEvent e) {
+    public void onDamageByProjectile(EntityDamageByEntityEvent e) { // 투사체 -> 스킬
         if (!(e.getEntity() instanceof Mob m)) return;
         if (e.getDamager() instanceof Arrow ar) {
             e.setCancelled(true);
@@ -91,19 +91,19 @@ public class EnemyGetDamaged implements Listener {
 
 
     @EventHandler
-    public void onDamage(EntityDamageByEntityEvent e) {
+    public void onDamage(EntityDamageByEntityEvent e) { // 평타
         if (e.getDamager() instanceof Player p) {
             e.setCancelled(true);
-            if (e.getEntity() instanceof Mob) {
+            if (e.getEntity() instanceof Mob m) {
                 LivingEntity le = (LivingEntity) e.getEntity();
                 CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
                 try {
                     if (!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
-                    RMob mob = RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                    mob.setCurrentHealth(mob.getCurrentHealth() - (e.getDamage() - mob.getCurrentArmor()));
+                    CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                    mob.damage(e.getDamage(), p);
                     if(attack3Times.get(p.getUniqueId()) >= 3) {
                         if(cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
-                            mob.setCurrentHealth(mob.getCurrentHealth() - (AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage() - mob.getCurrentArmor()));
+                            mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
                         }
                         attack3Times.put(p.getUniqueId(), 0);
                     }
@@ -123,27 +123,25 @@ public class EnemyGetDamaged implements Listener {
         }
     }
 
-    public void passiveSkillUse(CraftRPlayer cp, RMob mob, LivingEntity le) {
+    public void passiveSkillUse(CraftRPlayer cp, CraftRMob mob, LivingEntity le) {
         if (!skillTasks.containsKey(cp.getUUID())) {
             skillTasks.put(cp.getUUID(), new HashMap<>());
         }
         cp.getEquipedPassiveSkill().values().forEach(sn -> {
             switch (sn) {
-                case DELIGHT_OF_SLAUGHTER:
-                    mob.setCurrentHealth(mob.getCurrentHealth() - 100 + cp.getLevel() * 3);
-                    break;
-                case GREEN_BLOODLINE:
+                case DELIGHT_OF_SLAUGHTER -> mob.damage(100 + cp.getLevel() * 3, cp.getPlayer());
+                case GREEN_BLOODLINE -> {
                     //기본공격 적중시 초당 피해 1 +(레벨당 1)의 피해를 5초간 입힌다.
                     skillTasks.get(cp.getUUID()).put(sn,
                             Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
-                                mob.setCurrentHealth(mob.getCurrentHealth() - (1 + cp.getLevel() - mob.getCurrentArmor()));
+                                mob.damage(1 + cp.getLevel() - mob.getCurrentArmor(), cp.getPlayer());
                             }, 0, 5 * 20)
                     );
                     Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
                         skillTasks.get(cp.getUUID()).get(sn).cancel();
                         skillTasks.get(cp.getUUID()).remove(sn);
                     }, 5 * 20);
-
+                }
             }
         });
     }
