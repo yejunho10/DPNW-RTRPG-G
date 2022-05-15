@@ -3,7 +3,7 @@ package com.dpnw.rtrpg.rplayer;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.*;
-import com.dpnw.rtrpg.skills.skillPassive.HugOfWind;
+import com.dpnw.rtrpg.skills.skillPassive.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -16,6 +16,7 @@ public class Skills { //논 이벤트 해금조건을 가진 스킬
 
     public Skills(Player p) {
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
+            // active
             skills.add(new Sprint(p));
             skills.add(new CosmicDiscernment(p));
             skills.add(new AirSlash(p));
@@ -24,6 +25,19 @@ public class Skills { //논 이벤트 해금조건을 가진 스킬
             skills.add(new JetStomp(p));
             skills.add(new HighExistance(p));
             skills.add(new MemoryOfFeet(p));
+            // passive
+            skills.add(new DelightofSlaughter(p));
+            skills.add(new Endurance(p));
+            skills.add(new Enlightenment(p));
+            skills.add(new GreenBloodline(p));
+            skills.add(new HardMuscle(p));
+            skills.add(new HugOfWind(p));
+            skills.add(new OverHeating(p));
+            skills.add(new Resolution(p));
+            skills.add(new Sin(p));
+            skills.add(new SoulofGladiator(p));
+            skills.add(new Tension(p));
+            skills.add(new Viscosity(p));
         }, 5L);
     }
 

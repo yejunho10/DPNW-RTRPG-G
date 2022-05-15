@@ -1,15 +1,10 @@
 package com.dpnw.rtrpg.weapons.utils;
 
 import com.dpnw.rtrpg.enums.WeaponName;
-import com.dpnw.rtrpg.weapons.armors.apprentice.ApprenticeBoots;
-import com.dpnw.rtrpg.weapons.armors.apprentice.ApprenticeHelmet;
-import com.dpnw.rtrpg.weapons.armors.apprentice.ApprenticeLeggings;
-import com.dpnw.rtrpg.weapons.armors.apprentice.ApprenticeMail;
 import com.dpnw.rtrpg.weapons.blunt.apprentice.ApprenticeHammer;
 import com.dpnw.rtrpg.weapons.blunt.apprentice.ApprenticeMace;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.ranged.apprentice.*;
-import com.dpnw.rtrpg.weapons.shields.apprentice.ApprenticeShield;
 import com.dpnw.rtrpg.weapons.sword.apprentice.*;
 import org.bukkit.Material;
 
@@ -53,12 +48,6 @@ public class AllWeapons {
         apprenticeWeapons.put(WeaponName.APPRENTICE_STAFF, new ApprenticeStaff(Material.DIAMOND_SWORD));
         apprenticeWeapons.put(WeaponName.APPRENTICE_TWO_HAND_SWORD, new ApprenticeTwoHandSword(Material.DIAMOND_SWORD));
         apprenticeWeapons.put(WeaponName.APPRENTICE_WAND, new ApprenticeWand(Material.DIAMOND_SWORD));
-        apprenticeArmors.put(WeaponName.APPRENTICE_HELMET, new ApprenticeHelmet(Material.LEATHER_HELMET));
-        apprenticeArmors.put(WeaponName.APPRENTICE_MAIL, new ApprenticeMail(Material.LEATHER_CHESTPLATE));
-        apprenticeArmors.put(WeaponName.APPRENTICE_LEGGINGS, new ApprenticeLeggings(Material.LEATHER_LEGGINGS));
-        apprenticeArmors.put(WeaponName.APPRENTICE_BOOTS, new ApprenticeBoots(Material.LEATHER_BOOTS));
-        apprenticeShields.put(WeaponName.APPRENTICE_SHIELD, new ApprenticeShield(Material.SHIELD));
-        apprenticeShields.put(WeaponName.APPRENTICE_BUCKLER, new ApprenticeShield(Material.SHIELD));
         init2();
     }
 

@@ -23,7 +23,6 @@ import org.bukkit.inventory.ItemStack;
 import java.math.BigDecimal;
 import java.util.*;
 
-
 @SuppressWarnings("all")
 public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private final Player p;
@@ -71,7 +70,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     public void updateStats() {
         p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
         p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
-        System.out.println("speed set : "+speed);
+        System.out.println("speed set : " + speed);
     }
 
     public void applyPassiveSkillStats() {
@@ -82,7 +81,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     }
 
     public void applyWeaponStats(Weapon w) {
-        if(!(currentWeapon == null)) {
+        if (!(currentWeapon == null)) {
             unApplyWeaponStats(currentWeapon);
         }
         WeaponPublicFields s = (WeaponPublicFields) w;
