@@ -52,5 +52,10 @@ public class DelightofSlaughter extends RPassive {
 
     @Override
     public void cancel() {
+        try {
+            task.cancel();
+            task = null;
+        } catch (Exception ignored) {
+        }
     }
 }

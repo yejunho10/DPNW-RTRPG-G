@@ -27,8 +27,7 @@ public class Dash extends RActive {
     public void use(RPlayer rp) {
         if (isCooldown()) return;
         Player p = rp.getPlayer();
-        Vector unitVector = new Vector((int) p.getLocation().getDirection().getX(), (int) p.getLocation().getDirection().getZ());
-        //p.setVelocity(unitVector.multiply(15));
+        p.setVelocity(p.getLocation().getDirection().multiply(2));
         p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 0.5f, 1);
         cooldown(getCooldown(), this);
     }

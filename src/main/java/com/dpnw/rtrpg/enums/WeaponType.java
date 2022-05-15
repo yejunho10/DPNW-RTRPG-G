@@ -1,11 +1,10 @@
 package com.dpnw.rtrpg.enums;
 
 public enum WeaponType {
-    ARMOR,
+    EQUIPMENT,
     SWORD,
     BLUNT,
     RANGED,
-    SHIELD,
     DUALSWORD,
     SPEAR,
     ONEHANDSWORD,
@@ -19,10 +18,5 @@ public enum WeaponType {
     BOW,
     WAND,
     DAGGER,
-    BUCKLER,
-    HELMET,
-    MAIL,
-    LEGGINGS,
-    BOOTS,
     ;
 }

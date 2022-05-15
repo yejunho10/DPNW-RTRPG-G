@@ -18,9 +18,10 @@ Unlock : 30000마리 이상의 적을 처치했다.
 Effect : 기본공격 및 스킬 적중시 적에게 '죄' 스택이 쌓인다. 스택 1 당 시전자로부터 입는 피해가 10% 증가하며,
  최대 5스텍 까지 쌓을 수 있다. 최대 스택에 도달하면 이동 속도가 30%, 방어력이 30% 추가로 감소하며,
   대상이 사망할 때까지 매 초마다 55 +(레벨 X 0.1) 만큼의 피해를 준다. (대상이 플레이어면 미적용)
+  단. 어그로가 풀리면 초기화 된다.
 
-Max Stack : 5
-Increase Pain : 3% for a stack
+Max Stack : 30
+Increase Pain : 1% for a stack
 Decrease Speed : 30%
 Decrease Armor : 30%
 Rank : Rare
