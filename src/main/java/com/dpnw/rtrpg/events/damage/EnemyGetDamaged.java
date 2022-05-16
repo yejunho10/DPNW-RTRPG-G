@@ -35,6 +35,7 @@ import java.util.UUID;
 public class EnemyGetDamaged implements Listener {
     private final Map<UUID, Map<SkillName, BukkitTask>> skillTasks = new HashMap<>();
     private final Map<UUID, Integer> attack3Times = new HashMap<>();
+    private final Map<UUID, BukkitTask> sinTask = new HashMap<>();
     /*
     Effect : 기본공격 및 스킬 적중시 적에게 '죄' 스택이 쌓인다. 스택 1 당 시전자로부터 입는 피해가 1% 증가하며,
  최대 30스텍 까지 쌓을 수 있다. 최대 스택에 도달하면 이동 속도가 30%, 방어력이 30% 추가로 감소하며,
@@ -43,8 +44,17 @@ public class EnemyGetDamaged implements Listener {
      */
 
     public void sin(CraftRPlayer rp, CraftRMob rmob, LivingEntity le) {
-        if(rp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
-
+        if (rp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
+            if (sinTask.containsKey(rmob.getUUID())) return;
+            int stack = rmob.getCurrentStack().getOrDefault(SkillName.SIN, 0);
+            stack++;
+            if (stack >= 30) {
+                rmob.setSpeed(rmob.getSpeed() * 0.3);
+                rmob.setArmor(rmob.getArmor() * 0.3);
+                sinTask.put(rmob.getUUID(), Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> rmob.damage(55 + (rp.getLevel() * 0.1), rp.getPlayer()), 0, 20));
+                return;
+            }
+            rmob.getCurrentStack().put(SkillName.SIN, stack);
         }
     }
 
@@ -56,13 +66,25 @@ public class EnemyGetDamaged implements Listener {
         try {
             if (!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
             CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-            mob.damage(e.getDamage(), p);
+            if (cp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
+                if (mob.getIncreaseDamageFromCasterPercent().containsKey(cp.getUUID())) {
+                    double damage = mob.getIncreaseDamageFromCasterPercent().get(cp.getUUID());
+                    mob.damage(e.getDamage() + (e.getDamage() * (damage * 0.01)), p);
+                } else {
+                    mob.damage(e.getDamage(), p);
+                }
+            } else {
+                mob.damage(e.getDamage(), p);
+            }
             attack3Times.put(p.getUniqueId(), attack3Times.getOrDefault(p.getUniqueId(), 0) + 1);
             if (attack3Times.get(p.getUniqueId()) >= 3) {
                 if (cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
                     mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
                 }
                 attack3Times.put(p.getUniqueId(), 0);
+            }
+            if (cp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
+                sin(cp, mob, le);
             }
             if (mob.getCurrentHealth() <= 0) {
                 le.setKiller(p);
@@ -112,12 +134,24 @@ public class EnemyGetDamaged implements Listener {
                 try {
                     if (!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
                     CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                    mob.damage(e.getDamage(), p);
+                    if (cp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
+                        if (mob.getIncreaseDamageFromCasterPercent().containsKey(cp.getUUID())) {
+                            double damage = mob.getIncreaseDamageFromCasterPercent().get(cp.getUUID());
+                            mob.damage(e.getDamage() + (e.getDamage() * (damage * 0.01)), p);
+                        } else {
+                            mob.damage(e.getDamage(), p);
+                        }
+                    } else {
+                        mob.damage(e.getDamage(), p);
+                    }
                     if (attack3Times.get(p.getUniqueId()) >= 3) {
                         if (cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
                             mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
                         }
                         attack3Times.put(p.getUniqueId(), 0);
+                    }
+                    if (cp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
+                        sin(cp, mob, le);
                     }
                     if (mob.getCurrentHealth() <= 0) {
                         le.setKiller(p);

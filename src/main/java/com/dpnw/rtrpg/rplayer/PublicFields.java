@@ -4,6 +4,7 @@ import com.dpnw.rtrpg.enums.SkillName;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @SuppressWarnings("all")
 public abstract class PublicFields {
@@ -59,14 +60,18 @@ public abstract class PublicFields {
     private double decreaseWeaponDamagePercent;
     private double decreaseWeaponRange;
     private double decreaseWeaponRangePercent;
+    // stack
+    private Map<SkillName, Integer> currentStack = new HashMap<>();
     private int stack;
     private int maxStack;
     private double stackDamage;
     private double stackDamagePercent;
-    private double increaseDamageFromCaster;
-    private double increaseDamageFromCasterPercent;
-    private double increaseDamageFromTarget;
-    private double increaseDamageFromTargetPercent;
+    // 대상으로부터 입는 데미지 증가 <FROM, DAMAGE>
+    private Map<UUID, Double> increaseDamageFromCaster = new HashMap<>();
+    private Map<UUID, Double> increaseDamageFromCasterPercent = new HashMap<>();
+    // 대상으로부터 입는 데미지 감소
+    private Map<UUID, Double> decreaseDamageFromCaster = new HashMap<>();
+    private Map<UUID, Double> decreaseDamageFromCasterPercent = new HashMap<>();
 
     public double getIncreaseSkillDamage() {
         return increaseSkillDamage;
@@ -471,35 +476,43 @@ public abstract class PublicFields {
         this.stackDamagePercent = stackDamagePercent;
     }
 
-    public double getIncreaseDamageFromCaster() {
+    public Map<UUID, Double> getIncreaseDamageFromCaster() {
         return increaseDamageFromCaster;
     }
 
-    public void setIncreaseDamageFromCaster(double increaseDamageFromCaster) {
+    public void setIncreaseDamageFromCaster(Map<UUID, Double> increaseDamageFromCaster) {
         this.increaseDamageFromCaster = increaseDamageFromCaster;
     }
 
-    public double getIncreaseDamageFromCasterPercent() {
+    public Map<UUID, Double> getDecreaseDamageFromCaster() {
+        return decreaseDamageFromCaster;
+    }
+
+    public void setDecreaseDamageFromCaster(Map<UUID, Double> decreaseDamageFromCaster) {
+        this.decreaseDamageFromCaster = decreaseDamageFromCaster;
+    }
+
+    public Map<SkillName, Integer> getCurrentStack() {
+        return currentStack;
+    }
+
+    public void setCurrentStack(Map<SkillName, Integer> currentStack) {
+        this.currentStack = currentStack;
+    }
+
+    public Map<UUID, Double> getIncreaseDamageFromCasterPercent() {
         return increaseDamageFromCasterPercent;
     }
 
-    public void setIncreaseDamageFromCasterPercent(double increaseDamageFromCasterPercent) {
+    public void setIncreaseDamageFromCasterPercent(Map<UUID, Double> increaseDamageFromCasterPercent) {
         this.increaseDamageFromCasterPercent = increaseDamageFromCasterPercent;
     }
 
-    public double getIncreaseDamageFromTarget() {
-        return increaseDamageFromTarget;
+    public Map<UUID, Double> getDecreaseDamageFromCasterPercent() {
+        return decreaseDamageFromCasterPercent;
     }
 
-    public void setIncreaseDamageFromTarget(double increaseDamageFromTarget) {
-        this.increaseDamageFromTarget = increaseDamageFromTarget;
-    }
-
-    public double getIncreaseDamageFromTargetPercent() {
-        return increaseDamageFromTargetPercent;
-    }
-
-    public void setIncreaseDamageFromTargetPercent(double increaseDamageFromTargetPercent) {
-        this.increaseDamageFromTargetPercent = increaseDamageFromTargetPercent;
+    public void setDecreaseDamageFromCasterPercent(Map<UUID, Double> decreaseDamageFromCasterPercent) {
+        this.decreaseDamageFromCasterPercent = decreaseDamageFromCasterPercent;
     }
 }

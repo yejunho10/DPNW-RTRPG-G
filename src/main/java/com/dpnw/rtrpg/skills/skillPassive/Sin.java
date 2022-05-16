@@ -4,7 +4,6 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
-import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.RPassive;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
@@ -38,7 +37,6 @@ public class Sin extends RPassive {
         setMaxStack(30);
         setDecreaseMoveSpeedPercent(30);
         setDecreaseArmorPercent(30);
-        setIncreaseDamageFromCasterPercent(1);
     }
 
     public Sin(Player p) {
@@ -48,7 +46,6 @@ public class Sin extends RPassive {
         setMaxStack(30);
         setDecreaseMoveSpeedPercent(30);
         setDecreaseArmorPercent(30);
-        setIncreaseDamageFromCasterPercent(1);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
             CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
