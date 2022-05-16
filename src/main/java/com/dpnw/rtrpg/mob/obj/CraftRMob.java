@@ -5,6 +5,7 @@ import com.dpnw.rtrpg.enums.Damager;
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.MobRank;
 import com.dpnw.rtrpg.events.obj.RDamageByEntityEvent;
+import com.dpnw.rtrpg.rplayer.PublicFields;
 import com.dpnw.rtrpg.utils.RMobUtil;
 import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.mobs.ActiveMob;
@@ -21,7 +22,7 @@ import org.bukkit.util.Vector;
 import java.util.Random;
 import java.util.UUID;
 
-public abstract class CraftRMob implements RMob {
+public abstract class CraftRMob extends PublicFields implements RMob {
     private ActiveMob mob = null;
     private Entity entity = null;
     private double health;

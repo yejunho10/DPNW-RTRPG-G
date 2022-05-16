@@ -35,6 +35,18 @@ import java.util.UUID;
 public class EnemyGetDamaged implements Listener {
     private final Map<UUID, Map<SkillName, BukkitTask>> skillTasks = new HashMap<>();
     private final Map<UUID, Integer> attack3Times = new HashMap<>();
+    /*
+    Effect : 기본공격 및 스킬 적중시 적에게 '죄' 스택이 쌓인다. 스택 1 당 시전자로부터 입는 피해가 1% 증가하며,
+ 최대 30스텍 까지 쌓을 수 있다. 최대 스택에 도달하면 이동 속도가 30%, 방어력이 30% 추가로 감소하며,
+  대상이 사망할 때까지 매 초마다 55 +(레벨 X 0.1) 만큼의 피해를 준다. (대상이 플레이어면 미적용)
+  단. 어그로가 풀리면 초기화 된다.
+     */
+
+    public void sin(CraftRPlayer rp, CraftRMob rmob, LivingEntity le) {
+        if(rp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
+
+        }
+    }
 
     @EventHandler
     public void onEnemyGetDamaged(SkillDamageEvent e) { // 스킬
@@ -46,8 +58,8 @@ public class EnemyGetDamaged implements Listener {
             CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
             mob.damage(e.getDamage(), p);
             attack3Times.put(p.getUniqueId(), attack3Times.getOrDefault(p.getUniqueId(), 0) + 1);
-            if(attack3Times.get(p.getUniqueId()) >= 3) {
-                if(cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
+            if (attack3Times.get(p.getUniqueId()) >= 3) {
+                if (cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
                     mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
                 }
                 attack3Times.put(p.getUniqueId(), 0);
@@ -101,8 +113,8 @@ public class EnemyGetDamaged implements Listener {
                     if (!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
                     CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
                     mob.damage(e.getDamage(), p);
-                    if(attack3Times.get(p.getUniqueId()) >= 3) {
-                        if(cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
+                    if (attack3Times.get(p.getUniqueId()) >= 3) {
+                        if (cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
                             mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
                         }
                         attack3Times.put(p.getUniqueId(), 0);
@@ -123,7 +135,7 @@ public class EnemyGetDamaged implements Listener {
         }
     }
 
-    public void passiveSkillUse(CraftRPlayer cp, CraftRMob mob, LivingEntity le) {
+    public void passiveSkillUse(CraftRPlayer cp, CraftRMob mob, LivingEntity le) { // when mob die
         if (!skillTasks.containsKey(cp.getUUID())) {
             skillTasks.put(cp.getUUID(), new HashMap<>());
         }

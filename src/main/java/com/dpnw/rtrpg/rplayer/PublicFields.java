@@ -1,5 +1,10 @@
 package com.dpnw.rtrpg.rplayer;
 
+import com.dpnw.rtrpg.enums.SkillName;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @SuppressWarnings("all")
 public abstract class PublicFields {
     // skill
@@ -54,6 +59,14 @@ public abstract class PublicFields {
     private double decreaseWeaponDamagePercent;
     private double decreaseWeaponRange;
     private double decreaseWeaponRangePercent;
+    private int stack;
+    private int maxStack;
+    private double stackDamage;
+    private double stackDamagePercent;
+    private double increaseDamageFromCaster;
+    private double increaseDamageFromCasterPercent;
+    private double increaseDamageFromTarget;
+    private double increaseDamageFromTargetPercent;
 
     public double getIncreaseSkillDamage() {
         return increaseSkillDamage;
@@ -421,5 +434,72 @@ public abstract class PublicFields {
 
     public void setDecreaseWeaponRangePercent(double decreaseWeaponRangePercent) {
         this.decreaseWeaponRangePercent = decreaseWeaponRangePercent;
+    }
+
+    // stack
+
+
+    public int getStack() {
+        return stack;
+    }
+
+    public void setStack(int stack) {
+        this.stack = stack;
+    }
+
+    public int getMaxStack() {
+        return maxStack;
+    }
+
+    public void setMaxStack(int maxStack) {
+        this.maxStack = maxStack;
+    }
+
+    public double getStackDamage() {
+        return stackDamage;
+    }
+
+    public void setStackDamage(double stackDamage) {
+        this.stackDamage = stackDamage;
+    }
+
+    public double getStackDamagePercent() {
+        return stackDamagePercent;
+    }
+
+    public void setStackDamagePercent(double stackDamagePercent) {
+        this.stackDamagePercent = stackDamagePercent;
+    }
+
+    public double getIncreaseDamageFromCaster() {
+        return increaseDamageFromCaster;
+    }
+
+    public void setIncreaseDamageFromCaster(double increaseDamageFromCaster) {
+        this.increaseDamageFromCaster = increaseDamageFromCaster;
+    }
+
+    public double getIncreaseDamageFromCasterPercent() {
+        return increaseDamageFromCasterPercent;
+    }
+
+    public void setIncreaseDamageFromCasterPercent(double increaseDamageFromCasterPercent) {
+        this.increaseDamageFromCasterPercent = increaseDamageFromCasterPercent;
+    }
+
+    public double getIncreaseDamageFromTarget() {
+        return increaseDamageFromTarget;
+    }
+
+    public void setIncreaseDamageFromTarget(double increaseDamageFromTarget) {
+        this.increaseDamageFromTarget = increaseDamageFromTarget;
+    }
+
+    public double getIncreaseDamageFromTargetPercent() {
+        return increaseDamageFromTargetPercent;
+    }
+
+    public void setIncreaseDamageFromTargetPercent(double increaseDamageFromTargetPercent) {
+        this.increaseDamageFromTargetPercent = increaseDamageFromTargetPercent;
     }
 }
