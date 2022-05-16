@@ -35,20 +35,32 @@ import java.util.UUID;
 public class EnemyGetDamaged implements Listener {
     private final Map<UUID, Map<SkillName, BukkitTask>> skillTasks = new HashMap<>();
     private final Map<UUID, Integer> attack3Times = new HashMap<>();
+    /*
+    Effect : 기본공격 및 스킬 적중시 적에게 '죄' 스택이 쌓인다. 스택 1 당 시전자로부터 입는 피해가 1% 증가하며,
+ 최대 30스텍 까지 쌓을 수 있다. 최대 스택에 도달하면 이동 속도가 30%, 방어력이 30% 추가로 감소하며,
+  대상이 사망할 때까지 매 초마다 55 +(레벨 X 0.1) 만큼의 피해를 준다. (대상이 플레이어면 미적용)
+  단. 어그로가 풀리면 초기화 된다.
+     */
+
+    public void sin(CraftRPlayer rp, CraftRMob rmob, LivingEntity le) {
+        if(rp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
+
+        }
+    }
 
     @EventHandler
-    public void onEnemyGetDamaged(SkillDamageEvent e) {
+    public void onEnemyGetDamaged(SkillDamageEvent e) { // 스킬
         LivingEntity le = (LivingEntity) e.getTarget();
         Player p = e.getPlayer();
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         try {
             if (!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
-            RMob mob = RTRPG.getInstance().rmobs.get(le.getUniqueId());
-            mob.setCurrentHealth(mob.getCurrentHealth() - (e.getDamage() - mob.getCurrentArmor()));
+            CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+            mob.damage(e.getDamage(), p);
             attack3Times.put(p.getUniqueId(), attack3Times.getOrDefault(p.getUniqueId(), 0) + 1);
-            if(attack3Times.get(p.getUniqueId()) >= 3) {
-                if(cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
-                    mob.setCurrentHealth(mob.getCurrentHealth() - (AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage() - mob.getCurrentArmor()));
+            if (attack3Times.get(p.getUniqueId()) >= 3) {
+                if (cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
+                    mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
                 }
                 attack3Times.put(p.getUniqueId(), 0);
             }
@@ -69,7 +81,7 @@ public class EnemyGetDamaged implements Listener {
 
 
     @EventHandler
-    public void onDamageByProjectile(EntityDamageByEntityEvent e) {
+    public void onDamageByProjectile(EntityDamageByEntityEvent e) { // 투사체 -> 스킬
         if (!(e.getEntity() instanceof Mob m)) return;
         if (e.getDamager() instanceof Arrow ar) {
             e.setCancelled(true);
@@ -91,19 +103,19 @@ public class EnemyGetDamaged implements Listener {
 
 
     @EventHandler
-    public void onDamage(EntityDamageByEntityEvent e) {
+    public void onDamage(EntityDamageByEntityEvent e) { // 평타
         if (e.getDamager() instanceof Player p) {
             e.setCancelled(true);
-            if (e.getEntity() instanceof Mob) {
+            if (e.getEntity() instanceof Mob m) {
                 LivingEntity le = (LivingEntity) e.getEntity();
                 CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
                 try {
                     if (!RTRPG.getInstance().rmobs.containsKey(le.getUniqueId())) return;
-                    RMob mob = RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                    mob.setCurrentHealth(mob.getCurrentHealth() - (e.getDamage() - mob.getCurrentArmor()));
-                    if(attack3Times.get(p.getUniqueId()) >= 3) {
-                        if(cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
-                            mob.setCurrentHealth(mob.getCurrentHealth() - (AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage() - mob.getCurrentArmor()));
+                    CraftRMob mob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                    mob.damage(e.getDamage(), p);
+                    if (attack3Times.get(p.getUniqueId()) >= 3) {
+                        if (cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
+                            mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
                         }
                         attack3Times.put(p.getUniqueId(), 0);
                     }
@@ -123,27 +135,25 @@ public class EnemyGetDamaged implements Listener {
         }
     }
 
-    public void passiveSkillUse(CraftRPlayer cp, RMob mob, LivingEntity le) {
+    public void passiveSkillUse(CraftRPlayer cp, CraftRMob mob, LivingEntity le) { // when mob die
         if (!skillTasks.containsKey(cp.getUUID())) {
             skillTasks.put(cp.getUUID(), new HashMap<>());
         }
         cp.getEquipedPassiveSkill().values().forEach(sn -> {
             switch (sn) {
-                case DELIGHT_OF_SLAUGHTER:
-                    mob.setCurrentHealth(mob.getCurrentHealth() - 100 + cp.getLevel() * 3);
-                    break;
-                case GREEN_BLOODLINE:
+                case DELIGHT_OF_SLAUGHTER -> mob.damage(100 + cp.getLevel() * 3, cp.getPlayer());
+                case GREEN_BLOODLINE -> {
                     //기본공격 적중시 초당 피해 1 +(레벨당 1)의 피해를 5초간 입힌다.
                     skillTasks.get(cp.getUUID()).put(sn,
                             Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
-                                mob.setCurrentHealth(mob.getCurrentHealth() - (1 + cp.getLevel() - mob.getCurrentArmor()));
+                                mob.damage(1 + cp.getLevel() - mob.getCurrentArmor(), cp.getPlayer());
                             }, 0, 5 * 20)
                     );
                     Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
                         skillTasks.get(cp.getUUID()).get(sn).cancel();
                         skillTasks.get(cp.getUUID()).remove(sn);
                     }, 5 * 20);
-
+                }
             }
         });
     }
