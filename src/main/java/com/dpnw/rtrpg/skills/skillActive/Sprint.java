@@ -68,7 +68,7 @@ public class Sprint extends RActive {
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
             p.getPlayer().getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(p.getPlayer().getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue() - p.getLevel() * 0.15);
         }, (long) (getDuration() * 20));
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

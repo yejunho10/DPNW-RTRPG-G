@@ -11,6 +11,15 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
 
+/*
+Unlock : 1000번의 죽음을 경험할 시.
+Effect : 플레이어 근처 15M 내 모든 생명체의 방어력과 이동속도가 44% 감소하며 플레이어 근처 4M 내에 접근하는 모든 생명체는 '공포' 생태에 빠져 3초간 실명에 빠지며 todo 플레이어에게서 멀어지려 한다.
+Range : 15
+Range : 4
+Rank : Extra
+Visable : false
+Maximum having : 1
+ */
 @SuppressWarnings("All")
 public class Thanatophobia extends RPassive {
     public Thanatophobia() {

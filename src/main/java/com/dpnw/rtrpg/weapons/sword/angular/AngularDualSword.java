@@ -49,7 +49,7 @@ public class AngularDualSword extends Sword {
             }
         }catch(Exception ignored) {}
         p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
-        cooldown(getAttackSpeed(), this);
+        cooldown(this);
     }
 
 }

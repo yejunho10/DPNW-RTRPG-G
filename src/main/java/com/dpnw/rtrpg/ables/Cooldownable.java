@@ -4,12 +4,12 @@ import org.jetbrains.annotations.NotNull;
 
 
 public interface Cooldownable {
-    void cooldown(double time, @NotNull Object obj);
-
     /**
      * @return 쿨타임이 유무를 체크한다.
      */
     boolean isCooldown();
+
+    void cooldown(@NotNull Object obj);
 
     /**
      * @param isCooldown 쿨타임을 설정한다.

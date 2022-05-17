@@ -13,6 +13,7 @@ public abstract class RSkill extends PublicFields implements Skill, Cooldownable
     private BukkitTask cooldownTask;
     private SkillName skillName;
     private double cooldown;
+    private double cooldownTemp;
     private double duration;
     private double range;
     private double subRange;
@@ -41,17 +42,20 @@ public abstract class RSkill extends PublicFields implements Skill, Cooldownable
     }
 
     @Override
-    public void cooldown(double time, @NotNull Object obj) {
-        if (obj instanceof Skill skill) {
-            skill.setCooldown(true);
-            cooldownTask = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
-                if (cooldown >= 0) {
-                    skill.setCooldown(false);
+    public void cooldown(@NotNull Object obj) {
+        setCooldown(true);
+        cooldownTemp = cooldown;
+        cooldownTask = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
+            cooldown -= 0.1;
+            if (cooldown <= 0) {
+                setCooldown(false);
+                if (cooldownTask != null) {
                     cooldownTask.cancel();
+                    cooldownTask = null;
                 }
-                cooldown -= 0.1;
-            }, 0L, 2L);
-        }
+                cooldown = cooldownTemp;
+            }
+        }, 0L, 2L);
     }
 
     public void reduceCooldown(double time) {

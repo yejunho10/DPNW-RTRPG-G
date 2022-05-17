@@ -73,7 +73,7 @@ public class PlayerEvents implements Listener {
             Active skill = cp.getActiveList().get(sn);
             if (skill.isCooldown()) return;
             skill.use(cp);
-            cp.getPlayer().setCooldown(cp.getPlayer().getInventory().getItem(e.getNewSlot()).getType(), (int) (skill.getCooldown() * 20));
+            cp.getPlayer().setCooldown(cp.getPlayer().getInventory().getItem(e.getNewSlot()).getType(), Math.max((int) (skill.getCooldown() * 20), 0));
         } catch (Exception ee) {
             ee.printStackTrace();
         }

@@ -41,7 +41,7 @@ public class Turtle extends RActive {
         p.setArmor(p.getArmor() + (50 + (p.getLevel() * 0.5)));
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> p.setArmor(p.getArmor() - (50 + (p.getLevel() * 0.5))), (long) (getDuration() * 20));
         p.getPlayer().getWorld().playSound(p.getPlayer().getLocation(), Sound.ENTITY_IRON_GOLEM_HURT, 0.5f, 1.0f);
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

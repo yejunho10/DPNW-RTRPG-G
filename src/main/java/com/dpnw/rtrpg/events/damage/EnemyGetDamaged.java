@@ -144,11 +144,14 @@ public class EnemyGetDamaged implements Listener {
                     } else {
                         mob.damage(e.getDamage(), p);
                     }
-                    if (attack3Times.get(p.getUniqueId()) >= 3) {
-                        if (cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
-                            mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
+                    attack3Times.put(p.getUniqueId(), attack3Times.getOrDefault(p.getUniqueId(), 0) + 1);
+                    if (attack3Times.containsKey(p.getUniqueId())) {
+                        if (attack3Times.get(p.getUniqueId()) >= 3) {
+                            if (cp.getEquipedPassiveSkill().containsValue(SkillName.OVERHEATING)) {
+                                mob.damage(AllSkills.getSkillFromName(SkillName.OVERHEATING).getDamage(), p);
+                            }
+                            attack3Times.put(p.getUniqueId(), 0);
                         }
-                        attack3Times.put(p.getUniqueId(), 0);
                     }
                     if (cp.getEquipedPassiveSkill().containsValue(SkillName.SIN)) {
                         sin(cp, mob, le);

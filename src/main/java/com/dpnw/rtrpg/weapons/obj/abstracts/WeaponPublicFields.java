@@ -32,7 +32,7 @@ public abstract class WeaponPublicFields extends ItemStack implements PublicFiel
     private boolean isCooldown = false;
 
     @Override
-    public void cooldown(double time, @NotNull Object obj) {
+    public void cooldown(@NotNull Object obj) {
         if (obj instanceof Weapon) {
             setCooldown(true);
             Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> setCooldown(false), (long) (20 / getAttackSpeed()));

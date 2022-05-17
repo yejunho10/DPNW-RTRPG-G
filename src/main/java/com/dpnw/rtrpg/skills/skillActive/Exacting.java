@@ -38,7 +38,7 @@ public class Exacting extends RActive {
     public void use(RPlayer rp) {
         if (isCooldown()) return;
         count = 3;
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

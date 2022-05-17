@@ -51,7 +51,6 @@ public class FlingUP extends RActive {
         if (isCooldown()) return;
         try {
             Player p = rp.getPlayer();
-            if (isCooldown()) return;
             for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 35, p.getEyeLocation().getDirection())) {
                 if (e instanceof ArmorStand) continue;
                 LivingEntity le = (LivingEntity) e;
@@ -70,11 +69,10 @@ public class FlingUP extends RActive {
             }
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.4f);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
-            cooldown(getCooldown(), this);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

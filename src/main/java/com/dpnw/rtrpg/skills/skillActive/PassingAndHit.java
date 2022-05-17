@@ -11,6 +11,7 @@ import com.dpnw.rtrpg.skills.utils.Cone;
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -52,17 +53,16 @@ public class PassingAndHit extends RActive {
         if (isCooldown()) return;
         try {
             Player p = rp.getPlayer();
-            if (isCooldown()) return;
-
             task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> p.teleport(p.getLocation()), 0L, 1L);
             Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> task.cancel(), 10L);
+            double d = p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue();
+            p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0);
+            Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(d), 10L);
             Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
                 p.setVelocity(p.getLocation().getDirection().multiply(0.5));
                 for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 10, p.getEyeLocation().getDirection())) {
                     if (e instanceof ArmorStand) continue;
                     LivingEntity le = (LivingEntity) e;
-                    System.out.println(e.getType());
-                    //damage
                     CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
                     rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
                 }
@@ -72,11 +72,10 @@ public class PassingAndHit extends RActive {
                 }
                 p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
             }, 10L);
-            cooldown(getCooldown(), this);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

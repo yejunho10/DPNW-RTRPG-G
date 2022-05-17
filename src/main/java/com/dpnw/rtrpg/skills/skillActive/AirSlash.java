@@ -82,8 +82,11 @@ public class AirSlash extends RActive {
                 System.out.println(e.getType());
                 //damage
                 CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
+                if (rmob != null) {
+                    rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
+                }
             }
+            long l = 0;
             for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 90,
                     p.getLocation().getDirection())) {
                 ParticleUtil.createParticle(p, Particle.CLOUD, v.toLocation(p.getWorld()), 0, 1, 0, 2, 0);
@@ -93,7 +96,7 @@ public class AirSlash extends RActive {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

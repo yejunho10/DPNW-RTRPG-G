@@ -64,7 +64,7 @@ public class WindSword extends RActive {
     public void use(RPlayer p) {
         if (isCooldown()) return;
         //todo logic...
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override
