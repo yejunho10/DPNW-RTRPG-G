@@ -4,9 +4,11 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
+import com.dpnw.rtrpg.particles.ParticleUtil;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RActive;
 import org.bukkit.Bukkit;
+import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -85,7 +87,7 @@ public class FireRing extends RActive {
             task2.cancel();
             task1.cancel();
         }, 10 * 20);
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

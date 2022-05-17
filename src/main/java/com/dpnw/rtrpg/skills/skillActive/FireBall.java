@@ -47,6 +47,7 @@ public class FireBall extends RActive {
         Arrow ar = p.launchProjectile(Arrow.class);
         ar.setDamage(getDamage() + rp.getLevel() * 2);
         ar.setGravity(true);
+        ar.setBounce(false);
         ar.setVelocity(p.getLocation().getDirection().multiply(3));
         ar.setShooter(p);
         ar.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
@@ -56,7 +57,7 @@ public class FireBall extends RActive {
             RTRPG.getInstance().projectileList.remove(ar.getUniqueId());
             ar.remove();
         }, 100L);
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

@@ -49,14 +49,14 @@ public class WheelAttack extends RActive {
         Entity e = p.getTargetEntity((int) getMaxTargetRange());
         if (e == null) return;
         // set velocity to target
-        e.setVelocity(p.getEyeLocation().getDirection().multiply(3.5));
+        p.setVelocity(p.getEyeLocation().getDirection().multiply(3.5));
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
             if (e instanceof LivingEntity le) {
                 CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
                 rmob.damage(getDamage() + 3 * rp.getLevel(), rp.getPlayer());
             }
         }, 10L);
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

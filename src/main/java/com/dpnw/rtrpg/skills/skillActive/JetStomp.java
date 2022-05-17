@@ -69,7 +69,7 @@ public class JetStomp extends RActive {
     public void use(RPlayer p) {
         if (isCooldown()) return;
 
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

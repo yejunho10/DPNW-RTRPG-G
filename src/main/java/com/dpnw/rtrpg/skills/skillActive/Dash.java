@@ -29,7 +29,7 @@ public class Dash extends RActive {
         Player p = rp.getPlayer();
         p.setVelocity(p.getLocation().getDirection().multiply(2));
         p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 0.5f, 1);
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

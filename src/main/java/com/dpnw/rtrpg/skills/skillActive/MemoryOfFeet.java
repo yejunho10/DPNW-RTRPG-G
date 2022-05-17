@@ -64,7 +64,7 @@ public class MemoryOfFeet extends RActive {
         if (ready) {
             if (!(loc == null)) {
                 rp.getPlayer().teleport(loc);
-                cooldown(getCooldown(), this);
+                cooldown(this);
             }
             return;
         }

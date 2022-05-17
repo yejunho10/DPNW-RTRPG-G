@@ -60,7 +60,7 @@ public class SpinAttack extends RActive {
         }
         p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.4f);
         p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

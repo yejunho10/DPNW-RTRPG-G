@@ -55,9 +55,9 @@ Visible : false
         if (isCooldown()) return;
         try {
             Player p = rp.getPlayer();
-            if (isCooldown()) return;
             Arrow ar = p.launchProjectile(Arrow.class);
             ar.setDamage(getDamage());
+            ar.setBounce(false);
             ar.setGravity(true);
             ar.setVelocity(p.getLocation().getDirection().multiply(3));
             ar.setShooter(p);
@@ -70,11 +70,10 @@ Visible : false
             }, 100L);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.4f);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
-            cooldown(getCooldown(), this);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

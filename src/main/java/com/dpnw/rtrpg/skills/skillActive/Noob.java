@@ -34,7 +34,7 @@ public class Noob extends RActive {
     public void use(RPlayer p) {
         if (isCooldown()) return;
         p.getPlayer().sendTitle("개 허접", "개 허접이시뉑~~~");
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

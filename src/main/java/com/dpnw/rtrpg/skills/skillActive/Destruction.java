@@ -55,7 +55,7 @@ public class Destruction extends RActive {
             RTRPG.getInstance().projectileList.remove(ar.getUniqueId());
             ar.remove();
         }, 20L);
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

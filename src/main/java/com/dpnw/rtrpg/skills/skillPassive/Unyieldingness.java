@@ -6,13 +6,16 @@ import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RPassive;
 import org.bukkit.Location;
 import org.bukkit.scheduler.BukkitTask;
+/*
+Unlock : 메인퀘스트 4 완료
 
+Effect : 받는 피해가 2 +(레벨당 0.2)% 감소합니다.
+
+Rank : Common
+Visible : true
+ */
 @SuppressWarnings("unused")
-public class Unyieldingness extends RPassive {
-    private int timer = 0;
-    private BukkitTask task;
-    private Location loc;
-
+public class Unyieldingness extends RPassive { // todo 필드 추가
     public Unyieldingness() {
         setRank(Rank.COMMON);
         setVisible(true);
@@ -25,17 +28,6 @@ public class Unyieldingness extends RPassive {
     }
 
     @Override
-    public void use(RPlayer p) {
-        p.setArmor(p.getArmor() + 2);
-    }
-
-    @Override
     public void cancel() {
-        try {
-            task.cancel();
-            timer = 0;
-            loc = null;
-        } catch (Exception ignored) {
-        }
     }
 }

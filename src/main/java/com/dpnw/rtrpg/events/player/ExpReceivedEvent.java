@@ -36,13 +36,15 @@ public class ExpReceivedEvent implements Listener {
     public void updateSkillStats(RPlayer p) {
         CraftRPlayer cp = (CraftRPlayer) p;
         cp.getPassiveList().values().forEach(sk -> {
-            RSkill rsk = (RSkill) sk;
-            switch (sk.getSkillName()) {
-                case ENLIGHTENMENT -> rsk.setDecreaseCooldown(1 + cp.getLevel() * 0.05);
-                case HARD_MUSCLE -> rsk.setIncreaseArmorPercent(2 + cp.getLevel() * 0.28);
-                case OVERHEATING -> rsk.setDamage(27 + cp.getLevel() * 3);
-                case RESOLUTION -> rsk.setIncreaseArmor(15 + cp.getLevel());
-                case SOUL_OF_GLADIATOR -> rsk.setIncreaseWeaponDamage(25 + cp.getLevel() * 2);
+            if (sk != null) {
+                RSkill rsk = (RSkill) sk;
+                switch (sk.getSkillName()) {
+                    case ENLIGHTENMENT -> rsk.setDecreaseCooldown(1 + cp.getLevel() * 0.05);
+                    case HARD_MUSCLE -> rsk.setIncreaseArmorPercent(2 + cp.getLevel() * 0.28);
+                    case OVERHEATING -> rsk.setDamage(27 + cp.getLevel() * 3);
+                    case RESOLUTION -> rsk.setIncreaseArmor(15 + cp.getLevel());
+                    case SOUL_OF_GLADIATOR -> rsk.setIncreaseWeaponDamage(25 + cp.getLevel() * 2);
+                }
             }
         });
     }

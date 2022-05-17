@@ -35,7 +35,7 @@ public class Mementomori extends RPassive {
         if (isCooldown()) return;
         p.setInvincible(true);
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> p.setInvincible(false), (long) (getDuration() * 20));
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override

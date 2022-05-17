@@ -13,9 +13,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
+/*
+Unlock : 워터 슬라임을 50회 처치했다.
 
+Effect : 최대 체력인 상태에서 5초간 피격 당하지 않으면 전체 체력의 2 +(레벨당  0.03)%의 피해를 흡수하는 보호막을 생성한다.
+
+Rank : Common
+Visible : false
+ */
 @SuppressWarnings("unused")
-public class Tension extends RPassive {
+public class Tension extends RPassive { // todo 쉴드 로직 제작
     private BukkitTask task;
 
     public Tension() {

@@ -49,7 +49,7 @@ Visible : false
         if (!(e instanceof Mob m)) return;
         CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(m.getUniqueId());
         rmob.damage(getDamage() + 3 * rp.getLevel(), rp.getPlayer());
-        cooldown(getCooldown(), this);
+        cooldown(this);
     }
 
     @Override
