@@ -14,6 +14,7 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 
 /*
 Unlock : 메인퀘스트 1 완료
@@ -27,6 +28,7 @@ Cooldown : 5Secs
 Rank : Common
 Visible : true
  */
+@SuppressWarnings("all")
 public class Cutting extends RActive {
 
     public Cutting() {
@@ -68,8 +70,10 @@ public class Cutting extends RActive {
                 //damage
                 CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
                 rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
-
-                ParticleUtil.createParticle(p, Particle.SWEEP_ATTACK, e.getLocation(), 0, 1, 0, 2, 0);
+            }
+            for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 180,
+                    p.getLocation().getDirection())) {
+                ParticleUtil.createParticle(p, Particle.CRIT, v.toLocation(p.getWorld()), 0, 1, 0, 1, 0);
             }
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.8f);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);

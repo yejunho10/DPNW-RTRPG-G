@@ -127,7 +127,7 @@ public interface RPlayer {
     /**
      * @return 플레이어의 현제방어력을 리턴시킨다.
      */
-    double getcurrentArmor();
+    double getCurrentArmor();
 
     /**
      * @return 플레이어의 최대마나를 리턴시킨다.

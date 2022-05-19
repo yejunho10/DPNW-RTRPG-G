@@ -2,15 +2,19 @@ package com.dpnw.rtrpg.rplayer;
 
 import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.RTRPG;
+import com.dpnw.rtrpg.enums.Damager;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.enums.SkillType;
 import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.events.obj.RDamageByEntityEvent;
 import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import com.dpnw.rtrpg.rplayer.obj.Levelable;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
+import com.dpnw.rtrpg.utils.RMobUtil;
+import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.obj.abstracts.WeaponPublicFields;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
@@ -65,6 +69,17 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         setHealthRegen(0.2);
         setManaRegen(0.2);
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> this.skills = skills, 5L);
+    }
+
+    public void damage(double damage, Player damager) {// 플레이어에게 공격받는 경우
+        Bukkit.getServer().getPluginManager().callEvent(new RDamageByEntityEvent((CraftRPlayer) RPlayerUtil.getRPlayer(damager.getUniqueId()), getPlayer(), damage, Damager.PLAYER));
+        if (currentHealth - (damage - getCurrentArmor()) <= 0) { // 들어온 데미지가 쉴드와 체력 둘다 감당하지 못할경우 처치
+            setcurrentHealth(0);
+            p.setHealth(0);
+        }else{
+            currentHealth -= (damage - getCurrentArmor());
+        }
+//        counter(damage); // 이건 앞으로도 사용을 안할거같다. 아마도...
     }
 
     public void updateStats() {
@@ -291,7 +306,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     }
 
     @Override
-    public double getcurrentArmor() {
+    public double getCurrentArmor() {
         return currentArmor;
     }
 

@@ -3,14 +3,19 @@ package com.dpnw.rtrpg.skills.skillActive;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.RActive;
+import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+
+import java.util.ArrayList;
+
 /*
 Unlock : 4시간 동안 가만히 있었다.
 
@@ -55,7 +60,7 @@ public class HighExistance extends RActive {
                 if (timer >= 14400) {
                     RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
                     task.cancel();
-                }else{
+                } else {
                     timer++;
                 }
             } else {
@@ -72,15 +77,31 @@ public class HighExistance extends RActive {
 
     @Override
     public void use(RPlayer p) {
-
+        if (isCooldown()) return;
+        CraftRPlayer cp = (CraftRPlayer) p;
+        ArrayList<Skill> skills = new ArrayList<>();
+        for (SkillName sn : cp.getEquipedPassiveSkill().values()) {
+            skills.add(cp.getPassiveList().get(sn));
+        }
+        for (SkillName sn : cp.getEquipedActiveSkill().values()) {
+            skills.add(cp.getActiveList().get(sn));
+        }
+        for (Skill s : skills) {
+            if (!s.getRank().equals(Rank.WORLD)) {
+                s.setCooldown(s.getCooldown() * 0.9);
+            }
+        }
+        cp.setcurrentMana(cp.getcurrentMana() + (cp.getMaxMana() - cp.getcurrentMana() / 2));
+        setCooldown(true);
     }
 
     @Override
     public void cancel() {
-        try{
+        try {
             task.cancel();
             timer = 0;
             loc = null;
-        }catch (Exception ignored){}
+        } catch (Exception ignored) {
+        }
     }
 }

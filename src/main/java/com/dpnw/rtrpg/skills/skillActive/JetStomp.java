@@ -3,14 +3,18 @@ package com.dpnw.rtrpg.skills.skillActive;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.RActive;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.Vector;
+
 /*
 Unlock : 낙사했다.
 
@@ -68,7 +72,21 @@ public class JetStomp extends RActive {
     @Override
     public void use(RPlayer p) {
         if (isCooldown()) return;
-
+        p.getPlayer().setVelocity(new Vector(0, 4, 0));
+        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
+            p.getPlayer().setVelocity(new Vector(0, -4, 0));
+        }, 20L);
+        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
+            p.getPlayer().getNearbyEntities(getRange(), getRange(), getRange()).forEach(e -> {
+                if (e instanceof LivingEntity le) {
+                    CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                    if(rmob != null) {
+                        rmob.damage(getDamage() + p.getLevel(), p.getPlayer());
+                    }
+                }
+            });
+        }, 30L);
+        //todo 비주얼 추가
         cooldown(this);
     }
 

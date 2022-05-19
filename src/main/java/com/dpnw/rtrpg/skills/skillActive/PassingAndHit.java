@@ -31,6 +31,7 @@ Cooldown : 7
 Rank : Common
 Visible : true
  */
+@SuppressWarnings("all")
 public class PassingAndHit extends RActive {
     private BukkitTask task;
 
@@ -61,10 +62,12 @@ public class PassingAndHit extends RActive {
             Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
                 p.setVelocity(p.getLocation().getDirection().multiply(0.5));
                 for (Entity e : Cone.getEntitiesInCone(p.getNearbyEntities(getRange(), getRange(), getRange()), p.getLocation().toVector(), getRange(), 10, p.getEyeLocation().getDirection())) {
-                    if (e instanceof ArmorStand) continue;
-                    LivingEntity le = (LivingEntity) e;
-                    CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
-                    rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
+                    if (e instanceof LivingEntity le) {
+                        CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                        if(rmob != null) {
+                            rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
+                        }
+                    }
                 }
                 for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 10,
                         p.getLocation().getDirection())) {
