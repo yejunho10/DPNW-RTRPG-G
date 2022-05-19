@@ -13,7 +13,6 @@ public class Counter extends PublicFields {
     private int killCount = 0; //모든 적을 죽인 수
     private double moveCount = 0; //이동한 거리
     private int clearedQuest = 0; //퀘스트 클리어 횟수
-
     private int jumpCount = 0; //점프 횟수
 
     private Map<MobName, Integer> enemyCount = new HashMap<>(); //각각의 적을 죽인 수
@@ -23,6 +22,7 @@ public class Counter extends PublicFields {
     private int t_noAttack = 0; //임시 변수
     private int t_noAttackTime = 0; //임시 변수
     private double t_IgnoredDamage = 0; //임시 변수, 막은 피해량
+    private int t_FlyTime = 0; //임시 변수, 공중에 떠있는 시간
 
     public Counter() {
     }
@@ -63,6 +63,7 @@ public class Counter extends PublicFields {
         t_noAttack = 0;
         t_noAttackTime = 0;
         t_IgnoredDamage = 0;
+        t_FlyTime = 0;
     }
 
     public int getDeathCount() {
@@ -119,6 +120,14 @@ public class Counter extends PublicFields {
 
     public void setT_noAttackTime(int t_noAttackTime) {
         this.t_noAttackTime = t_noAttackTime;
+    }
+
+    public int getT_FlyTime() {
+        return t_FlyTime;
+    }
+
+    public void setT_FlyTime(int t_FlyTime) {
+        this.t_FlyTime = t_FlyTime;
     }
 
     public Map<MobName, Integer> getEnemyCount() {

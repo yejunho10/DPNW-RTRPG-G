@@ -3,8 +3,10 @@ package com.dpnw.rtrpg.schedulers;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.skillActive.Immovable;
+import com.dpnw.rtrpg.skills.skillActive.MeteorStrike;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.utils.Tuple;
 import org.bukkit.Bukkit;
@@ -14,6 +16,8 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import static com.dpnw.rtrpg.enums.SkillName.METEOR_STRIKE;
 
 public class CounterScheduler {
     public static final Map<UUID, Tuple<Location, Location>> move = new HashMap<>();
@@ -57,5 +61,25 @@ public class CounterScheduler {
                 }
             }
         }, 20L, 100L);
+        Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> { //flyTime Count
+            for(Player p : Bukkit.getOnlinePlayers()) {
+                CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+                if(cp == null) continue;
+                if(!cp.getPlayer().isOnGround()) cp.setT_FlyTime(cp.getT_FlyTime() + 1);
+
+                if (RPlayerUtil.hasSkill(cp.getUUID(), METEOR_STRIKE)) {
+                    if (cp.getT_FlyTime() >= 10) {
+                        //순풍 (Fair Wind) 해금
+                    }
+                    else if (cp.getT_FlyTime() >= 7) {
+                        //교란 (Confusion) 해금
+                    }
+                    else if (cp.getT_FlyTime() >= 5) {
+                        cp.getUnLockedSkills().add(METEOR_STRIKE);
+                        RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(new MeteorStrike(), p));
+                    }
+                }
+            }
+        }, 20L, 20L);
     }
 }
