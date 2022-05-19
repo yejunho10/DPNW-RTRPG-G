@@ -5,15 +5,22 @@ import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.schedulers.SpawnerShowScheduler;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
+import io.lumine.mythic.bukkit.MythicBukkit;
+import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +37,7 @@ public class RCommand implements CommandExecutor, TabCompleter {
         }
         if (args.length == 0) {
             sender.sendMessage(prefix + "[ = = = = = HELP = = = = = ]");
-            if(!sender.isOp()){
+            if (!sender.isOp()) {
                 sender.sendMessage(prefix + "/rr wo : 디버깅용 (선택창 오픈)");
                 return false;
             }
@@ -46,7 +53,7 @@ public class RCommand implements CommandExecutor, TabCompleter {
             MenuFunctions.openSelectApprenticeWeapons(p);
             return false;
         }
-        if(!sender.isOp()) return false;
+        if (!sender.isOp()) return false;
         if (args[0].equals("w")) {
             p.getInventory().addItem(AllWeapons.getWeapons().get(WeaponName.valueOf(args[1])).getWeapon());
             return false;
@@ -90,6 +97,41 @@ public class RCommand implements CommandExecutor, TabCompleter {
             p.performCommand("mm spawners set " + args[5] + " cooldown 1");
             return false;
         }
+        if (args[0].equals("export")) {
+            String name;
+            String r = "";
+            for (MythicSpawner s : MythicBukkit.inst().getSpawnerManager().getSpawners()) {
+                name = s.getTypeName();
+                if (!name.equals(s.getTypeName())) {
+                    r += "            var mobicon = L.icon({\n" +
+                            "                iconUrl: overviewerConfig.CONST.image." + name + ",\n" +
+                            "                iconRetinaUrl: overviewerConfig.CONST.image." + name + "_2x,\n" +
+                            "                iconSize: [32, 37],\n" +
+                            "                iconAnchor: [15, 33],\n" +
+                            "            });" +
+                            "var latlng = overviewer.util.fromWorldToLatLng(" + s.getBlockX() + ", " + s.getBlockY() + ", " + s.getBlockZ() + ", ovconf);\n" +
+                            "marker(mobname, latlng, mobicon);";
+                } else {
+                    r += "var mobname = \"" + name + "\";\n" +
+                            "            var latlng = overviewer.util.fromWorldToLatLng(" + s.getBlockX() + ", " + s.getBlockY() + ", " + s.getBlockZ() + ", ovconf);\n" +
+                            "marker(mobname, latlng, mobicon);";
+                }
+            }
+            File file = new File(plugin.getDataFolder() + "/spawners.txt");
+            try {
+                file.createNewFile();
+                try {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                    writer.write(r);
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return false;
+        }
         if (args[0].equals("exp")) {
             if (args.length == 1) {
                 sender.sendMessage(prefix + "give, take, set");
@@ -105,9 +147,12 @@ public class RCommand implements CommandExecutor, TabCompleter {
             }
             try {
                 switch (args[1]) {
-                    case "give" -> plugin.rplayers.get(Bukkit.getPlayer(args[2]).getUniqueId()).giveExp(Integer.parseInt(args[3]));
-                    case "take" -> plugin.rplayers.get(Bukkit.getPlayer(args[2]).getUniqueId()).giveExp(Integer.parseInt(args[3]) * -1);
-                    case "set" -> plugin.rplayers.get(Bukkit.getPlayer(args[2]).getUniqueId()).setExp(Integer.parseInt(args[3]));
+                    case "give" ->
+                            plugin.rplayers.get(Bukkit.getPlayer(args[2]).getUniqueId()).giveExp(Integer.parseInt(args[3]));
+                    case "take" ->
+                            plugin.rplayers.get(Bukkit.getPlayer(args[2]).getUniqueId()).giveExp(Integer.parseInt(args[3]) * -1);
+                    case "set" ->
+                            plugin.rplayers.get(Bukkit.getPlayer(args[2]).getUniqueId()).setExp(Integer.parseInt(args[3]));
                 }
             } catch (Exception e) {
                 sender.sendMessage(prefix + "플레이어가 존재하지 않거나 경험치 값이 옳바르지 않음.");

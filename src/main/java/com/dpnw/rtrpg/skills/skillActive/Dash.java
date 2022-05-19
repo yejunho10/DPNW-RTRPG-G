@@ -2,8 +2,10 @@ package com.dpnw.rtrpg.skills.skillActive;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.particles.ParticleUtil;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RActive;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
@@ -28,6 +30,7 @@ public class Dash extends RActive {
         if (isCooldown()) return;
         Player p = rp.getPlayer();
         p.setVelocity(p.getLocation().getDirection().multiply(2));
+        ParticleUtil.around(p, 1, 5, Particle.CLOUD, 1, 0);
         p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 0.5f, 1);
         cooldown(this);
     }

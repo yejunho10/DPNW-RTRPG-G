@@ -57,7 +57,9 @@ public class FlingUP extends RActive {
                 System.out.println(e.getType());
                 //damage
                 CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                if(rmob == null) continue;
                 rmob.damage(getDamage() + 2 * rp.getLevel(), rp.getPlayer());
+                le.setVelocity(new Vector(0, 0.5, 0));
             }
             for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 35,
                     p.getLocation().getDirection())) {
