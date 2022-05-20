@@ -1,10 +1,15 @@
 package com.dpnw.rtrpg.skills.skillActive;
 
+import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.mob.obj.CraftRMob;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RActive;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 
 /*
 Unlock : 공중에 5초 이상 떠 있었다.
@@ -22,6 +27,7 @@ public class MeteorStrike extends RActive {
     public MeteorStrike() {
         setCooldown(2);
         setDamage(110);
+        setRange(7);
         setRank(Rank.UNCOMMON);
         setRequireMana(35);
         setVisible(false);
@@ -37,11 +43,17 @@ public class MeteorStrike extends RActive {
     public void use(RPlayer p) {
         if (isCooldown()) return;
         if (p.getPlayer().isOnGround()) return;
-        p.getPlayer().setVelocity(p.getPlayer().getVelocity().setY(0.5));
-        p.getPlayer().getNearbyEntities(7, 7, 7).forEach(e -> {
-            if (!(e instanceof Player player)) return;
-            player.damage(getDamage() + p.getLevel() * 5);
-        });
+        p.getPlayer().setVelocity(new Vector(0, -4, 0));
+        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
+            p.getPlayer().getNearbyEntities(getRange(), getRange(), getRange()).forEach(e -> {
+                if (e instanceof LivingEntity le) {
+                    CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
+                    if (rmob != null) {
+                        rmob.damage(getDamage() + (p.getLevel() * 5), p.getPlayer());
+                    }
+                }
+            });
+        }, 5L);
         cooldown(this);
     }
 
