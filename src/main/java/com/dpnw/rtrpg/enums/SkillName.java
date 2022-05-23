@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.enums;
 
 public enum SkillName {
+    CONFUSION("CONFUSION", "교란", SkillType.ACTIVE),
     AIR_SLASH("AIR_SLASH", "에어 슬래쉬", SkillType.ACTIVE),
     ANOTHER_WORLD_PERSON("ANOTHER_WORLD_PERSON", "이세계인", SkillType.PASSIVE),
     APPETITE("APPETITE", "식욕", SkillType.PASSIVE),
