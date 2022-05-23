@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.rplayer;
 
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
 import com.dpnw.rtrpg.skills.obj.Skill;
@@ -45,6 +46,17 @@ public class AllSkills {
         skills.add(new Survivor());
         skills.add(new Undead());
         skills.add(new Destruction());
+        skills.add(new FairWind());
+        skills.add(new DelightofSlaughter());
+        skills.add(new Enlightenment());
+        skills.add(new GreenBloodline());
+        skills.add(new HardMuscle());
+        skills.add(new OverHeating());
+        skills.add(new Resolution());
+        skills.add(new Sin());
+        skills.add(new SoulofGladiator());
+        skills.add(new Tension());
+        skills.add(new Viscosity());
     }
 
     public static Skill getSkillFromName(SkillName name) {

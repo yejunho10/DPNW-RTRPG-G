@@ -33,6 +33,13 @@ public class OverHeating extends RPassive {
         setDamage(27 + rp.getLevel() * 3);
     }
 
+    public OverHeating() {
+        setRank(Rank.COMMON);
+        setVisible(false);
+        setSkillName(SkillName.OVERHEATING);
+        setDamage(27 + 3);
+    }
+
     public OverHeating(Player p) {
         setRank(Rank.COMMON);
         setVisible(false);
@@ -42,7 +49,7 @@ public class OverHeating extends RPassive {
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
             if (cp.getEnemyCount().containsKey(MobName.MAGMA_SLIME)) {
-                if(cp.getEnemyCount().get(MobName.MAGMA_SLIME) > 50) {
+                if (cp.getEnemyCount().get(MobName.MAGMA_SLIME) > 50) {
                     RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
                     task.cancel();
                 }

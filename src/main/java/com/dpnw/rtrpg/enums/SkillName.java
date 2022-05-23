@@ -146,6 +146,8 @@ public enum SkillName {
     WITCH_OF_PLATEAU("WITCH_OF_PLATEAU", "고원의 마녀", SkillType.PASSIVE),
     WRATH("WRATH", "분노", SkillType.PASSIVE),
     METEOR_STRIKE("METEOR_STRIKE", "혜성 강타", SkillType.ACTIVE),
+    CONFUSION("CONFUSION", "교란", SkillType.ACTIVE),
+    FAIRWIND("FAIRWIND", "순풍", SkillType.ACTIVE),
     ;
     private final String raw;
     private final String kor;

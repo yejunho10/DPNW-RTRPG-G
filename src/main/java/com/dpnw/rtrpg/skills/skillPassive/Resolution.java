@@ -32,6 +32,13 @@ public class Resolution extends RPassive {
         setIncreaseArmor(15 + rp.getLevel());
     }
 
+    public Resolution() {
+        setRank(Rank.COMMON);
+        setVisible(true);
+        setSkillName(SkillName.RESOLUTION);
+        setIncreaseArmor(15);
+    }
+
     public Resolution(Player p) {
         setRank(Rank.COMMON);
         setVisible(true);

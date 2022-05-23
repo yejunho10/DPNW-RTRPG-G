@@ -12,6 +12,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
+
 /*
 Unlock : 2시간 동안 가만히 있었다.
 
@@ -32,6 +33,14 @@ public class Enlightenment extends RPassive {
         setSkillName(SkillName.ENLIGHTENMENT);
         setIncreaseManaRegen(1);
         setDecreaseCooldown(1 + rp.getLevel() * 0.05);
+    }
+
+    public Enlightenment() {
+        setRank(Rank.UNCOMMON);
+        setVisible(false);
+        setSkillName(SkillName.ENLIGHTENMENT);
+        setIncreaseManaRegen(1);
+        setDecreaseCooldown(1 + 0.05);
     }
 
     public Enlightenment(Player p) {
