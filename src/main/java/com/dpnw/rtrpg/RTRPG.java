@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg;
 
+import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import com.dpnw.rtrpg.commands.RCommand;
 import com.dpnw.rtrpg.mob.obj.RMob;
 import com.dpnw.rtrpg.rplayer.AllSkills;
@@ -24,7 +25,6 @@ public class RTRPG extends JavaPlugin {
     public static RTRPG getInstance() {
         return plugin;
     }
-
 
     @Override
     public void onEnable() {
