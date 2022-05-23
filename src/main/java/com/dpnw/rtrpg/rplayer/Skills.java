@@ -26,6 +26,7 @@ public class Skills { //논 이벤트 해금조건을 가진 스킬
             skills.add(new HighExistance(p));
             skills.add(new MemoryOfFeet(p));
             skills.add(new MeteorStrike(p));
+            skills.add(new FairWind(p));
             // passive
             skills.add(new DelightofSlaughter(p));
             skills.add(new Endurance(p));

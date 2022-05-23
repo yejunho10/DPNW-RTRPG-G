@@ -32,6 +32,13 @@ public class SoulofGladiator extends RPassive {
         setIncreaseWeaponDamage(25 + rp.getLevel() * 2);
     }
 
+    public SoulofGladiator() {
+        setRank(Rank.UNCOMMON);
+        setVisible(false);
+        setSkillName(SkillName.SOUL_OF_GLADIATOR);
+        setIncreaseWeaponDamage(25 + 2);
+    }
+
     public SoulofGladiator(Player p) {
         setRank(Rank.UNCOMMON);
         setVisible(false);

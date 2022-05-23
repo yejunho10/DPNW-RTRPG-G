@@ -32,6 +32,13 @@ public class HardMuscle extends RPassive {
         setIncreaseArmorPercent(2 + rp.getLevel() * 0.28);
     }
 
+    public HardMuscle() {
+        setRank(Rank.UNCOMMON);
+        setVisible(false);
+        setSkillName(SkillName.HARD_MUSCLE);
+        setIncreaseArmorPercent(2 + 0.28);
+    }
+
     public HardMuscle(Player p) {
         setRank(Rank.UNCOMMON);
         setVisible(false);

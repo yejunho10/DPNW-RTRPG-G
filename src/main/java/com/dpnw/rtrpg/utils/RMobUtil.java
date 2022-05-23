@@ -6,6 +6,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 public class RMobUtil {
 
@@ -69,5 +70,31 @@ public class RMobUtil {
             }
         }
         return s.toString();
+    }
+
+    @Nullable
+    public static Entity getNearestEntity(Location loc, double range) {
+        Entity nearest = null;
+        double distance = range;
+        for (Entity e : loc.getWorld().getEntities()) {
+            if (e.getLocation().distance(loc) < distance) {
+                nearest = e;
+                distance = e.getLocation().distance(loc);
+            }
+        }
+        return nearest;
+    }
+
+    @Nullable
+    public static LivingEntity getNearestLivingEntity(Location loc, double range) {
+        LivingEntity nearest = null;
+        double distance = range;
+        for (Entity e : loc.getWorld().getEntities()) {
+            if (e.getLocation().distance(loc) < distance && e instanceof LivingEntity) {
+                nearest = (LivingEntity) e;
+                distance = e.getLocation().distance(loc);
+            }
+        }
+        return nearest;
     }
 }
