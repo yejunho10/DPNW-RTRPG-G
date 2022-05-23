@@ -57,6 +57,7 @@ public class AllSkills {
         skills.add(new SoulofGladiator());
         skills.add(new Tension());
         skills.add(new Viscosity());
+        skills.add(new Confusion());
     }
 
     public static Skill getSkillFromName(SkillName name) {
