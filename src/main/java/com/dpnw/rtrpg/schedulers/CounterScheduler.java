@@ -65,9 +65,11 @@ public class CounterScheduler {
             for(Player p : Bukkit.getOnlinePlayers()) {
                 CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
                 if(cp == null) continue;
+
                 if(!cp.getPlayer().isOnGround()) {
                     cp.setT_FlyTime(cp.getT_FlyTime() + 1);
-                }else{
+                }
+                else {
                     cp.setT_FlyTime(0);
                 }
             }

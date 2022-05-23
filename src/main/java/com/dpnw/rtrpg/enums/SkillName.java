@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.enums;
 
 public enum SkillName {
+    CONFUSION("CONFUSION", "교란", SkillType.ACTIVE),
     AIR_SLASH("AIR_SLASH", "에어 슬래쉬", SkillType.ACTIVE),
     ANOTHER_WORLD_PERSON("ANOTHER_WORLD_PERSON", "이세계인", SkillType.PASSIVE),
     APPETITE("APPETITE", "식욕", SkillType.PASSIVE),
@@ -145,7 +146,6 @@ public enum SkillName {
     WITCH_OF_PLATEAU("WITCH_OF_PLATEAU", "고원의 마녀", SkillType.PASSIVE),
     WRATH("WRATH", "분노", SkillType.PASSIVE),
     METEOR_STRIKE("METEOR_STRIKE", "혜성 강타", SkillType.ACTIVE),
-    CONFUSION("CONFUSION", "교란", SkillType.ACTIVE),
     ;
     private final String raw;
     private final String kor;

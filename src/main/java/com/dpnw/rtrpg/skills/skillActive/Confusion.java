@@ -19,9 +19,7 @@ import org.bukkit.util.Vector;
 
 /*
 Unlock : 공중에 7초 이상 떠 있었다.
-
 Use : 시전 즉시 주변의 모든 적들에게 95 +(LV * 3)의 피해를 주고 2초간 실명 시킵니다. 그리고 시전자는 7칸 위로 순간이동 합니다.
-
 Damage : 90 +(lv * 3)
 Duration : 5
 Range : 6
