@@ -65,19 +65,10 @@ public class CounterScheduler {
             for(Player p : Bukkit.getOnlinePlayers()) {
                 CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
                 if(cp == null) continue;
-                if(!cp.getPlayer().isOnGround()) cp.setT_FlyTime(cp.getT_FlyTime() + 1);
-
-                if (RPlayerUtil.hasSkill(cp.getUUID(), METEOR_STRIKE)) {
-                    if (cp.getT_FlyTime() >= 10) {
-                        //순풍 (Fair Wind) 해금
-                    }
-                    else if (cp.getT_FlyTime() >= 7) {
-                        //교란 (Confusion) 해금
-                    }
-                    else if (cp.getT_FlyTime() >= 5) {
-                        cp.getUnLockedSkills().add(METEOR_STRIKE);
-                        RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(new MeteorStrike(), p));
-                    }
+                if(!cp.getPlayer().isOnGround()) {
+                    cp.setT_FlyTime(cp.getT_FlyTime() + 1);
+                }else{
+                    cp.setT_FlyTime(0);
                 }
             }
         }, 20L, 20L);

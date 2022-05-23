@@ -4,11 +4,17 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
+import com.dpnw.rtrpg.particles.ParticleUtil;
+import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
+import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.RActive;
+import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
 /*
@@ -24,6 +30,8 @@ Rank : Uncommon
 Visible : false
  */
 public class MeteorStrike extends RActive {
+    private BukkitTask task;
+
     public MeteorStrike() {
         setCooldown(2);
         setDamage(110);
@@ -32,6 +40,25 @@ public class MeteorStrike extends RActive {
         setRequireMana(35);
         setVisible(false);
         setSkillName(SkillName.METEOR_STRIKE);
+    }
+
+    public MeteorStrike(Player p) {
+        setCooldown(2);
+        setDamage(110);
+        setRange(7);
+        setRank(Rank.UNCOMMON);
+        setRequireMana(35);
+        setVisible(false);
+        setSkillName(SkillName.METEOR_STRIKE);
+        if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
+        task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
+            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+            if (cp == null) return;
+            if (cp.getT_FlyTime() >= 5) {
+                RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
+                task.cancel();
+            }
+        }, 10L, 20L);
     }
 
     @Override
@@ -50,9 +77,11 @@ public class MeteorStrike extends RActive {
                     CraftRMob rmob = (CraftRMob) RTRPG.getInstance().rmobs.get(le.getUniqueId());
                     if (rmob != null) {
                         rmob.damage(getDamage() + (p.getLevel() * 5), p.getPlayer());
+                        ParticleUtil.createParticle(le, Particle.CLOUD, le.getLocation().add(0, 1, 0), 0, 0, 0, 0, 1);
                     }
                 }
             });
+            ParticleUtil.around(p.getPlayer(), 0, getRange(), Particle.CRIT, 1, 0.1);
         }, 5L);
         cooldown(this);
     }
@@ -60,6 +89,10 @@ public class MeteorStrike extends RActive {
 
     @Override
     public void cancel() {
-
+        try {
+            task.cancel();
+            task = null;
+        } catch (Exception ignored) {
+        }
     }
 }
