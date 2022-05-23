@@ -35,6 +35,7 @@ Visable : false
  */
 @SuppressWarnings("all")
 public class AirSlash extends RActive {
+    private BukkitTask task;
 
     public AirSlash() {
         setDamage(120);
@@ -55,7 +56,14 @@ public class AirSlash extends RActive {
         setVisible(false);
         setSkillName(SkillName.AIR_SLASH);
         if (RPlayerUtil.hasSkill(p.getUniqueId(), getSkillName())) return;
-
+        task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
+            CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
+            if (cp == null) return;
+            if (cp.getMoveCount() >= 5000) {
+                RTRPG.getInstance().getServer().getPluginManager().callEvent(new SkillUnlockEvent(this, p));
+                task.cancel();
+            }
+        }, 0L, 20L);
     }
 
     @Override
@@ -93,6 +101,9 @@ public class AirSlash extends RActive {
 
     @Override
     public void cancel() {
-
+        try {
+            task.cancel();
+        } catch (Exception ignored) {
+        }
     }
 }
