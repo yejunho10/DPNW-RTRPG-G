@@ -33,6 +33,7 @@ Cooldown : 20Secs
 Rank : Uncommon
 Visible : false
  */
+@SuppressWarnings("all")
 public class FireRing extends RActive {
     private BukkitTask task1;
     private BukkitTask task2;
@@ -47,6 +48,7 @@ public class FireRing extends RActive {
         setRequireMana(68);
         setVisible(false);
         setSkillName(SkillName.FIRE_RING);
+        setBuyFromShop(true);
     }
 
     @Override

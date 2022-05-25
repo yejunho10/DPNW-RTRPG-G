@@ -28,6 +28,7 @@ public class Flash extends RActive {
         setRank(Rank.UNCOMMON);
         setVisible(false);
         setSkillName(SkillName.FLASH);
+        setBuyFromShop(true);
     }
 
     @Override

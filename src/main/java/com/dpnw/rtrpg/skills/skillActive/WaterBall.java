@@ -43,6 +43,7 @@ Visible : false
         setRequireMana(68);
         setVisible(false);
         setSkillName(SkillName.WATER_BALL);
+        setBuyFromShop(true);
     }
 
     @Override
