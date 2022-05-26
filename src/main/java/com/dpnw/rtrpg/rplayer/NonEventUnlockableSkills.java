@@ -11,10 +11,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @SuppressWarnings("unused")
-public class Skills { //논 이벤트 해금조건을 가진 스킬
+public class NonEventUnlockableSkills { //논 이벤트 해금조건을 가진 스킬
     private final Set<Skill> skills = new HashSet<>();
 
-    public Skills(Player p) {
+    public NonEventUnlockableSkills(Player p) {
         Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
             // active
             skills.add(new Sprint(p));
