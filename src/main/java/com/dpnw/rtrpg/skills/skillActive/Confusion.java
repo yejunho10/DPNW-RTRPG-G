@@ -62,7 +62,6 @@ public class Confusion extends RActive {
                 task.cancel();
             }
         }, 10L, 20L);
-        cooldown(this);
     }
 
     @Override

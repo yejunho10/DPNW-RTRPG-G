@@ -49,6 +49,7 @@ public class LeapOfQueen extends RActive {
 
     @Override
     public void use(RPlayer p) {
+        if (isCooldown()) return;
         p.getPlayer().getVelocity().setY(1);
 
         task = Bukkit.getScheduler().runTaskTimer(RTRPG.getInstance(), () -> {
