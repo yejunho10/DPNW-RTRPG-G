@@ -33,6 +33,7 @@ public class FireBall extends RActive {
         setRequireMana(70);
         setVisible(false);
         setSkillName(SkillName.FIRE_BALL);
+        setBuyFromShop(true);
     }
 
     @Override
