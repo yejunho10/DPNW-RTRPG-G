@@ -7,6 +7,8 @@ import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 
 @SuppressWarnings("all")
 public interface Weapon {
+
+    double getDodgeChance();
     Rank getRank();
 
     WeaponName getWeaponName();
@@ -38,6 +40,8 @@ public interface Weapon {
     double getCurrentWeaponCritDamage();
 
     double getDefaultWeaponCritDamage();
+
+    void setDodgeChance(double dodgeChance);
 
     void setRank(Rank rank);
 
