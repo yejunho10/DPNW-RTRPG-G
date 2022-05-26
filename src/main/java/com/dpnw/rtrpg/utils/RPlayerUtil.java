@@ -3,7 +3,7 @@ package com.dpnw.rtrpg.utils;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
-import com.dpnw.rtrpg.rplayer.Skills;
+import com.dpnw.rtrpg.rplayer.NonEventUnlockableSkills;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -37,12 +37,12 @@ public class RPlayerUtil {
         try {
             File file = new File(RTRPG.getInstance().getDataFolder() + "/RPlayers/", p.getUniqueId() + ".yaml");
             if(!file.exists()) {
-                RTRPG.getInstance().rplayers.put(p.getUniqueId(), new CraftRPlayer(p, new Skills(p)));
+                RTRPG.getInstance().rplayers.put(p.getUniqueId(), new CraftRPlayer(p, new NonEventUnlockableSkills(p)));
                 System.out.println("create new Data : " + p.getUniqueId());
                 return;
             }
             YamlConfiguration data = YamlConfiguration.loadConfiguration(file);
-            RTRPG.getInstance().rplayers.put(p.getUniqueId(), new CraftRPlayer(p, new Skills(p)).deserializer(data));
+            RTRPG.getInstance().rplayers.put(p.getUniqueId(), new CraftRPlayer(p, new NonEventUnlockableSkills(p)).deserializer(data));
             System.out.println("rplayers map size : "+RTRPG.getInstance().rplayers.size());
         } catch (Exception e) {
             e.printStackTrace();
