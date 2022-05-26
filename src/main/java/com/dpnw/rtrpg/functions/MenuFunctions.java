@@ -8,11 +8,9 @@ import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
-import com.dpnw.rtrpg.skills.obj.RPassive;
-import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.utils.RSkillUtils;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
-import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
+import com.dpnw.rtrpg.weapons.obj.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -130,8 +128,9 @@ public class MenuFunctions {
     public static void openSelectApprenticeWeapons(Player p) { //"§1견습 무기 선택"
         Inventory inv = plugin.getServer().createInventory(null, 27, "§1견습 무기 선택");
         for (Weapon w : AllWeapons.getApprenticeWeapons().values()) {
-            ItemStack item = w.getWeapon();
-            inv.addItem(item);
+//            ItemStack item = w.getWeapon();
+            //todo Weapon to ItemStack
+//            inv.addItem(item);
         }
         p.openInventory(inv);
     }

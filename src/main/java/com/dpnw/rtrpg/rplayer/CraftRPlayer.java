@@ -74,7 +74,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         if (currentHealth - (damage - getCurrentArmor()) <= 0) { // 들어온 데미지가 쉴드와 체력 둘다 감당하지 못할경우 처치
             setcurrentHealth(0);
             p.setHealth(0);
-        }else{
+        } else {
             currentHealth -= (damage - getCurrentArmor());
         }
 //        counter(damage); // 이건 앞으로도 사용을 안할거같다. 아마도...
@@ -97,24 +97,24 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         if (!(currentWeapon == null)) {
             unApplyWeaponStats(currentWeapon);
         }
-        WeaponPublicFields s = (WeaponPublicFields) w;
-        this.health += s.getHealth();
-        this.healthRegen += s.getHealthRegen();
-        this.armor += s.getArmor();
-        this.manaRegen += s.getManaRegen();
-        this.maxMana += s.getMaxMana();
-        this.speed += s.getMovementSpeed() * 0.1;
+        PublicFields s = (PublicFields) w;
+        this.health += s.getIncreaseHealth() - s.getDecreaseHealth();
+        this.healthRegen += s.getIncreaseHealthRegen() - s.getDecreaseHealthRegen();
+        this.armor += s.getIncreaseArmor() - s.getDecreaseArmor();
+        this.manaRegen += s.getIncreaseManaRegen() - s.getDecreaseManaRegen();
+        this.maxMana += s.getIncreaseMana() - s.getDecreaseMana();
+        this.speed += s.getIncreaseMoveSpeed() - s.getDecreaseMoveSpeed() * 0.1;
         updateStats();
     }
 
     public void unApplyWeaponStats(Weapon w) {
-        WeaponPublicFields s = (WeaponPublicFields) w;
-        this.health -= s.getHealth();
-        this.healthRegen -= s.getHealthRegen();
-        this.armor -= s.getArmor();
-        this.manaRegen -= s.getManaRegen();
-        this.maxMana -= s.getMaxMana();
-        this.speed -= s.getMovementSpeed() * 0.1;
+        PublicFields s = (PublicFields) w;
+        this.health -= s.getIncreaseHealth() - s.getDecreaseHealth();
+        this.healthRegen -= s.getIncreaseHealthRegen() - s.getDecreaseHealthRegen();
+        this.armor -= s.getIncreaseArmor() - s.getDecreaseArmor();
+        this.manaRegen -= s.getIncreaseManaRegen() - s.getDecreaseManaRegen();
+        this.maxMana -= s.getIncreaseMana() - s.getDecreaseMana();
+        this.speed -= s.getIncreaseMoveSpeed() - s.getDecreaseMoveSpeed() * 0.1;
         updateStats();
     }
 
@@ -222,7 +222,8 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     @Override
     public void setWeapon(Weapon weapon) {
         this.currentWeapon = weapon;
-        p.getInventory().setItem(8, currentWeapon.getWeapon());
+//        p.getInventory().setItem(8, currentWeapon.getWeapon());
+        //todo set Current Weapon
     }
 
     @Override

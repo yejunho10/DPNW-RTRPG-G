@@ -4,7 +4,6 @@ import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.schedulers.SpawnerShowScheduler;
-import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 import org.bukkit.Bukkit;
@@ -12,7 +11,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("all")
 public class RCommand implements CommandExecutor, TabCompleter {
     private static final RTRPG plugin = RTRPG.getInstance();
     String prefix = "§f[ §bRTRPG §f] ";
@@ -55,7 +54,7 @@ public class RCommand implements CommandExecutor, TabCompleter {
         }
         if (!sender.isOp()) return false;
         if (args[0].equals("w")) {
-            p.getInventory().addItem(AllWeapons.getWeapons().get(WeaponName.valueOf(args[1])).getWeapon());
+//            p.getInventory().addItem(AllWeapons.getWeapons().get(WeaponName.valueOf(args[1])).getWeapon());
             return false;
         }
         if (args[0].equals("sp")) {

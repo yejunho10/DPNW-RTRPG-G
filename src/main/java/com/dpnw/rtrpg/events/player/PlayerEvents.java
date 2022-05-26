@@ -7,16 +7,12 @@ import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.schedulers.CounterScheduler;
-import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
 import com.dpnw.rtrpg.skills.events.obj.SkillUnlockEvent;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.JetStomp;
-import com.dpnw.rtrpg.utils.DisplayToast;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
-import com.dpnw.rtrpg.utils.ToastKey;
 import com.dpnw.rtrpg.utils.Tuple;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -28,8 +24,6 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BundleMeta;
-
-import java.util.Objects;
 
 public class PlayerEvents implements Listener {
     private static final RTRPG plugin = RTRPG.getInstance();
@@ -119,28 +113,7 @@ public class PlayerEvents implements Listener {
             bundle.setItemMeta(MenuFunctions.merge(bm, item, p));
             CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
             cp.setBundle(bundle);
-            ItemStack tItem = item.clone();
             e.getItem().remove();
-            Bukkit.getScheduler().runTask(plugin, () -> {
-                StringBuilder lore = new StringBuilder("설명이 없습니다.");
-                if (tItem.hasItemMeta() && tItem.getItemMeta().hasDisplayName()) {
-                    if (tItem.getItemMeta().hasLore()) {
-                        lore = new StringBuilder();
-                        for (String s : Objects.requireNonNull(tItem.getItemMeta().getLore())) {
-                            lore.append(s).append("\n");
-                        }
-                    }
-                    PlayerSchedulers.addToastTask(e.getEntity().getUniqueId(), new DisplayToast(ToastKey.getRandomKey(),
-                            tItem.getItemMeta().getDisplayName() + " X " + tItem.getAmount() + " 획득!",
-                            lore.toString(),
-                            tItem.getType().getKey().asString(),
-                            true,
-                            true,
-                            DisplayToast.ToastFrame.TASK,
-                            DisplayToast.ToastBackground.ADVENTURE
-                    ));
-                }
-            });
         }
     }
 
