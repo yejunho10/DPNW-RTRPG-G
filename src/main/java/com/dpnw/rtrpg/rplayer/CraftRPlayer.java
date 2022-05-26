@@ -13,6 +13,7 @@ import com.dpnw.rtrpg.rplayer.obj.Levelable;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
+import com.dpnw.rtrpg.utils.RMobUtil;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.obj.abstracts.WeaponPublicFields;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
@@ -32,7 +33,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private final UUID uuid;
     private BigDecimal money = new BigDecimal(0);
     private Karma karma = new Karma();
-    private NonEventUnlockableSkills nonEventUnlockableSkills;
+    private Skills skills;
     private Map<SkillName, Passive> passiveList = new HashMap<>(); // 플레이어가 해금한 패시브 스킬 목록
     private Map<SkillName, Active> activeList = new HashMap<>(); // 플레이어가 해금한 액티브 스킬 목록
     private Map<Integer, SkillName> equipedPassiveSkill = new HashMap<>(); // 장착된 패시브 스킬 목록
@@ -58,7 +59,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private double currentSpeed;
     private boolean invincible = false;
 
-    public CraftRPlayer(Player p, NonEventUnlockableSkills nonEventUnlockableSkills) {
+    public CraftRPlayer(Player p, Skills skills) {
         this.p = p;
         uuid = p.getUniqueId();
         setHealth(100);
@@ -67,7 +68,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         setSpeed(p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getDefaultValue());
         setHealthRegen(0.2);
         setManaRegen(0.2);
-        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> this.nonEventUnlockableSkills = nonEventUnlockableSkills, 5L);
+        Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> this.skills = skills, 5L);
     }
 
     public void damage(double damage, Player damager) {// 플레이어에게 공격받는 경우
@@ -241,8 +242,8 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
         currentArmors[index] = armor;
     }
 
-    public NonEventUnlockableSkills getSkills() {
-        return nonEventUnlockableSkills;
+    public Skills getSkills() {
+        return skills;
     }
 
     public Set<SkillName> getUnLockedSkills() {
