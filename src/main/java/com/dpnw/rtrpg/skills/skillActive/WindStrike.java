@@ -34,6 +34,7 @@ Visible : false
         setRequireMana(70);
         setVisible(false);
         setSkillName(SkillName.WIND_STRIKE);
+        setBuyFromShop(true);
     }
 
     @Override
