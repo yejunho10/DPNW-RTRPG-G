@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("all")
 public abstract class WeaponImpl extends PublicFields implements Weapon, ProjectileWeapon, Cooldownable {
+    private double dodgeChance;
     private Rank rank;
     private BukkitTask cooldownTask;
     private double cooldown;
@@ -42,6 +43,11 @@ public abstract class WeaponImpl extends PublicFields implements Weapon, Project
     private boolean penetrable;
 
     @Override
+    public double getDodgeChance() {
+        return dodgeChance;
+    }
+
+    @Override
     public Rank getRank() {
         return rank;
     }
@@ -54,6 +60,11 @@ public abstract class WeaponImpl extends PublicFields implements Weapon, Project
     @Override
     public WeaponName getWeaponName() {
         return weaponName;
+    }
+
+    @Override
+    public void setDodgeChance(double dodgeChance) {
+        this.dodgeChance = dodgeChance;
     }
 
     @Override
