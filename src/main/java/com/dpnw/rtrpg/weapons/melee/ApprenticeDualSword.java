@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.weapons;
+package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
