@@ -7,6 +7,10 @@ import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 
 @SuppressWarnings("all")
 public interface Weapon {
+    double getStunChance();
+
+    double getStunDuration();
+
     double getReach();
 
     double getKnockBack();
@@ -45,6 +49,10 @@ public interface Weapon {
     double getCurrentWeaponCritDamage();
 
     double getDefaultWeaponCritDamage();
+
+    void setStunChance(double stunChance);
+
+    void setStunDuration(double stunDuration);
 
     void setReach(double reach);
 

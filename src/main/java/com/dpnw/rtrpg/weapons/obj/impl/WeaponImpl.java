@@ -14,6 +14,8 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("all")
 public abstract class WeaponImpl extends PublicFields implements Weapon, ProjectileWeapon, Cooldownable {
+    private double stunChance;
+    private double stunDuration;
     private double reach;
     private double knockBack;
     private double lifeSteal;
@@ -46,6 +48,16 @@ public abstract class WeaponImpl extends PublicFields implements Weapon, Project
     private boolean penetrable;
 
     @Override
+    public double getStunChance() {
+        return stunChance;
+    }
+
+    @Override
+    public double getStunDuration() {
+        return stunDuration;
+    }
+
+    @Override
     public double getReach() {
         return reach;
     }
@@ -72,6 +84,16 @@ public abstract class WeaponImpl extends PublicFields implements Weapon, Project
     @Override
     public WeaponName getWeaponName() {
         return weaponName;
+    }
+
+    @Override
+    public void setStunChance(double stunChance) {
+        this.stunChance = stunChance;
+    }
+
+    @Override
+    public void setStunDuration(double stunDuration) {
+        this.stunDuration = stunDuration;
     }
 
     @Override
