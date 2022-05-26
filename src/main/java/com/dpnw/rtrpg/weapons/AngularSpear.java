@@ -4,7 +4,7 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
-public class AngularSpear extends DualSword { //todo - setReach(2); setKnockBack(1);
+public class AngularSpear extends DualSword {
     public AngularSpear() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(87);
@@ -14,7 +14,8 @@ public class AngularSpear extends DualSword { //todo - setReach(2); setKnockBack
         setIncreaseHealth(75);
         setIncreaseManaRegen(0.1);
         setIncreaseMoveSpeed(-0.3);
+        setReach(2);
+        setKnockBack(1);
         setFlavorText("골렘의 파편을 잘 가공해서 만든 무기다. 예상은 했지만, 무게가 엄청나다.");
-        setCurrentWeaponRange(4);
     }
 }

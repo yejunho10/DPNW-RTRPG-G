@@ -13,6 +13,5 @@ public class ApprenticeSpear extends DualSword {
         setDefaultWeaponCritDamage(1.25);
         setIncreaseHealth(35);
         setIncreaseManaRegen(0.3);
-        setCurrentWeaponRange(4);
     }
 }

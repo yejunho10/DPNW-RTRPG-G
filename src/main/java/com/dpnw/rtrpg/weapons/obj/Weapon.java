@@ -7,6 +7,11 @@ import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 
 @SuppressWarnings("all")
 public interface Weapon {
+    double getReach();
+
+    double getKnockBack();
+
+    double getLifeSteal();
 
     double getDodgeChance();
     Rank getRank();
@@ -40,6 +45,12 @@ public interface Weapon {
     double getCurrentWeaponCritDamage();
 
     double getDefaultWeaponCritDamage();
+
+    void setReach(double reach);
+
+    void setKnockBack(double knockBack);
+
+    void setLifeSteal(double lifeSteal);
 
     void setDodgeChance(double dodgeChance);
 

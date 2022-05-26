@@ -4,7 +4,7 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
-public class ExpertSpear extends DualSword { //todo - setReach(0.5); setKnockBack(0.1);
+public class ExpertSpear extends DualSword {
     public ExpertSpear() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(47);
@@ -13,6 +13,7 @@ public class ExpertSpear extends DualSword { //todo - setReach(0.5); setKnockBac
         setDefaultWeaponCritDamage(1.25);
         setIncreaseHealth(45);
         setIncreaseManaRegen(0.4);
-        setCurrentWeaponRange(4);
+        setReach(0.5);
+        setKnockBack(0.1);
     }
 }
