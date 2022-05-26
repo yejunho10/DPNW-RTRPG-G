@@ -6,6 +6,7 @@ import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
+import com.dpnw.rtrpg.weapons.obj.Weapon;
 import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import org.bukkit.GameMode;

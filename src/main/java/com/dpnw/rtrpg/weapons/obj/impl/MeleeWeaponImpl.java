@@ -1,40 +1,15 @@
-package com.dpnw.rtrpg.weapons.sword.expert;
+package com.dpnw.rtrpg.weapons.obj.impl;
 
 import com.dpnw.rtrpg.RTRPG;
-import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
-import com.dpnw.rtrpg.particles.ParticleUtil;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.utils.Cone;
-import com.dpnw.rtrpg.weapons.obj.abstracts.Sword;
-import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.Sound;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
-@SuppressWarnings("unused")
-public class ExpertKnife extends Sword {
+public class MeleeWeaponImpl extends WeaponImpl {
 
-    public ExpertKnife(Material type) {
-        setWeaponName(WeaponName.EXPERT_KNIFE);
-        setDisplayName("숙련자의 단도");
-        setFlavorText("노련한 숙련자용 무기이다. 당신은 이제 어엿한 한 명의 모험가이다.");
-        setRank(Rank.COMMON);
-        setDamage(37);
-        setAttackSpeed(1.5);
-        setCriticalChance(45);
-        setCriticalDamage(2);
-        setHealth(25);
-        setMaxMana(35);
-        setDodgeChance(8);
-        setMovementSpeed(0.3);
-        setRange(2);
-        setAngle(90);
-        setType(type);
-    }
     @Override
     public void use(RPlayer rp) {
         if(isCooldown()) return;
@@ -53,5 +28,4 @@ public class ExpertKnife extends Sword {
         p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
         cooldown(this);
     }
-
 }

@@ -11,9 +11,10 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class RSkill extends PublicFields implements Skill, Cooldownable {
     private BukkitTask cooldownTask;
-    private SkillName skillName;
     private double cooldown;
     private double cooldownTemp;
+    private boolean isCooldown = false;
+    private SkillName skillName;
     private double duration;
     private double range;
     private double subRange;
@@ -28,7 +29,6 @@ public abstract class RSkill extends PublicFields implements Skill, Cooldownable
     private double requireMana;
     private boolean isLock = true;
     private boolean isVisible;
-    private boolean isCooldown = false;
     private boolean isBuyFromShop = false;
 
     @Override
