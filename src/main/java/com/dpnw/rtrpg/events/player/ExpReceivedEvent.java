@@ -5,12 +5,9 @@ import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RSkill;
-import com.dpnw.rtrpg.utils.RPlayerUtil;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+
 
 public class ExpReceivedEvent implements Listener {
 
@@ -30,7 +27,8 @@ public class ExpReceivedEvent implements Listener {
         } else {
             e.getPlayer().setExp(e.getFinalExp());
         }
-        e.getPlayer().getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("§f[ §6EXP.§e" + e.getExp() + " 획득! §f] [ §6EXP.§e" + (e.getPlayer().getExp() - e.getExp()) + " §b→ §e" + finalExp + " §f/ §e" + r + " §f]"));
+        // todo learn Component
+        e.getPlayer().getPlayer().sendActionBar("§f[ §6EXP.§e" + e.getExp() + " 획득! §f] [ §6EXP.§e" + (e.getPlayer().getExp() - e.getExp()) + " §b→ §e" + finalExp + " §f/ §e" + r + " §f]");
     }
 
     public void updateSkillStats(RPlayer p) {

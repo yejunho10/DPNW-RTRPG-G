@@ -7,7 +7,6 @@ import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.obj.Weapon;
-import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -20,6 +19,7 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+@SuppressWarnings("all")
 public class PlayerInventoryEvents implements Listener {
 
     @EventHandler

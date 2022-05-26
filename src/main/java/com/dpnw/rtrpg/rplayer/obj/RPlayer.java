@@ -4,7 +4,7 @@ import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;
-import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
+import com.dpnw.rtrpg.weapons.obj.Weapon;
 import org.bukkit.entity.Player;
 
 import java.math.BigDecimal;

@@ -1,6 +1,5 @@
 package com.dpnw.rtrpg;
 
-import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import com.dpnw.rtrpg.commands.RCommand;
 import com.dpnw.rtrpg.mob.obj.RMob;
 import com.dpnw.rtrpg.rplayer.AllSkills;
@@ -16,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 
+@SuppressWarnings("all")
 public class RTRPG extends JavaPlugin {
     private static RTRPG plugin; // instance
     public final Map<UUID, CraftRPlayer> rplayers = new HashMap<>(); // rplayer map
@@ -36,7 +36,6 @@ public class RTRPG extends JavaPlugin {
         AllSkills.init();
         AllWeapons.init();
         PlayerSchedulers.initSlotSwap();
-        PlayerSchedulers.initToastTask();
         PlayerSchedulers.initDetectDoubleShifting();
         PlayerSchedulers.initArrowEffectTask();
         SpawnerShowScheduler.init();
