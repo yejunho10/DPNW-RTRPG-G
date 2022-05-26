@@ -1,5 +1,8 @@
 package com.dpnw.rtrpg.skills.obj;
 
+import com.dpnw.rtrpg.ables.TaskCancelable;
+import com.dpnw.rtrpg.ables.Unlockable;
+import com.dpnw.rtrpg.ables.Visible;
 import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;

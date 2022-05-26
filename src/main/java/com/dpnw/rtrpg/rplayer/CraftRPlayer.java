@@ -9,7 +9,7 @@ import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.events.obj.RDamageByEntityEvent;
 import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
-import com.dpnw.rtrpg.rplayer.obj.Levelable;
+import com.dpnw.rtrpg.ables.Levelable;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.Active;
 import com.dpnw.rtrpg.skills.obj.Passive;

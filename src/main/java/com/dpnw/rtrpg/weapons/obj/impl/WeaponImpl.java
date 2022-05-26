@@ -2,6 +2,7 @@ package com.dpnw.rtrpg.weapons.obj.impl;
 
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.ables.Cooldownable;
+import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.enums.WeaponType;
 import com.dpnw.rtrpg.rplayer.PublicFields;
@@ -13,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("all")
 public abstract class WeaponImpl extends PublicFields implements Weapon, ProjectileWeapon, Cooldownable {
+    private Rank rank;
     private BukkitTask cooldownTask;
     private double cooldown;
     private double cooldownTemp;
@@ -38,6 +40,16 @@ public abstract class WeaponImpl extends PublicFields implements Weapon, Project
     private int maxTarget;
     private double maxTargetRange;
     private boolean penetrable;
+
+    @Override
+    public Rank getRank() {
+        return rank;
+    }
+
+    @Override
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
 
     @Override
     public WeaponName getWeaponName() {

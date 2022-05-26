@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.rplayer.obj;
+package com.dpnw.rtrpg.ables;
 
 public interface Levelable {
     /**

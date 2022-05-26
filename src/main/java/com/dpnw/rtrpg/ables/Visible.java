@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skills.obj;
+package com.dpnw.rtrpg.ables;
 
 @SuppressWarnings("unused")
 public interface Visible {

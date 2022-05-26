@@ -1,9 +1,14 @@
 package com.dpnw.rtrpg.weapons.obj;
 
+import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.enums.WeaponType;
+import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 
+@SuppressWarnings("all")
 public interface Weapon {
+    Rank getRank();
+
     WeaponName getWeaponName();
 
     WeaponType getWeaponType();
@@ -33,6 +38,8 @@ public interface Weapon {
     double getCurrentWeaponCritDamage();
 
     double getDefaultWeaponCritDamage();
+
+    void setRank(Rank rank);
 
     void setWeaponName(WeaponName weaponName);
 
@@ -64,5 +71,5 @@ public interface Weapon {
 
     void setDefaultWeaponCritDamage(double defaultWeaponCritDamage);
 
-    void use();
+    void use(RPlayer rp);
 }

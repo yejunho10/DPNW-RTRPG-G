@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skills.obj;
+package com.dpnw.rtrpg.ables;
 
 public interface TaskCancelable {
     void cancel();

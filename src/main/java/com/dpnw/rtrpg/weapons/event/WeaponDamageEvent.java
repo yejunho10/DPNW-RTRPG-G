@@ -1,6 +1,6 @@
 package com.dpnw.rtrpg.weapons.event;
 
-import com.dpnw.rtrpg.weapons.obj.interfaces.Weapon;
+import com.dpnw.rtrpg.weapons.obj.Weapon;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;

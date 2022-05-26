@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg.weapons.obj;
 
+@SuppressWarnings("all")
 public interface ProjectileWeapon extends Weapon {
 
     long getProjectileDeletionTime();
