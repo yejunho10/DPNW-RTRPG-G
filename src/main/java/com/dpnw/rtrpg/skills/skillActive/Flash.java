@@ -38,6 +38,7 @@ public class Flash extends RActive {
 
     @Override
     public void use(RPlayer p) {
+        if (isCooldown()) return;
         Location loc = p.getPlayer().getLocation();
         Vector dir = loc.getDirection();
         dir.normalize();
