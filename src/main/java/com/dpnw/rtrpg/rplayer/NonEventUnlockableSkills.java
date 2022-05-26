@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @SuppressWarnings("unused")
-public class NonEventUnlockableSkills { //논 이벤트 해금조건을 가진 스킬
+public class NonEventUnlockableSkills { //논 이벤트 해금조건을 가진 스킬 (Task가 존재할 경우에만 여기에 추가)
     private final Set<Skill> skills = new HashSet<>();
 
     public NonEventUnlockableSkills(Player p) {
@@ -28,7 +28,6 @@ public class NonEventUnlockableSkills { //논 이벤트 해금조건을 가진 �
             skills.add(new MeteorStrike(p));
             skills.add(new FairWind(p));
             skills.add(new Confusion(p));
-            skills.add(new Flash(p));
             // passive
             skills.add(new DelightofSlaughter(p));
             skills.add(new Endurance(p));
