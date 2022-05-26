@@ -44,6 +44,7 @@ public class Flash extends RActive {
         dir.multiply(4); //4블럭 텔레포트
         loc.add(dir);
         p.getPlayer().teleport(loc);
+        cooldown(this);
     }
 
     @Override

@@ -68,6 +68,7 @@ public class LeapOfQueen extends RActive {
 
             task.cancel();
         }, 0L, 5L);
+        cooldown(this);
     }
 
     @Override
