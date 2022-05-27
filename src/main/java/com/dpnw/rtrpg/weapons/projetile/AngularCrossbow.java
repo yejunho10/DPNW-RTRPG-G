@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
-public class AngularCrossbow extends DualSword {
+public class AngularCrossbow extends Crossbow {
     public AngularCrossbow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(106);

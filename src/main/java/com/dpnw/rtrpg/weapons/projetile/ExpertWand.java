@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
-public class ExpertWand extends DualSword {
+public class ExpertWand extends Wand {
     public ExpertWand() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(35);

@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
-public class SlimeHammer extends DualSword {
+public class SlimeHammer extends Hammer {
     public SlimeHammer() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(83);

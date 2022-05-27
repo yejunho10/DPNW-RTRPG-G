@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
-public class DerDreischutz extends DualSword {
+public class DerDreischutz extends Crossbow {
     public DerDreischutz() {
         setRank(Rank.EXTRA);
         setDefaultWeaponDamage(700);

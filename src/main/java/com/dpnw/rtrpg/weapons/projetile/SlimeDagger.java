@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
-public class SlimeDagger extends DualSword {
+public class SlimeDagger extends Dagger {
     public SlimeDagger() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(27);

@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
-public class OrcsTuskDagger extends DualSword {
+public class OrcsTuskDagger extends Dagger {
     public OrcsTuskDagger() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(41);

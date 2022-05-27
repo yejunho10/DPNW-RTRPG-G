@@ -6,7 +6,7 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("all")
-public class CrossBow extends ProjectileWeaponImpl {
+public class Crossbow extends ProjectileWeaponImpl {
 
     @Override
     public void use(RPlayer rp) {

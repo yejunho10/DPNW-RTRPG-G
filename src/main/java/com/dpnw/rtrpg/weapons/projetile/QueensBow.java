@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
-public class QueensBow extends DualSword {
+public class QueensBow extends Bow {
     public QueensBow() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(75);
