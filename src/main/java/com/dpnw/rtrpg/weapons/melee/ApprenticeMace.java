@@ -4,8 +4,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
-public class ApprienticeMace extends Mace {
-    public ApprienticeMace() {
+public class ApprenticeMace extends Mace {
+    public ApprenticeMace() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(35);
         setDefaultWeaponAttackSpeed(0.8);

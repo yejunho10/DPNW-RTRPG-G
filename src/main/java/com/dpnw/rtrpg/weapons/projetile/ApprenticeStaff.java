@@ -4,8 +4,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.projetile.obj.Staff;
 
 @SuppressWarnings("all")
-public class ApprienticeStaff extends Staff {
-    public ApprienticeStaff() {
+public class ApprenticeStaff extends Staff {
+    public ApprenticeStaff() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(46);
         setDefaultWeaponAttackSpeed(0.9);

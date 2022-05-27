@@ -4,8 +4,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
-public class ApprienticeBow extends Bow {
-    public ApprienticeBow() {
+public class ApprenticeBow extends Bow {
+    public ApprenticeBow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(35);
         setDefaultWeaponAttackSpeed(1.5);

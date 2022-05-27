@@ -4,8 +4,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
-public class ApprienticeDagger extends Dagger {
-    public ApprienticeDagger() {
+public class ApprenticeDagger extends Dagger {
+    public ApprenticeDagger() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(13);
         setDefaultWeaponAttackSpeed(3);

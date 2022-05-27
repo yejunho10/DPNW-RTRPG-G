@@ -4,8 +4,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
-public class ApprienticeCrossbow extends Crossbow {
-    public ApprienticeCrossbow() {
+public class ApprenticeCrossbow extends Crossbow {
+    public ApprenticeCrossbow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(40);
         setDefaultWeaponAttackSpeed(1.3);
