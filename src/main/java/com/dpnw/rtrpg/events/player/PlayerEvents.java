@@ -27,6 +27,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BundleMeta;
 
+@SuppressWarnings("all")
 public class PlayerEvents implements Listener {
     private static final RTRPG plugin = RTRPG.getInstance();
 
