@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.OneHandSword;
 
 @SuppressWarnings("all")
@@ -13,5 +14,6 @@ public class ApprenticeOneHandSword extends OneHandSword {
         setDefaultWeaponCritDamage(1.25);
         setIncreaseHealthRegen(0.3);
         setIncreaseMana(20);
+        setWeaponName(WeaponName.APPRENTICE_ONE_HAND_SWORD);
     }
 }

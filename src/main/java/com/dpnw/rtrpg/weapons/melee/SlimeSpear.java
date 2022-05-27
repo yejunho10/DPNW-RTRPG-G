@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
@@ -16,5 +17,6 @@ public class SlimeSpear extends Spear {
         setReach(1);
         setKnockBack(0.5);
         setFlavorText("미끌미끌 끈적끈적 기분나쁜 창이다. 도대체 이게 왜 슬라임의 뱃속에 들어 있는거지?");
+        setWeaponName(WeaponName.SLIME_SPEAR);
     }
 }

@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
@@ -15,5 +16,6 @@ public class ExpertKnife extends Knife {
         setDodgeChance(8);
         setIncreaseMana(35);
         setIncreaseMoveSpeed(0.3);
+        setWeaponName(WeaponName.EXPERT_KNIFE);
     }
 }

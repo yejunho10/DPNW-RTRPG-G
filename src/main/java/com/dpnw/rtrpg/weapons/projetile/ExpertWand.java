@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
@@ -15,5 +16,6 @@ public class ExpertWand extends Wand {
         setIncreaseMana(70);
         setIncreaseManaRegen(1);
         setIncreaseMoveSpeed(0.3);
+        setWeaponName(WeaponName.EXPERT_WAND);
     }
 }

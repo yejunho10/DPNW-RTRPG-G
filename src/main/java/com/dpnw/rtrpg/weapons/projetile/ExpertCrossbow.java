@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
@@ -14,5 +15,6 @@ public class ExpertCrossbow extends Crossbow {
         setIncreaseHealth(15);
         setIncreaseMana(35);
         setIncreaseManaRegen(0.4);
+        setWeaponName(WeaponName.EXPERT_CROSSBOW);
     }
 }

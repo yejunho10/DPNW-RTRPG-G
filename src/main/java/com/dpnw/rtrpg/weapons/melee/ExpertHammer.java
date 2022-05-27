@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
@@ -15,5 +16,6 @@ public class ExpertHammer extends Hammer {
         setIncreaseHealthRegen(1.5);
         setKnockBack(1);
         setIncreaseMoveSpeed(-0.1);
+        setWeaponName(WeaponName.EXPERT_HAMMER);
     }
 }

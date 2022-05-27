@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
@@ -13,5 +14,6 @@ public class ApprenticeMace extends Mace {
         setIncreaseHealthRegen(0.5);
         setStunChance(25);
         setStunDuration(0.5);
+        setWeaponName(WeaponName.APPRENTICE_MACE);
     }
 }

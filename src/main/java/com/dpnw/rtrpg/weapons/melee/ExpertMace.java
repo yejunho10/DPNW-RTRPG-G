@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
@@ -13,5 +14,6 @@ public class ExpertMace extends Mace {
         setIncreaseHealthRegen(1);
         setStunChance(35);
         setStunDuration(0.5);
+        setWeaponName(WeaponName.EXPERT_MACE);
     }
 }

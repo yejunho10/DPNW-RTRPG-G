@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
@@ -17,5 +18,6 @@ public class OrcsTuskDagger extends Dagger {
         setDodgeChance(10);
         setIncreaseMoveSpeed(0.6);
         setFlavorText("오크의 엄니를 가공해 만든 무기다. 매우 견고하고 가볍다.");
+        setWeaponName(WeaponName.ORCS_TUSK_DAGGER);
     }
 }

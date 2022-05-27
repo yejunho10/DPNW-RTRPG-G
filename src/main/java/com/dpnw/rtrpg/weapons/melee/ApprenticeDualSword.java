@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
@@ -14,5 +15,6 @@ public class ApprenticeDualSword extends DualSword {
         setIncreaseHealth(15);
         setIncreaseMoveSpeed(0.1);
         setFlavorText("초보자용 무기이다. 앞으로 떠날 여정을 떠올리니 가슴이 뜨거워진다.");
+        setWeaponName(WeaponName.APPRENTICE_DUAL_SWORD);
     }
 }

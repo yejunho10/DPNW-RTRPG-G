@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
@@ -15,5 +16,6 @@ public class RustyAxe extends Axe {
         setIncreaseHealthRegen(0.3);
         setLifeSteal(8);
         setFlavorText("이곳저곳 많이 녹슬어 금방이라도 부서질 것 같은 무기다.");
+        setWeaponName(WeaponName.RUSTY_AXE);
     }
 }

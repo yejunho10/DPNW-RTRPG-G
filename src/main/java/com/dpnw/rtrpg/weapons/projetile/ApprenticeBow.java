@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
@@ -15,5 +16,6 @@ public class ApprenticeBow extends Bow {
         setIncreaseManaRegen(0.3);
         setIncreaseMoveSpeed(0.1);
         setDodgeChance(7);
+        setWeaponName(WeaponName.APPRENTICE_BOW);
     }
 }

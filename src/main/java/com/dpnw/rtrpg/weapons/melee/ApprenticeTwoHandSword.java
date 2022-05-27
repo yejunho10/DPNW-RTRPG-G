@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.TwoHandSword;
 
 @SuppressWarnings("all")
@@ -16,5 +17,6 @@ public class ApprenticeTwoHandSword extends TwoHandSword {
         setIncreaseMana(15);
         setIncreaseManaRegen(0.1);
         setIncreaseArmor(15);
+        setWeaponName(WeaponName.APPRENTICE_TWO_HAND_SWORD);
     }
 }

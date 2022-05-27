@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
@@ -15,5 +16,6 @@ public class SlimeDualSword extends DualSword {
         setIncreaseMoveSpeed(0.2);
         setDodgeChance(5);
         setFlavorText("미끌미끌 끈적끈적 기분나쁜 쌍검이다. 도대체 이게 왜 슬라임의 뱃속에 들어 있는거지?");
+        setWeaponName(WeaponName.SLIME_DUAL_SWORD);
     }
 }

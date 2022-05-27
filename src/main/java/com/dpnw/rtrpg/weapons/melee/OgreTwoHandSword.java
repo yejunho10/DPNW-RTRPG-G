@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.TwoHandSword;
 
 @SuppressWarnings("all")
@@ -17,5 +18,6 @@ public class OgreTwoHandSword extends TwoHandSword {
         setIncreaseManaRegen(0.5);
         setIncreaseArmor(78);
         setFlavorText("오우거가 휘두르는 거대한 무기입니다. 잠깐... 당신은 이걸 어떻게 휘두르는 거죠?");
+        setWeaponName(WeaponName.OGRE_TWO_HAND_SWORD);
     }
 }
