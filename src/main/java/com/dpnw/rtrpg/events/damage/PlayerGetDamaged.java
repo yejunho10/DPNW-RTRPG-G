@@ -37,12 +37,12 @@ public class PlayerGetDamaged implements Listener {
     public void onDamage(EntityDamageEvent e) {
         if (!(e.getEntity() instanceof Player p)) return;
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        if (cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
+        if (cp.getCurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
             p.setHealth(0);
         } else {
-            cp.setcurrentHealth(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()));
+            cp.setCurrentHealth(cp.getCurrentHealth() - (e.getDamage() - cp.getArmor()));
             setHealthScale(cp);
-            p.setHealth(cp.getcurrentHealth());
+            p.setHealth(cp.getCurrentHealth());
         }
 
         for (SkillName sn : cp.getEquipedActiveSkill().values()) {
@@ -74,19 +74,19 @@ public class PlayerGetDamaged implements Listener {
         }
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
 
-        if (cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
+        if (cp.getCurrentHealth() - (e.getDamage() - cp.getArmor()) <= 0) {
             p.setHealth(0);
         } else {
-            cp.setcurrentHealth(cp.getcurrentHealth() - (e.getDamage() - cp.getArmor()));
+            cp.setCurrentHealth(cp.getCurrentHealth() - (e.getDamage() - cp.getArmor()));
             setHealthScale(cp);
-            p.setHealth(cp.getcurrentHealth());
+            p.setHealth(cp.getCurrentHealth());
         }
         e.setCancelled(true);
     }
 
     private void setHealthScale(CraftRPlayer rp) {
         Player p = rp.getPlayer();
-        p.setHealth(rp.getcurrentHealth() / (rp.getHealth() / 20));
+        p.setHealth(rp.getCurrentHealth() / (rp.getHealth() / 20));
 
 
         // ~~` * 1/100
@@ -105,7 +105,7 @@ public class PlayerGetDamaged implements Listener {
                     e.setCancelled(true);
                 }
             }
-            if(cp.getcurrentHealth() - e.getDamage() <= 0) {
+            if(cp.getCurrentHealth() - e.getDamage() <= 0) {
                 if(cp.getEquipedPassiveSkill().containsValue(SkillName.MEMENTOMORI)){
                     cp.getPassiveList().get(SkillName.MEMENTOMORI).use(cp);
                 }

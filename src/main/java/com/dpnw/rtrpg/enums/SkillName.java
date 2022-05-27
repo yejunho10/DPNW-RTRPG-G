@@ -27,7 +27,7 @@ public enum SkillName {
     CUTTING("CUTTING", "베어가르기", SkillType.ACTIVE),
     CUTTING_BONES("CUTTING_BONES", "골단", SkillType.ACTIVE),
     CUTTING_MEAT("CUTTING_MEAT", "육참", SkillType.ACTIVE),
-    DASH("DASH","순간 가속", SkillType.ACTIVE),
+    DASH("DASH", "순간 가속", SkillType.ACTIVE),
     DEAD_HARD("DEAD_HARD", "데드하드", SkillType.ACTIVE),
     DELIGHT_OF_SLAUGHTER("DELIGHT_OF_SLAUGHTER", "살육의 희열", SkillType.PASSIVE),
     DEMON("DEMON", "악귀", SkillType.PASSIVE),
@@ -148,6 +148,7 @@ public enum SkillName {
     WRATH("WRATH", "분노", SkillType.PASSIVE),
     METEOR_STRIKE("METEOR_STRIKE", "혜성 강타", SkillType.ACTIVE),
     FAIRWIND("FAIRWIND", "순풍", SkillType.ACTIVE),
+    BLESSING_OF_MANA("BLESSING_OF_MANA", "마나의 축복", SkillType.PASSIVE),
     ;
     private final String raw;
     private final String kor;

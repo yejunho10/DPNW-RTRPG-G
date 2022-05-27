@@ -1,11 +1,9 @@
 package com.dpnw.rtrpg.events.damage;
 
-import com.darksoldier1404.dppc.utils.Tuple;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.MobName;
 import com.dpnw.rtrpg.enums.SkillName;
 import com.dpnw.rtrpg.mob.obj.CraftRMob;
-import com.dpnw.rtrpg.mob.obj.RMob;
 import com.dpnw.rtrpg.rplayer.AllSkills;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.skills.events.obj.SkillDamageEvent;
@@ -15,7 +13,6 @@ import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,7 +20,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
@@ -92,7 +88,7 @@ public class EnemyGetDamaged implements Listener {
                 le.getPassengers().forEach(Entity::remove);
                 le.setHealth(0);
                 if (cp.getEquipedPassiveSkill().containsValue(SkillName.DELIGHT_OF_SLAUGHTER)) {
-                    cp.setcurrentHealth(cp.getcurrentHealth() + 100 + cp.getLevel() * 3);
+                    cp.setCurrentHealth(cp.getCurrentHealth() + 100 + cp.getLevel() * 3);
                 }
                 return;
             }

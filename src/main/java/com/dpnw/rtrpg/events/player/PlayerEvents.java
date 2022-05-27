@@ -3,6 +3,7 @@ package com.dpnw.rtrpg.events.player;
 import com.darksoldier1404.dppc.utils.NBT;
 import com.dpnw.rtrpg.RTRPG;
 import com.dpnw.rtrpg.enums.SkillName;
+import com.dpnw.rtrpg.events.obj.PlayerUseSkillEvent;
 import com.dpnw.rtrpg.functions.MenuFunctions;
 import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
@@ -13,6 +14,7 @@ import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.JetStomp;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.utils.Tuple;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -68,9 +70,24 @@ public class PlayerEvents implements Listener {
             if (skill.isCooldown()) return;
             skill.use(cp);
             cp.getPlayer().setCooldown(cp.getPlayer().getInventory().getItem(e.getNewSlot()).getType(), Math.max((int) (skill.getCooldown() * 20), 0));
+            Bukkit.getServer().getPluginManager().callEvent(new PlayerUseSkillEvent(cp, skill));
         } catch (Exception ee) {
             ee.printStackTrace();
         }
+    }
+
+    @EventHandler
+    public void onUseSkill(PlayerUseSkillEvent e) {
+        CraftRPlayer cp = e.getPlayer();
+        if (cp.getEquipedPassiveSkill().containsKey(SkillName.BLESSING_OF_MANA)) {
+            double d = e.getSkill().getRequireMana() / 2;
+            if(cp.getCurrentHealth() + d >= cp.getHealth()) {
+                cp.setCurrentHealth(cp.getHealth());
+            } else {
+                cp.setCurrentHealth(cp.getCurrentHealth() + d);
+            }
+        }
+
     }
 
     @EventHandler
@@ -166,6 +183,6 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onDeath(PlayerRespawnEvent e) {
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(e.getPlayer().getUniqueId());
-        cp.setcurrentHealth(cp.getHealth());
+        cp.setCurrentHealth(cp.getHealth());
     }
 }
