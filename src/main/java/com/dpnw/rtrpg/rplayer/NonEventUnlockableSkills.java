@@ -28,6 +28,7 @@ public class NonEventUnlockableSkills { //논 이벤트 해금조건을 가진 �
             skills.add(new MeteorStrike(p));
             skills.add(new FairWind(p));
             skills.add(new Confusion(p));
+            skills.add(new Dash(p));
             // passive
             skills.add(new DelightofSlaughter(p));
             skills.add(new Endurance(p));

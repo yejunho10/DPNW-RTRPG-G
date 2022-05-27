@@ -5,9 +5,14 @@ import org.bukkit.*;
 import org.bukkit.FireworkEffect.Type;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Firework;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -163,8 +168,7 @@ public class ParticleUtil {
         });
     }
 
-    public static void around(Entity p, double min, double max, double distance, Particle particle, int count,
-                              double extra) {
+    public static void around(Entity p, double min, double max, double distance, Particle particle, int count, double extra) {
         Location location = p.getLocation();
         Bukkit.getScheduler().runTask(RTRPG.getInstance(), () -> {
             for (double d = min; d < max; d += distance) {
@@ -177,6 +181,45 @@ public class ParticleUtil {
                     createParticle(p, particle, location, 0, 0, 0, count, extra);
                     location.subtract(x, 0, z);
                 }
+            }
+        });
+    }
+
+    public static float getAngleBetweenVectors(Vector v1, Vector v2) {
+        return Math.abs((float) Math.toDegrees(v1.angle(v2)));
+    }
+
+    @Nullable
+    public static List<Entity> getEntitiesInCone(List<Entity> entities, Vector startPos, double radius, double degrees, Vector direction) {
+        List<Entity> newEntities = new ArrayList<>();        //    Returned list
+        if (entities == null || entities.size() == 0) return newEntities;
+        double squaredRadius = radius * radius;                     //    We don't want to use square root
+        for (Entity e : entities) {
+            if (!(e instanceof Mob)) continue;
+            Vector relativePosition = e.getLocation().toVector();                            //    Position of the entity relative to the cone origin
+            relativePosition.subtract(startPos);
+            if (relativePosition.lengthSquared() > squaredRadius)
+                continue;                    //    First check : distance
+            if (getAngleBetweenVectors(direction, relativePosition) > degrees) continue;    //    Second check : angle
+            newEntities.add(e);                                                                //    The entity e is in the cone
+        }
+        return newEntities;
+    }
+
+    // around with angle reference with getEntitiesInCone
+    public static void aroundWithAngle(Location location, Vector direction, double range, Particle particle, int count, double extra, double angle) {
+        Bukkit.getScheduler().runTask(RTRPG.getInstance(), () -> {
+            for (int degree = 0; degree < 360; degree += 5) {
+                double radians = Math.toRadians(degree);
+                double x = cos(radians) * range;
+                double z = sin(radians) * range;
+                Vector relative = new Vector(x, direction.getBlockY(), z);
+                relative.subtract(direction);
+                if (relative.lengthSquared() > range * range) continue;
+                if (getAngleBetweenVectors(direction, relative) > angle) continue;
+                location.add(x, 0, z);
+                location.getWorld().spawnParticle(particle, location, 1);
+                location.subtract(x, 0, z);
             }
         });
     }

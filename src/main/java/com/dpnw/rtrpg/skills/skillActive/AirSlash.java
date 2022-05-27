@@ -12,6 +12,7 @@ import com.dpnw.rtrpg.skills.obj.RActive;
 import com.dpnw.rtrpg.skills.utils.Cone;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.ArmorStand;
@@ -39,7 +40,7 @@ public class AirSlash extends RActive {
 
     public AirSlash() {
         setDamage(120);
-        setCooldown(12);
+        setCooldown(1); // 12
         setRank(Rank.COMMON);
         setRequireMana(40);
         setRange(20);
@@ -49,7 +50,7 @@ public class AirSlash extends RActive {
 
     public AirSlash(Player p) {
         setDamage(120);
-        setCooldown(12);
+        setCooldown(1);
         setRank(Rank.COMMON);
         setRequireMana(40);
         setRange(20);
@@ -87,9 +88,14 @@ public class AirSlash extends RActive {
                 }
             }
             long l = 0;
-            for (Vector v : Cone.getPositionsInCone(p.getLocation().toVector(), getRange(), 90,
-                    p.getLocation().getDirection())) {
-                ParticleUtil.createParticle(p, Particle.CLOUD, v.toLocation(p.getWorld()), 0, 1, 0, 2, 0);
+            Location loc = p.getLocation().add(0, 0.5, 0);
+            Vector direction = p.getEyeLocation().getDirection();
+            for (double d = 0; d < getRange(); d += 1) {
+                double finalD = d;
+                Bukkit.getScheduler().runTaskLater(RTRPG.getInstance(), () -> {
+                    ParticleUtil.aroundWithAngle(loc, direction, finalD, Particle.CLOUD, 1, 0, 90);
+                }, l);
+                l += 1;
             }
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.5f, 1.4f);
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.5f, 0.7f);
