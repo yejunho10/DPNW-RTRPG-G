@@ -72,7 +72,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     public void damage(double damage, Player damager) {// 플레이어에게 공격받는 경우
         Bukkit.getServer().getPluginManager().callEvent(new RDamageByEntityEvent((CraftRPlayer) RPlayerUtil.getRPlayer(damager.getUniqueId()), getPlayer(), damage, Damager.PLAYER));
         if (currentHealth - (damage - getCurrentArmor()) <= 0) { // 들어온 데미지가 쉴드와 체력 둘다 감당하지 못할경우 처치
-            setcurrentHealth(0);
+            setCurrentHealth(0);
             p.setHealth(0);
         } else {
             currentHealth -= (damage - getCurrentArmor());
@@ -285,7 +285,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     }
 
     @Override
-    public double getcurrentHealth() {
+    public double getCurrentHealth() {
         return currentHealth;
     }
 
@@ -370,7 +370,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     }
 
     @Override
-    public void setcurrentHealth(double currentHealth) {
+    public void setCurrentHealth(double currentHealth) {
         this.currentHealth = currentHealth;
     }
 
