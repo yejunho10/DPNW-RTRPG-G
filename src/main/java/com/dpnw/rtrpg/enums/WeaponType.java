@@ -18,5 +18,5 @@ public enum WeaponType {
     BOW,
     WAND,
     DAGGER,
-    ;
+    SCYTHE,
 }

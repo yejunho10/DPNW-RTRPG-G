@@ -5,7 +5,7 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
-public class OrcsTuskSpear extends DualSword { //todo - setReach(2); setKnockBack(1.5);
+public class OrcsTuskSpear extends DualSword {
     public OrcsTuskSpear() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(135);
@@ -14,6 +14,7 @@ public class OrcsTuskSpear extends DualSword { //todo - setReach(2); setKnockBac
         setDefaultWeaponCritDamage(2);
         setIncreaseHealth(115);
         setIncreaseManaRegen(0.4);
-        setCurrentWeaponRange(4);
+        setReach(2);
+        setKnockBack(1.5);
     }
 }
