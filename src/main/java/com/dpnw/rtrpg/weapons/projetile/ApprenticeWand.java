@@ -4,8 +4,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
-public class ApprienticeWand extends Wand {
-    public ApprienticeWand() {
+public class ApprenticeWand extends Wand {
+    public ApprenticeWand() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(28);
         setDefaultWeaponAttackSpeed(1.7);

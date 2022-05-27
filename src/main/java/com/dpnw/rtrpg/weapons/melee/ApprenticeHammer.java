@@ -4,8 +4,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
-public class ApprienticeHammer extends Hammer {
-    public ApprienticeHammer() {
+public class ApprenticeHammer extends Hammer {
+    public ApprenticeHammer() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(56);
         setDefaultWeaponAttackSpeed(0.5);

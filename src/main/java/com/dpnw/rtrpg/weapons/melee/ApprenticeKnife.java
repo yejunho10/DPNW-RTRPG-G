@@ -4,8 +4,8 @@ import com.dpnw.rtrpg.enums.Rank;
 import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
-public class ApprienticeKnife extends Knife {
-    public ApprienticeKnife() {
+public class ApprenticeKnife extends Knife {
+    public ApprenticeKnife() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(25);
         setDefaultWeaponAttackSpeed(1.4);
