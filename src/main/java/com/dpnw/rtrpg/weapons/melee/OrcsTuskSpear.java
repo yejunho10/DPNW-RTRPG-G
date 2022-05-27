@@ -2,10 +2,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
-public class OrcsTuskSpear extends DualSword {
+public class OrcsTuskSpear extends Spear {
     public OrcsTuskSpear() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(135);

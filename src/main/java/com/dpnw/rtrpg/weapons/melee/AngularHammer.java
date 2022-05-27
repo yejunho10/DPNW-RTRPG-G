@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
-public class AngularHammer extends DualSword {
+public class AngularHammer extends Hammer {
     public AngularHammer() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(124);

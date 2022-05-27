@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
-public class RustyMace extends DualSword {
+public class RustyMace extends Mace {
     public RustyMace() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(75);

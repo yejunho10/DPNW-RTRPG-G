@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
-public class ApprienticeKnife extends DualSword {
+public class ApprienticeKnife extends Knife {
     public ApprienticeKnife() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(25);

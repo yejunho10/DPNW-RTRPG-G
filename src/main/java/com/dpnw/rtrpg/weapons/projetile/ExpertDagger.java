@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
-public class ExpertDagger extends DualSword {
+public class ExpertDagger extends Dagger {
     public ExpertDagger() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(20);

@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
-public class AngularMace extends DualSword {
+public class AngularMace extends Mace {
     public AngularMace() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(90);

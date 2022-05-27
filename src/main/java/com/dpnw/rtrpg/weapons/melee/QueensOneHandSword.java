@@ -2,10 +2,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.OneHandSword;
 
 @SuppressWarnings("all")
-public class QueensOneHandSword extends DualSword {
+public class QueensOneHandSword extends OneHandSword {
     public QueensOneHandSword() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(62);

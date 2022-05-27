@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
-public class RustyCrossbow extends DualSword {
+public class RustyCrossbow extends Crossbow {
     public RustyCrossbow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(82);

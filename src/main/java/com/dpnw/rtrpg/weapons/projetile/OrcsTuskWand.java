@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
-public class OrcsTuskWand extends DualSword {
+public class OrcsTuskWand extends Wand {
     public OrcsTuskWand() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(120);

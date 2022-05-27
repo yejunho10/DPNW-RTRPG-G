@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
-public class ExpertAxe extends DualSword {
+public class ExpertAxe extends Axe {
     public ExpertAxe() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(58);

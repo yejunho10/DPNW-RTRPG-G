@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
-public class OgreAxe extends DualSword {
+public class OgreAxe extends Axe {
     public OgreAxe() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(150);

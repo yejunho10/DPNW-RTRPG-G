@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
-import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
+import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
-public class AngularSpear extends DualSword {
+public class AngularSpear extends Spear {
     public AngularSpear() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(87);
