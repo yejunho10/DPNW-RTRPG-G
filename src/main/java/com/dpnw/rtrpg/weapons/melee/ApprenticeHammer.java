@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
@@ -14,5 +15,6 @@ public class ApprenticeHammer extends Hammer {
         setIncreaseHealth(65);
         setIncreaseHealthRegen(0.5);
         setIncreaseMoveSpeed(-0.1);
+        setWeaponName(WeaponName.APPRENTICE_HAMMER);
     }
 }

@@ -54,7 +54,7 @@ public enum WeaponName {
     ANGULAR_MACE("ANGULAR_MACE", "반듯한 메이스", WeaponType.MACE),
     APPRENTICE_MACE("APPRENTICE_MACE", "견습 메이스", WeaponType.MACE),
     EXPERT_MACE("EXPERT_MACE", "숙련자의 메이스", WeaponType.MACE),
-    OGRE_CLUB("OGRE_CLUB", "오우거 몽둥이", WeaponType.MACE),
+    OGRE_MACE("OGRE_MACE", "오우거 몽둥이", WeaponType.MACE),
     RUSTY_MACE("RUSTY_MACE", "녹슨 메이스", WeaponType.MACE),
     SLIME_MACE("SLIME_MACE", "점액질 메이스", WeaponType.MACE),
 
@@ -110,6 +110,7 @@ public enum WeaponName {
     RUSTY_WAND("RUSTY_WAND", "녹슨 지팡이", WeaponType.WAND),
     SLIME_WAND("SLIME_WAND", "점액질 지팡이", WeaponType.WAND),
     ORCS_TUSK_WAND("ORCS_TUSK_WAND", "오크엄니 지팡이", WeaponType.WAND),
+    GIANT_WAND("GIANT_WAND", "자이언트 스틱", WeaponType.WAND),
 
     //낫
     ORCS_TUSK_SCYTHE("ORCS_TUSK_SCYTHE", "오크엄니 대낫", WeaponType.SCYTHE),

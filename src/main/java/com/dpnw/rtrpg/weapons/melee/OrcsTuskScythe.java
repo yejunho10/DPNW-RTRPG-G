@@ -2,6 +2,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Scythe;
 
 @SuppressWarnings("all")
@@ -16,5 +17,6 @@ public class OrcsTuskScythe extends Scythe {
         setIncreaseHealthRegen(0.7);
         setLifeSteal(10);
         setIncreaseMoveSpeed(0.1);
+        setWeaponName(WeaponName.ORCS_TUSK_SCYTHE);
     }
 }

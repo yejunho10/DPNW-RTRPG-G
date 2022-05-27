@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.melee;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
@@ -15,5 +16,6 @@ public class ExpertSpear extends Spear {
         setIncreaseManaRegen(0.4);
         setReach(0.5);
         setKnockBack(0.1);
+        setWeaponName(WeaponName.EXPERT_SPEAR);
     }
 }

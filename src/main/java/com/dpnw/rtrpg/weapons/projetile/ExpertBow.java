@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
@@ -15,5 +16,6 @@ public class ExpertBow extends Bow {
         setIncreaseManaRegen(0.4);
         setIncreaseMoveSpeed(0.2);
         setDodgeChance(8);
+        setWeaponName(WeaponName.EXPERT_BOW);
     }
 }

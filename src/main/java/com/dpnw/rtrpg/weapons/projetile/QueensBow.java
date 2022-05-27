@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.weapons.projetile;
 
 import com.dpnw.rtrpg.enums.Rank;
+import com.dpnw.rtrpg.enums.WeaponName;
 import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
@@ -16,5 +17,6 @@ public class QueensBow extends Bow {
         setIncreaseMoveSpeed(0.3);
         setDodgeChance(10);
         setFlavorText("활시위에 약간의 분홍빛이 감도는 우아한 무기다.");
+        setWeaponName(WeaponName.QUEENS_BOW);
     }
 }
