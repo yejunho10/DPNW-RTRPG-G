@@ -107,7 +107,7 @@ public interface RPlayer {
     /**
      * @return 플레이어의 현재체력을 리턴시킨다.
      */
-    double getcurrentHealth();
+    double getCurrentHealth();
 
     /**
      * @return 플레이어의 체력리젠을 리턴시킨다.
@@ -187,7 +187,7 @@ public interface RPlayer {
     /**
      * @param currentHealth 플레이어의 현재체력을 설정한다
      */
-    void setcurrentHealth(double currentHealth);
+    void setCurrentHealth(double currentHealth);
 
     /**
      * @param heathRegen 플레이어의 체력리젠을 설정한다.

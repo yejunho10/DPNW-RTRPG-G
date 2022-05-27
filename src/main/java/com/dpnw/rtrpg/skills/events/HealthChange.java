@@ -29,7 +29,7 @@ public class HealthChange implements Listener {
         if (!(e.getEntity() instanceof Player p)) return;
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
         if (cp == null) return;
-        double chp = cp.getcurrentHealth();
+        double chp = cp.getCurrentHealth();
         //사용
         if (RPlayerUtil.hasSkill(cp.getUUID(), SkillName.MEMENTOMORI)) {
             if (chp <= e.getDamage()) {
