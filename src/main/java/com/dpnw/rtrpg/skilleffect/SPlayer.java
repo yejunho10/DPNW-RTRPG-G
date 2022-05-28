@@ -1,8 +1,7 @@
 package com.dpnw.rtrpg.skilleffect;
 
-import com.dpnw.rtrpg.scheduler.ITask;
+import com.dpnw.rtrpg.schedulers.ITask;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SPlayer extends HashMap<String, Object> {

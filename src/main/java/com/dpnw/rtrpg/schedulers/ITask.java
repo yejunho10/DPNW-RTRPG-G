@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.scheduler;
+package com.dpnw.rtrpg.schedulers;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
