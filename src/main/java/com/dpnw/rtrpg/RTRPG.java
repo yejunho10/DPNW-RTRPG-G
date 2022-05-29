@@ -9,8 +9,10 @@ import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
 import com.dpnw.rtrpg.schedulers.SpawnerShowScheduler;
 import com.dpnw.rtrpg.skilleffect.SkillEffect;
 import com.dpnw.rtrpg.utils.EventRegister;
+import com.dpnw.rtrpg.utils.InitManager;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
+import io.lumine.mythic.bukkit.MythicBukkit;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,19 +32,9 @@ public class RTRPG extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        // event register
-        EventRegister.registerEvents();
-        // init everything this plugin need
-        CounterScheduler.start();
-        AllSkills.init();
-        AllWeapons.init();
-        PlayerSchedulers.initSlotSwap();
-        PlayerSchedulers.initDetectDoubleShifting();
-        PlayerSchedulers.initArrowEffectTask();
-        SpawnerShowScheduler.init();
+        InitManager.init();
         //command register
         getCommand("rr").setExecutor(new RCommand());
-        SkillEffect.init();
     }
 
     @Override
