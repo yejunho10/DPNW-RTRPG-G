@@ -12,6 +12,7 @@ import com.dpnw.rtrpg.skills.utils.RSkillUtils;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.obj.Weapon;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
+import com.dpnw.rtrpg.weapons.utils.WeaponUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -31,24 +32,25 @@ public class MenuFunctions {
     private static final Map<UUID, SkillName> skillEquip = new HashMap<>();
 
     public static boolean mergeisFull(BundleMeta bm) {
-        if(bm.getItems().size() == 54) {
+        if (bm.getItems().size() == 54) {
             return true;
         }
         return false;
     }
+
     public static BundleMeta merge(BundleMeta bm, ItemStack item, Player p) {
-        try{
+        try {
             List<ItemStack> list = bm.getItems() == null ? new ArrayList<>() : bm.getItems();
             Inventory inv = Bukkit.createInventory(null, 54);
             list.forEach(inv::addItem);
             HashMap<Integer, ItemStack> leftover = inv.addItem(item);
-            if(!(leftover.size() == 0)) {
-                for(int i = 0; i < leftover.size(); i++) {
+            if (!(leftover.size() == 0)) {
+                for (int i = 0; i < leftover.size(); i++) {
                     p.getWorld().dropItem(p.getLocation(), leftover.get(i));
                 }
             }
             bm.setItems(Arrays.stream(inv.getContents()).toList());
-        }catch(Exception ignored){
+        } catch (Exception ignored) {
         }
         return bm;
     }
@@ -128,9 +130,8 @@ public class MenuFunctions {
     public static void openSelectApprenticeWeapons(Player p) { //"§1견습 무기 선택"
         Inventory inv = plugin.getServer().createInventory(null, 27, "§1견습 무기 선택");
         for (Weapon w : AllWeapons.getApprenticeWeapons().values()) {
-//            ItemStack item = w.getWeapon();
-            //todo Weapon to ItemStack
-//            inv.addItem(item);
+            ItemStack item = WeaponUtils.getWeaponItem(w.getWeaponName());
+            inv.addItem(item);
         }
         p.openInventory(inv);
     }
@@ -178,8 +179,8 @@ public class MenuFunctions {
             Inventory inv = plugin.getServer().createInventory(null, 54, "§1액티브 스킬 목록");
             ItemStack ski = new ItemStack(Material.ENCHANTED_BOOK);
             Set<SkillName> names = new HashSet<>();
-            for(Active active : RPlayerUtil.getRPlayer(p.getUniqueId()).getActiveList().values()) {
-                if(active == null) continue;
+            for (Active active : RPlayerUtil.getRPlayer(p.getUniqueId()).getActiveList().values()) {
+                if (active == null) continue;
                 ski.setType(Material.ENCHANTED_BOOK);
                 ItemMeta im = ski.getItemMeta();
                 im.setDisplayName("§e" + active.getSkillName().getKor());
@@ -195,7 +196,7 @@ public class MenuFunctions {
             }
             for (Active active : AllSkills.getVisibleActiveList(p)) {
                 System.out.println(active);
-                if(names.contains(active.getSkillName())) continue;
+                if (names.contains(active.getSkillName())) continue;
                 if (RPlayerUtil.hasSkill(p.getUniqueId(), active.getSkillName())) {
                     ski.setType(Material.ENCHANTED_BOOK);
                     ItemMeta im = ski.getItemMeta();
@@ -237,14 +238,14 @@ public class MenuFunctions {
 
     public static void equipPassiveSkill(Player p, int slot) {
         CraftRPlayer cp = (CraftRPlayer) RPlayerUtil.getRPlayer(p.getUniqueId());
-        if(cp.getEquipedPassiveSkill().containsKey(slot)) {
+        if (cp.getEquipedPassiveSkill().containsKey(slot)) {
             SkillName sn = cp.getEquipedPassiveSkill().get(slot);
             cp.getEquipedPassiveSkill().remove(slot);
             RSkillUtils.unEquipSkill(cp, sn);
         }
         cp.getEquipedPassiveSkill().put(slot, skillEquip.get(p.getUniqueId()));
         SkillName sn = skillEquip.get(p.getUniqueId());
-        switch(sn) {
+        switch (sn) {
             case DOUBLE_JUMP -> p.setAllowFlight(true);
             case ENDURANCE -> cp.setIncreaseManaRegen(cp.getIncreaseManaRegen() + 0.1);
         }
@@ -304,7 +305,7 @@ public class MenuFunctions {
         BundleMeta bm = (BundleMeta) item.getItemMeta();
         Inventory inv = Bukkit.createInventory(null, 54, "§1보관함");
         bm.getItems().forEach(o -> {
-           inv.addItem(o);
+            inv.addItem(o);
         });
         p.openInventory(inv);
     }
