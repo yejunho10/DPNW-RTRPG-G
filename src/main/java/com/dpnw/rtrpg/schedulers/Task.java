@@ -7,15 +7,15 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-public class ITask {
+public class Task {
 
+    @Getter
     private final ArrayList<SingleTask> tasks;
 
-    public ITask() { this.tasks = new ArrayList<>(); }
-    public ITask(ArrayList<SingleTask> tasks) { this.tasks = tasks; }
-    public ITask(SingleTask...tasks) { this.tasks = new ArrayList<>(Arrays.asList(tasks)); }
+    public Task() { this.tasks = new ArrayList<>(); }
+    public Task(ArrayList<SingleTask> tasks) { this.tasks = tasks; }
+    public Task(SingleTask...tasks) { this.tasks = new ArrayList<>(Arrays.asList(tasks)); }
 
     public void cancel() {
         tasks.forEach(task -> {
@@ -30,7 +30,7 @@ public class ITask {
 
     @Getter
     @AllArgsConstructor
-    static class SingleTask {
+    public static class SingleTask {
         public final BukkitTask bukkitTask;
         public final int taskId;
 

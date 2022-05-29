@@ -7,6 +7,7 @@ import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.schedulers.CounterScheduler;
 import com.dpnw.rtrpg.schedulers.PlayerSchedulers;
 import com.dpnw.rtrpg.schedulers.SpawnerShowScheduler;
+import com.dpnw.rtrpg.skilleffect.SkillEffect;
 import com.dpnw.rtrpg.utils.EventRegister;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.weapons.utils.AllWeapons;
@@ -41,6 +42,7 @@ public class RTRPG extends JavaPlugin {
         SpawnerShowScheduler.init();
         //command register
         getCommand("rr").setExecutor(new RCommand());
+        SkillEffect.init();
     }
 
     @Override

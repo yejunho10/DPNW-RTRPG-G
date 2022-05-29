@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skilleffect;
+package com.dpnw.rtrpg.skilleffect.base;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.PluginClassLoader;

@@ -1,11 +1,19 @@
 package com.dpnw.rtrpg.skilleffect;
 
-import com.dpnw.rtrpg.schedulers.ITask;
+import com.dpnw.rtrpg.schedulers.Task;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-public class SPlayer extends HashMap<String, Object> {
-    private final ITask tasks = new ITask();
-    public ITask getTasks() { return tasks; }
+@AllArgsConstructor
+public class SPlayer extends HashMap<String, Object> implements SEntity<Player> {
+
+    @Getter
+    private final Player entity;
+
+    @Getter
+    private final Task tasks = new Task();
 
 }
