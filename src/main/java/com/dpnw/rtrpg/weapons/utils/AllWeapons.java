@@ -11,9 +11,14 @@ import java.util.Map;
 @SuppressWarnings("unused")
 public class AllWeapons {
     private static final Map<WeaponName, Weapon> weapons = new HashMap<>();
+    private static final Map<WeaponName, Weapon> apprenticeWeapons = new HashMap<>();
 
     public static Map<WeaponName, Weapon> getWeapons() {
         return weapons;
+    }
+
+    public static Map<WeaponName, Weapon> getApprenticeWeapons() {
+        return apprenticeWeapons;
     }
 
     public static void init() {
@@ -103,5 +108,25 @@ public class AllWeapons {
         weapons.put(WeaponName.SLIME_DAGGER, new SlimeDagger());
         weapons.put(WeaponName.SLIME_STAFF, new SlimeStaff());
         weapons.put(WeaponName.SLIME_WAND, new SlimeWand());
+
+
+
+        initApprenticeWeapons();
+    }
+
+    public static void initApprenticeWeapons() {
+        weapons.put(WeaponName.APPRENTICE_AXE, new ApprenticeAxe());
+        weapons.put(WeaponName.APPRENTICE_DUAL_SWORD, new ApprenticeDualSword());
+        weapons.put(WeaponName.APPRENTICE_HAMMER, new ApprenticeHammer());
+        weapons.put(WeaponName.APPRENTICE_KNIFE, new ApprenticeKnife());
+        weapons.put(WeaponName.APPRENTICE_MACE, new ApprenticeMace());
+        weapons.put(WeaponName.APPRENTICE_ONE_HAND_SWORD, new ApprenticeOneHandSword());
+        weapons.put(WeaponName.APPRENTICE_SPEAR, new ApprenticeSpear());
+        weapons.put(WeaponName.APPRENTICE_TWO_HAND_SWORD, new ApprenticeTwoHandSword());
+        weapons.put(WeaponName.APPRENTICE_BOW, new ApprenticeBow());
+        weapons.put(WeaponName.APPRENTICE_CROSSBOW, new ApprenticeCrossbow());
+        weapons.put(WeaponName.APPRENTICE_DAGGER, new ApprenticeDagger());
+        weapons.put(WeaponName.APPRENTICE_STAFF, new ApprenticeStaff());
+        weapons.put(WeaponName.APPRENTICE_WAND, new ApprenticeWand());
     }
 }
