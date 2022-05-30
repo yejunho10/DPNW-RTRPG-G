@@ -14,7 +14,12 @@ public class SkillEffect {
     @Getter
     private static final HandleBinding HANDLE_BINDING = new HandleBinding(HANDLE_ENTITY);
     @Getter
-    private static final HandlePoisoning handlePoisoning = new HandlePoisoning(HANDLE_ENTITY);
+    private static final HandlePoisoning HANDLE_POISONING = new HandlePoisoning(HANDLE_ENTITY);
+
+    static {
+        new EffectUI();
+        EffectCommand.init();
+    }
 
     public static void init() { /*empty*/ }
 
