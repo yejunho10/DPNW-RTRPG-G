@@ -1,6 +1,5 @@
 package com.dpnw.rtrpg.enums;
 
-@SuppressWarnings("unused")
 public enum WeaponName {
     //도끼
     ANGULAR_AXE("ANGULAR_AXE", "반듯한 도끼", WeaponType.AXE),
