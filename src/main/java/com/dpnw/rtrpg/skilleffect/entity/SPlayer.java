@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skilleffect;
+package com.dpnw.rtrpg.skilleffect.entity;
 
 import com.dpnw.rtrpg.schedulers.Task;
 import lombok.AllArgsConstructor;

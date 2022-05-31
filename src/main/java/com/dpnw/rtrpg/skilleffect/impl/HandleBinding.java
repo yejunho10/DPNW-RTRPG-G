@@ -1,6 +1,6 @@
 package com.dpnw.rtrpg.skilleffect.impl;
 
-import com.dpnw.rtrpg.skilleffect.HandleEntity;
+import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
 import com.dpnw.rtrpg.skilleffect.base.SimpleEffectImpl;
 import io.papermc.paper.event.entity.EntityMoveEvent;
 import org.bukkit.entity.LivingEntity;

@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skilleffect;
+package com.dpnw.rtrpg.skilleffect.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,8 @@
 package com.dpnw.rtrpg.skilleffect.base;
 
 import com.dpnw.rtrpg.schedulers.Task;
-import com.dpnw.rtrpg.skilleffect.HandleEntity;
-import com.dpnw.rtrpg.skilleffect.SkillCaster;
+import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
+import com.dpnw.rtrpg.skilleffect.entity.SkillCaster;
 import com.dpnw.rtrpg.skilleffect.event.EffectBeginEvent;
 import com.dpnw.rtrpg.skilleffect.event.EffectReleaseEvent;
 import lombok.val;

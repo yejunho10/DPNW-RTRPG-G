@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg.skilleffect;
 
+import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
 import com.dpnw.rtrpg.skilleffect.impl.*;
 import lombok.Getter;
 

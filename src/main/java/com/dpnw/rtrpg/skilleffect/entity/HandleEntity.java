@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skilleffect;
+package com.dpnw.rtrpg.skilleffect.entity;
 
 import com.dpnw.rtrpg.skilleffect.base.HandleListener;
 import org.bukkit.entity.Player;

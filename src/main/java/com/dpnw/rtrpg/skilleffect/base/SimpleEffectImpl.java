@@ -1,6 +1,6 @@
 package com.dpnw.rtrpg.skilleffect.base;
 
-import com.dpnw.rtrpg.skilleffect.HandleEntity;
+import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.LivingEntity;
