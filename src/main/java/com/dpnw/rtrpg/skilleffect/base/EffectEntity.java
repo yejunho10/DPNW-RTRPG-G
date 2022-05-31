@@ -19,7 +19,7 @@ public interface EffectEntity<E extends LivingEntity> extends HandleRecordEntity
         Bukkit.getPluginManager().callEvent(event);
         if (event.isCancelled()) return;
         getList().add(entity);
-        var task = Bukkit.getScheduler().runTaskLater(PluginHolder.plugin, () -> {
+        var task = Bukkit.getScheduler().runTaskLater(PluginHolder.getPlugin(), () -> {
             getList().remove(entity);
             Bukkit.getPluginManager().callEvent(new EffectReleaseEvent(entity, this));
         }, tick);

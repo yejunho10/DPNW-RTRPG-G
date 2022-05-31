@@ -13,7 +13,7 @@ public class EffectCommand {
     public static void init() {  /*empty*/  }
 
     static {
-        val rTestCommand = PluginHolder.plugin.getCommand("rtest");
+        val rTestCommand = PluginHolder.getPlugin().getCommand("rtest");
         if (rTestCommand == null) throw new NullPointerException("rtest command is not exist in plugin.yml");
         rTestCommand.setExecutor((sender, command, label, args) -> {
                     if (!sender.isOp() || !(sender instanceof Player player)) return true;

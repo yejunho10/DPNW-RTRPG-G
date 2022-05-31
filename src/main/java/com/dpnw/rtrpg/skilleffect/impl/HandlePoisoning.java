@@ -10,7 +10,7 @@ public class HandlePoisoning extends SimpleEffectImpl<LivingEntity> {
     public HandlePoisoning(HandleEntity handleEntity) { super(handleEntity); }
 
     {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(PluginHolder.plugin, () -> {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(PluginHolder.getPlugin(), () -> {
             for (var e : getList()) {
                 e.damage(0.75);
             }
