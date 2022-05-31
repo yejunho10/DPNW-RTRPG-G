@@ -2,6 +2,7 @@ package com.dpnw.rtrpg.skilleffect.base;
 
 import com.dpnw.rtrpg.schedulers.Task;
 import com.dpnw.rtrpg.skilleffect.HandleEntity;
+import com.dpnw.rtrpg.skilleffect.SkillCaster;
 import com.dpnw.rtrpg.skilleffect.event.EffectBeginEvent;
 import com.dpnw.rtrpg.skilleffect.event.EffectReleaseEvent;
 import lombok.val;
@@ -13,7 +14,7 @@ public interface EffectEntity<E extends LivingEntity> extends HandleRecordEntity
 
     HandleEntity getHandleEntity();
 
-    default void addEffect(E entity, int tick) {
+    default void addEffect(E entity, SkillCaster caster, int tick) {
         val event = new EffectBeginEvent(entity, this);
         Bukkit.getPluginManager().callEvent(event);
         if (event.isCancelled()) return;

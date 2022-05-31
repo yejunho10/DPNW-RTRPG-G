@@ -31,7 +31,8 @@ public class EffectCommand {
                     if (entityEffect == null) {
                         sender.sendMessage(args[0] + " effect not exist");
                     } else {
-                        entityEffect.addEffect(player, tick);
+                        val sPlayer = SkillEffect.getHANDLE_ENTITY().getPlayer(player);
+                        entityEffect.addEffect(player, sPlayer, tick);
                     }
                     return true;
                 });
