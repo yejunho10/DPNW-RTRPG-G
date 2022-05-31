@@ -4,8 +4,6 @@ import com.dpnw.rtrpg.skilleffect.base.EffectEntity;
 import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
