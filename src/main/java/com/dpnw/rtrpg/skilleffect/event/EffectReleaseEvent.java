@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.skilleffect.event;
 
 import com.dpnw.rtrpg.skilleffect.base.EffectEntity;
+import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.entity.Entity;
@@ -13,8 +14,8 @@ import org.jetbrains.annotations.NotNull;
 @AllArgsConstructor
 public class EffectReleaseEvent extends Event {
 
-    private Entity entity;
-    private EffectEntity<? extends LivingEntity> effect;
+    private SEntity<?> entity;
+    private EffectEntity<? extends SEntity<?>> effect;
 
     private static final HandlerList HANDLERS = new HandlerList();
 

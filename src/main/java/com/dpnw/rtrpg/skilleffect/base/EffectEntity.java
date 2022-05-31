@@ -1,33 +1,16 @@
 package com.dpnw.rtrpg.skilleffect.base;
 
-import com.dpnw.rtrpg.schedulers.Task;
 import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
+import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import com.dpnw.rtrpg.skilleffect.entity.SkillCaster;
-import com.dpnw.rtrpg.skilleffect.event.EffectBeginEvent;
-import com.dpnw.rtrpg.skilleffect.event.EffectReleaseEvent;
-import lombok.val;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 
-public interface EffectEntity<E extends LivingEntity> extends HandleRecordEntity<E> {
+public interface EffectEntity<E extends SEntity<? extends LivingEntity>> extends HandleRecordEntity<E> {
 
     HandleEntity getHandleEntity();
 
-    default void addEffect(E entity, SkillCaster caster, int tick) {
-        val event = new EffectBeginEvent(entity, this);
-        Bukkit.getPluginManager().callEvent(event);
-        if (event.isCancelled()) return;
-        getList().add(entity);
-        var task = Bukkit.getScheduler().runTaskLater(PluginHolder.getPlugin(), () -> {
-            getList().remove(entity);
-            Bukkit.getPluginManager().callEvent(new EffectReleaseEvent(entity, this));
-        }, tick);
-        if (entity instanceof Player) {
-            getHandleEntity().getPlayer((Player) entity).getTasks().getTasks().add(new Task.SingleTask(task));
-        }
-    }
+    void addEffect(E entity, SkillCaster caster, int tick);
 
-    default boolean testEntity(E entity) { return getList().contains(entity); }
+    boolean testEntity(E entity);
 
 }

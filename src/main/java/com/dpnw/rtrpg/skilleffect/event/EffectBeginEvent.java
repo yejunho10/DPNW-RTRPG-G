@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.skilleffect.event;
 
 import com.dpnw.rtrpg.skilleffect.base.EffectEntity;
+import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import lombok.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -14,9 +15,9 @@ import org.jetbrains.annotations.NotNull;
 public class EffectBeginEvent extends Event implements Cancellable {
 
     @NonNull
-    private final Entity entity;
+    private final SEntity<?> entity;
     @NonNull
-    private final EffectEntity<? extends LivingEntity> effect;
+    private final EffectEntity<? extends SEntity<?>> effect;
     @Setter
     private boolean cancelled;
 

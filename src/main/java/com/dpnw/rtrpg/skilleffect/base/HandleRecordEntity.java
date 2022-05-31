@@ -1,11 +1,12 @@
 package com.dpnw.rtrpg.skilleffect.base;
 
-import org.bukkit.entity.LivingEntity;
+import com.dpnw.rtrpg.skilleffect.context.CastedEffect;
+import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 
 import java.util.ArrayList;
 
-public interface HandleRecordEntity<E extends LivingEntity> {
+public interface HandleRecordEntity<E extends SEntity<?>> {
 
-    ArrayList<E> getList();
+    ArrayList<CastedEffect<E>> getList();
 
 }

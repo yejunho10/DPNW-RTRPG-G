@@ -2,8 +2,8 @@ package com.dpnw.rtrpg.skilleffect;
 
 import com.dpnw.rtrpg.skilleffect.base.EffectEntity;
 import com.dpnw.rtrpg.skilleffect.base.PluginHolder;
+import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import lombok.val;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 import java.util.function.Function;
@@ -18,7 +18,7 @@ public class EffectCommand {
         rTestCommand.setExecutor((sender, command, label, args) -> {
                     if (!sender.isOp() || !(sender instanceof Player player)) return true;
             val tick = Integer.parseInt(args[1]);
-                    Function<String, EffectEntity<LivingEntity>> effectFunction =
+                    Function<String, EffectEntity<SEntity<?>> >effectFunction =
                             (effect) -> switch (effect) {
                                 case "stun" -> SkillEffect.getHANDLE_STUN();
                                 case "sleep" -> SkillEffect.getHANDLE_SLEEP();
@@ -32,7 +32,7 @@ public class EffectCommand {
                         sender.sendMessage(args[0] + " effect not exist");
                     } else {
                         val sPlayer = SkillEffect.getHANDLE_ENTITY().getPlayer(player);
-                        entityEffect.addEffect(player, sPlayer, tick);
+                        entityEffect.addEffect(sPlayer, sPlayer, tick);
                     }
                     return true;
                 });
