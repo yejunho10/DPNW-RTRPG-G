@@ -14,10 +14,10 @@ public interface EffectEntity<E extends LivingEntity> extends HandleRecordEntity
     HandleEntity getHandleEntity();
 
     default void addEffect(E entity, int tick) {
-        getList().add(entity);
         val event = new EffectBeginEvent(entity, this);
         Bukkit.getPluginManager().callEvent(event);
         if (event.isCancelled()) return;
+        getList().add(entity);
         var task = Bukkit.getScheduler().runTaskLater(PluginHolder.plugin, () -> {
             getList().remove(entity);
             Bukkit.getPluginManager().callEvent(new EffectReleaseEvent(entity, this));
