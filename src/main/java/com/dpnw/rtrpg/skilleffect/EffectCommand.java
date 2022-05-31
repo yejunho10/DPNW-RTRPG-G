@@ -13,12 +13,11 @@ public class EffectCommand {
     public static void init() {  /*empty*/  }
 
     static {
-        val rtestCommand = PluginHolder.plugin.getCommand("rtest");
-        if (rtestCommand == null) throw new NullPointerException("rtest command is not exist in plugin.yml");
-        rtestCommand.setExecutor((sender, command, label, args) -> {
-                    if (!sender.isOp() || !(sender instanceof Player)) return true;
-                    val player = ((Player) sender);
-                    val tick = Integer.parseInt(args[1]);
+        val rTestCommand = PluginHolder.plugin.getCommand("rtest");
+        if (rTestCommand == null) throw new NullPointerException("rtest command is not exist in plugin.yml");
+        rTestCommand.setExecutor((sender, command, label, args) -> {
+                    if (!sender.isOp() || !(sender instanceof Player player)) return true;
+            val tick = Integer.parseInt(args[1]);
                     Function<String, EffectEntity<LivingEntity>> effectFunction =
                             (effect) -> switch (effect) {
                                 case "stun" -> SkillEffect.getHANDLE_STUN();
