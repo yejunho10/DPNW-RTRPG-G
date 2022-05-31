@@ -1,20 +1,25 @@
 package com.dpnw.rtrpg.skilleffect.event;
 
 import com.dpnw.rtrpg.skilleffect.base.EffectEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import com.dpnw.rtrpg.skilleffect.entity.SEntity;
+import lombok.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @Getter
-@AllArgsConstructor
-public class EffectBeginEvent extends Event {
+@RequiredArgsConstructor
+public class EffectBeginEvent extends Event implements Cancellable {
 
-    private Entity entity;
-    private EffectEntity<? extends LivingEntity> effect;
+    @NonNull
+    private final SEntity<?> entity;
+    @NonNull
+    private final EffectEntity<? extends SEntity<?>> effect;
+    @Setter
+    private boolean cancelled;
 
     private static final HandlerList HANDLERS = new HandlerList();
 
