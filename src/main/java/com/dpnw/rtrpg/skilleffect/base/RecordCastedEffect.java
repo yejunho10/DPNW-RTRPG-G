@@ -5,8 +5,10 @@ import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 
 import java.util.ArrayList;
 
-public interface RecordCastedEffect<E extends SEntity<?>> {
+public interface RecordCastedEffect<E extends CastedEffect<?>> {
 
-    ArrayList<CastedEffect<E>> getList();
+    ArrayList<E> getList();
+
+
 
 }

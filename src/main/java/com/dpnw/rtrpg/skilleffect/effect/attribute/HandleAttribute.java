@@ -14,6 +14,8 @@ import java.util.UUID;
 abstract public class HandleAttribute extends EffectEntityImpl<SEntity<?>> {
     public HandleAttribute(HandleEntity handleEntity) { super(handleEntity); }
 
+
+
     abstract public Attribute getAttribute();
 
     private final UUID attributeUniqueId = UUIDUtil.fastRandomUUID();

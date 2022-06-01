@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.skilleffect.event;
 
 import com.dpnw.rtrpg.skilleffect.base.EffectEntity;
+import com.dpnw.rtrpg.skilleffect.context.CastedEffect;
 import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import lombok.Getter;
 import lombok.NonNull;
@@ -19,6 +20,8 @@ public class EffectBeginEvent extends Event implements Cancellable {
     private final SEntity<?> entity;
     @NonNull
     private final EffectEntity<? extends SEntity<?>> effect;
+    @Getter
+    private final CastedEffect<? extends SEntity<?>> castedEffect;
     @Setter
     private boolean cancelled;
 
