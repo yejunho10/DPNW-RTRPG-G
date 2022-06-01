@@ -1,6 +1,8 @@
 package com.dpnw.rtrpg.skilleffect.base;
 
 import com.dpnw.rtrpg.schedulers.Task;
+import com.dpnw.rtrpg.skilleffect.api.HandleListener;
+import com.dpnw.rtrpg.skilleffect.api.PluginHolder;
 import com.dpnw.rtrpg.skilleffect.context.CastedEffect;
 import com.dpnw.rtrpg.skilleffect.context.CastedEffectImpl;
 import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;

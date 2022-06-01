@@ -1,6 +1,6 @@
 package com.dpnw.rtrpg.skilleffect;
 
-import com.dpnw.rtrpg.skilleffect.base.HandleListener;
+import com.dpnw.rtrpg.skilleffect.api.HandleListener;
 import com.dpnw.rtrpg.skilleffect.event.EffectBeginEvent;
 import com.dpnw.rtrpg.skilleffect.event.EffectReleaseEvent;
 import org.bukkit.event.EventHandler;

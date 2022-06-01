@@ -1,7 +1,7 @@
 package com.dpnw.rtrpg.skilleffect;
 
 import com.dpnw.rtrpg.skilleffect.base.EffectEntity;
-import com.dpnw.rtrpg.skilleffect.base.PluginHolder;
+import com.dpnw.rtrpg.skilleffect.api.PluginHolder;
 import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import lombok.val;
 import org.bukkit.entity.Player;
