@@ -3,8 +3,6 @@ package com.dpnw.rtrpg.skilleffect.base;
 import com.dpnw.rtrpg.skilleffect.context.CastedEffect;
 import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.Delegate;
 import org.bukkit.entity.LivingEntity;
 
