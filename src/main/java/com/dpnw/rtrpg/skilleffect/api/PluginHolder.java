@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skilleffect.base;
+package com.dpnw.rtrpg.skilleffect.api;
 
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;

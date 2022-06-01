@@ -10,6 +10,6 @@ import java.util.HashMap;
 public class SEntityImpl extends HashMap<String, Object> implements SEntity<LivingEntity> {
 
     @Getter
-    private final LivingEntity entity;
+    private final LivingEntity bukkit;
 
 }

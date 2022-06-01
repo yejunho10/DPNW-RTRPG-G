@@ -1,6 +1,6 @@
 package com.dpnw.rtrpg.skilleffect.entity;
 
-import com.dpnw.rtrpg.skilleffect.base.HandleListener;
+import com.dpnw.rtrpg.skilleffect.api.HandleListener;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

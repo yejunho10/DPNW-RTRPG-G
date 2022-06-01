@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skilleffect.base;
+package com.dpnw.rtrpg.skilleffect.api;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;

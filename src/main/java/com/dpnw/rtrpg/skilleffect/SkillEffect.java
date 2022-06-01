@@ -1,7 +1,10 @@
 package com.dpnw.rtrpg.skilleffect;
 
 import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
-import com.dpnw.rtrpg.skilleffect.impl.*;
+import com.dpnw.rtrpg.skilleffect.effect.HandleBinding;
+import com.dpnw.rtrpg.skilleffect.effect.HandlePoisoning;
+import com.dpnw.rtrpg.skilleffect.effect.HandleSleep;
+import com.dpnw.rtrpg.skilleffect.effect.HandleStun;
 import lombok.Getter;
 
 public class SkillEffect {
@@ -18,7 +21,7 @@ public class SkillEffect {
     private static final HandlePoisoning HANDLE_POISONING = new HandlePoisoning(HANDLE_ENTITY);
 
     static {
-        new EffectUI();
+        EffectUI.init();
         EffectCommand.init();
     }
 
