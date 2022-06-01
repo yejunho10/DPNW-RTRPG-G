@@ -5,7 +5,7 @@ import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 
 import java.util.ArrayList;
 
-public interface HandleRecordCastedEffect<E extends SEntity<?>> {
+public interface RecordCastedEffect<E extends SEntity<?>> {
 
     ArrayList<CastedEffect<E>> getList();
 

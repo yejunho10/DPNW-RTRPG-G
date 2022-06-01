@@ -12,7 +12,7 @@ public class CheckEntityImpl<E extends SEntity<?>> implements CheckEntity<E> {
 
     @Getter
     @Delegate
-    private final HandleRecordCastedEffect<E> handleRecordCastedEffect;
+    private final RecordCastedEffect<E> recordCastedEffect;
 
     @Override
     public boolean testEntity(E entity) {

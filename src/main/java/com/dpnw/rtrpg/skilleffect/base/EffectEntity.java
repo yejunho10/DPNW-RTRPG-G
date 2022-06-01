@@ -4,7 +4,7 @@ import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
 import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import com.dpnw.rtrpg.skilleffect.entity.SkillCaster;
 
-public interface EffectEntity<E extends SEntity<?>> extends HandleRecordCastedEffect<E> {
+public interface EffectEntity<E extends SEntity<?>> extends RecordCastedEffect<E> {
 
     HandleEntity getHandleEntity();
 
