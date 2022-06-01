@@ -1,4 +1,4 @@
-package com.dpnw.rtrpg.skilleffect.impl;
+package com.dpnw.rtrpg.skilleffect.effect;
 
 import com.dpnw.rtrpg.skilleffect.base.PluginHolder;
 import com.dpnw.rtrpg.skilleffect.base.SimpleEffectImpl;

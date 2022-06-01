@@ -1,10 +1,10 @@
 package com.dpnw.rtrpg.skilleffect;
 
 import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
-import com.dpnw.rtrpg.skilleffect.impl.HandleBinding;
-import com.dpnw.rtrpg.skilleffect.impl.HandlePoisoning;
-import com.dpnw.rtrpg.skilleffect.impl.HandleSleep;
-import com.dpnw.rtrpg.skilleffect.impl.HandleStun;
+import com.dpnw.rtrpg.skilleffect.effect.HandleBinding;
+import com.dpnw.rtrpg.skilleffect.effect.HandlePoisoning;
+import com.dpnw.rtrpg.skilleffect.effect.HandleSleep;
+import com.dpnw.rtrpg.skilleffect.effect.HandleStun;
 import lombok.Getter;
 
 public class SkillEffect {
