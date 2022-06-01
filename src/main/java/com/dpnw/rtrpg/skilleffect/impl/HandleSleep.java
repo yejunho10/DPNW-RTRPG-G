@@ -14,20 +14,20 @@ public class HandleSleep extends HandleStun {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onDamageSleep(EntityDamageEvent event) {
         if (event.getEntity() instanceof LivingEntity
-                && testEntity(getHandleEntity().getEntity((LivingEntity) event.getEntity())))
+                && testEntity((LivingEntity) event.getEntity()))
             event.setDamage(event.getDamage() * 1.5);
     }
 
     @EventHandler(priority = EventPriority.LOW)
     public void onBeginEffectSleep(EffectBeginEvent event) {
-        if (event.getEntity() instanceof LivingEntity entity && testEntity(getHandleEntity().getEntity(entity))) {
+        if (event.getEntity() instanceof LivingEntity entity && testEntity(entity)) {
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onEntityDamageByEntitySleep(EntityDamageByEntityEvent event) {
-        if (event.getDamager() instanceof LivingEntity entity && testEntity(getHandleEntity().getEntity(entity))) {
+        if (event.getDamager() instanceof LivingEntity entity && testEntity(entity)) {
             event.setCancelled(true);
         }
     }

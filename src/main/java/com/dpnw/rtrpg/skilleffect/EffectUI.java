@@ -9,13 +9,13 @@ public class EffectUI extends HandleListener {
 
     @EventHandler
     public void onRelease(EffectReleaseEvent event) {
-        event.getEntity().getEntity()
+        event.getEntity().getBukkit()
                 .sendMessage(event.getEffect().getClass().getSimpleName() + " effect released!");
     }
 
     @EventHandler
     public void onBegin(EffectBeginEvent event) {
-        event.getEntity().getEntity()
+        event.getEntity().getBukkit()
                 .sendMessage(event.getEffect().getClass().getSimpleName() + " effect began!");
     }
 

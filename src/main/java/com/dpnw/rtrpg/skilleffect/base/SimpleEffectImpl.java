@@ -58,8 +58,14 @@ public class SimpleEffectImpl<E extends SEntity<?>> extends HandleListener imple
     }
 
     @Override
-    public boolean testEntity(E entity) { return getList().stream().anyMatch(e -> e.getEntity() == entity); }
+    public boolean testEntity(E entity) {
+        return getList().stream().anyMatch(e -> e.getEntity() == entity);
+    }
 
+    @Override
+    public boolean testEntity(LivingEntity livingEntity) {
+        return getList().stream().anyMatch(e -> e.getEntity().getBukkit() == livingEntity);
+    }
 
 
 }

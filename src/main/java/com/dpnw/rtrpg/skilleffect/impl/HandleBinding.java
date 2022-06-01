@@ -11,7 +11,7 @@ public class HandleBinding extends SimpleEffectImpl<SEntity<?>> {
 
     @EventHandler
     public void onMove(EntityMoveEvent event) {
-        if (testEntity(getHandleEntity().getEntity(event.getEntity()))) event.setCancelled(true);
+        if (testEntity(event.getEntity())) event.setCancelled(true);
     }
 
 }

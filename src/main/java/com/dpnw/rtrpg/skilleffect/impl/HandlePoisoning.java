@@ -12,7 +12,7 @@ public class HandlePoisoning extends SimpleEffectImpl<SEntity<?>> {
     {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(PluginHolder.getPlugin(), () -> {
             for (var e : getList()) {
-                e.getEntity().getEntity().damage(0.75);
+                e.getEntity().getBukkit().damage(0.75);
             }
         }, 10, 10);
     }

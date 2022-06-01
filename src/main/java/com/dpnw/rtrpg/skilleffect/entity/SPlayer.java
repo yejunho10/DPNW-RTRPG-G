@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class SPlayer extends HashMap<String, Object> implements SEntity<Player> {
 
     @Getter
-    private final Player entity;
+    private final Player bukkit;
 
     @Getter
     private final Task tasks = new Task();

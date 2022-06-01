@@ -18,34 +18,34 @@ public class HandleStun extends SimpleEffectImpl<SEntity<?>> {
 
     @EventHandler
     public void onMoveStun(PlayerMoveEvent event) {
-        if (testEntity(getHandleEntity().getEntity(event.getPlayer()))) event.setCancelled(true);
+        if (testEntity(event.getPlayer())) event.setCancelled(true);
     }
 
     @EventHandler
     public void onInventoryClickStun(InventoryClickEvent event) {
-        if (testEntity(getHandleEntity().getEntity(event.getWhoClicked()))) event.setCancelled(true);
+        if (testEntity(event.getWhoClicked())) event.setCancelled(true);
     }
 
     @EventHandler
     public void onInventoryDragStun(InventoryDragEvent event) {
-        if (testEntity(getHandleEntity().getEntity(event.getWhoClicked()))) event.setCancelled(true);
+        if (testEntity(event.getWhoClicked())) event.setCancelled(true);
     }
 
     @EventHandler
     public void onInteractStun(PlayerInteractEvent event) {
-        if (testEntity(getHandleEntity().getEntity(event.getPlayer()))) event.setCancelled(true);
+        if (testEntity(event.getPlayer())) event.setCancelled(true);
     }
 
     @EventHandler
     public void onAttackStun(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof LivingEntity
-                && testEntity(getHandleEntity().getEntity((LivingEntity) event.getDamager())))
+                && testEntity((LivingEntity) event.getDamager()))
             event.setCancelled(true);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onCommandStun(PlayerCommandPreprocessEvent event) {
-        if (testEntity(getHandleEntity().getEntity(event.getPlayer()))) event.setCancelled(true);
+        if (testEntity(event.getPlayer())) event.setCancelled(true);
     }
 
 }
