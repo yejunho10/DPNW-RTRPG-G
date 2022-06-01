@@ -6,6 +6,7 @@ import com.dpnw.rtrpg.skilleffect.event.EffectReleaseEvent;
 import org.bukkit.event.EventHandler;
 
 public class EffectUI extends HandleListener {
+    public static void init() { /*empty*/ }
 
     @EventHandler
     public void onRelease(EffectReleaseEvent event) {

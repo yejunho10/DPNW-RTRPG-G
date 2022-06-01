@@ -21,7 +21,7 @@ public class SkillEffect {
     private static final HandlePoisoning HANDLE_POISONING = new HandlePoisoning(HANDLE_ENTITY);
 
     static {
-        new EffectUI();
+        EffectUI.init();
         EffectCommand.init();
     }
 
