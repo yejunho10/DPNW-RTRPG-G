@@ -1,6 +1,6 @@
 package com.dpnw.rtrpg.skilleffect.effect;
 
-import com.dpnw.rtrpg.skilleffect.base.SimpleEffectImpl;
+import com.dpnw.rtrpg.skilleffect.base.EffectEntityImpl;
 import com.dpnw.rtrpg.skilleffect.entity.HandleEntity;
 import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import org.bukkit.entity.LivingEntity;
@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-public class HandleStun extends SimpleEffectImpl<SEntity<?>> {
+public class HandleStun extends EffectEntityImpl<SEntity<?>> {
     public HandleStun(HandleEntity handleEntity) { super(handleEntity); }
 
     @EventHandler
