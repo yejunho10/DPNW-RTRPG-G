@@ -15,12 +15,11 @@ public class EffectReleaseEvent extends Event {
     private SEntity<?> entity;
     private EffectEntity<? extends SEntity<?>> effect;
 
-    private static final HandlerList HANDLERS = new HandlerList();
+    @Getter
+    private static final HandlerList handlerList = new HandlerList();
 
     @NotNull
     @Override
-    public HandlerList getHandlers() { return HANDLERS; }
-
-    public static HandlerList getHandlerList() { return HANDLERS; }
+    public HandlerList getHandlers() { return handlerList; }
 
 }
