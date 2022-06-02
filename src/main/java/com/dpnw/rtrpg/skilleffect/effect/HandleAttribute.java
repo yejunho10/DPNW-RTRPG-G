@@ -19,16 +19,13 @@ public class HandleAttribute extends HandleListener {
 
     private final AttributeModifier modifier;
 
-    public HandleAttribute(EffectEntityImpl<SEntity<?>> effect, Attribute attribute, double value) {
+    public HandleAttribute(
+            EffectEntityImpl<SEntity<?>> effect, Attribute attribute, AttributeModifier.Operation operation, double value
+    ) {
         this.effect = effect;
         this.attribute = attribute;
         this.modifier =
-                new AttributeModifier(
-                        UUIDUtil.fastRandomUUID(),
-                        getClass().getSimpleName(),
-                        value,
-                        AttributeModifier.Operation.ADD_NUMBER
-                );
+                new AttributeModifier(UUIDUtil.fastRandomUUID(), getClass().getSimpleName(), value, operation);
     }
 
     @EventHandler
