@@ -11,6 +11,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 
 @Getter
 public class HandleAttribute extends HandleListener {
@@ -28,13 +29,13 @@ public class HandleAttribute extends HandleListener {
                 new AttributeModifier(UUIDUtil.fastRandomUUID(), getClass().getSimpleName(), value, operation);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onBeginAttribute(EffectBeginEvent event) {
         if (event.getEffect() != effect) return;
         getAttribute(event.getEntity()).addModifier(modifier);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onReleaseAttribute(EffectReleaseEvent event) {
         if (event.getEffect() != effect) return;
         getAttribute(event.getEntity()).removeModifier(modifier);
