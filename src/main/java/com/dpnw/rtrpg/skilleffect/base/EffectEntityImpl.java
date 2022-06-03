@@ -14,7 +14,7 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 @RequiredArgsConstructor
-public class EffectEntityImpl<E extends SEntity<?>> extends HandleListener implements EffectEntity<E> {
+public class EffectEntityImpl<E extends SEntity<?>> extends HandleListener implements EffectEntity<E>, RecordCastedEffect<CastedEffect<SEntity<?>>> {
 
     @Getter
     public final HandleEntity handleEntity;
