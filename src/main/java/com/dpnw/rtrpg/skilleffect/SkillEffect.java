@@ -12,13 +12,13 @@ public class SkillEffect {
     @Getter
     private static final HandleEntity HANDLE_ENTITY = new HandleEntity();
     @Getter
-    private static final HandleStun HANDLE_STUN = new HandleStun(HANDLE_ENTITY);
+    private static final HandleStun stun = new HandleStun(HANDLE_ENTITY);
     @Getter
-    private static final HandleSleep HANDLE_SLEEP = new HandleSleep(HANDLE_ENTITY);
+    private static final HandleSleep sleep = new HandleSleep(HANDLE_ENTITY);
     @Getter
-    private static final HandleBinding HANDLE_BINDING = new HandleBinding(HANDLE_ENTITY);
+    private static final HandleBinding binding = new HandleBinding(HANDLE_ENTITY);
     @Getter
-    private static final HandlePoisoning HANDLE_POISONING = new HandlePoisoning(HANDLE_ENTITY);
+    private static final HandlePoisoning poisioning = new HandlePoisoning(HANDLE_ENTITY);
 
     static {
         EffectUI.init();

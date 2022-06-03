@@ -24,10 +24,10 @@ public class EffectCommand extends HandleListener {
         val tick = Integer.parseInt(args[1]);
         Function<String, EffectEntity<SEntity<?>> >effectFunction =
                 (effect) -> switch (effect) {
-                    case "stun" -> SkillEffect.getHANDLE_STUN();
-                    case "sleep" -> SkillEffect.getHANDLE_SLEEP();
-                    case "binding" -> SkillEffect.getHANDLE_BINDING();
-                    case "poisoning" -> SkillEffect.getHANDLE_POISONING();
+                    case "stun" -> SkillEffect.getStun();
+                    case "sleep" -> SkillEffect.getSleep();
+                    case "binding" -> SkillEffect.getBinding();
+                    case "poisoning" -> SkillEffect.getPoisioning();
                     default -> null;
                 };
         val effect = args[0];
