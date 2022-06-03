@@ -1,6 +1,7 @@
 package com.dpnw.rtrpg.enums;
 
 public enum SkillName {
+    CRIMSON_REAPER("CRIMSON_REAPER", "진홍빛 사신", SkillType.PASSIVE),
     LEAP_OF_QUEEN("LEAP_OF_QUEEN", "여왕의 도약", SkillType.ACTIVE),
     CONFUSION("CONFUSION", "교란", SkillType.ACTIVE),
     AIR_SLASH("AIR_SLASH", "에어 슬래쉬", SkillType.ACTIVE),
