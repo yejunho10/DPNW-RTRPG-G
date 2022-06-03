@@ -7,4 +7,5 @@ public interface EffectEntity<E extends SEntity<?>> extends AddEffect<E> {
 
     HandleEntity getHandleEntity();
 
+
 }
