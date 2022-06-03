@@ -1,5 +1,6 @@
 package com.dpnw.rtrpg.skilleffect.entity;
 
+import com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent;
 import com.dpnw.rtrpg.skilleffect.api.HandleListener;
 import lombok.val;
 import org.bukkit.entity.LivingEntity;
@@ -24,7 +25,14 @@ public class HandleEntity extends HandleListener {
     @EventHandler(priority = EventPriority.MONITOR)
     protected void onQuit(PlayerQuitEvent event) {
         SEntity<?> entity = ENTITIES.remove(event.getPlayer().getUniqueId());
-        if (entity != null && entity instanceof SPlayer) ((SPlayer) entity).getTasks().cancel();
+        if (entity instanceof SPlayer) ((SPlayer) entity).getTasks().cancel();
+    }
+
+    @EventHandler
+    protected void onEntityRemoved(EntityRemoveFromWorldEvent event) {
+        if (event.getEntity() instanceof LivingEntity entity) {
+            ENTITIES.remove(entity.getUniqueId());
+        }
     }
 
     public SPlayer getPlayer(Player player) { return (SPlayer) getEntity(player); }

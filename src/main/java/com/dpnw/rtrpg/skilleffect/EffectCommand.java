@@ -27,7 +27,7 @@ public class EffectCommand extends HandleListener {
                     case "stun" -> SkillEffect.getStun();
                     case "sleep" -> SkillEffect.getSleep();
                     case "binding" -> SkillEffect.getBinding();
-                    case "poisoning" -> SkillEffect.getPoisioning();
+                    case "poisoning" -> SkillEffect.getPoisoning();
                     default -> null;
                 };
         val effect = args[0];
