@@ -1,17 +1,13 @@
 package com.dpnw.rtrpg.skilleffect.base;
 
+import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import com.dpnw.rtrpg.skilleffect.entity.SEntity;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerMoveEvent;
 
-/**
- * 이동불가
- */
-public interface NoMove extends CheckEntity<SEntity<?>>, NoJump {
+public interface NoJump extends CheckEntity<SEntity<?>> {
 
     @EventHandler
-    default void noMove(PlayerMoveEvent event) {
+    default void noJump(PlayerJumpEvent event) {
         if (testEntity(event.getPlayer())) event.setCancelled(true);
     }
-
 }
