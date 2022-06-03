@@ -13,4 +13,6 @@ public interface EffectEntity<E extends SEntity<?>> {
 
     void addEffect(E entity, SkillCaster caster, int tick);
 
+    void removeEffect(E entity);
+
 }

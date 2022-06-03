@@ -70,4 +70,13 @@ public class EffectEntityImpl<E extends SEntity<?>> extends HandleListener
         }
     }
 
+    @Override
+    public void removeEffect(E entity) {
+        getList().removeIf(e -> {
+            val res = e.getEntity() == entity;
+            if (res) Bukkit.getPluginManager().callEvent(new EffectReleaseEvent(entity, this, e));
+            return res;
+        });
+    }
+
 }
