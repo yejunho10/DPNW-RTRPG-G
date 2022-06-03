@@ -9,6 +9,7 @@ import java.util.UUID;
 @SuppressWarnings("all")
 public abstract class PublicFields {
     // skill
+    private double increaseLifeSteal;
     private double increaseSkillDamage;
     private double increaseSkillDamagePercent;
     private double increaseCooldown;
@@ -17,6 +18,7 @@ public abstract class PublicFields {
     private double increaseSkillRangePercent;
     private double increaseMaxTarget;
     // decrease
+    private double decreaseLifeSteal;
     private double decreaseSkillDamage;
     private double decreaseSkillDamagePercent;
     private double decreaseCooldown;
@@ -72,6 +74,22 @@ public abstract class PublicFields {
     // 대상으로부터 입는 데미지 감소
     private Map<UUID, Double> decreaseDamageFromCaster = new HashMap<>();
     private Map<UUID, Double> decreaseDamageFromCasterPercent = new HashMap<>();
+
+    public double getIncreaseLifeSteal() {
+        return increaseLifeSteal;
+    }
+
+    public void setIncreaseLifeSteal(double increaseLifeSteal) {
+        this.increaseLifeSteal = increaseLifeSteal;
+    }
+
+    public double getDecreaseLifeSteal() {
+        return decreaseLifeSteal;
+    }
+
+    public void setDecreaseLifeSteal(double increaseSkillDamage) {
+        this.decreaseLifeSteal = increaseSkillDamage;
+    }
 
     public double getIncreaseSkillDamage() {
         return increaseSkillDamage;

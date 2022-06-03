@@ -12,6 +12,8 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public interface Skill extends Unlockable, Visible, TaskCancelable {
+    int getMaxHaving();
+
     /**
      * @return 스킬의 이름을 리턴시킨다.
      */
@@ -87,6 +89,8 @@ public interface Skill extends Unlockable, Visible, TaskCancelable {
      * @return 요구하는 마나를 리턴시킨다.
      */
     double getRequireMana();
+
+    void setMaxHaving(int maxHaving);
 
     /**
      * @param skillName 스킬의이름을 설정한다.

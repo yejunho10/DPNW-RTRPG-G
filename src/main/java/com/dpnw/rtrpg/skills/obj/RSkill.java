@@ -24,6 +24,7 @@ public abstract class RSkill extends PublicFields implements Skill, Cooldownable
     private double healing;
     private double armor;
     private double maxTargetRange;
+    private int maxHaving;
     private int maxNumber;
     private Rank rank;
     private double requireMana;
@@ -78,6 +79,11 @@ public abstract class RSkill extends PublicFields implements Skill, Cooldownable
     @Override
     public boolean isCooldown() {
         return isCooldown;
+    }
+
+    @Override
+    public int getMaxHaving() {
+        return maxHaving;
     }
 
     @Override
@@ -143,6 +149,11 @@ public abstract class RSkill extends PublicFields implements Skill, Cooldownable
     @Override
     public double getRequireMana() {
         return requireMana;
+    }
+
+    @Override
+    public void setMaxHaving(int maxHaving) {
+        this.maxHaving = maxHaving;
     }
 
     @Override
