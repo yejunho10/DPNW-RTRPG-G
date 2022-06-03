@@ -12,9 +12,7 @@ public interface NoAttack extends CheckEntity<SEntity<?>> {
 
     @EventHandler
     default void onAttackStun(EntityDamageByEntityEvent event) {
-        if (event.getDamager() instanceof LivingEntity
-                && testEntity((LivingEntity) event.getDamager()))
-            event.setCancelled(true);
+        if (event.getDamager() instanceof LivingEntity entity && testEntity(entity)) event.setCancelled(true);
     }
 
 }
