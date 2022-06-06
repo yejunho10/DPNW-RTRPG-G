@@ -1,10 +1,13 @@
 package com.dpnw.rtrpg.events.player;
 
+import com.darksoldier1404.dppc.utils.Tuple;
+import com.dpnw.rtrpg.enums.WeaponType;
 import com.dpnw.rtrpg.functions.ExpFunctions;
 import com.dpnw.rtrpg.rplayer.CraftRPlayer;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
 import com.dpnw.rtrpg.rplayer.obj.RPlayer;
 import com.dpnw.rtrpg.skills.obj.RSkill;
+import com.dpnw.rtrpg.weapons.obj.Weapon;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -29,6 +32,25 @@ public class ExpReceivedEvent implements Listener {
         }
         // todo learn Component
         e.getPlayer().getPlayer().sendActionBar("§f[ §6EXP.§e" + e.getExp() + " 획득! §f] [ §6EXP.§e" + (e.getPlayer().getExp() - e.getExp()) + " §b→ §e" + finalExp + " §f/ §e" + r + " §f]");
+    }
+
+    public void addMasteryExp(RPlayer rp, int exp) {
+        if(rp.getWeapon() == null) return;
+        CraftRPlayer cp = (CraftRPlayer) rp;
+        Weapon w = rp.getWeapon();
+        WeaponType wt = w.getWeaponType();
+        Tuple<Integer, Integer> tp = cp.getWeaponMastery().get(wt) == null ? cp.getWeaponMastery().put(wt, Tuple.of(0, 0)) : cp.getWeaponMastery().get(wt);
+        assert tp != null;
+        int level = tp.getA();
+        int baseExp = 50;
+        level++;
+        int r = (int) (baseExp * (1 + Math.pow(level, 2.35) * 0.035));
+        if (r <= exp) {
+            tp.setA(level);
+            tp.setB(exp - r);
+        } else {
+            tp.setB(tp.getB() + exp);
+        }
     }
 
     public void updateSkillStats(RPlayer p) {

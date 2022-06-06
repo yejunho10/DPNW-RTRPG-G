@@ -35,6 +35,47 @@ public class RTRPG extends JavaPlugin {
         InitManager.init();
         //command register
         getCommand("rr").setExecutor(new RCommand());
+
+        /*
+        Default
+        Increase
+        IncreasePer
+        Decrease
+        DecreasePer
+        Current
+
+        AttackIncrease
+        AttackDecrease
+        AttackIncreasePer
+        AttackDecreasePer
+
+        Default + Increase - Decrease = A
+        A * (IncreasePer - DecreasePer / 100) = B (Current)
+        // added
+        B + AttackIncrease - AttackDecrease = C
+        C * (AttackIncreasePer - AttackDecreasePer / 100) = D (Total)
+
+        // from CraftRPlayer 적의 방어력을 감소 시키는 필드
+        DecreaseArmor
+        DecreaseArmorPer
+
+        // from RMob
+        IncreaseArmor
+        IncreaseArmorPer
+
+        Armor = IncreaseArmor - DecreaseArmor = 가
+        가 * (IncreaseArmorPer - DecreaseArmorPer / 100) = 나 (TotalArmor from Enemy)
+
+        D - 나 = TotalDamage +A + 받는 데미지 증가 + 받는 데미지 증가 퍼센트 = TotalTotalDamage
+
+        // 상대가 입게될 피해가 내가 주는 최종 피해량의 5% 보다 낮으면 피해의 5%만큼 피해를 준다. = 최소 데미지
+        if(TotalTotalDamage < D *0.05) {
+            TotalTotalDamage = D * 0.05;
+            Enemy's CurrentHealth = CurrentHealth - TotalTotalDamage
+        }else{
+            Enemy's CurrentHealth = CurrentHealth - TotalTotalDamage
+        }
+         */
     }
 
     @Override

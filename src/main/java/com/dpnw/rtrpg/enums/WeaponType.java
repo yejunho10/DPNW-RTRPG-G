@@ -1,15 +1,14 @@
 package com.dpnw.rtrpg.enums;
 
 public enum WeaponType {
-    EQUIPMENT,
     SWORD,
     BLUNT,
     RANGED,
-    DUALSWORD,
+    DUAL_SWORD,
     SPEAR,
-    ONEHANDSWORD,
+    ONE_HAND_SWORD,
     AXE,
-    TWOHANDSWORD,
+    TWO_HAND_SWORD,
     KNIFE,
     HAMMER,
     MACE,
