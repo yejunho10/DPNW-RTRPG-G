@@ -1,11 +1,9 @@
 package com.dpnw.rtrpg.rplayer;
 
 import com.darksoldier1404.dppc.utils.NBT;
+import com.darksoldier1404.dppc.utils.Tuple;
 import com.dpnw.rtrpg.RTRPG;
-import com.dpnw.rtrpg.enums.Damager;
-import com.dpnw.rtrpg.enums.SkillName;
-import com.dpnw.rtrpg.enums.SkillType;
-import com.dpnw.rtrpg.enums.WeaponName;
+import com.dpnw.rtrpg.enums.*;
 import com.dpnw.rtrpg.events.obj.RDamageByEntityEvent;
 import com.dpnw.rtrpg.karma.Karma;
 import com.dpnw.rtrpg.rplayer.event.RPlayerExpReceivedEvent;
@@ -36,6 +34,7 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
     private Map<SkillName, Active> activeList = new HashMap<>(); // 플레이어가 해금한 액티브 스킬 목록
     private Map<Integer, SkillName> equipedPassiveSkill = new HashMap<>(); // 장착된 패시브 스킬 목록
     private Map<Integer, SkillName> equipedActiveSkill = new HashMap<>(); // 장착된 액티브 스킬 목록
+    private Map<WeaponType, Tuple<Integer, Integer>> weaponMastery = new HashMap<>(); // 플레이어의 무기 숙련도
     private Set<SkillName> unLockedSkills = new HashSet<>(); // 플레이어가 해금한 모든 스킬 목록
     private Weapon currentWeapon; // 플레이어가 장착한 무기
     private Weapon currentShield; // 플레이어가 장착한 방패
@@ -202,6 +201,14 @@ public class CraftRPlayer extends Counter implements RPlayer, Levelable {
 
     public Map<Integer, SkillName> getEquipedPassiveSkill() {
         return equipedPassiveSkill;
+    }
+
+    public Map<WeaponType, Tuple<Integer, Integer>> getWeaponMastery() {
+        return weaponMastery;
+    }
+
+    public void setWeaponMastery(Map<WeaponType, Tuple<Integer, Integer>> weaponMastery) {
+        this.weaponMastery = weaponMastery;
     }
 
     @Override
