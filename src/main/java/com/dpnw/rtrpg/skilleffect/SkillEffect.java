@@ -7,6 +7,9 @@ import com.dpnw.rtrpg.skilleffect.effect.HandleSleep;
 import com.dpnw.rtrpg.skilleffect.effect.HandleStun;
 import lombok.Getter;
 
+/**
+    상태이상 매니저 
+ */
 public class SkillEffect {
 
     @Getter
