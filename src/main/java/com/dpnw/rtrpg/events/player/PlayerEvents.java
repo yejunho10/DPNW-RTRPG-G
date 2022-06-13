@@ -14,6 +14,8 @@ import com.dpnw.rtrpg.skills.obj.Skill;
 import com.dpnw.rtrpg.skills.skillActive.JetStomp;
 import com.dpnw.rtrpg.utils.RPlayerUtil;
 import com.dpnw.rtrpg.utils.Tuple;
+import net.kyori.adventure.text.Component;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -94,6 +96,7 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
+
         CraftRPlayer cp = plugin.rplayers.get(p.getUniqueId());
         int level = cp.getLevel();
         Karma karma = cp.getKarma();

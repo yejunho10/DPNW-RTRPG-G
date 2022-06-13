@@ -5,7 +5,7 @@ depend:
   - DPP-Core
 softdepend:
   - MythicMobs
-api-version: 1.18
-authors: [ DP_NETWORK ]
+api-version: 1.19
+authors: [ darksoldier1404, Bruce0203, yejunho10 ]
 commands:
   rr:
