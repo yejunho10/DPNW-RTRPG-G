@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
 public class RustyMace extends Mace {
+    /**
+     * 녹슨 메이스
+     */
     public RustyMace() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(75);

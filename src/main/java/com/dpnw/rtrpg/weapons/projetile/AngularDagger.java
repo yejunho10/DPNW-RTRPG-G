@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
 public class AngularDagger extends Dagger {
+    /**
+     * 반듯한 표창
+     */
     public AngularDagger() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(35);

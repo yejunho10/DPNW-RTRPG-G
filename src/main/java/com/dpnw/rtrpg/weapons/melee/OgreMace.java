@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
 public class OgreMace extends Mace {
+    /**
+     * 오우거 메이스
+     */
     public OgreMace() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(143);

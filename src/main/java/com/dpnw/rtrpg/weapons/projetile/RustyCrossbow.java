@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
 public class RustyCrossbow extends Crossbow {
+    /**
+     * 녹슨 석궁
+     */
     public RustyCrossbow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(82);

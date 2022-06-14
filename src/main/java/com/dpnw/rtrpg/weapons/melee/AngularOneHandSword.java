@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.OneHandSword;
 
 @SuppressWarnings("all")
 public class AngularOneHandSword extends OneHandSword {
+    /**
+     * 반듯한 한손검
+     */
     public AngularOneHandSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(77);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.TwoHandSword;
 
 @SuppressWarnings("all")
 public class RustyTwoHandSword extends TwoHandSword {
+    /**
+     * 녹슨 양손검
+     */
     public RustyTwoHandSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(72);

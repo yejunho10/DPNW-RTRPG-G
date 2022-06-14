@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.TwoHandSword;
 
 @SuppressWarnings("all")
 public class OgreTwoHandSword extends TwoHandSword {
+    /**
+     * 오우거 대검
+     */
     public OgreTwoHandSword() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(135);

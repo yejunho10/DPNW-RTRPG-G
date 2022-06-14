@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
 public class AngularCrossbow extends Crossbow {
+    /**
+     * 반듯한 석궁
+     */
     public AngularCrossbow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(106);

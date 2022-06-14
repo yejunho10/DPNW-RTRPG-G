@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
 public class ExpertKnife extends Knife {
+    /**
+     * 숙련자의 단도
+     */
     public ExpertKnife() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(37);

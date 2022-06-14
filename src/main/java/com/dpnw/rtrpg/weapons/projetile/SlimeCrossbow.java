@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
 public class SlimeCrossbow extends Crossbow {
+    /**
+     * 점액질 석궁
+     */
     public SlimeCrossbow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(70);

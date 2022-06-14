@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
 public class AngularBow extends Bow {
+    /**
+     * 반듯한 활
+     */
     public AngularBow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(95);

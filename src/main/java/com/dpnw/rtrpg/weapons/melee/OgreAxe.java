@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
 public class OgreAxe extends Axe {
+    /**
+     * 오우거 도끼
+     */
     public OgreAxe() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(150);

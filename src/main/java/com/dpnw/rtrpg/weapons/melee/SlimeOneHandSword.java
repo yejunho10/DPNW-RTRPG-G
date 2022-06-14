@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.TwoHandSword;
 
 @SuppressWarnings("all")
 public class SlimeOneHandSword extends TwoHandSword {
+    /**
+     * 점액질 한손검
+     */
     public SlimeOneHandSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(54);

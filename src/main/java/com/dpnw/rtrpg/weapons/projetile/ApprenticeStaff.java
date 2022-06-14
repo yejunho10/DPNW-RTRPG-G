@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Staff;
 
 @SuppressWarnings("all")
 public class ApprenticeStaff extends Staff {
+    /**
+     * 견습 스태프
+     */
     public ApprenticeStaff() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(46);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
 public class AngularMace extends Mace {
+    /**
+     * 반듯한 메이스
+     */
     public AngularMace() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(90);

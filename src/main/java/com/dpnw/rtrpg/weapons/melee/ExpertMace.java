@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
 public class ExpertMace extends Mace {
+    /**
+     * 숙련자의 메이스
+     */
     public ExpertMace() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(50);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
 public class AngularKnife extends Knife {
+    /**
+     * 반듯한 단도
+     */
     public AngularKnife() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(70);

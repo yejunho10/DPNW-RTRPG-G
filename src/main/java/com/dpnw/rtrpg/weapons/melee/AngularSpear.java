@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
 public class AngularSpear extends Spear {
+    /**
+     * 반듯한 창
+     */
     public AngularSpear() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(87);

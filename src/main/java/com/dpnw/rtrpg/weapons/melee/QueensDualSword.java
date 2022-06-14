@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
 public class QueensDualSword extends DualSword {
+    /**
+     * 여왕의 쌍검
+     */
     public QueensDualSword() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(37);

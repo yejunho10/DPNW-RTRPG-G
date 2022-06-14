@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
 public class SlimeAxe extends Axe {
+    /**
+     * 점액질 도끼
+     */
     public SlimeAxe() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(70);

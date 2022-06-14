@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
 public class DerDreischutz extends Crossbow {
+    /**
+     * 마탄의 사수
+     */
     public DerDreischutz() {
         setRank(Rank.EXTRA);
         setDefaultWeaponDamage(700);

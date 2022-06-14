@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Staff;
 
 @SuppressWarnings("all")
 public class OrcsTuskStaff extends Staff {
+    /**
+     * 오크엄니 스태프
+     */
     public OrcsTuskStaff() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(160);

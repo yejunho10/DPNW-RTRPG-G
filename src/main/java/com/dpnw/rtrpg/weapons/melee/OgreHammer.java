@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
 public class OgreHammer extends Hammer {
+    /**
+     * 오우거 망치
+     */
     public OgreHammer() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(167);

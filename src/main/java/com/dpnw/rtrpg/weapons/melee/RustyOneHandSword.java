@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.OneHandSword;
 
 @SuppressWarnings("all")
 public class RustyOneHandSword extends OneHandSword {
+    /**
+     * 녹슨 한손검
+     */
     public RustyOneHandSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(60);

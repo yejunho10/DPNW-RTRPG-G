@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
 public class RustyWand extends Wand {
+    /**
+     * 녹슨 지팡이
+     */
     public RustyWand() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(55);

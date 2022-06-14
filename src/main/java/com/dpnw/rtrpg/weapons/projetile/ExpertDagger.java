@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
 public class ExpertDagger extends Dagger {
+    /**
+     * 숙련자의 표창
+     */
     public ExpertDagger() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(20);

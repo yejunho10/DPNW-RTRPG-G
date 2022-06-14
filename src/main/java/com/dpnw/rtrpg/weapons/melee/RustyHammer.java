@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
 public class RustyHammer extends Hammer {
+    /**
+     * 녹슨 망치
+     */
     public RustyHammer() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(90);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
 public class ExpertCrossbow extends Crossbow {
+    /**
+     * 숙련자의 석궁
+     */
     public ExpertCrossbow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(56);

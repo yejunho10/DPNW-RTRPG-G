@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
 public class GiantWand extends Wand {
+    /**
+     * 자이언트 스틱
+     */
     public GiantWand() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(137);

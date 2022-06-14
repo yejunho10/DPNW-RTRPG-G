@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
 public class ExpertBow extends Bow {
+    /**
+     * 숙련자의 활
+     */
     public ExpertBow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(47);

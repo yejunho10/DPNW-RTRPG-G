@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
 public class OrcsTuskDagger extends Dagger {
+    /**
+     * 오크엄니 표창
+     */
     public OrcsTuskDagger() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(41);

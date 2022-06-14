@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
 public class RustyDualSword extends DualSword {
+    /**
+     * 녹슨 쌍검
+     */
     public RustyDualSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(30);

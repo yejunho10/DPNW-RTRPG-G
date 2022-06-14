@@ -7,6 +7,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.OneHandSword;
 
 @SuppressWarnings("all")
 public class OrcsTuskOneHandSword extends OneHandSword {
+    /**
+     * 오크엄니 한손검
+     */
     public OrcsTuskOneHandSword() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(87);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
 public class AngularHammer extends Hammer {
+    /**
+     * 반듯한 망치
+     */
     public AngularHammer() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(124);

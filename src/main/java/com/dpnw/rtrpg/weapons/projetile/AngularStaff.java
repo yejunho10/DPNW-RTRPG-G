@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Staff;
 
 @SuppressWarnings("all")
 public class AngularStaff extends Staff {
+    /**
+     * 반듯한 스태프
+     */
     public AngularStaff() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(100);

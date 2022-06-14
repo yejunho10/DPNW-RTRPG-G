@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
 public class RustyKnife extends Knife {
+    /**
+     * 녹슨 단도
+     */
     public RustyKnife() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(56);

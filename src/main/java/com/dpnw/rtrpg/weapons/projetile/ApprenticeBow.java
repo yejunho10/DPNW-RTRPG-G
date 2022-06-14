@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
 public class ApprenticeBow extends Bow {
+    /**
+     * 견습 활
+     */
     public ApprenticeBow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(35);

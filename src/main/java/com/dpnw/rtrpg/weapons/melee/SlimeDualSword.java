@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
 public class SlimeDualSword extends DualSword {
+    /**
+     * 점액질 쌍검
+     */
     public SlimeDualSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(27);

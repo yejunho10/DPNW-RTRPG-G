@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
 public class ExpertWand extends Wand {
+    /**
+     * 숙련자의 지팡이
+     */
     public ExpertWand() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(35);

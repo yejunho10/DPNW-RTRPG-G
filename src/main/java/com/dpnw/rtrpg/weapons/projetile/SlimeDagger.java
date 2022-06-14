@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
 public class SlimeDagger extends Dagger {
+    /**
+     * 점액질 표창
+     */
     public SlimeDagger() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(27);

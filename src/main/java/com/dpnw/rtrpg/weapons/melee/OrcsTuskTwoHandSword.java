@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.TwoHandSword;
 
 @SuppressWarnings("all")
 public class OrcsTuskTwoHandSword extends TwoHandSword {
+    /**
+     * 오크엄니 양손검
+     */
     public OrcsTuskTwoHandSword() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(110);

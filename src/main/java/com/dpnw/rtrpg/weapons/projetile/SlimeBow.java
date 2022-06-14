@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
 public class SlimeBow extends Bow {
+    /**
+     * 점액질 활
+     */
     public SlimeBow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(56);

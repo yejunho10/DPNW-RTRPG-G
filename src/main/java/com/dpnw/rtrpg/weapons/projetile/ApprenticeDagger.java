@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
 public class ApprenticeDagger extends Dagger {
+    /**
+     * 견습 표창
+     */
     public ApprenticeDagger() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(13);

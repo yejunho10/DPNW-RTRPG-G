@@ -7,6 +7,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
 public class OrcsTuskSpear extends Spear {
+    /**
+     * 오크엄니 창
+     */
     public OrcsTuskSpear() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(135);
