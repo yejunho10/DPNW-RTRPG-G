@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
 public class ApprenticeMace extends Mace {
+    /**
+     * 견습 메이스
+     */
     public ApprenticeMace() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(35);

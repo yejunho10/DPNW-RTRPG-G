@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
 public class ApprenticeKnife extends Knife {
+    /**
+     * 견습 단도
+     */
     public ApprenticeKnife() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(25);

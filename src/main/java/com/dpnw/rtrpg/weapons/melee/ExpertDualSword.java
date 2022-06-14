@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
 public class ExpertDualSword extends DualSword {
+    /**
+     * 숙련자의 쌍검
+     */
     public ExpertDualSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(25);

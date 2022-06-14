@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
 public class AngularDualSword extends DualSword {
+    /**
+     * 반듯한 쌍검
+     */
     public AngularDualSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(45);

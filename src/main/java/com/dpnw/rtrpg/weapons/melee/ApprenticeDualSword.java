@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
 public class ApprenticeDualSword extends DualSword {
+    /**
+     * 견습 쌍검
+     */
     public ApprenticeDualSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(18);

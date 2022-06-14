@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
 public class AngularAxe extends Axe {
+    /**
+     * 반듯한 도끼
+     */
     public AngularAxe() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(110);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.TwoHandSword;
 
 @SuppressWarnings("all")
 public class AngularTwoHandSword extends TwoHandSword {
+    /**
+     * 반듯한 양손검
+     */
     public AngularTwoHandSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(93);

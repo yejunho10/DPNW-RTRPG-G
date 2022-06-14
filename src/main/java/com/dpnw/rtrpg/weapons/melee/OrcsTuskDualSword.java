@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.DualSword;
 
 @SuppressWarnings("all")
 public class OrcsTuskDualSword extends DualSword {
+    /**
+     * 오크엄니 쌍검
+     */
     public OrcsTuskDualSword() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(55);

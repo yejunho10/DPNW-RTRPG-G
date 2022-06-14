@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
 public class SlimeWand extends Wand {
+    /**
+     * 점액질 지팡이
+     */
     public SlimeWand() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(47);

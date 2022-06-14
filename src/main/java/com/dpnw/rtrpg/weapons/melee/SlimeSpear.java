@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
 public class SlimeSpear extends Spear {
+    /**
+     * 점액질 창
+     */
     public SlimeSpear() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(54);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
 public class SlimeKnife extends Knife {
+    /**
+     * 슬라임 단도
+     */
     public SlimeKnife() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(45);

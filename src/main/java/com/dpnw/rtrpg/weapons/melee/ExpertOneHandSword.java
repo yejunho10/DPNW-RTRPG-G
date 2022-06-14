@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.OneHandSword;
 
 @SuppressWarnings("all")
 public class ExpertOneHandSword extends OneHandSword {
+    /**
+     * 숙련자의 한손검
+     */
     public ExpertOneHandSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(44);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
 public class ApprenticeWand extends Wand {
+    /**
+     * 견습 지팡이
+     */
     public ApprenticeWand() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(28);

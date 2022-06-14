@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
 public class ApprenticeAxe extends Axe {
+    /**
+     * 견습 도끼
+     */
     public ApprenticeAxe() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(43);
@@ -15,6 +18,6 @@ public class ApprenticeAxe extends Axe {
         setIncreaseHealth(50);
         setIncreaseHealthRegen(0.2);
         setLifeSteal(3);
-        setWeaponName(WeaponName.ANGULAR_AXE);
+        setWeaponName(WeaponName.APPRENTICE_AXE);
     }
 }

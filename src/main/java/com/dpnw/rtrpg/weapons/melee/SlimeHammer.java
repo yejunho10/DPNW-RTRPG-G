@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
 public class SlimeHammer extends Hammer {
+    /**
+     * 슬라임 망치
+     */
     public SlimeHammer() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(83);

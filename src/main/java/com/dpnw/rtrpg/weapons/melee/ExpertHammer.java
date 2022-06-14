@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
 public class ExpertHammer extends Hammer {
+    /**
+     * 숙련자의 망치
+     */
     public ExpertHammer() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(72);

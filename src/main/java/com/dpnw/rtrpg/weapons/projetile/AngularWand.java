@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
 public class AngularWand extends Wand {
+    /**
+     * 반듯한 지팡이
+     */
     public AngularWand() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(88);

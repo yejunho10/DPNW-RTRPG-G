@@ -7,6 +7,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Scythe;
 
 @SuppressWarnings("all")
 public class OrcsTuskScythe extends Scythe {
+    /**
+     * 오크엄니 대낫
+     */
     public OrcsTuskScythe() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(130);

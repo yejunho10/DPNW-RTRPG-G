@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Dagger;
 
 @SuppressWarnings("all")
 public class RustyDagger extends Dagger {
+    /**
+     * 녹슨 표창
+     */
     public RustyDagger() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(33);

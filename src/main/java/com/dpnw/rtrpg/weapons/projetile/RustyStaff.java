@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Staff;
 
 @SuppressWarnings("all")
 public class RustyStaff extends Staff {
+    /**
+     * 녹슨 스태프
+     */
     public RustyStaff() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(85);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
 public class GiantSpear extends Spear {
+    /**
+     * 자이언트 창
+     */
     public GiantSpear() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(145);

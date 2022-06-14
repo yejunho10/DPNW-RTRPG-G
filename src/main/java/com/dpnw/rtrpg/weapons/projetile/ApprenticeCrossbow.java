@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Crossbow;
 
 @SuppressWarnings("all")
 public class ApprenticeCrossbow extends Crossbow {
+    /**
+     * 견습 석궁
+     */
     public ApprenticeCrossbow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(40);

@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Staff;
 
 @SuppressWarnings("all")
 public class ExpertStaff extends Staff {
+    /**
+     * 숙련자의 스태프
+     */
     public ExpertStaff() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(67);

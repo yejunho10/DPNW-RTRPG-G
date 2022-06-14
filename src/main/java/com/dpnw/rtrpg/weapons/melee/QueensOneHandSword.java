@@ -7,6 +7,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.OneHandSword;
 
 @SuppressWarnings("all")
 public class QueensOneHandSword extends OneHandSword {
+    /**
+     * 여왕의 한손검
+     */
     public QueensOneHandSword() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(62);

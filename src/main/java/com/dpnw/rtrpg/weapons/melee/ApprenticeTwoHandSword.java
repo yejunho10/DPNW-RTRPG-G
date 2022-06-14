@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.TwoHandSword;
 
 @SuppressWarnings("all")
 public class ApprenticeTwoHandSword extends TwoHandSword {
+    /**
+     * 견습 양손검
+     */
     public ApprenticeTwoHandSword() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(40);

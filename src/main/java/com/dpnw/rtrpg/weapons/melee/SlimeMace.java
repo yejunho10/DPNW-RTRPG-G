@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Mace;
 
 @SuppressWarnings("all")
 public class SlimeMace extends Mace {
+    /**
+     * 점액질 메이스
+     */
     public SlimeMace() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(63);

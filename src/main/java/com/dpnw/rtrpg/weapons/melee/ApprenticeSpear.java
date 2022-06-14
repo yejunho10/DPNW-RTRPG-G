@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
 public class ApprenticeSpear extends Spear {
+    /**
+     * 경습 창
+     */
     public ApprenticeSpear() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(35);

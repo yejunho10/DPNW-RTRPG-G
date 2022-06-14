@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
 public class QueensBow extends Bow {
+    /**
+     * 여왕의 활
+     */
     public QueensBow() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(75);

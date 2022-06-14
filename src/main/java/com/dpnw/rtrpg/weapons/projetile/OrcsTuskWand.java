@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Wand;
 
 @SuppressWarnings("all")
 public class OrcsTuskWand extends Wand {
+    /**
+     * 오크엄니 지팡이
+     */
     public OrcsTuskWand() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(120);

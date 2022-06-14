@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
 public class RustyAxe extends Axe {
+    /**
+     * 녹슨 도끼
+     */
     public RustyAxe() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(85);

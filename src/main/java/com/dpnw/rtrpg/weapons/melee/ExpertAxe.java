@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Axe;
 
 @SuppressWarnings("all")
 public class ExpertAxe extends Axe {
+    /**
+     * 숙련자의 도끼
+     */
     public ExpertAxe() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(58);

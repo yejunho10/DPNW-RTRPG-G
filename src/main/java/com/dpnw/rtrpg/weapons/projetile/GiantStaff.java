@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Staff;
 
 @SuppressWarnings("all")
 public class GiantStaff extends Staff {
+    /**
+     * 자이언트 스태프
+     */
     public GiantStaff() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(190);

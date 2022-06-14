@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Spear;
 
 @SuppressWarnings("all")
 public class RustySpear extends Spear {
+    /**
+     * 녹슨 창
+     */
     public RustySpear() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(65);

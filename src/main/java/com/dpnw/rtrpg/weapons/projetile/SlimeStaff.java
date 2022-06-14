@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Staff;
 
 @SuppressWarnings("all")
 public class SlimeStaff extends Staff {
+    /**
+     * 점액질 스태프
+     */
     public SlimeStaff() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(75);

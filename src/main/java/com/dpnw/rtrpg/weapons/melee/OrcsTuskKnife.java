@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Knife;
 
 @SuppressWarnings("all")
 public class OrcsTuskKnife extends Knife {
+    /**
+     * 오크엄니 단도
+     */
     public OrcsTuskKnife() {
         setRank(Rank.RARE);
         setDefaultWeaponDamage(80);

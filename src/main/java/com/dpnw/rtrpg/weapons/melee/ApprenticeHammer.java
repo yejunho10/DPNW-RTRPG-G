@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.melee.obj.Hammer;
 
 @SuppressWarnings("all")
 public class ApprenticeHammer extends Hammer {
+    /**
+     * 견습 망치
+     */
     public ApprenticeHammer() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(56);

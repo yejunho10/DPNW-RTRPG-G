@@ -6,6 +6,9 @@ import com.dpnw.rtrpg.weapons.projetile.obj.Bow;
 
 @SuppressWarnings("all")
 public class RustyBow extends Bow {
+    /**
+     * 녹슨 활
+     */
     public RustyBow() {
         setRank(Rank.COMMON);
         setDefaultWeaponDamage(70);
